@@ -1,0 +1,783 @@
+// Place all the styles related to the main controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins"
+
+
+p
+    color: #6d6e71
+
+h4
+    font:
+        size: 1.125
+        family: 'Playfair Display', serif
+        style: italic
+    color: #a78c30
+
+header
+    height: 50px
+    width: 100%
+    .header_wrapper
+        width: inherit
+        height: inherit
+        position: relative
+        .header_inner
+            width: 100%
+            height: inherit
+            position: relative
+            background: #c8ae4b
+            z-index: 11
+            padding:
+                left: 50px
+                right: 50px
+            .main_logo
+                width: 100px
+                height: inherit
+                margin:
+                    left: 20px
+                    right: 20px
+                position: relative
+                z-index: 1
+                display: inline-block
+                a
+                    display: block
+                    width: inherit
+                    height: inherit
+                    svg
+                        width: inherit
+                        height: inherit
+                        path
+                            fill: #ffffff
+        .header_menu_squad
+            width: 50px
+            height: 50px
+            background: #e8d69b
+            position: absolute
+            top: 0
+            z-index: 12
+        .main_menu_wrapper
+            left: 0
+            #main_menu_button
+                width: 100%
+                height: 100%
+                cursor: pointer
+                position: relative
+                &:before
+                    display: block
+                    content: attr(data-title)
+                    position: absolute
+                    +my_center_align (63%)
+                        position: absolute
+                    font:
+                        size: 10px
+                        family: 'Fira Sans', sans-serif
+                    color: #dd7272
+                    text-transform: lowercase
+            svg
+                width: 25px
+                height: 77%
+                display: block
+                margin: 0 auto
+                path
+                    fill: #dd7272
+        .basket_wrapper
+            right: 0
+            #basket
+                width: 100%
+                height: 100%
+                cursor: pointer
+                position: relative
+                &:before
+                    display: block
+                    content: attr(data-count)
+                    position: absolute
+                    +my_center_align
+                        position: absolute
+                    font:
+                        size: 11.71px
+                        family: 'Fira Sans', sans-serif
+                    color: #ffffff
+
+            svg
+                width: 20px
+                height: 95%
+                padding:
+                    bottom: 5%
+                margin: 0 auto
+                display: block
+                path
+                    fill: #dd7272
+    .main_central_block_wrap
+        height: 50px
+        width: calc(100% - 140px - 140px)
+        display: inline-block
+        .mcb_one_item
+            width: 33.33%
+            height: 50px
+            display: inline-block
+            a
+                text:
+                    align: center
+                font:
+                    size: 21px
+                    family: 'Playfair Display', serif
+                color: #ffffff
+                display: block
+                width: 100%
+                height: 100%
+                svg
+                    height: 30px
+                    width: 30px
+                    +my_vertical_align
+                        position: absolute
+                    path, polygon
+                        fill: #ffffff
+        .mcb_phone
+            width: 100%
+            height: 100%
+            float: left
+            .link_phone_inner
+                height: 50px
+                margin: 0 auto
+                line-height: 50px
+                display: table
+                position: relative
+                span
+                    display: table-cell
+                    vertical-align: middle
+                    padding:
+                        left: 40px
+
+
+.bi
+    width: 100% !important
+    height: 0
+    padding-top: 100%
+    overflow: hidden !important
+    -webkit-background-size: cover !important
+    -moz-background-size: cover !important
+    -o-background-size: cover !important
+    background-size: cover !important
+
+.one_category
+    width: 33.33%
+    position: relative
+    border: 1px solid #58595b
+.sale_wrap
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    height: 36px
+    .sale_inner
+        width: 100%
+        height: 100%
+        border-bottom: 1px dashed #ffffff
+        svg
+            height: 36px
+            position: relative
+            top: 30px
+.category_info_block_wrap
+    position: absolute
+    top: 5%
+    left: 5%
+    right: 5%
+    bottom: 5%
+    z-index: 8
+    overflow: hidden
+    &:hover
+        .ci_wrap
+            top: 0 !important
+    .ci_wrap
+        width: 100%
+        height: 100%
+        position: absolute
+        top: calc(100% - 40px)
+        -webkit-transition: top .5s
+        transition: top .5s
+    .ci_inner
+        position: relative
+        height: 100%
+        width: 100%
+        .ci_header
+            background: rgba(167, 140, 48, 0.8)
+            position: absolute
+            top: 0
+            left: 0
+            right: 0
+            height: 40px
+            svg.header_left_icon
+                position: absolute
+                top: 0
+                left: 10px
+            svg.header_right_icon
+                position: absolute
+                top: 0
+                right: 10px
+            svg.ethnic_ico
+                width: 44px
+            svg.themed_ico
+                width: 37px
+            svg.on_order_ico
+                width: 30px
+            svg.branded_ico
+                width: 32px
+            svg.baby_ico
+                width: 33px
+            svg
+                width: 20px
+                height: 100%
+                display: inline-block
+                path, polygon
+                    fill: #ffffff
+            h2
+                font:
+                    size: 1.5rem
+                    family: 'Playfair Display', serif
+                color: #ffffff
+                text:
+                    align: center
+        .ci_page
+            color: #ffffff
+            background: rgba(200, 174, 75, 0.8)
+            position: absolute
+            top: 40px
+            left: 0
+            right: 0
+            bottom: 0
+            .ci_page_inner
+                width: 100%
+                height: 100%
+                position: relative
+                .ci_count_items_wrap
+                    +my_center_align
+                        position: absolute
+                    .ci_count
+                        font:
+                            size: 4.5rem
+                            family: 'Fira Sans', sans-serif
+                        color: #ffffff
+                        text:
+                            align: center
+                            transform: uppercase
+                        line-height: 5rem
+                    .ci_label
+                        font:
+                            size: 1.5rem
+                            family: 'Playfair Display', serif
+                        color: #ffffff
+                        text:
+                            align: center
+.main_menu_wrap
+    width: 100%
+    min-height: 100%
+    height: auto
+    background-color: #e8d69b
+    background-image: url('<%=asset_path("mm_backgroundPattern12.png")%>')
+    background-size: 128px 128px
+    position: relative
+    z-index: 9
+    .first_menu
+        padding:
+            top: 100px
+        margin-bottom: 30px
+        ul
+            li
+                list-style: none
+                position: relative
+                a
+                    display: block
+                    width: 100%
+                    text:
+                        align: center
+                        transform: uppercase
+                    color: #dd7272
+                    font:
+                        size: 1.5rem
+                        family: 'Fira Sans', sans-serif
+                    line-height: 46px
+                    &:hover
+                        span
+                            position: relative
+                            &:before
+                                display: block
+                                content: ''
+                                width: 50px
+                                height: 1px
+                                background: #dd7272
+                                position: absolute
+                                top: 50%
+                                left: -60px
+                            &:after
+                                display: block
+                                content: ''
+                                width: 50px
+                                height: 1px
+                                background: #dd7272
+                                position: absolute
+                                top: 50%
+                                right: -60px
+                    &.title
+                        color: #a78c30
+                        cursor: default
+                        &:hover
+                            span
+                                &:before
+                                    display: none
+                                &:after
+                                    display: none
+
+    &.open_menu
+        -webkit-transform: translateY(-100%)
+        -ms-transform: translateY(-100%)
+        transform: translateY(-100%)
+    .second_menu
+        position: relative
+        overflow: hidden
+        width: 100%
+        margin-bottom: 100px
+        &:before, &:after
+            display: block
+            content: ''
+            white-space: nowrap
+            position: absolute
+            left: 0
+            color: #a78c30
+            background-image: linear-gradient(to right, #a78c30 60%, rgba(255,255,255,0) 0%)
+            background-position: bottom
+            background-size: 22px 1px
+            background-repeat: repeat-x
+            width: 100%
+            height: 1px
+        &:before
+            top: 0
+        &:after
+            bottom: 0
+        ul.sm_links
+            margin: 0
+            margin:
+                top: 36px
+                bottom: 30px
+            text-align: center
+            li
+                display: inline-block
+                a
+                    font:
+                        style: italic
+                        size: 1.12500111rem
+                        family: 'Playfair Display', serif
+                    color: #dd7272
+                    margin: 0 17px
+                    position: relative
+                    &:before
+                        display: block
+                        content: '.'
+                        position: absolute
+                        top: -100%
+                        left: -17px
+                        font-size: 32px
+                    &:hover
+                        border-bottom: 1px solid #dd7272
+                &:first-of-type
+                    a:before
+                        display: none
+        ul.social_networks_wrap
+            margin: 0
+            margin-bottom: 30px
+            text-align: center
+            li
+                display: inline-block
+                a
+                    svg
+                        width: 30px
+                        height: 30px
+                        margin:
+                            left: 7px
+                            right: 7px
+                        path
+                            fill: #a78c30
+                    &:hover
+                        path
+                            fill: #dd7272
+
+.main_page_promotion_wrap
+    width: 100%
+    .main_page_promotion_inner
+        background: url('<%=asset_path("mp_background.jpg")%>') no-repeat center center
+        width: 100% !important
+        height: 100% !important
+        overflow: hidden !important
+        -webkit-background-size: cover !important
+        -moz-background-size: cover !important
+        -o-background-size: cover !important
+        background-size: cover !important
+        padding:
+            top: 16px
+            bottom: 25px
+        h2
+            font:
+                size: 2.25rem
+                family: 'Playfair Display', serif
+                weight: 900
+            color: #ffffff
+            text:
+                transform: uppercase
+                align: center
+
+.testing_wrap
+    width: 100%
+    height: 1000px
+    background: orange
+    .testing_inner
+        width: 100%
+        height: 100%
+        background-image: url('<%=asset_path("mm_backgroundPattern.png")%>')
+        background-blend-mode: screen
+        background-size: 128px 128px
+.ip_about_us
+    padding:
+        top: 60px
+        bottom: 50px
+    svg
+        width: 90%
+        height: 100%
+        path
+            fill: #e8d69b
+    h2
+        font:
+            size: 1.3125rem
+            family: 'Playfair Display', serif
+            weight: 700
+        color: #a78c30
+        text:
+            transform: uppercase
+        letter-spacing: 0.1rem
+    h4
+        font:
+            size: 1.125rem
+            family: 'Playfair Display', serif
+            style: italic
+        color: #a78c30
+    p
+        font:
+            size: 1.125
+            family: 'Fira Sans', sans-serif
+            weight: 500
+
+.light_gray_back_wrap
+    background: #f1f2f2
+.we_offer_wrap
+    padding:
+        top: 40px
+        bottom: 78px
+    h4
+        font:
+            size: 1.125rem
+    .more_categories_wrap
+        padding-top: 14px
+        h2
+            color: #dd7272
+            font:
+                size: 1.3125rem
+                family: 'Playfair Display', serif
+                weight: 700
+            text-transform: uppercase
+            a
+                color: inherit
+        .more_categories_image
+            width: 100% !important
+            height: 0
+            padding-top: 50%
+            overflow: hidden !important
+            -webkit-background-size: cover !important
+            -moz-background-size: cover !important
+            -o-background-size: cover !important
+            background-size: cover !important
+
+            margin-top: 15px
+
+        .tea_service_image
+            background: url('<%=asset_path("tea_service_background.jpg")%>') no-repeat center center
+        .home_decor_image
+            background: url('<%=asset_path("home_decor_background.jpg")%>') no-repeat center center
+    .mc_and
+        height: 259px
+        position: relative
+        .mc_and_inner
+            position: absolute
+            left: 0
+            right: 0
+            bottom: 0
+            height: 200px
+        h2
+            text-align: center
+            +my_vertical_align
+            color: #a78c30
+            font:
+                size: 1.35011rem
+                family: 'Playfair Display', serif
+                style: italic
+
+.no-padding-right-large
+    @media (min-width : 64.063em) and (max-width : 90em)
+        padding-right: 0 !important
+    @media (min-width : 90.063em) and (max-width : 120em)
+        padding-right: 0 !important
+.no-padding-left-large
+    @media (min-width : 64.063em) and (max-width : 90em)
+        padding-left: 0 !important
+    @media (min-width : 90.063em) and (max-width : 120em)
+        padding-left: 0 !important
+
+.ip_publication_wrap
+    padding:
+        top: 60px
+        bottom: 60px
+    h2
+        color: #dd7272
+        font:
+            size: 1.3125rem
+            family: 'Playfair Display', serif
+            weight: 700
+        text-transform: uppercase
+    .publication_one_item
+        padding: 27.5px 0
+        .bi
+            margin-top: 10px
+        h5
+            color: #c8ae4b
+            font:
+                size: 1.125rem
+                family: 'Playfair Display', serif
+                weight: 700
+        p
+            font-size: 1rem
+            line-height: 1.3rem
+
+footer
+    .footer_wrap
+        .f_menu_wrap
+            background: #e8d69b
+            ul.f_menu
+                margin: 0
+                margin:
+                    top: 10px
+                    bottom: 10px
+                text-align: center
+                li
+                    display: inline-block
+                    a
+                        font:
+                            weight: 700
+                            size: 1.12500111rem
+                            family: 'Playfair Display', serif
+                        color: #dd7272
+                        margin: 0 13px
+                        position: relative
+                        &:hover
+                            border-bottom: 1px solid #dd7272
+        .f_navigation_wrap
+            background: #c8ae4b
+            .f_links_wrap
+                padding-top: 27px
+                border-bottom: 1px solid #a78c30
+                a
+                    color: #ffffff
+                    display: block
+                    .link_inner
+                        height: 32px
+                        display: table
+                        margin-bottom: 15px
+                        span
+                            display: table-cell
+                            vertical-align: middle
+                            padding-left: 13px
+                        &.link_phone_inner
+                            font:
+                                size: 1.3125rem
+                                family: 'Playfair Display', serif
+                                weight: 900
+                                style: italic
+                        &.link_mail_inner
+                            font:
+                                size: 1rem
+                                family: 'Playfair Display', serif
+                                style: italic
+                form
+                    .input
+                        width: 68%
+                        display: inline-block
+                        float: left
+                        input
+                            height: 40px
+                            width: 100%
+                            background: #e8d69b
+                            border: none
+                            +placeholder( #a78c30, 1rem, none)
+                            font:
+                                size: 1rem
+                                family: 'Playfair Display', serif
+                                weight: 500
+                            color: #a78c30
+                            padding-left: 20px
+                            &:focus
+                                outline: none
+                        label
+                            font:
+                                size: 1rem
+                                family: 'Playfair Display', serif
+                                style: italic
+                            color: #e8d69b
+                            padding-top: 15px
+                    .input_send_data
+                        width: 32%
+                        display: inline-block
+                        button
+                            height: 40px
+                            background: #ffffff
+                            margin: 0
+                            padding: 0
+                            width: 100%
+                            color: #dd7272
+                            font:
+                                size: 1rem
+                                family: 'Fira Sans', sans-serif
+                                weight: 500
+                            text-transform: uppercase
+                            &:focus
+                                outline: none
+                ul.social_networks_wrap
+                    li
+                        display: inline-block
+                        margin: 0 5px
+            .f_about_wrap
+                padding:
+                    top: 10px
+                    bottom: 20px
+                p
+                    font:
+                        size: 1rem
+                        family: 'Playfair Display', serif
+                        style: italic
+                    color: #e8d69b
+
+
+
+svg.f_ico
+    width: 32px
+    height: 32px
+    path, polygon
+        fill: #ffffff
+
+
+/* style for .voronin-block-wrap */
+
+ul.voronin-block-wrap
+    margin: 0 !important
+
+    li
+        list-style: none
+        float: left
+        p
+            font:
+                size: 0.875rem
+                family: 'Fira Sans', sans-serif !important
+                style: normal !important
+                weight: 500
+            color: #a78c30 !important
+            white-space: nowrap
+            margin:
+                bottom: 0 !important
+                top: 0 !important
+            padding-top: 0px
+
+            a
+                color: inherit
+                text-decoration: none
+                border-bottom: 1px solid rgba(167, 140, 48, 0.8)
+                font-family: inherit
+
+            a:hover
+                color: #dd7272
+                border-bottom: 1px solid rgba(221, 114, 114, 0.8)
+        svg
+            width: 48px
+            height: 100%
+            path
+                fill: rgba(167, 140, 48, 1)
+    li.vbw-image
+        width: 20%
+    li.vbw-image a:hover path
+        fill: rgba(221, 114, 114, 1)
+        -webkit-transition: all 1s
+        -moz-transition: all 1s
+        -o-transition: all 1s
+        transition: all 1s
+
+    li.vbw-text
+        width: 80%
+        padding: 3% 0 0 2%
+
+/*end*/
+
+
+ul#mp_wrap
+    margin-top: 10px
+    .owl-item
+        padding-left: 0.9375rem
+        padding-right: 0.9375rem
+    .owl-buttons
+        polygon
+            fill: #ffffff
+        .owl-prev, .owl-next
+            margin: 0
+            padding: 0
+            border-radius: 0
+            -webkit-border-radius: 0
+            opacity: 1
+            background: none
+            width: 44px
+            height: 11px
+            svg
+                width: 100%
+                height: 100%
+        .owl-prev
+            +rotate(-90deg)
+            position: absolute
+            top: 41%
+            left: -2.5rem
+        .owl-next
+            +rotate(90deg)
+            position: absolute
+            top: 41%
+            right: -2.5rem
+    li
+        list-style: none
+        margin-bottom: 4px
+        -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5)
+        -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5)
+        box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5)
+
+.link_inner
+    height: 32px
+    display: table
+    margin-bottom: 15px
+    span
+        display: table-cell
+        vertical-align: middle
+        padding-left: 13px
+    &.link_phone_inner
+        font:
+            size: 1.3125rem
+            family: 'Playfair Display', serif
+            weight: 900
+            style: italic
+    &.link_mail_inner
+        font:
+            size: 1rem
+            family: 'Playfair Display', serif
+            style: italic
+
+.no-padding
+    padding-left: 0
+    padding-right: 0

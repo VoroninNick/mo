@@ -1,0 +1,105 @@
+header
+  .header_wrapper
+    .main_menu_wrapper.header_menu_squad
+      #main_menu_button data-title="МЕНЮ"
+        = embedded_svg ("MO-menu.svg")
+    .header_inner
+      .main_logo
+        a
+          = embedded_svg ("MO-Logo.svg")
+      .main_central_block_wrap
+        .mcb_one_item
+          .mcb_phone
+            a href="tell:+380504170728"
+              .link_inner.link_phone_inner
+                = embedded_svg ("MO-Phone.svg"), class: "f_ico"
+                span
+                  |+38 (050) 417 07 28
+        .mcb_one_item
+          .mcb_phone
+            a href="mailto:voronin.nick@gmail.com"
+              .link_phone_inner
+                = embedded_svg ("MO-Mail.svg")
+                span
+                  |voronin.nick@gmail.com
+        .mcb_one_item
+          .mcb_phone
+            a href=""
+              .link_phone_inner
+                = embedded_svg ("MO-Phone-call back.svg")
+                span
+                  |замовити дзвінок
+    .basket_wrapper.header_menu_squad
+      #basket data-count="5"
+        = embedded_svg ("MO-Basket.svg")
+  .main_menu_wrap.open_menu
+    .row
+      .columns.large-12
+        .first_menu
+          ul
+            li
+              a.title
+                span
+                  |Скатертини
+            li
+              a
+                span
+                  |Святкові
+            li
+              a
+                span
+                  |Етно
+            li
+              a
+                span
+                  |тематичні
+            li
+              a
+                span
+                  |дитячі
+            li
+              a
+                span
+                  |фірмові
+            li
+              a
+                span
+                  |під замовлення
+        .second_menu
+
+          ul.sm_links
+            li
+              a
+                |Сервізи
+            li
+              a
+                | Декори
+            li
+              a
+                |Акції
+            li
+              a
+                |Публікації
+            li
+              a
+                |Доставка
+            li
+              a
+                |Гарантія
+            li
+              a
+                |Оплата
+            li
+              a href=contacts_path
+                |Контакти
+          ul.social_networks_wrap
+            li
+              a href="https://www.facebook.com/" rel="nofollow"
+                = embedded_svg ('MO-Social-Facebook.svg')
+            li
+              a href="http://instagram.com/" rel="nofollow"
+                = embedded_svg ('MO-Social-Instagram.svg')
+            li
+              a href="https://twitter.com/" rel="nofollow"
+                = embedded_svg ('MO-Social-Twitter.svg')
+        .clearfix

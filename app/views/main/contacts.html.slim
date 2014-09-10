@@ -1,0 +1,64 @@
+.contact_page_wrap
+  #g_map
+  .cp_info_wrap
+    .contacts_detail_wrap
+      .contacts_detail_inner
+        h3
+          |Контактні дані
+        ul
+          li
+            a href="tell:+380504170728"
+              .link_inner.link_phone_inner
+                = embedded_svg ("MO-Phone.svg"), class: "f_ico"
+                span
+                  |+38 (050) 417 07 28
+          li
+            a href="mailto:voronin.nick@gmail.com"
+              .link_inner.link_mail_inner
+                = embedded_svg ("MO-Mail.svg"), class: "f_ico"
+                span
+                  |voronin.nick@gmail.com
+          li
+            a
+              .link_inner.link_mail_inner
+                = embedded_svg ("MO-location.svg"), class: "f_ico"
+                p
+                  span
+                    |вул. Чорновола 18,
+                p
+                  span
+                    |м. Львів, Україна
+        h3
+          |Ми в соціальних мережах
+        ul.social_networks_wrap
+          li
+            a href="https://www.facebook.com/" rel="nofollow"
+              = embedded_svg ('MO-Social-Facebook.svg'), class: "f_ico"
+          li
+            a href="http://instagram.com/" rel="nofollow"
+              = embedded_svg ('MO-Social-Instagram.svg'), class: "f_ico"
+          li
+            a href="https://twitter.com/" rel="nofollow"
+              = embedded_svg ('MO-Social-Twitter.svg'), class: "f_ico"
+    .contact_form_wrap
+      .contact_form_inner
+        h3
+          |Форма зворотнього зв’язку
+        .row
+          .columns.large-12.no-padding
+            form
+              .input
+                input placeholder="ім’я"
+              .input
+                input placeholder="Прізвище"
+              .input
+                input placeholder="Номер телефону"
+              .input
+                input placeholder="Електронна скринька"
+              .input
+                label
+                  |Ваше повідомлення
+                textarea placeholder="Залиште ваше повідомлення тут..."
+              .input_send_data.right
+                button
+                  |Надіслати

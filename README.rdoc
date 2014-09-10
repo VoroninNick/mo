@@ -1,0 +1,54 @@
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+p
+font:
+    family: FiraSans light
+    size: 18
+h1
+font:
+    family: PlayFire
+    size: 30px
+    uppercase
+
+
+font-family: 'Fira Sans', sans-serif;
+font-family:
+
+color:
+   основний  золотий плашка #c8ae4b
+   його світліший відтінок беграунд корзини #e8d69b
+   його темний відтінок #a78c30
+   рожевий #dd7272
+   слівтіший рожевий середній #e89797
+   самий світлий #fcd4d4
+   світлосірі плашки #f1f2f2
+   колір тексту  p - #6d6e71
+   сірі підписи в одиницях - #a7a9ac
+
+   box-shadow для меню і картинок 0.5 x-2 y-2 blur 2 black
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.

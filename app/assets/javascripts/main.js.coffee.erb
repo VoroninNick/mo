@@ -1,0 +1,73 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+
+$(document).ready ->
+  menuIsOpen = false
+  $("#main_menu_button").click ->
+    toggleMenu()
+
+  toggleMenu = ->
+    if menuIsOpen
+      closeMenu()
+    else
+      openMenu()
+
+  openMenu = ->
+    menuIsOpen = true
+#    wh = $(window).height()
+    $("#main_menu_button").addClass "menu-is-open"
+    $('.main_menu_wrap').removeClass('open_menu')
+#    $(".menu").css(transform: "translate(0," + (-wh) + "px)").transition
+#      y: 0
+#      duration: 400
+#
+#    links = $(".menu-link:not(.mobile-hide)")
+#    links.each (i) ->
+#      $(this).css(transform: "translate(0," + (-wh) + "px)").transition
+#        y: 0
+#        duration: 400 + (70 * (links.length - i))
+
+
+  closeMenu = ->
+    menuIsOpen = false
+#    wh = $(window).height()
+    $("#main_menu_button").removeClass "menu-is-open"
+    $('.main_menu_wrap').addClass('open_menu')
+#    $(".menu").transition
+#      y: -wh
+#      duration: 250
+#      easing: "easeInQuad"
+#    , ->
+#      $(".menu").removeClass "menu-is-open"
+
+
+
+
+#
+#  $(".menu-link a").click ->
+#    closeMenu()  if mobileCheck()
+  owl3 = $("ul#mp_wrap")
+  owl3.owlCarousel
+    pagination: false,
+    navigation: true,
+    navigationText: [
+      '<%= ApplicationHelper.embedded_svg_js "MO-arrow.svg", class: "owl_arrow_prev"%>',
+      '<%= ApplicationHelper.embedded_svg_js "MO-arrow.svg", class: "owl_arrow_next"%>'
+    ],
+    items: 4 #10 items above 1000px browser width
+    itemsDesktop: [ #5 items between 1000px and 901px
+      1000
+      3
+    ]
+    itemsDesktopSmall: [ # betweem 900px and 601px
+      900
+      2
+    ]
+    itemsTablet: [ #2 items between 600 and 0
+      640
+      1
+    ]
+    itemsMobile: false # itemsMobile disabled - inherit from itemsTablet option
+    autoPlay : false
+

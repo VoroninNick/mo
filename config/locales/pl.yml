@@ -1,0 +1,98 @@
+pl:
+  pages:
+    news:
+      header:
+      header:
+        titles: "PUBLIKACJE"
+        title: "PUBLIKACJA"
+      title: "Ostatnie publikacje"
+      last_title: "Ostatnia publikacja"
+      read_more: "Czytaj więcej"
+      banner: "Ostatnie posty HOTEL Ecotel"
+    service:
+      header:
+        title: "USŁUGI"
+      block_ticket:
+        title: "bilety online"
+        buy_ticket: "Kup bilety online"
+    conference_service:
+      icons:
+        projector: "projektor, ekran, flipchart (100h300 cm)"
+        people: "sala konferencyjna dla 50 osób"
+        wifi: "podłączenie do internetu (Wi-Fi)"
+      cs_in_hotel: "KONFERENCJA NA HOTEL SERWIS"
+      price:
+        title: "CENNIK USŁUG PODSTAWOWYCH"
+        reference_one: "*   — ustalić cenę minimalną za usługę;"
+        reference_two: "**  — Okres dzień rozważyć 8 godzin."
+    about:
+      before_footer_navigation:
+        condition:
+          title: "Regulamin"
+        service:
+          title: "Usługi"
+        localization:
+          title: "Lokalizacja"
+        conf_service:
+          title: "Sale konferencyjne"
+    rooms_economy:
+      banner_title: "POKOJE «Ekonom»"
+      about: 'Oprócz klasy "gospodarki" korzyści Ecotel Hotel Lwów przewidziane we wspólnym korytarzu.'
+
+    header:
+      nav:
+        about_us:
+          parent: "O NAS"
+          conditions: "Warunki"
+          localization: "Lokalizacja"
+          service: "Usługi"
+          conference_service: "Sale konferencyjne"
+        rooms_price:
+          parent: "Dostępność i ceny"
+          general_info: "Informacje ogólne"
+          price: "Ceny"
+          room_standart: 'Pokoje "Standard"'
+          room_econom: 'Pokoje "Ekonom"'
+        media:
+          parent: "MEDIA"
+          news: "Publikacje"
+          media: "Zdjęcia i wideo"
+        contacts: "KONTAKT"
+    footer:
+      handcrafted: "Zrobiony "
+      studio: "studio projektowe Woronina "
+      year: "w 2014 roku."
+      projects_info: "O tej stronie"
+      сopyright: "© 2010-2014. Ecotel Hotel & Gospodarka we Lwowie. Wszelkie prawa zastrzeżone."
+    contacts:
+      title: "KONTAKT"
+      form:
+        title: "KONTAKT Z NAMI"
+        description: 'Jeśli jesteś zainteresowany w hotelu usługi gospodarki "Ecotel" skontaktuj się z nami w inny sposób wygodny dla Ciebie: e-mailem lub telefonicznie.'
+        title_social_networks: "My w sieciach społecznych"
+        label_name: "Twoje imię i nazwisko"
+        name_placeholder: "Nikołaj Woronin"
+        label_phone_number: "Numer telefonu"
+        phone_number_placeholder: ""
+        label_email: "Adres e-mail"
+        email_placeholder: ""
+        label_message: "Zapytanie"
+        message_placeholder: "Zostaw wiadomość tutaj ..."
+        send_button: "wysłać!"
+    block:
+      titles:
+        reception: "Recepcja hotelu"
+        for_client: "dla klienta"
+        photogallery: "GALERIA ZDJĘĆ"
+        gmap: "MY NA MAPE"
+        localization:
+          parent: "Główne odległości od hotelu"
+          down_town: "Centrum (prospekt Swobody)"
+          plain: "Lwowskie lotnisko"
+          train: "Główny dworzec kolejowy"
+          bus: "Główny dworzec autobusowy"
+      ticket_online:
+        title: "bilety online"
+        header: "Usługi online BILETY ZAKUPU"
+        description: 'Teraz możesz również skorzystać z usługi zakupu online, powietrza, kolejowym i bilety autobusowe w hotelu "Ecotel", które można wykorzystać na naszej stronie internetowej.'
+        button: "Kup bilety online"
