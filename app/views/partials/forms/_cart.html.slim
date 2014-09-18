@@ -1,0 +1,30 @@
+.mc_inner
+  .mc_header
+    .mch_inner
+      .cart_count_product
+        .count_product data-count="5"
+          = embedded_svg ("MO-Basket.svg")
+        span
+          |Ваша корзина
+      label.close_cart for="modal_cart"
+        =embedded_svg('MO-close button.svg')
+  .cart-content-page
+    .cart-content-page-inner
+  .cart-count-prices
+    .cart-count-prices-inner
+      .ccp_inner.ccp_left
+        |Загальна ціна
+      .ccp_inner.ccp_right
+        |22664 грн
+  .cart-order-product-wrap
+    .cop_inner.cop-left
+      .arrow
+        =embedded_svg('MO-arrow.svg')
+      .title
+        |Продовжити покупки
+    .cop_inner.cop-right
+      .title
+        |Продовжити покупки
+      .arrow
+        =embedded_svg('MO-arrow.svg')
+

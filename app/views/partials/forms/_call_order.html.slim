@@ -1,0 +1,20 @@
+.call_order_inner
+  .co_header
+    .coh_inner
+      .link_phone_inner
+        = embedded_svg ("MO-Phone-call back.svg")
+        span
+          |замовити дзвінок
+      label.cancel_popup for="call_order"
+        =embedded_svg('MO-close button.svg')
+  .form_wrap
+    form
+      .input
+        input placeholder="ІМ'Я"
+      .input
+        input placeholder="ПРІЗВИЩЕ"
+      .input
+        input placeholder="НОМЕР ТЕЛЕФОНУ"
+      .input
+        button
+          |ЧЕКАЮ ДЗВІНКА

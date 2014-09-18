@@ -32,12 +32,12 @@ RailsAdmin.config do |config|
     show_in_app
 
     ## With an audit adapter, you can add:
-    # history_index
-    # history_show
+    history_index
+    history_show
   end
   config.included_models = [ User]
 
-  [Publication].each do |model|
+  [Publication, Product, PhotoGallery, Category, Promotion].each do |model|
     config.included_models += [model, model::Translation]
   end
 end

@@ -23,6 +23,9 @@ header
         position: relative
         .header_inner
             width: 100%
+            /*width: -webkit-calc(100% - 50px - 50px)*/
+            /*width: -moz-calc(100% - 50px - 50px)*/
+            /*width: calc(100% - 50px - 50px)*/
             height: inherit
             position: relative
             background: #c8ae4b
@@ -30,6 +33,7 @@ header
             padding:
                 left: 50px
                 right: 50px
+            float: left
             .main_logo
                 width: 100px
                 height: inherit
@@ -52,6 +56,7 @@ header
             width: 50px
             height: 50px
             background: #e8d69b
+            float: left
             position: absolute
             top: 0
             z-index: 12
@@ -62,6 +67,7 @@ header
                 height: 100%
                 cursor: pointer
                 position: relative
+                z-index: 11
                 &:before
                     display: block
                     content: attr(data-title)
@@ -87,6 +93,7 @@ header
                 height: 100%
                 cursor: pointer
                 position: relative
+                z-index: 10
                 &:before
                     display: block
                     content: attr(data-count)
@@ -115,7 +122,7 @@ header
             width: 33.33%
             height: 50px
             display: inline-block
-            a
+            a, label
                 text:
                     align: center
                 font:
@@ -147,17 +154,6 @@ header
                     vertical-align: middle
                     padding:
                         left: 40px
-
-
-.bi
-    width: 100% !important
-    height: 0
-    padding-top: 100%
-    overflow: hidden !important
-    -webkit-background-size: cover !important
-    -moz-background-size: cover !important
-    -o-background-size: cover !important
-    background-size: cover !important
 
 .one_category
     width: 33.33%
@@ -206,13 +202,13 @@ header
             left: 0
             right: 0
             height: 40px
-            svg.header_left_icon
+            .header_left_icon
                 position: absolute
-                top: 0
+                top: 5px
                 left: 10px
-            svg.header_right_icon
+            .header_right_icon
                 position: absolute
-                top: 0
+                top: 5px
                 right: 10px
             svg.ethnic_ico
                 width: 44px
@@ -237,6 +233,10 @@ header
                 color: #ffffff
                 text:
                     align: center
+            img
+                width: 30px
+                height: 30px
+                display: inline-block
         .ci_page
             color: #ffffff
             background: rgba(200, 174, 75, 0.8)
@@ -249,6 +249,16 @@ header
                 width: 100%
                 height: 100%
                 position: relative
+                label.build_order
+                    display: inline-block
+                    width: 100%
+                    height: 100%
+                    text-align: center
+                    color: #ffffff
+                    font-family: "Playfair Display", serif
+                    font-style: italic
+                    font-size: 1.7rem
+                    padding-top: 40%
                 .ci_count_items_wrap
                     +my_center_align
                         position: absolute
@@ -518,17 +528,6 @@ header
                 family: 'Playfair Display', serif
                 style: italic
 
-.no-padding-right-large
-    @media (min-width : 64.063em) and (max-width : 90em)
-        padding-right: 0 !important
-    @media (min-width : 90.063em) and (max-width : 120em)
-        padding-right: 0 !important
-.no-padding-left-large
-    @media (min-width : 64.063em) and (max-width : 90em)
-        padding-left: 0 !important
-    @media (min-width : 90.063em) and (max-width : 120em)
-        padding-left: 0 !important
-
 .ip_publication_wrap
     padding:
         top: 60px
@@ -542,14 +541,34 @@ header
         text-transform: uppercase
     .publication_one_item
         padding: 27.5px 0
+        min-height: 220px
+        a.back_image
+            background: #e8d69b
+            display: block
+            &:hover
+                .bi
+                    filter: none
+                    -webkit-filter: grayscale(0)
+                    opacity: 1
         .bi
             margin-top: 10px
+            /* Firefox 10+, Firefox on Android */
+            filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale")
+            /* IE6-9 */
+            filter: gray
+            /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+            -webkit-filter: grayscale(100%)
+
+            -webkit-backface-visibility: hidden /* Chrome, Safari, Opera */
+            backface-visibility: hidden
+            opacity: 0.7
         h5
-            color: #c8ae4b
-            font:
-                size: 1.125rem
-                family: 'Playfair Display', serif
-                weight: 700
+            a
+                color: #c8ae4b
+                font:
+                    size: 1.125rem
+                    family: 'Playfair Display', serif
+                    weight: 700
         p
             font-size: 1rem
             line-height: 1.3rem
@@ -778,6 +797,195 @@ ul#mp_wrap
             family: 'Playfair Display', serif
             style: italic
 
-.no-padding
-    padding-left: 0
-    padding-right: 0
+.one_category
+    @media (min-width : 48.75em) and (max-width : 68.75em)
+        width: 50%
+    @media (min-width : 0em) and (max-width : 48.75em)
+        width: 100%
+
+#modal_call_order
+    position: absolute
+    top: 0
+    z-index: 111
+    width: 360px
+    background: #ffffff
+    display: none
+    z-index: 20
+.cover
+    position: fixed
+    top: 0
+    left: 0
+    background: rgba(0,0,0,0.2)
+    width: 100%
+    height: 100%
+    display: none
+    z-index: 15
+
+.modal_cart_wrap
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    width: 0
+    z-index: 20
+    overflow: hidden
+    .mc_inner
+        width: 100%
+        height: 100%
+        position: relative
+        .mc_header
+            width: 100%
+            height: 50px
+            background: #e8d69b
+            svg
+                width: 30px
+                height: 100%
+            .cart_count_product
+                width: 80%
+                height: 50px
+                float: left
+                padding-top: 12px
+            label.close_cart
+                width: 20%
+                height: 50px
+                float: left
+                svg
+                    float: right
+                    margin-right: 16px
+                    path, polygon
+                        fill: #ffffff
+            .count_product
+                width: 20px
+                height: 25px
+                position: relative
+                float: left
+                margin-left: 16px
+                margin-right: 16px
+                &:before
+                    display: block
+                    content: attr(data-count)
+                    color: #ffffff
+                    font:
+                        size: 11.71px
+                        family: 'Fira Sans', sans-serif !important
+                        weight: 700
+                    position: absolute
+                    top: 5px
+                    left: 7px
+
+                svg
+                    width: 100%
+                    height: 100%
+                    path
+                        fill: #a78c30
+            span
+                color: #a78c30
+                font:
+                    size: 1.3125rem
+                    family: 'Playfair Display', serif
+                    weight: 700
+                text-transform: uppercase
+        .cart-content-page
+            background: #ffffff
+            position: absolute
+            top: 50px
+            left: 0
+            right: 0
+            bottom: 125px
+            .cart-content-page-inner
+                overflow-y: scroll
+                width: 100%
+                height: 100%
+                position: relative
+                padding-left: 30px
+        .cart-count-prices
+            position: absolute
+            left: 0
+            right: 0
+            bottom: 75px
+            width: 100%
+            height: 50px
+            background: #e8d69b
+            .cart-count-prices-inner
+                padding-left: 30px
+                width: 100%
+                height: 100%
+                position: relative
+                .ccp_inner
+                    width: 50%
+                    height: 100%
+                    float: left
+                .ccp_left
+                    color: #a78c30
+                    font:
+                        size: 1.5rem
+                        family: 'Playfair Display', serif
+                        weight: 500
+                    line-height: 2.8rem
+                .ccp_right
+                    color: #a78c30
+                    font:
+                        size: 1.875rem
+                        family: 'Playfair Display', serif
+                        weight: 700
+                        style: italic
+                    line-height: 2.8rem
+                    text-align: right
+                    padding-right: 30px
+        .cart-order-product-wrap
+            position: absolute
+            left: 0
+            right: 0
+            bottom: 0
+            height: 75px
+            background: #ffffff
+            .cop_inner
+                width: 50%
+                height: 100%
+                float: left
+                background: #f1f2f2
+                cursor: pointer
+                &:hover
+                    background: #dd7272
+                    .title
+                        color: #ffffff
+                    polygon
+                        fill: #ffffff !important
+                .arrow
+                    width: 75px
+                    height: 75px
+                    float: left
+                    svg
+                        width: 33px
+                        height: 100%
+                        position: relative
+                        left: 20px
+                        polygon
+                            fill: #a7a9ac
+                .title
+                    float: left
+                    width: 50%
+                    color: #a7a9ac
+                    font:
+                        size: 1rem
+                        family: 'Playfair Display', serif
+                        weight: 700
+                    line-height: 1.125rem
+                    text:
+                        transform: uppercase
+                    padding-top: 20px
+            .cop-left
+                .arrow
+                    svg
+                        +rotate(-90deg)
+            .cop-right
+                .arrow
+                    float: right
+                    svg
+                        +rotate(90deg)
+                .title
+                    padding-left: 50px
+
+
+
+

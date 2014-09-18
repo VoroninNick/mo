@@ -1,0 +1,38 @@
+.row
+  .columns.large-12
+    nav class="breadcrumbs"
+      a href=root_path
+        = embedded_svg ('MO-Home.svg')
+      a.unavailable href=''
+        |Публікації
+.row
+  .columns.large-2.large-centered
+    .publication_header_wrap
+      .row
+        .columns.large-12
+          =embedded_svg ('MO-Publications.svg')
+      .row
+        .columns.large-12
+          h2
+            |Публікації
+.row
+  - if @publication
+    - @publication.each.each_with_index do |item, index|
+      .one_publication_wrap
+        .columns.large-4.medium-4.small-12 class=(index%2==0 ? "left" : "right")
+          a href=one_article_path(item.url, locale: I18n.locale)
+            .p_bi style="background: url('#{item.image.url(:large)}')no-repeat center center;"
+            /img src=item.image.url(:large)
+        .columns.large-8.medium-8.small-12
+          h4
+            a href=one_article_path(item.url, locale: I18n.locale)
+              =item.title
+          p.date_time = item.created_at.strftime("%d.%m.%Y")
+          p =truncate_html item.short_description, length: 180
+          .row
+            .columns.large-6
+              p.author =item.author
+            .columns.large-6
+              a.read_more.right href=one_article_path(item.url, locale: I18n.locale)
+                |Читати статтю
+        .clearfix

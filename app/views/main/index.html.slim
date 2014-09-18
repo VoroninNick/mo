@@ -1,121 +1,71 @@
-.one_category.left
-  .bi style="background: url('#{asset_path("festive_tablecloth.jpg")}')no-repeat center center;"
-  .category_info_block_wrap
-    .ci_wrap
-      .ci_inner
-        .ci_header
-          =embedded_svg ('MO-skatetunu-svyatkovi.svg'), class: 'header_left_icon'
-          h2
-            |Святкові скатертини
-          =embedded_svg ('MO-skatetunu-svyatkovi.svg'), class: 'header_right_icon'
-        .ci_page
-          .ci_page_inner
-            .ci_count_items_wrap
-              .ci_count
-                |17
-              .ci_label
-                |Скатертин в наявності
-.one_category.left
-  .bi style="background: url('#{asset_path("ethnic_tablecloth.jpg")}')no-repeat center center;"
-  .category_info_block_wrap
-    .ci_wrap
-      .ci_inner
-        .ci_header
-          =embedded_svg ('MO-skatetunu-etno.svg'), class: 'header_left_icon ethnic_ico'
-          h2
-            |Етно-скатертини
-          =embedded_svg ('MO-skatetunu-etno.svg'), class: 'header_right_icon ethnic_ico'
-        .ci_page
-.one_category.left
-  .bi style="background: url('#{asset_path("themed_tablecloths.jpg")}')no-repeat center center;"
-  .sale_wrap
-    .sale_inner
-      = embedded_svg ('MO-Sale lable.svg')
-  .category_info_block_wrap
-    .ci_wrap
-      .ci_inner
-        .ci_header
-          =embedded_svg ('MO-skatetunu-tematuchni.svg'), class: 'header_left_icon themed_ico'
-          h2
-            |Тематичні скатертини
-          =embedded_svg ('MO-skatetunu-tematuchni.svg'), class: 'header_right_icon themed_ico'
-        .ci_page
-.clearfix
-.main_page_promotion_wrap
-  .main_page_promotion_inner
-    .row
-      .columns.large-12
-        h2
-          |Новорічний розпродаж
-    .row
-      .columns.large-12
-        ul#mp_wrap
-          li
-            a
-              .bi style="background: url('#{asset_path("ethnic_tablecloth.jpg")}')no-repeat center center;"
-          li
-            a
-              .bi style="background: url('#{asset_path("branded_tablecloth.jpg")}')no-repeat center center;"
-          li
-            a
-              .bi style="background: url('#{asset_path("on_order.jpg")}')no-repeat center center;"
-          li
-            a
-              .bi style="background: url('#{asset_path("baby_tablecloth.jpg")}')no-repeat center center;"
-          li
-            a
-              .bi style="background: url('#{asset_path("festive_tablecloth.jpg")}')no-repeat center center;"
-          li
-            a
-              .bi style="background: url('#{asset_path("themed_tablecloths.jpg")}')no-repeat center center;"
+- if @category
+  - @category.each_with_index do |c, index|
+    - sql = "select p.* from #{Category.table_name} c, #{Product.table_name} p where c.id = p.category_id and c.name = '#{c.name}'"
+    - product = Product.find_by_sql(sql)
+    - if index < 5
+      .one_category.left
+        .bi style="background: url('#{c.image.url(:large)}')no-repeat center center;"
+        -promotion = 0
+        -product.each do |promo|
+          -if !promo.promotion_price.nil?
+            -promotion = 1
+        -if promotion == 1
+          .sale_wrap
+            .sale_inner
+              =embedded_svg('MO-Sale lable.svg')
+        .category_info_block_wrap
+          .ci_wrap
+            .ci_inner
+              .ci_header
+                = image_tag ("#{c.icon.url}"), class: 'header_left_icon'
+                h2 = c.name
+                = image_tag ("#{c.icon.url}"), class: 'header_right_icon'
+              .ci_page
+                a href=one_product_path(c.category_url, locale: I18n.locale)
+                  .ci_page_inner
+                    .ci_count_items_wrap
+                      .ci_count
+                        -count = 0
+                        -product.each do |i|
+                          -count+=i.count_items
+                        =count
+                      .ci_label
+                        |Скатертин в наявності
+    - elsif index == 5
+      .one_category.left
+        .bi style="background: url('#{c.image.url(:large)}')no-repeat center center;"
+        .category_info_block_wrap
+          .ci_wrap
+            .ci_inner
+              .ci_header
+                = image_tag ("#{c.icon.url}"), class: 'header_left_icon'
+                h2 = c.name
+                = image_tag ("#{c.icon.url}"), class: 'header_right_icon'
+              .ci_page
+                a
+                  .ci_page_inner
+                    label.build_order
+                      |Сформувати замовлення
 
 
-.one_category.left
-  .bi style="background: url('#{asset_path("baby_tablecloth.jpg")}')no-repeat center center;"
-  .sale_wrap
-    .sale_inner
-      = embedded_svg ('MO-Sale lable.svg')
-  .category_info_block_wrap
-    .ci_wrap
-      .ci_inner
-        .ci_header
-          =embedded_svg ('MO-skatetunu-dutyachi.svg'), class: 'header_left_icon baby_ico'
-          h2
-            |Дитячі скатертини
-          =embedded_svg ('MO-skatetunu-dutyachi.svg'), class: 'header_right_icon baby_ico'
-        .ci_page
-          .ci_page_inner
-            .ci_count_items_wrap
-              .ci_count
-                |17
-              .ci_label
-                |Скатертин в наявності
-.one_category.left
-  .bi style="background: url('#{asset_path("branded_tablecloth.jpg")}')no-repeat center center;"
-  .category_info_block_wrap
-    .ci_wrap
-      .ci_inner
-        .ci_header
-          =embedded_svg ('MO-skatetunu-firmenni.svg'), class: 'header_left_icon branded_ico'
-          h2
-            |Фірмові скатертини
-          =embedded_svg ('MO-skatetunu-firmenni.svg'), class: 'header_right_icon branded_ico'
-        .ci_page
-.one_category.left
-  .bi style="background: url('#{asset_path("on_order.jpg")}')no-repeat center center;"
-  .category_info_block_wrap
-    .ci_wrap
-      .ci_inner
-        .ci_header
-          =embedded_svg ('MO-skatetunu-na zamovlennya.svg'), class: 'header_left_icon on_order_ico'
-          h2
-            |Під замовлення
-          =embedded_svg ('MO-skatetunu-na zamovlennya.svg'), class: 'header_right_icon on_order_ico'
-        .ci_page
+    - if index == 2 && @promotion
+      -p =@promotion
+      .promotion_wrap
+        .promo_bi style="background: url('#{p.image.url(:large)}')no-repeat center center;"
+          .row
+            .columns.large-12
+              h2 =p.title
+          ul#promotion_slider
+            -p.products.each do |prod|
+              /li
+              /  a
+              /    .bi style="background: url('#{prod.image.url(:large)}')no-repeat center center;"
+
+
 .clearfix
 .ip_about_us
   .row
-    .columns.large-3
+    .columns.large-3.small-5.small-centered
       = embedded_svg ('MO-Logo-graphic element.svg')
     .columns.large-9
       h2
@@ -132,19 +82,19 @@
         h4
           |Додатково до скатертин пропонуємо вибрати:
     .row
-      .columns.large-5.no-padding-right-large
+      .columns.large-5.no-padding-right-large.small-6
         .more_categories_wrap
           h2
             a
               |Чайний сервіс
           a
             .more_categories_image.tea_service_image
-      .columns.large-2
+      .columns.large-2.mdn
         .mc_and
           .mc_and_inner
             h2
               |або
-      .columns.large-5.no-padding-left-large
+      .columns.large-5.no-padding-left-large.small-6
         .more_categories_wrap
           h2
             a
@@ -159,12 +109,15 @@
   .row
     - if @publication
     - @publication.each do |item|
-      .columns.large-6.end
+      .columns.large-6.small-12.end
         .publication_one_item
           .row
-            .columns.large-4
-              .bi style="background: url('#{item.image.url(:thumb)}')no-repeat center center;"
-            .columns.large-8
-              h5 = truncate item.title, length: 60
+            .columns.large-4.small-4
+              a.back_image href=one_article_path(item.url, locale: I18n.locale)
+                .bi style="background: url('#{item.image.url(:thumb)}')no-repeat center center;"
+            .columns.large-8.small-8
+              h5
+                a href=one_article_path(item.url, locale: I18n.locale)
+                  = truncate item.title, length: 60
               p = truncate_html item.short_description, length: 140
 

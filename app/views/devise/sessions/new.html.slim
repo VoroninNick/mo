@@ -1,0 +1,27 @@
+.row
+  .columns.large-6.large-centered.medium-8.medium-centered.small-12
+    .sign_in_wrap
+      h3 Вхід в адмінпанель
+
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .input
+          = f.email_field :email, autofocus: true
+          = f.label :email
+            |Електронна скринька
+
+        .input
+          = f.password_field :password, autocomplete: "off"
+          = f.label :password
+            |Пароль
+
+        .input
+          - if devise_mapping.rememberable?
+            = f.check_box :remember_me
+            = f.label :remember_me
+              |Запам'ятати мене
+
+
+        .input
+          = f.button "Увійти в адмінпанель"
+
+

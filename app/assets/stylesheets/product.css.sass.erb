@@ -1,0 +1,303 @@
+// Place all the styles related to the product controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "mixins"
+
+.product-list-wrap
+    /*position: relative*/
+    /*margin:*/
+        /*top: 0.9375rem*/
+        /*bottom: 0.9375rem*/
+    .product_info_wrapper
+        position: absolute
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
+        &:hover
+            .pi_inner
+                display: block
+        .pi_inner
+            position: absolute
+            background: rgba(200, 174, 75, 0.8)
+            top: 18px
+            left: 18px
+            right: 18px
+            bottom: 18px
+            display: none
+
+            /*@-webkit-keyframes product_info_animation*/
+                /*0%*/
+                    /*opacity: 0*/
+                /*30%*/
+                    /*opacity: 0.3*/
+
+                /*60%*/
+                    /*opacity: 0.6*/
+
+                /*100%*/
+                    /*opacity: 1*/
+
+
+            /*@-moz-keyframes product_info_animation*/
+                /*0%*/
+                    /*opacity: 0*/
+                /*100%*/
+                    /*opacity: 1*/
+
+            /*@-o-keyframes product_info_animation*/
+                /*0%*/
+                    /*opacity: 0*/
+                /*100%*/
+                    /*opacity: 1*/
+
+            /*@keyframes product_info_animation*/
+                /*0%*/
+                    /*opacity: 0*/
+                /*30%*/
+                    /*opacity: 0.3*/
+                /*60%*/
+                    /*opacity: 0.6*/
+
+                /*100%*/
+                    /*opacity: 1*/
+
+            a
+                display: block
+                width: 100%
+                height: 100%
+                position: relative
+                padding: 15px
+                h5
+                    text:
+                        align: center
+                    font:
+                        size: 0.875rem
+                        family: 'Playfair Display', serif
+                        weight: 700
+                    color: #ffffff
+                    +my_vertical_align
+                h4
+                    text:
+                        align: center
+                    font:
+                        size: 1.5rem
+                        family: 'Playfair Display', serif
+                        weight: 700
+                        style: italic
+                    color: #ffffff
+                    +my_vertical_align
+                    span
+                        font:
+                            weight: 300
+                            size: 1.125rem
+                .pi_top, .pi_bottom
+                    width: 100%
+                    height: 50%
+
+// new code
+.product-list-wrap, .product-list
+    .columns
+        position: static
+        float: none
+
+.product-block
+    display: inline-block
+    zoom: 1
+    padding: 10px 8px
+    vertical-align: top
+    line-height: 1.6em
+
+    -webkit-transition: padding-bottom 0.8s
+    -moz-transition: padding-bottom 0.8s
+    transition: padding-bottom 0.8s
+    .block-inner
+        -moz-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.10)
+        -webkit-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.10)
+        box-shadow: 4px 4px 4px rgb(0, 0, 0)
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.10)
+        .image-cont
+            position: relative
+            max-height: 280px
+            opacity: 0
+            padding-bottom: 0px
+    .product-detail
+        position: absolute
+        top: auto
+        left: 0
+        width: 100%
+        height: 0
+        -webkit-transition: height 0.8s
+        -moz-transition: height 0.8s
+        transition: height 0.8s
+        margin-top: 20px
+        overflow: hidden
+    &.expand
+        padding-bottom: 510px
+        height: auto
+        .block-inner
+            -moz-box-shadow: none
+            -webkit-box-shadow: none
+            box-shadow: none
+        .pi_inner
+            display: block
+        &:after
+            display: block
+            width: 50px
+            height: 20px
+            content: ''
+            background: url('<%=asset_path("MO-arrow.svg")%>')no-repeat
+            background-size: 100%
+            position: absolute
+            +my_horizontal_align
+                -webkit-transform: translateX(-50%) rotate(180deg)
+                -moz-transform: translateX(-50%) rotate(180deg)
+                -ms-transform: translateX(-50%) rotate(180deg)
+                -o-transform: translateX(-50%) rotate(180deg)
+                transform: translateX(-50%) rotate(180deg)
+        .product-detail
+            height: 500px
+.product-detail
+    position: absolute
+    top: auto
+    left: 0
+    width: 100%
+    height: 0
+    /*margin-top: 20px*/
+    overflow: hidden
+    z-index: 100
+    .columns
+        position: relative
+.container
+    max-width: 100%!important
+    margin-left: auto
+    margin-right: auto
+    padding-left: 0px
+    padding-right: 0px
+    position: relative
+    padding-top: 50px
+    .detail_info_wrap
+        position: relative
+    h2
+        color: #dd7272
+        text:
+            transform: uppercase
+        font:
+            size: 1.3125rem
+            family: 'Playfair Display', serif
+            weight: 700
+        line-height: 1.5rem
+        margin: 0
+        padding: 0
+    h3
+        color: #a78c30
+        text:
+            transform: uppercase
+        font:
+            size: 2.25rem
+            family: 'Playfair Display', serif
+            weight: 700
+            style: italic
+        line-height: 1.5rem
+        margin: 0
+        padding: 0
+    a.close-detail
+        display: block
+        width: 30px
+        height: 30px
+        position: absolute
+        top: 0
+        right: 0
+        svg
+            width: 100%
+            height: 100%
+            path, polygon
+                fill: #d1d3d4
+    p
+        padding-top: 40px
+
+    .row
+        width: 100%!important
+        margin-left: auto!important
+        margin-right: auto!important
+        margin-top: 0!important
+        margin-bottom: 0!important
+        max-width: 62.5rem!important
+        .columns
+            position: relative
+            float: left
+
+#form_add_to_cart
+    padding-top: 40px
+    .input
+        width: 50px
+        height: 40px
+        display: inline-block
+        float: left
+        position: relative
+        a
+            display: block
+            width: 30px
+            height: 15px
+            position: absolute
+            left: 10px
+            &.add_one_point
+                top: -20px
+            &.remove_one_point
+                bottom: -20px
+                +rotate(180deg)
+            svg
+                width: 100%
+                height: 100%
+                polygon
+                    fill: #d1d3d4
+        input
+            width: 100%
+            height: 100%
+            background: #e8d69b
+            border: 1px solid #c8ae4b
+            font:
+                size: 1.5rem
+                family: 'Fira Sans', sans-serif
+                weight: 500
+            color: #ffffff
+            text:
+                align: center
+    .input_send
+        display: inline-block
+        height: 40px
+        width: 200px
+        float: left
+        margin-left: 1px
+        .cust_button
+            font:
+                size: 1rem
+                family: 'Fira Sans', sans-serif
+                weight: 500
+            color: #ffffff
+            text:
+                align: center
+                transform: uppercase
+            line-height: 1.5rem
+            background: #c8ae4b
+            margin: 0
+            padding: 0
+            width: 100%
+            height: 100%
+
+ul.product_gallery_images
+    position: absolute
+    bottom: 0
+    +my_horizontal_align
+    position: absolute
+    margin-left: 0
+    li
+        display: inline-block
+        width: 25px
+        height: 25px
+        padding: 0 4px
+        svg
+            width: 100%
+            height: 100%
+            path, rect
+                fill: #ffffff

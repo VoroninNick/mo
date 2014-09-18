@@ -14,7 +14,13 @@ html lang="en"
     = csrf_meta_tags
 
   body
-    = render partial: "partials/header"
-    = yield
-    = javascript_include_tag "application"
-    = render partial: "partials/footer"
+    input#call_order.call_order_input_status.invisible_input type="checkbox"
+    input#modal_cart.cart_input_status.invisible_input type="checkbox"
+    .sf_container
+      = render partial: "partials/header"
+      = yield
+      = render partial: "partials/footer"
+      = javascript_include_tag "application"
+    .cover
+
+

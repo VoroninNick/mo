@@ -5,7 +5,7 @@ header
         = embedded_svg ("MO-menu.svg")
     .header_inner
       .main_logo
-        a
+        a href=root_path
           = embedded_svg ("MO-Logo.svg")
       .main_central_block_wrap
         .mcb_one_item
@@ -24,13 +24,15 @@ header
                   |voronin.nick@gmail.com
         .mcb_one_item
           .mcb_phone
-            a href=""
+            label for="call_order"
               .link_phone_inner
                 = embedded_svg ("MO-Phone-call back.svg")
                 span
                   |замовити дзвінок
+            #modal_call_order
+              =render partial: 'partials/forms/call_order'
     .basket_wrapper.header_menu_squad
-      #basket data-count="5"
+      label#basket for="modal_cart" data-count="5"
         = embedded_svg ("MO-Basket.svg")
   .main_menu_wrap.open_menu
     .row
@@ -78,7 +80,7 @@ header
               a
                 |Акції
             li
-              a
+              a href=all_publication_path
                 |Публікації
             li
               a
@@ -103,3 +105,5 @@ header
               a href="https://twitter.com/" rel="nofollow"
                 = embedded_svg ('MO-Social-Twitter.svg')
         .clearfix
+.modal_cart_wrap
+  =render partial: "partials/forms/cart"

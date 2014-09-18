@@ -68,4 +68,9 @@ gem 'truncate_html'
 gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-rails'
 
+gem 'seed_dump'
+
+gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba' # fixing bug = []
+
+
 

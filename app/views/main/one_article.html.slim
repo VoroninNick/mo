@@ -1,0 +1,50 @@
+-i = @one_item
+.row
+  .columns.large-12
+    nav class="breadcrumbs"
+      a href=root_path
+        = embedded_svg ('MO-Home.svg')
+      a href=all_publication_path
+        |Публікації
+      a class="unavailable" href=""
+        =i.title
+.row
+  .columns.large-2.large-centered
+    .publication_header_wrap
+      .row
+        .columns.large-12
+          =embedded_svg ('MO-Publications.svg')
+      .row
+        .columns.large-12
+          h2
+            |Публікації
+.publication_one_item_wrap
+  .light_gray_back_wrap
+    .poi_header_wrap
+      .row
+        .columns.large-8.large-centered
+          h2
+            =i.title
+      .poi_header_details_inner
+        .row
+          .columns.large-5.large-offset-2
+            =image_tag(i.image.url(:large))
+          .columns.large-3.end
+            .poi_details_about_wrap
+              .row
+                .columns.large-12
+                  h5 Автор
+              .row
+                .columns.large-12
+                  h4 = i.author
+            .poi_details_about_wrap
+              .row
+                .columns.large-12
+                  h5 Дата написання
+              .row
+                .columns.large-12
+                  h4 = i.created_at.strftime("%d.%m.%Y")
+  .row
+    .columns.large-8.large-centered
+      .poi_page_wrap
+        = raw i.description

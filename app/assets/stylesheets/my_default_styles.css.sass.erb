@@ -1,0 +1,97 @@
+//для скасування paddings for zurb foundation
+.no-padding
+    padding-left: 0
+    padding-right: 0
+.no-padding-right-large
+    @media (min-width : 64.063em) and (max-width : 90em)
+        padding-right: 0 !important
+    @media (min-width : 90.063em) and (max-width : 120em)
+        padding-right: 0 !important
+.no-padding-left-large
+    @media (min-width : 64.063em) and (max-width : 90em)
+        padding-left: 0 !important
+    @media (min-width : 90.063em) and (max-width : 120em)
+        padding-left: 0 !important
+
+// sticky footer
+.sf_container
+    display: table
+    height: 100%
+    width: 100%
+
+.sf_footer
+    display: table-row
+    height: 1px
+// end sf
+
+.bi
+    width: 100% !important
+    height: 0
+    padding-top: 100%
+    overflow: hidden !important
+    -webkit-background-size: cover !important
+    -moz-background-size: cover !important
+    -o-background-size: cover !important
+    background-size: cover !important
+.p_bi
+    width: 100% !important
+    height: 0
+    padding-top: 70%
+    overflow: hidden !important
+    -webkit-background-size: cover !important
+    -moz-background-size: cover !important
+    -o-background-size: cover !important
+    background-size: cover !important
+.promo_bi
+    width: 100% !important
+    height: 353px
+    overflow: hidden !important
+    -webkit-background-size: cover !important
+    -moz-background-size: cover !important
+    -o-background-size: cover !important
+    background-size: cover !important
+
+input
+    outline: none !important
+input:-webkit-autofill
+    -webkit-box-shadow: inset 0 0 0 50px #fff !important /* Колір фону */
+    -webkit-text-fill-color: #999 !important /* Колір тексту */
+    color: #999 !important /* Колір тексту */
+
+.bsh_right_bottom
+    -webkit-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5)
+    -moz-box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5)
+    box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.5)
+
+//breadcrumbs
+nav.breadcrumbs
+    a
+        &:hover, &:focus
+            color: #c8ae4b
+        svg
+            width: 20px
+            height: 100%
+            path
+                fill: #c8ae4b
+
+.breadcrumbs > *
+    line-height: 20px
+
+.mdn
+    @media (min-width : 0em) and (max-width : 48.75em)
+        display: none
+.mdb
+    @media (min-width : 0em) and (max-width : 48.75em)
+        display: block
+
+.cust_overlay
+    &:after
+        display: block
+        content: ''
+        background: rgba(0, 0, 0, 0.2)
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        z-index: 1000
