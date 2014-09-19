@@ -3,6 +3,13 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
+# =====================================================  louver doors prev image and set attr
+    $(".product_detail_wrap ul#product_gallery_images li a").click (event)->
+        event.preventDefault()
+        mainImage = $(this).attr("href") #Find Image Name
+        $(".product_detail_wrap .link_to_prev .bi").css('background',"url("+mainImage+")no-repeat center center")
+        $(".product_detail_wrap .link_to_prev .bi").parent().attr href: mainImage
+
     $("a.fancy_gallery").fancybox
         padding: 0
         width: '100%'
@@ -98,8 +105,8 @@ $(document).ready ->
 #
 #  $(".menu-link a").click ->
 #    closeMenu()  if mobileCheck()
-  owl3 = $("ul#promotion_slider")
-  owl3.owlCarousel
+  owl1 = $("ul#promotion_slider")
+  owl1.owlCarousel
     pagination: false,
     navigation: true,
     navigationText: [
@@ -121,4 +128,23 @@ $(document).ready ->
     ]
     itemsMobile: false # itemsMobile disabled - inherit from itemsTablet option
     autoPlay : false
+  owl2 = $("ul#product_gallery_images")
+  owl2.owlCarousel()
+#    pagination: false,
+#    navigation: true,
+#    items: 4 #10 items above 1000px browser width
+#    itemsDesktop: [ #5 items between 1000px and 901px
+#      1000
+#      3
+#    ]
+#    itemsDesktopSmall: [ # betweem 900px and 601px
+#      900
+#      2
+#    ]
+#    itemsTablet: [ #2 items between 600 and 0
+#      640
+#      1
+#    ]
+#    itemsMobile: false # itemsMobile disabled - inherit from itemsTablet option
+#    autoPlay : false
 

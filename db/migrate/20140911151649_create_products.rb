@@ -11,7 +11,7 @@ class CreateProducts < ActiveRecord::Migration
 
       t.timestamps
     end
-  Product.create_translation_table! :name => :string, :short_description => :text, :description => :text
+    Product.create_translation_table! :name => :string, :short_description => :text, :description => :text
   end
   def down
     drop_table :products

@@ -3,8 +3,8 @@
     .columns.large-12
       .product-list
         .row
-          - if @one_item
-            - @one_item.each do |i|
+          - if @products
+            - @products.each do |i|
               .columns.large-3.product-block
                 .block-inner
                   .image-cont style="opacity: 1;"
@@ -31,8 +31,9 @@
                                 =embedded_svg('MO-picture switchers.svg')
                       .columns.large-6
                         .detail_info_wrap
-                          h2
-                            |Скатерть кружевная вязаная
+                          a href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale)
+                            h2
+                              =i.name
                           h3
                             =i.price
                             |&nbsp;грн

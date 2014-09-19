@@ -61,8 +61,9 @@ class Category < ActiveRecord::Base
 
   rails_admin do
     navigation_label 'Каталог'
-    label 'Категорія'
-    label_plural 'Категорії'
+    label 'Скатертина'
+    label_plural 'Скатертини'
+    weight 1
 
     list do
       field :name

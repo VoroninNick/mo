@@ -48,6 +48,7 @@ class Promotion < ActiveRecord::Base
     navigation_label 'Каталог'
     label 'Акція'
     label_plural 'Акції'
+    weight 5
 
     list do
       field :image do

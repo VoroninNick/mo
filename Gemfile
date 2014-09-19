@@ -49,6 +49,7 @@ gem 'fancybox2-rails', '~> 0.2.8'
 gem 'owlcarousel-rails'
 
 gem 'rails_admin'
+gem 'rails_admin-treeview'
 gem 'devise'
 
 gem 'protected_attributes'

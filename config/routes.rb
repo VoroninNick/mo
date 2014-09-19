@@ -63,6 +63,8 @@ Rails.application.routes.draw do
   get '/tablecloth' => 'product#all_tablecloth', as: 'all_tablecloth'
 
   get '/product/:category' => 'product#one_item', as: 'one_product'
+  get '/product/:category/:name' => 'product#product_detail', as: 'product_detail'
+
   get '/publication' => 'main#all_publication', as: 'all_publication'
   get '/publication/:url' => 'main#one_article', as: "one_article"
 

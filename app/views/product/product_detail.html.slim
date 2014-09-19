@@ -1,0 +1,57 @@
+-if @parent
+  .row
+    .columns.large-12
+      nav class="breadcrumbs"
+        a href=root_path
+          = embedded_svg ('MO-Home.svg')
+        a href=one_product_path(@parent.category_url, locale: I18n.locale)
+          =@parent.name
+        -if @product
+          a class="unavailable" href=""
+            =@product.name
+.product_detail_wrap
+  .row
+    .columns.large-12
+      - if @product
+        - i = @product
+        .product-detail
+          .container
+            .row
+              .columns.large-6
+                a.link_to_prev.fancy_gallery data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}" href=i.photo_galleries[0].image.url(:large)
+                  .bi style="background: url('#{i.image.url(:large)}')no-repeat center center;"
+                  .preview_ico
+                    .preview_ico_inner
+                      =embedded_svg('MO-Eye.svg')
+                -if !i.promotion_price.nil?
+                  .sale_wrap
+                    .sale_inner
+                      =embedded_svg('MO-Sale lable.svg')
+                ul#product_gallery_images
+                  -i.photo_galleries.each do |photo|
+                    li
+                      a href=photo.image.url(:large)
+                        = image_tag (photo.image.url(:thumb))
+                      a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
+              .columns.large-6
+                .detail_info_wrap
+                  a href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale)
+                    h2
+                      =i.name
+                  h3
+                    =i.price
+                    |&nbsp;грн
+                  form#form_add_to_cart
+                    .input
+                      a.add_one_point
+                        =embedded_svg('MO-arrow.svg')
+                      input.count_product value="1"
+                      a.remove_one_point
+                        =embedded_svg('MO-arrow.svg')
+                    .input_send
+                      button.cust_button data-product-id=i.id
+                        |Добавити в корзину
+                    .clearfix
+                  p = i.short_description
+
+      .clearfix

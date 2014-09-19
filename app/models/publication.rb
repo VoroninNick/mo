@@ -54,7 +54,7 @@ class Publication < ActiveRecord::Base
   end
 
   rails_admin do
-    navigation_label 'Сторінки'
+    navigation_label 'Публікації'
     label 'Публікація'
     label_plural 'Публікації'
 

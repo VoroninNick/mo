@@ -37,7 +37,7 @@ RailsAdmin.config do |config|
   end
   config.included_models = [ User]
 
-  [Publication, Product, PhotoGallery, Category, Promotion].each do |model|
+  [Publication, Product, PhotoGallery, Category, Promotion, ProductSet, DsCategory, DCategory, DrinkSet, Decor, ProductProperty].each do |model|
     config.included_models += [model, model::Translation]
   end
 end

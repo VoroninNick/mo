@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918144903) do
+ActiveRecord::Schema.define(version: 20140919152611) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -57,6 +57,116 @@ ActiveRecord::Schema.define(version: 20140918144903) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
 
+  create_table "d_categories", force: true do |t|
+    t.string   "name"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.integer  "parent_id"
+    t.string   "t_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "d_category_translations", force: true do |t|
+    t.integer  "d_category_id", null: false
+    t.string   "locale",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "t_name"
+  end
+
+  add_index "d_category_translations", ["d_category_id"], name: "index_d_category_translations_on_d_category_id"
+  add_index "d_category_translations", ["locale"], name: "index_d_category_translations_on_locale"
+
+  create_table "decor_translations", force: true do |t|
+    t.integer  "decor_id",          null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "t_name"
+    t.text     "short_description"
+    t.text     "description"
+  end
+
+  add_index "decor_translations", ["decor_id"], name: "index_decor_translations_on_decor_id"
+  add_index "decor_translations", ["locale"], name: "index_decor_translations_on_locale"
+
+  create_table "decors", force: true do |t|
+    t.string   "name"
+    t.string   "t_name"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "count_items"
+    t.float    "price"
+    t.float    "new_price"
+    t.text     "short_description"
+    t.text     "description"
+    t.integer  "d_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "drink_set_translations", force: true do |t|
+    t.integer  "drink_set_id",      null: false
+    t.string   "locale",            null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "t_name"
+    t.text     "short_description"
+    t.text     "description"
+  end
+
+  add_index "drink_set_translations", ["drink_set_id"], name: "index_drink_set_translations_on_drink_set_id"
+  add_index "drink_set_translations", ["locale"], name: "index_drink_set_translations_on_locale"
+
+  create_table "drink_sets", force: true do |t|
+    t.string   "name"
+    t.string   "t_name"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "count_items"
+    t.float    "price"
+    t.float    "new_price"
+    t.text     "short_description"
+    t.text     "description"
+    t.integer  "ds_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ds_categories", force: true do |t|
+    t.string   "name"
+    t.string   "icon_file_name"
+    t.string   "icon_content_type"
+    t.integer  "icon_file_size"
+    t.datetime "icon_updated_at"
+    t.integer  "parent_id"
+    t.string   "t_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ds_category_translations", force: true do |t|
+    t.integer  "ds_category_id", null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "t_name"
+  end
+
+  add_index "ds_category_translations", ["ds_category_id"], name: "index_ds_category_translations_on_ds_category_id"
+  add_index "ds_category_translations", ["locale"], name: "index_ds_category_translations_on_locale"
+
   create_table "photo_galleries", force: true do |t|
     t.string   "title"
     t.string   "alt"
@@ -82,6 +192,46 @@ ActiveRecord::Schema.define(version: 20140918144903) do
   add_index "photo_gallery_translations", ["locale"], name: "index_photo_gallery_translations_on_locale"
   add_index "photo_gallery_translations", ["photo_gallery_id"], name: "index_photo_gallery_translations_on_photo_gallery_id"
 
+  create_table "product_properties", force: true do |t|
+    t.string   "pp_key"
+    t.string   "pp_value"
+    t.boolean  "is_active_property"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_property_translations", force: true do |t|
+    t.integer  "product_property_id", null: false
+    t.string   "locale",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "pp_key"
+    t.string   "pp_value"
+  end
+
+  add_index "product_property_translations", ["locale"], name: "index_product_property_translations_on_locale"
+  add_index "product_property_translations", ["product_property_id"], name: "index_product_property_translations_on_product_property_id"
+
+  create_table "product_set_translations", force: true do |t|
+    t.integer  "product_set_id", null: false
+    t.string   "locale",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  add_index "product_set_translations", ["locale"], name: "index_product_set_translations_on_locale"
+  add_index "product_set_translations", ["product_set_id"], name: "index_product_set_translations_on_product_set_id"
+
+  create_table "product_sets", force: true do |t|
+    t.string   "name"
+    t.integer  "percent"
+    t.boolean  "is_active_set"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "product_id"
+  end
+
   create_table "product_translations", force: true do |t|
     t.integer  "product_id",        null: false
     t.string   "locale",            null: false
@@ -90,6 +240,7 @@ ActiveRecord::Schema.define(version: 20140918144903) do
     t.string   "name"
     t.text     "short_description"
     t.text     "description"
+    t.string   "t_name"
   end
 
   add_index "product_translations", ["locale"], name: "index_product_translations_on_locale"
@@ -110,6 +261,8 @@ ActiveRecord::Schema.define(version: 20140918144903) do
     t.datetime "updated_at"
     t.float    "promotion_price"
     t.integer  "promotion_id"
+    t.string   "t_name"
+    t.integer  "product_set_id"
   end
 
   create_table "promotion_translations", force: true do |t|

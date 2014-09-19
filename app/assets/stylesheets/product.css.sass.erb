@@ -4,96 +4,56 @@
 @import "mixins"
 
 .product-list-wrap
-    /*position: relative*/
-    /*margin:*/
-        /*top: 0.9375rem*/
-        /*bottom: 0.9375rem*/
-    .product_info_wrapper
-        position: absolute
-        left: 0
-        top: 0
-        right: 0
-        bottom: 0
-        &:hover
-            .pi_inner
-                display: block
+.product_info_wrapper
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    &:hover
         .pi_inner
-            position: absolute
-            background: rgba(200, 174, 75, 0.8)
-            top: 18px
-            left: 18px
-            right: 18px
-            bottom: 18px
-            display: none
+            display: block
+    .pi_inner
+        position: absolute
+        background: rgba(200, 174, 75, 0.8)
+        top: 18px
+        left: 18px
+        right: 18px
+        bottom: 18px
+        display: none
 
-            /*@-webkit-keyframes product_info_animation*/
-                /*0%*/
-                    /*opacity: 0*/
-                /*30%*/
-                    /*opacity: 0.3*/
-
-                /*60%*/
-                    /*opacity: 0.6*/
-
-                /*100%*/
-                    /*opacity: 1*/
-
-
-            /*@-moz-keyframes product_info_animation*/
-                /*0%*/
-                    /*opacity: 0*/
-                /*100%*/
-                    /*opacity: 1*/
-
-            /*@-o-keyframes product_info_animation*/
-                /*0%*/
-                    /*opacity: 0*/
-                /*100%*/
-                    /*opacity: 1*/
-
-            /*@keyframes product_info_animation*/
-                /*0%*/
-                    /*opacity: 0*/
-                /*30%*/
-                    /*opacity: 0.3*/
-                /*60%*/
-                    /*opacity: 0.6*/
-
-                /*100%*/
-                    /*opacity: 1*/
-
-            a
-                display: block
+        a
+            display: block
+            width: 100%
+            height: 100%
+            position: relative
+            padding: 15px
+            h5
+                text:
+                    align: center
+                font:
+                    size: 0.875rem
+                    family: 'Playfair Display', serif
+                    weight: 700
+                color: #ffffff
+                +my_vertical_align
+            h4
+                text:
+                    align: center
+                font:
+                    size: 1.5rem
+                    family: 'Playfair Display', serif
+                    weight: 700
+                    style: italic
+                color: #ffffff
+                +my_vertical_align
+                span
+                    font:
+                        weight: 300
+                        size: 1.125rem
+            .pi_top, .pi_bottom
                 width: 100%
-                height: 100%
-                position: relative
-                padding: 15px
-                h5
-                    text:
-                        align: center
-                    font:
-                        size: 0.875rem
-                        family: 'Playfair Display', serif
-                        weight: 700
-                    color: #ffffff
-                    +my_vertical_align
-                h4
-                    text:
-                        align: center
-                    font:
-                        size: 1.5rem
-                        family: 'Playfair Display', serif
-                        weight: 700
-                        style: italic
-                    color: #ffffff
-                    +my_vertical_align
-                    span
-                        font:
-                            weight: 300
-                            size: 1.125rem
-                .pi_top, .pi_bottom
-                    width: 100%
-                    height: 50%
+                height: 50%
 
 // new code
 .product-list-wrap, .product-list
@@ -300,4 +260,49 @@ ul.product_gallery_images
             width: 100%
             height: 100%
             path, rect
+                fill: #ffffff
+
+.product_detail_wrap
+    .product-detail
+        height: auto !important
+        position: static !important
+        ul#product_gallery_images
+            margin:
+                top: 30px
+                left: 0
+                right: 0
+                bottom: 30px
+            +my_vertical_align(0)
+            li
+                list-style: none
+                padding:
+                    left: 0.9375rem
+                    right: 0.9375rem
+        a
+            h2
+                color: #6d6e71
+a.link_to_prev
+    display: block
+    position: relative
+    .preview_ico
+        position: absolute
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
+        &:hover
+            svg
+                opacity: 1
+        .preview_ico_inner
+            position: relative
+            width: 100%
+            height: 100%
+        svg
+            width: 58px
+            height: 40px
+            opacity: 0
+            +my_center_align
+                position: absolute
+            +transition(opacity, 0.8s, ease-in-out)
+            path
                 fill: #ffffff
