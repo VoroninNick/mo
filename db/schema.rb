@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140919152611) do
+ActiveRecord::Schema.define(version: 20140922151550) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -110,6 +110,9 @@ ActiveRecord::Schema.define(version: 20140919152611) do
     t.integer  "d_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "decor_id"
+    t.integer  "product_set_id"
+    t.integer  "product_pack_id"
   end
 
   create_table "drink_set_translations", force: true do |t|
@@ -141,6 +144,9 @@ ActiveRecord::Schema.define(version: 20140919152611) do
     t.integer  "ds_category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "drink_set_id"
+    t.integer  "product_set_id"
+    t.integer  "product_pack_id"
   end
 
   create_table "ds_categories", force: true do |t|
@@ -167,6 +173,33 @@ ActiveRecord::Schema.define(version: 20140919152611) do
   add_index "ds_category_translations", ["ds_category_id"], name: "index_ds_category_translations_on_ds_category_id"
   add_index "ds_category_translations", ["locale"], name: "index_ds_category_translations_on_locale"
 
+  create_table "pasha_files", force: true do |t|
+    t.text     "content"
+    t.string   "name"
+    t.integer  "pasha_folder_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pasha_folder_translations", force: true do |t|
+    t.integer  "pasha_folder_id", null: false
+    t.string   "locale",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.text     "content"
+  end
+
+  add_index "pasha_folder_translations", ["locale"], name: "index_pasha_folder_translations_on_locale"
+  add_index "pasha_folder_translations", ["pasha_folder_id"], name: "index_pasha_folder_translations_on_pasha_folder_id"
+
+  create_table "pasha_folders", force: true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "photo_galleries", force: true do |t|
     t.string   "title"
     t.string   "alt"
@@ -191,6 +224,27 @@ ActiveRecord::Schema.define(version: 20140919152611) do
 
   add_index "photo_gallery_translations", ["locale"], name: "index_photo_gallery_translations_on_locale"
   add_index "photo_gallery_translations", ["photo_gallery_id"], name: "index_photo_gallery_translations_on_photo_gallery_id"
+
+  create_table "product_pack_translations", force: true do |t|
+    t.integer  "product_pack_id", null: false
+    t.string   "locale",          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "slug"
+  end
+
+  add_index "product_pack_translations", ["locale"], name: "index_product_pack_translations_on_locale"
+  add_index "product_pack_translations", ["product_pack_id"], name: "index_product_pack_translations_on_product_pack_id"
+
+  create_table "product_packs", force: true do |t|
+    t.string   "name"
+    t.integer  "percent"
+    t.string   "slug"
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "product_properties", force: true do |t|
     t.string   "pp_key"
@@ -229,7 +283,6 @@ ActiveRecord::Schema.define(version: 20140919152611) do
     t.boolean  "is_active_set"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "product_id"
   end
 
   create_table "product_translations", force: true do |t|
@@ -263,6 +316,7 @@ ActiveRecord::Schema.define(version: 20140919152611) do
     t.integer  "promotion_id"
     t.string   "t_name"
     t.integer  "product_set_id"
+    t.integer  "product_pack_id"
   end
 
   create_table "promotion_translations", force: true do |t|

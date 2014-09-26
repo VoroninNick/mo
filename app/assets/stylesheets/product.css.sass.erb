@@ -306,3 +306,183 @@ a.link_to_prev
             +transition(opacity, 0.8s, ease-in-out)
             path
                 fill: #ffffff
+
+ul.pd_drink_sets_carousel, ul.pd_decors_carousel
+    margin: 0
+    li
+        list-style: none
+
+ul.pd_drink_sets_carousel
+    padding: 45px 0 50px 0
+.products_pack_item_wrap
+    h2
+        text:
+            transform: uppercase
+        color: #dd7272
+        font:
+            size: 1.3125rem
+            family: 'Playfair Display', serif
+            weight: 700
+        line-height: 1.5rem
+        margin: 0
+    .pd_info_block
+        padding:
+            top: 25px
+            bottom: 30px
+        h3
+            text:
+                transform: uppercase
+            color: #a78c30
+            font:
+                size: 2.25rem
+                family: 'Playfair Display', serif
+                weight: 700
+                style: italic
+            line-height: 1.5rem
+            margin: 0
+            span
+                text:
+                    transform: lowercase
+                font:
+                    size: 1.5rem
+                    weight: normal
+        form
+            padding-top: 0 !important
+
+.pd_parent_category
+    color: #a7a9ac
+    font:
+        size: 1.3125rem
+        family: 'Playfair Display', serif
+        style: italic
+    line-height: 1.5rem
+    margin: 0
+        top: 0.5rem
+
+.pd_decors_wrap
+    .pd_decors_header_inner
+        overflow: hidden
+        position: relative
+        padding:
+            top: 20px
+            bottom: 25px
+        .block_and
+            width: 140px
+            margin: 0 auto
+            background: #ffffff
+            position: relative
+            &:before
+                position: absolute
+                display: block
+                content: ''
+                height: 1px
+                width: 3000px
+                background: #a78c30
+                top: 20px
+                left: -1500px
+                z-index: -1
+            h4
+                padding-top: 0
+                text:
+                    align: center
+
+.pd_product_pack_wrap
+    h4
+        text:
+            align: center
+    h3
+        text:
+            align: center
+        color: #a7a9ac
+        font:
+            size: 1.3125rem
+            family: 'Playfair Display', serif
+            style: italic
+        line-height: 1.5rem
+    h2
+        text:
+            align: center
+            transform: uppercase
+        color: #a78c30
+        font:
+            size: 1.3125rem
+            family: 'Playfair Display', serif
+            weight: 700
+        line-height: 1.5rem
+
+
+.logo_background_wrap
+
+.pd_products_pack_wrap
+    h4
+        padding-top: 25px
+    .owl-buttons
+        polygon
+            fill: black
+        div
+            opacity: 1 !important
+
+svg.svg_ico
+    path, polygon, circle
+        fill: #d1d3d4
+ul.all_products_carousel
+    margin: 0
+    width: 100%
+    height: 113px
+    position: relative
+    margin:
+        top: 25px
+        bottom: 30px
+    li
+        list-style: none
+        display: inline-block
+        height: 100%
+        svg
+            width: 80px
+            height: 60px
+            display: block
+            cursor: pointer
+            margin: 0 auto
+        h4
+            text:
+                align: center
+            padding-top: 20px
+        &.category_prev
+            position: absolute
+            left: 0
+            top: 0
+        &:hover
+            path, polygon, circle
+                fill: #dd7272
+        &.category_active
+            +my_horizontal_align
+                position: absolute
+            svg
+                cursor: default
+            path, polygon
+                fill: #a78c30
+        &.category_next
+            position: absolute
+            top: 0
+            right: 0
+            &:hover
+                path, polygon, circle
+                    fill: #dd7272
+        &.category_passive
+            display: none
+        a
+            display: block
+
+
+.products_tab
+    width: 100%
+    display: none
+    .columns
+        position: static !important
+    .product-detail
+        .columns
+            position: relative !important
+
+
+
+

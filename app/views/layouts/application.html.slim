@@ -5,7 +5,7 @@ html lang="en"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
     title
-      = content_for?(:title) ? yield(:title) : "foundation-rails"
+      = content_for?(:title) ? yield(:title) : "Magia Obrus"
 
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
@@ -14,6 +14,25 @@ html lang="en"
     = csrf_meta_tags
 
   body
+    input#holiday_tab.holiday_tab_input_status.invisible_input type="radio" name="tablecloth_tab_group"
+    input#ethnic_tab.ethnic_tab_input_status.invisible_input type="radio" name="tablecloth_tab_group"
+    input#theme_tab.theme_tab_input_status.invisible_input type="radio" name="tablecloth_tab_group"
+    input#kid_tab.kid_tab_input_status.invisible_input type="radio"  name="tablecloth_tab_group"
+    input#brand_tab.brand_tab_input_status.invisible_input type="radio"  name="tablecloth_tab_group"
+
+    input#ceramics_tab.ceramics_tab_input_status.invisible_input type="radio" name="sets_tab_group"
+    input#glass_tab.glass_tab_input_status.invisible_input type="radio" name="sets_tab_group"  checked="checked"
+    input#porcelain_tab.porcelain_tab_input_status.invisible_input type="radio" name="sets_tab_group"
+
+    input#leather_tab.leather_tab_input_status.invisible_input type="radio" name="sets_tab_group"
+    input#wooden_tab.wooden_tab_input_status.invisible_input type="radio" name="sets_tab_group" checked="checked"
+    input#d_porcelain_tab.d_porcelain_tab_input_status.invisible_input type="radio" name="sets_tab_group"
+    input#textile_tab.textile_tab_input_status.invisible_input type="radio" name="sets_tab_group"
+
+    input#sale_tab.sale_tab_input_status.invisible_input type="radio" name="special_offers_group"
+    input#sets_tab.sets_tab_input_status.invisible_input type="radio" name="special_offers_group"
+    input#all_special_offers_tab.all_special_offers_tab_input_status.invisible_input type="radio" name="special_offers_group" checked="checked"
+
     input#call_order.call_order_input_status.invisible_input type="checkbox"
     input#modal_cart.cart_input_status.invisible_input type="checkbox"
     .sf_container

@@ -37,7 +37,23 @@ RailsAdmin.config do |config|
   end
   config.included_models = [ User]
 
-  [Publication, Product, PhotoGallery, Category, Promotion, ProductSet, DsCategory, DCategory, DrinkSet, Decor, ProductProperty].each do |model|
+  [Publication, Product, PhotoGallery, Category, Promotion, DsCategory, DCategory, DrinkSet, Decor, ProductProperty, ProductPack, PashaFolder].each do |model|
     config.included_models += [model, model::Translation]
   end
+
+  [PashaFile].each do |model|
+    config.included_models += [model]
+  end
+
+  # config.model Category do
+  #   treeview true
+  # end
+  config.navigation_static_links = {
+      'Translate' => 'https://translate.google.com.ua',
+      'Приклад' => 'https://github.com/sferik/rails_admin/issues/997'
+  }
+  # config.model 'DsCategory::DrinkSet' do
+  #
+  # end
+
 end

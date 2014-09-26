@@ -55,3 +55,113 @@
                   p = i.short_description
 
       .clearfix
+
+-if @product_set
+  .light_gray_back_wrap.pd_products_pack_wrap
+    .row
+      .columns.large-12
+        h4
+          |Цей чайний сервіз ідеально підходить до:
+    -if @product_set.drink_sets
+      .row
+        ul.pd_drink_sets_carousel.products_pack_item_wrap
+          -@product_set.drink_sets.each do |ds|
+            li
+              .columns.large-3
+                .bi style="background: url('#{ds.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+              .columns.large-9
+                a
+                  h2 =ds.name
+                .pd_parent_category
+                  |18 предметів
+                .row
+                  .pd_info_block
+                    .columns.large-4
+                      h3
+                        =ds.price
+                        span
+                          |&nbsp;грн
+                    .columns.large-8
+                      form#form_add_to_cart
+                        .input
+                          a.add_one_point
+                            =embedded_svg('MO-arrow.svg')
+                          input.count_product value="1"
+                          a.remove_one_point
+                            =embedded_svg('MO-arrow.svg')
+                        .input_send
+                          button.cust_button data-product-id=ds.id
+                            |Добавити в корзину
+                        .clearfix
+                    .clearfix
+                p = ds.short_description
+                .row
+                  .columns.large-12
+                    .p_read_more.right
+                      a
+                        |Більш детально >>>
+  -if @product_set.decors
+    .pd_decors_wrap.pd_products_pack_wrap
+      .row
+        .columns.large-12
+          .pd_decors_header_inner
+            .block_and
+              h4
+                |а також
+      .row
+        ul.pd_decors_carousel.products_pack_item_wrap
+          -@product_set.decors.each do |d|
+            li
+              .columns.large-3
+                .bi style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+              .columns.large-9
+                a
+                  h2 =d.name
+                .row
+                  .pd_info_block
+                    .columns.large-4
+                      h3
+                        =d.price
+                        span
+                          |&nbsp;грн
+                    .columns.large-8
+                      form#form_add_to_cart
+                        .input
+                          a.add_one_point
+                            =embedded_svg('MO-arrow.svg')
+                          input.count_product value="1"
+                          a.remove_one_point
+                            =embedded_svg('MO-arrow.svg')
+                        .input_send
+                          button.cust_button data-product-id=d.id
+                            |Добавити в корзину
+                        .clearfix
+                    .clearfix
+                p = d.short_description
+                .row
+                  .columns.large-12
+                    .p_read_more.right
+                      a
+                        |Більш детально >>>
+
+  .pd_product_pack_wrap.logo_background_wrap
+    .row
+      .columns.large-12
+        h4
+          |Разом дешевше!
+        h3
+          |знижка -
+          =@product_set.percent
+          |% на комплект
+        h2 =@product_set.name
+    .row
+      .columns.large-3
+        .bi style="background: url('#{@product_set.products[0].image.url(:thumb)}')no-repeat center center;"
+      .columns.large-3
+        .bi style="background: url('#{@product_set.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+      .columns.large-3
+        .bi style="background: url('#{@product_set.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+    .row
+      .columns.large-12
+
+

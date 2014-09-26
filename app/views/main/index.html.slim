@@ -21,13 +21,13 @@
                 h2 = c.name
                 = image_tag ("#{c.icon.url}"), class: 'header_right_icon'
               .ci_page
-                a href=one_product_path(c.category_url, locale: I18n.locale)
+                =link_to all_tablecloth_path(anchor: (if index==0 then; 'holiday' elsif index==1 then; 'ethnic' elsif index==2 then; 'theme' elsif index==3 then; 'kids' elsif index==4 then; 'brand' end;)) do
                   .ci_page_inner
                     .ci_count_items_wrap
                       .ci_count
                         -count = 0
                         -product.each do |i|
-                          -count+=i.count_items
+                          -count+=1
                         =count
                       .ci_label
                         |Скатертин в наявності
@@ -75,12 +75,10 @@
                               span
                                 |&nbsp;грн
       .clearfix
-
-
 .clearfix
 .ip_about_us
   .row
-    .columns.large-3.small-5.small-centered
+    .columns.large-3.small-5
       = embedded_svg ('MO-Logo-graphic element.svg')
     .columns.large-9
       h2

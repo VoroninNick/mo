@@ -43,7 +43,7 @@ class Category < ActiveRecord::Base
   has_many :products, inverse_of: :category
 
   has_attached_file :icon,
-                    url:'/assets/images/:class/ico/:id/image_:style.:extension',
+                    url:'/assets/images/svg/:id_image_:style.:extension',
                     path:':rails_root/public:url'
 
   has_attached_file :image,
@@ -66,13 +66,20 @@ class Category < ActiveRecord::Base
     weight 1
 
     list do
+      field :id
       field :name
       field :parent
       field :icon
       field :image
       field :category_url
     end
-
+    show do
+      field :name
+      field :parent
+      field :icon
+      # field :image
+      field :category_url
+    end
     edit do
       field :name
       field :parent do

@@ -323,5 +323,58 @@ a.read_more
         margin: 0
         padding: 0
 
+.special_offers_wrap
+    .special_offers_header_wrap
+        border-bottom: 1px dashed #d1d3d4
+    ul.special_offers_nav_tabs
+        margin: 0
+        text-align: center
+        padding:
+            top: 20px
+            bottom: 20px
+        li
+            list-style: none
+            display: inline-block
+            label
+                color: #a7a9ac !important
+                font:
+                    size: 1.125rem !important
+                    family: 'Playfair Display', serif !important
+                    style: italic !important
+                line-height: 1.3125rem !important
+                padding:
+                    left: 20px
+                    right: 20px
+            &.sets_tab
+                border:
+                    left: 1px solid #d1d3d4
+                    right: 1px solid #d1d3d4
+    .special_offers_tab_wrap
+        display: none
+
+input.sale_tab_input_status[type=radio]:checked ~ .sf_container
+    ul.special_offers_nav_tabs
+        li.sale_tab
+            label
+                color: #6d6e71 !important
+    .sale_tab_wrap
+        display: block
+
+input.sets_tab_input_status[type=radio]:checked ~ .sf_container
+    ul.special_offers_nav_tabs
+        li.sets_tab
+            label
+                color: #6d6e71 !important
+    .sets_tab_wrap
+        display: block
+
+input.all_special_offers_tab_input_status[type=radio]:checked ~ .sf_container
+    ul.special_offers_nav_tabs
+        li.all_special_offers_tab
+            label
+                color: #6d6e71 !important
+    .all_special_offers_tab_wrap
+        display: block
+
 
 

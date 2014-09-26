@@ -1,5 +1,9 @@
 class DrinkSet < ActiveRecord::Base
+  require 'faker'
+  require Rails.root.join 'app/models/moduls/my_ffaker'
   attr_accessible :name, :t_name, :price, :new_price, :short_description, :description, :image, :count_items, :ds_category_id
+  attr_accessible :product_set_id
+  attr_accessible :product_pack_id, :product_pack
 
   translates :name, :short_description, :description, :t_name, :fallbacks_for_empty_translations => true
   attr_accessible :translations
@@ -52,12 +56,13 @@ class DrinkSet < ActiveRecord::Base
   accepts_nested_attributes_for :photo_galleries
   attr_accessible :photo_galleries_attributes
 
-  belongs_to :product_set, inverse_of: :products
+  belongs_to :product_pack#, inverse_of: :drink_sets
 
   before_validation :generate_t_name
   def generate_t_name
-    self.t_name = name.parameterize
+    self.t_name = self.name.parameterize
   end
+
 
   rails_admin do
     parent DsCategory
@@ -80,7 +85,7 @@ class DrinkSet < ActiveRecord::Base
       field :price do
         label 'Ціна'
       end
-      field :promotion_price do
+      field :new_price do
         label 'Нова ціна'
       end
       field :count_items do

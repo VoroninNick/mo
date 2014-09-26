@@ -1,6 +1,5 @@
 class ProductSet < ActiveRecord::Base
-  attr_accessible :name, :percent, :is_active_set
-  attr_accessible :product_id
+  attr_accessible :name, :percent, :is_active_set, :product, :product_id
 
   translates :name, :fallbacks_for_empty_translations => true
   attr_accessible :translations
@@ -21,8 +20,6 @@ class ProductSet < ActiveRecord::Base
           help ''
         end
       end
-
-
     end
   end
 
@@ -33,8 +30,13 @@ class ProductSet < ActiveRecord::Base
   accepts_nested_attributes_for :photo_galleries
   attr_accessible :photo_galleries_attributes
 
-  has_one :product, inverse_of: :product_set
-  attr_accessible :product
+  has_one :product#, inverse_of: :product_set
+
+  has_many :decor, inverse_of: :product_set
+  attr_accessible :decors
+
+  has_many :drink_set, inverse_of: :product_set
+
 
   rails_admin do
     navigation_label 'Каталог'
@@ -58,26 +60,31 @@ class ProductSet < ActiveRecord::Base
       end
     end
 
-    edit do
-      field :translations, :globalize_tabs do
-        label 'Локалізації'
-        help 'Переклад'
-      end
-      field :percent do
-        label 'Знижка'
-        help 'Вказується лише число знижки.'
-      end
-      field :is_active_set do
-        label 'Чи активний'
-        help 'Не активний комплект  відображатись не буде.'
-      end
-      field :product do
-        label 'Скатертина'
-        help ''
-      end
-    end
-    configure :product do
-      # configuration here
-    end
+    # edit do
+    #   field :translations, :globalize_tabs do
+    #     label 'Локалізації'
+    #     help 'Переклад'
+    #   end
+    #   field :percent do
+    #     label 'Знижка'
+    #     help 'Вказується лише число знижки.'
+    #   end
+    #   field :is_active_set do
+    #     label 'Чи активний'
+    #     help 'Не активний комплект  відображатись не буде.'
+    #   end
+    #   field :product do
+    #     label 'Скатертина'
+    #     help ''
+    #   end
+    #   field :decor do
+    #     label 'Декор'
+    #     help ''
+    #   end
+    #   field :drink_set do
+    #     label 'Сервіз'
+    #     help ''
+    #   end
+    # end
   end
 end

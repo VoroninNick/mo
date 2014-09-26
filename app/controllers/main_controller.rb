@@ -14,6 +14,11 @@ class MainController < ApplicationController
     @one_item = Publication.find_by_url(params[:url])
   end
 
+  def special_offers
+    @sets = ProductPack.where(published: true).order('created_at ASC')
+    @products = Product.where('promotion_price is not null').order('created_at ASC')
+  end
+
   def contacts
 
   end

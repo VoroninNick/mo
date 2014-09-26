@@ -40,9 +40,6 @@ class Promotion < ActiveRecord::Base
   end
 
   has_many :products#, inverse_of: :promotion
-  # attr_accessible :products
-  # accepts_nested_attributes_for :products, allow_destroy: true
-  # attr_accessible :products_attributes
 
   rails_admin do
     navigation_label 'Каталог'

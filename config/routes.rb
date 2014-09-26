@@ -60,13 +60,22 @@ Rails.application.routes.draw do
   get '/test' => 'main#testing', as: 'testing'
   get '/contacts' => 'main#contacts', as: 'contacts'
 
+  get '/publication' => 'main#all_publication', as: 'all_publication'
+  get '/publication/:url' => 'main#one_article', as: "one_article"
+
   get '/tablecloth' => 'product#all_tablecloth', as: 'all_tablecloth'
 
   get '/product/:category' => 'product#one_item', as: 'one_product'
-  get '/product/:category/:name' => 'product#product_detail', as: 'product_detail'
+  get '/:category/:name' => 'product#product_detail', as: 'product_detail'
 
-  get '/publication' => 'main#all_publication', as: 'all_publication'
-  get '/publication/:url' => 'main#one_article', as: "one_article"
+  get '/sets' => 'product#all_sets', as: 'all_sets'
+
+  get '/decors' => 'product#all_decors', as: 'all_decors'
+
+  get '/special_offers' => 'main#special_offers', as: 'special_offers'
+
+
+
 
   root "main#index"
 

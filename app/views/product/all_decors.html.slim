@@ -1,0 +1,71 @@
+.row
+  .columns.large-12
+    nav class="breadcrumbs"
+      a href=root_path
+        = embedded_svg ('MO-Home.svg')
+      a class="unavailable" href=""
+        |Декори
+-if @decors
+  .row
+    .columns.large-12
+      ul.all_products_carousel
+        -@decors.each_with_index do |c, index|
+          li class=(if index==0 then; 'category_leather_tab' elsif index==1 then; 'category_wooden_tab' elsif index==2 then; 'category_d_porcelain_tab' elsif index==3 then; 'category_textile_tab'  end;)
+            label for=(if index==0 then; 'leather_tab' elsif index==1 then; 'wooden_tab' elsif index==2 then; 'd_porcelain_tab' elsif index==3 then; 'textile_tab'  end;)
+              -if c.icon.exists?
+                =embedded_svg_from_root_directory "#{c.icon.path}", :class => 'svg_ico'
+              h4 =c.name
+
+
+  .row
+    -@decors.each_with_index do |c, index|
+      .products_tab class=(if index==0 then; 'leather_tab' elsif index==1 then; 'wooden_tab' elsif index==2 then; 'd_porcelain_tab' elsif index==3 then; 'textile_tab'  end;)
+        -c.decors.each_with_index do |i, index|
+          .columns.large-3.product-block
+            .block-inner
+              .image-cont style="opacity: 1;"
+                .bi style="background: url('#{i.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+                .product_info_wrapper
+                  .pi_inner
+                    a.more-info
+                      .pi_top
+                        h5 =truncate i.name, lenght: '80'
+                      .pi_bottom
+                        h4
+                          =i.price
+                          span
+                            |&nbsp;грн
+            .product-detail
+              .container
+                .row
+                  .columns.large-6
+                    .bi style="background: url('#{i.image.url(:large)}')no-repeat center center;"
+                    ul.product_gallery_images
+                      -i.photo_galleries.each do |photo|
+                        li
+                          a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
+                            =embedded_svg('MO-picture switchers.svg')
+                  .columns.large-6
+                    .detail_info_wrap
+                      /a href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale)
+                      h2
+                        =i.name
+                      h3
+                        =i.price
+                        |&nbsp;грн
+                      form#form_add_to_cart
+                        .input
+                          a.add_one_point
+                            =embedded_svg('MO-arrow.svg')
+                          input.count_product value="1"
+                          a.remove_one_point
+                            =embedded_svg('MO-arrow.svg')
+                        .input_send
+                          button.cust_button data-product-id=i.id
+                            |Добавити в корзину
+                        .clearfix
+                      p = i.short_description
+                      a.close-detail href="#"
+                        =embedded_svg('MO-close button.svg')
+
+        .clearfix

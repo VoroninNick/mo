@@ -1,0 +1,150 @@
+.row
+  .columns.large-12
+    nav class="breadcrumbs"
+      a href=root_path
+        = embedded_svg ('MO-Home.svg')
+      a class="unavailable" href=""
+        |Акції
+.special_offers_wrap
+  .special_offers_header_wrap
+    .row
+      .columns.large-2.large-centered
+        .publication_header_wrap
+          .row
+            .columns.large-12
+              =embedded_svg ('MO-Special offers.svg')
+          .row
+            .columns.large-12
+              h2
+                |Акції
+  .row
+    .columns.large-12
+      ul.special_offers_nav_tabs
+        li.sale_tab
+          label for="sale_tab"
+            |розпродаж
+        li.sets_tab
+          label for="sets_tab"
+            |комплекти
+        li.all_special_offers_tab
+          label for="all_special_offers_tab"
+            |всі акції
+
+  .special_offers_tab_wrap.sale_tab_wrap
+    -if @products && @products.respond_to?(:count) && @products.count > 0
+      -@products.each_with_index do |p, index|
+        .sale_product_wrap.products_pack_item_wrap class=(index%2==0 ? "light_gray_back_wrap" : "")
+          .row
+            .columns.large-3
+              .bi style="background: url('#{p.image.url(:thumb)}')no-repeat center center;"
+            .columns.large-9
+              a
+                h2 =p.name
+              .row
+                .pd_info_block
+                  .columns.large-4
+                    h3
+                      =p.price
+                      span
+                        |&nbsp;грн
+                  .columns.large-8
+                    form#form_add_to_cart
+                      .input
+                        a.add_one_point
+                          =embedded_svg('MO-arrow.svg')
+                        input.count_product value="1"
+                        a.remove_one_point
+                          =embedded_svg('MO-arrow.svg')
+                      .input_send
+                        button.cust_button data-product-id=p.id
+                          |Добавити в корзину
+                      .clearfix
+                  .clearfix
+              p = p.short_description
+              .row
+                .columns.large-12
+                  .p_read_more.right
+                    a
+                      |Більш детально >>>
+
+  .special_offers_tab_wrap.sets_tab_wrap
+    -if @sets
+      -@sets.each_with_index do |s, index|
+        .pd_product_pack_wrap class=(index%2==0 ? "logo_background_wrap" : "")
+          .row
+            .columns.large-12
+              h4
+                |Разом дешевше!
+              h3
+                |знижка -
+                =s.percent
+                |% на комплект
+              h2 =s.name
+          .row
+          /.columns.large-3
+          /  .bi style="background: url('#{s.products[0].image.url(:thumb)}')no-repeat center center;"
+          /.columns.large-3
+          /  .bi style="background: url('#{s.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+          /.columns.large-3
+          /  .bi style="background: url('#{s.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+          .row
+            .columns.large-12
+
+  .special_offers_tab_wrap.all_special_offers_tab_wrap
+    -if @sets
+      -@sets.each_with_index do |s, index|
+        .pd_product_pack_wrap class=(index%2==0 ? "logo_background_wrap" : "")
+          .row
+            .columns.large-12
+              h4
+                |Разом дешевше!
+              h3
+                |знижка -
+                =s.percent
+                |% на комплект
+              h2 =s.name
+          .row
+            /.columns.large-3
+            /  .bi style="background: url('#{s.products[0].image.url(:thumb)}')no-repeat center center;"
+            /.columns.large-3
+            /  .bi style="background: url('#{s.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+            /.columns.large-3
+            /  .bi style="background: url('#{s.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+          .row
+            .columns.large-12
+    -if @products && @products.respond_to?(:count) && @products.count > 0
+      -@products.each_with_index do |p, index|
+        .sale_product_wrap.products_pack_item_wrap class=(index%2==0 ? "light_gray_back_wrap" : "")
+          .row
+            .columns.large-3
+              .bi style="background: url('#{p.image.url(:thumb)}')no-repeat center center;"
+            .columns.large-9
+              a
+                h2 =p.name
+              .row
+                .pd_info_block
+                  .columns.large-4
+                    h3
+                      =p.price
+                      span
+                        |&nbsp;грн
+                  .columns.large-8
+                    form#form_add_to_cart
+                      .input
+                        a.add_one_point
+                          =embedded_svg('MO-arrow.svg')
+                        input.count_product value="1"
+                        a.remove_one_point
+                          =embedded_svg('MO-arrow.svg')
+                      .input_send
+                        button.cust_button data-product-id=p.id
+                          |Добавити в корзину
+                      .clearfix
+                  .clearfix
+              p = p.short_description
+              .row
+                .columns.large-12
+                  .p_read_more.right
+                    a
+                      |Більш детально >>>
+
