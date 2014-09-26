@@ -1,7 +1,7 @@
 header
   .header_wrapper
     .main_menu_wrapper.header_menu_squad
-      #main_menu_button data-title="МЕНЮ"
+      label#main_menu_button for="main_menu" data-title="МЕНЮ"
         = embedded_svg ("MO-menu.svg")
     .header_inner
       .main_logo
@@ -34,7 +34,8 @@ header
     .basket_wrapper.header_menu_squad
       label#basket for="modal_cart" data-count="5"
         = embedded_svg ("MO-Basket.svg")
-  .main_menu_wrap.open_menu
+.modal_main_menu_wrap
+  .main_menu_wrap
     .row
       .columns.large-12
         .first_menu
@@ -44,23 +45,23 @@ header
                 span
                   |Скатертини
             li
-              a
+              =link_to all_tablecloth_path(anchor: 'holiday') do
                 span
                   |Святкові
             li
-              a
+              =link_to all_tablecloth_path(anchor: 'ethnic') do
                 span
                   |Етно
             li
-              a
+              =link_to all_tablecloth_path(anchor: 'theme') do
                 span
                   |тематичні
             li
-              a
+              =link_to all_tablecloth_path(anchor: 'kids') do
                 span
                   |дитячі
             li
-              a
+              =link_to all_tablecloth_path(anchor: 'brand') do
                 span
                   |фірмові
             li
@@ -71,25 +72,25 @@ header
 
           ul.sm_links
             li
-              a
+              a href=all_sets_path
                 |Сервізи
             li
-              a
+              a href=all_decors_path
                 | Декори
             li
-              a
+              a href=special_offers_path
                 |Акції
             li
               a href=all_publication_path
                 |Публікації
             li
-              a
+              a href=shipping_path
                 |Доставка
             li
-              a
+              a href=warranty_path
                 |Гарантія
             li
-              a
+              a href=payment_path
                 |Оплата
             li
               a href=contacts_path

@@ -9,7 +9,7 @@ p
 
 h4
     font:
-        size: 1.125
+        /*size: 1.125rem*/
         family: 'Playfair Display', serif
         style: italic
     color: #a78c30
@@ -118,10 +118,16 @@ header
         height: 50px
         width: calc(100% - 140px - 140px)
         display: inline-block
+        @media (min-width : 0em) and (max-width : 1180px)
+            text-align: center
+        @media (min-width : 0em) and (max-width : 545px)
+            width: auto
         .mcb_one_item
             width: 33.33%
             height: 50px
             display: inline-block
+            @media (min-width : 0em) and (max-width : 1180px)
+                width: 50px
             a, label
                 text:
                     align: center
@@ -154,11 +160,16 @@ header
                     vertical-align: middle
                     padding:
                         left: 40px
-
+                    @media (min-width : 0em) and (max-width : 1180px)
+                        display: none
 .one_category
-    width: 33.33%
     position: relative
     border: 1px solid #58595b
+    width: 33.33%
+    @media (min-width : 40.063em) and (max-width : 64em)
+        width: 50%
+    @media (min-width : 0em) and (max-width : 40em)
+        width: 100%
 .sale_wrap
     position: absolute
     top: 0
@@ -800,13 +811,15 @@ ul#mp_wrap
     z-index: 15
 
 .modal_cart_wrap
-    position: absolute
+    position: fixed
     top: 0
     right: 0
     bottom: 0
     width: 0
     z-index: 20
     overflow: hidden
+    @media (min-width : 0em) and (max-width : 40em)
+        width: 100%
     .mc_inner
         width: 100%
         height: 100%
@@ -1006,6 +1019,7 @@ ul#mp_wrap
             top: 30px
             bottom: 20px
     ul#promotion_slider
+        /*display: none !important*/
         margin:
             left: 0
             bottom: 55px

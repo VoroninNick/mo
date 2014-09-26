@@ -5,7 +5,7 @@ footer.sf_footer
         .columns.large-12
           ul.f_menu
             li
-              a href=all_tablecloth_path
+              =link_to all_tablecloth_path(anchor: 'holiday') do
                 |Скатертини
             li
               a href=all_sets_path
@@ -20,13 +20,13 @@ footer.sf_footer
               a href=all_publication_path
                 |Публікації
             li
-              a
+              a href=shipping_path
                 |Доставка
             li
-              a
+              a href=warranty_path
                 |Гарантія
             li
-              a
+              a href=payment_path
                 |Оплата
             li
               a href=contacts_path

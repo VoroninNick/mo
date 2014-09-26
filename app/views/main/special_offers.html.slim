@@ -97,19 +97,38 @@
           .row
             .columns.large-12
               h4
-                |Разом дешевше!
+                =s.name
               h3
-                |знижка -
+                'знижка -
                 =s.percent
                 |% на комплект
-              h2 =s.name
           .row
-            /.columns.large-3
-            /  .bi style="background: url('#{s.products[0].image.url(:thumb)}')no-repeat center center;"
-            /.columns.large-3
-            /  .bi style="background: url('#{s.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
-            /.columns.large-3
-            /  .bi style="background: url('#{s.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+            .columns.large-3
+              /-s.products.each_with_index do |p,index|
+              /p.test
+              /  span.p
+              /    = p.inspect
+              /  span.index
+              /    = index.inspect
+              /-if index==0 && p
+              /  =p.name
+                /.bi style="background: url('#{p.image.url(:thumb)}')no-repeat center center;"
+              /-if s.products && s.products.count >0 && s.products[0].image.exists?
+              .bi style="background: url('#{s.products[0].image.url(:thumb)}')no-repeat center center;"
+            .symbol_plus_wrap
+              .symbol_plus_inner
+                .symbol_plus
+            .columns.large-3
+              -s.drink_sets.each_with_index do |d, index|
+                -if index==0
+                  .bi style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+            .symbol_plus_wrap
+              .symbol_plus_inner
+                .symbol_plus
+            .columns.large-3
+              -s.decors.each_with_index do |dec, index|
+                -if index==0
+                  .bi style="background: url('#{dec.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
           .row
             .columns.large-12
     -if @products && @products.respond_to?(:count) && @products.count > 0

@@ -1,6 +1,6 @@
 class DrinkSet < ActiveRecord::Base
-  require 'faker'
-  require Rails.root.join 'app/models/moduls/my_ffaker'
+  # require 'faker'
+  # require Rails.root.join 'app/models/moduls/my_ffaker'
   attr_accessible :name, :t_name, :price, :new_price, :short_description, :description, :image, :count_items, :ds_category_id
   attr_accessible :product_set_id
   attr_accessible :product_pack_id, :product_pack

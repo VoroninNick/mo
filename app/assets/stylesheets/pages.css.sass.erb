@@ -199,7 +199,7 @@
         display: block
         margin: 0 auto
         padding-bottom: 10px
-        path
+        path, polygon
             fill: #a78c30
     h2
         color: #a78c30
@@ -375,6 +375,41 @@ input.all_special_offers_tab_input_status[type=radio]:checked ~ .sf_container
                 color: #6d6e71 !important
     .all_special_offers_tab_wrap
         display: block
+
+
+.symbol_plus_wrap
+    width: 12.5%
+    float: left
+    height: 220px
+    position: relative
+    .symbol_plus_inner
+        width: 40px
+        height: 40px
+        +my_center_align
+            position: absolute
+        .symbol_plus
+            width: 100%
+            height: 100%
+            position: relative
+            &:before
+                display: block
+                content: ''
+                width: 100%
+                height: 5px
+                background: #a78c30
+                +my_vertical_align
+                    position: absolute
+            &:after
+                display: block
+                content: ''
+                width: 5px
+                height: 100%
+                background: #a78c30
+                +my_horizontal_align
+                    position: absolute
+
+
+
 
 
 

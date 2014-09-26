@@ -46,12 +46,9 @@
                   .ci_page_inner
                     label.build_order
                       |Сформувати замовлення
-
-
-    - if index == 2 && @promotion
+    - if index == 1 && @promotion
       -p =@promotion
-      .clearfix
-      .promotion_wrap
+      .promotion_wrap.dn.medium-db
         .promo_bi style="background: url('#{p.image.url(:large)}')no-repeat center center;"
           .row
             .columns.large-12
@@ -74,13 +71,40 @@
                               =prod.promotion_price
                               span
                                 |&nbsp;грн
-      .clearfix
+
+    - if index == 2 && @promotion
+      -p =@promotion
+      /.clearfix
+      .promotion_wrap.medium-dn
+        .promo_bi style="background: url('#{p.image.url(:large)}')no-repeat center center;"
+          .row
+            .columns.large-12
+              h2 =p.title
+          .row
+            .columns.large-12
+              ul#promotion_slider
+                -p.products.each do |prod|
+                  -sql = "select c.* from #{Category.table_name} c, #{Product.table_name} p where p.t_name = '#{prod.t_name}' and p.category_id = c.id"
+                  -@parent = Category.find_by_sql(sql).first
+                  li
+                    .bi style="background: url('#{prod.image.url(:large)}')no-repeat center center;"
+                    .product_info_wrapper
+                      .pi_inner
+                        a.more-info href=product_detail_path(@parent.category_url, prod.t_name, locale: I18n.locale)
+                          .pi_top
+                            h5 =truncate prod.name, lenght: '80'
+                          .pi_bottom
+                            h4
+                              =prod.promotion_price
+                              span
+                                |&nbsp;грн
+      /.clearfix
 .clearfix
 .ip_about_us
   .row
-    .columns.large-3.small-5
+    .columns.large-3.large-uncentered.small-4.small-centered
       = embedded_svg ('MO-Logo-graphic element.svg')
-    .columns.large-9
+    .columns.large-9.small-12
       h2
         |ВАС вітає інтернет-магазин «MAGIA OBRUS»
       h4

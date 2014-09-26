@@ -33,8 +33,6 @@ $(document).ready ->
         e.preventDefault()
         $.fancybox.close()
 
-
-
     $('.block-inner').click ->
         if $(this).parent().hasClass('expand')
             $(this).parent().removeClass('expand')
@@ -42,7 +40,7 @@ $(document).ready ->
             $('.product-block').removeClass('expand')
             $(this).parent().addClass('expand')
 
-    $('a.close-detail').click ->
+    $('a.close-detail').click (e) ->
         e.preventDefault()
         $('.product-block').removeClass('expand')
     count_product = +$('form#form_add_to_cart input.count_product').val()
@@ -54,15 +52,8 @@ $(document).ready ->
             count_product-=1
             $('form#form_add_to_cart input.count_product').val(count_product)
 
-
-
-
-
-
-
-
   menuIsOpen = false
-  $("#main_menu_button").click ->
+  $("label#main_menu_button").click ->
     toggleMenu()
 
   toggleMenu = ->
@@ -73,38 +64,13 @@ $(document).ready ->
 
   openMenu = ->
     menuIsOpen = true
-#    wh = $(window).height()
-    $("#main_menu_button").addClass "menu-is-open"
-    $('.main_menu_wrap').removeClass('open_menu')
-#    $(".menu").css(transform: "translate(0," + (-wh) + "px)").transition
-#      y: 0
-#      duration: 400
-#
-#    links = $(".menu-link:not(.mobile-hide)")
-#    links.each (i) ->
-#      $(this).css(transform: "translate(0," + (-wh) + "px)").transition
-#        y: 0
-#        duration: 400 + (70 * (links.length - i))
+    $('html').css({'overflow':'hidden'})
 
 
   closeMenu = ->
     menuIsOpen = false
-#    wh = $(window).height()
-    $("#main_menu_button").removeClass "menu-is-open"
-    $('.main_menu_wrap').addClass('open_menu')
-#    $(".menu").transition
-#      y: -wh
-#      duration: 250
-#      easing: "easeInQuad"
-#    , ->
-#      $(".menu").removeClass "menu-is-open"
+    $('html').css({'overflow':'visible'})
 
-
-
-
-#
-#  $(".menu-link a").click ->
-#    closeMenu()  if mobileCheck()
   owl1 = $("ul#promotion_slider")
   owl1.owlCarousel
     pagination: false,
@@ -123,28 +89,12 @@ $(document).ready ->
       2
     ]
     itemsTablet: [ #2 items between 600 and 0
-      640
-      1
+      780
+      2
     ]
     itemsMobile: false # itemsMobile disabled - inherit from itemsTablet option
     autoPlay : false
   owl2 = $("ul#product_gallery_images")
   owl2.owlCarousel()
-#    pagination: false,
-#    navigation: true,
-#    items: 4 #10 items above 1000px browser width
-#    itemsDesktop: [ #5 items between 1000px and 901px
-#      1000
-#      3
-#    ]
-#    itemsDesktopSmall: [ # betweem 900px and 601px
-#      900
-#      2
-#    ]
-#    itemsTablet: [ #2 items between 600 and 0
-#      640
-#      1
-#    ]
-#    itemsMobile: false # itemsMobile disabled - inherit from itemsTablet option
-#    autoPlay : false
+
 
