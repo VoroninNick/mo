@@ -19,7 +19,7 @@
             -if c.parent !=0 && index<=4
               li class=(if index==0 then; 'category_holiday_tab' elsif index==1 then; 'category_ethnic_tab' elsif index==2 then; 'category_theme_tab' elsif index==3 then; 'category_kid_tab' elsif index==4 then; 'category_brand_tab'  end;)
                 a href=(if index==0 then; '#holiday' elsif index==1 then; '#ethnic' elsif index==2 then; '#theme' elsif index==3 then; '#kids' elsif index==4 then; '#brand'  end;)
-                  label for=(if index==0 then; 'holiday_tab' elsif index==1 then; 'ethnic_tab' elsif index==2 then; 'theme_tab' elsif index==3 then; 'kid_tab' elsif index==4 then; 'brand_tab'  end;)
+                  label
                     -if c.icon.exists?
                       =embedded_svg_from_root_directory "#{c.icon.path}", :class => 'svg_ico'
                     h4 =c.name

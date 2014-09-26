@@ -115,41 +115,6 @@ input.cart_input_status[type=checkbox]:checked ~ .sf_container .modal_cart_wrap
         background: rgba(0,0,0,0.2)
 
 
-input.holiday_tab_input_status[type=radio]:checked ~ .sf_container
-    ul.all_products_carousel
-        li
-            &.category_holiday_tab
-                display: inline-block
-                +my_horizontal_align
-                    position: absolute
-                path, polygon
-                    fill: #a78c30 !important
-
-            &.category_ethnic_tab
-                display: inline-block
-                position: absolute
-                top: 0
-                right: 0
-                h4
-                    opacity: 0
-            &.category_theme_tab
-                display: none
-            &.category_kid_tab
-                display: none
-            &.category_brand_tab
-                display: inline-block
-                position: absolute
-                top: 0
-                left: 0
-                h4
-                    opacity: 0
-    .products_tab
-        display: none
-    .holiday_tab
-        display: block
-
-
-    /*test*/
 #holiday:target ~ .products_tabs_wrap
     ul.all_products_carousel
         li
@@ -183,43 +148,6 @@ input.holiday_tab_input_status[type=radio]:checked ~ .sf_container
     .holiday_tab
         display: block
 
-
-#theme
-#kid
-#brand
-
-input.ethnic_tab_input_status[type=radio]:checked ~ .sf_container
-    ul.all_products_carousel
-        li
-            &.category_holiday_tab
-                display: inline-block
-                position: absolute
-                top: 0
-                left: 0
-                h4
-                    opacity: 0
-            &.category_ethnic_tab
-                display: inline-block
-                +my_horizontal_align
-                    position: absolute
-                path, polygon
-                    fill: #a78c30 !important
-            &.category_theme_tab
-                display: inline-block
-                position: absolute
-                top: 0
-                right: 0
-                h4
-                    opacity: 0
-            &.category_kid_tab
-                display: none
-            &.category_brand_tab
-                display: none
-    .products_tab
-        display: none
-    .ethnic_tab
-        display: block
-
 #ethnic:target ~ .products_tabs_wrap
     ul.all_products_carousel
         li
@@ -250,40 +178,6 @@ input.ethnic_tab_input_status[type=radio]:checked ~ .sf_container
     .products_tab
         display: none
     .ethnic_tab
-        display: block
-
-
-
-input.theme_tab_input_status[type=radio]:checked ~ .sf_container
-    ul.all_products_carousel
-        li
-            &.category_holiday_tab
-                display: none
-            &.category_ethnic_tab
-                display: inline-block
-                position: absolute
-                top: 0
-                left: 0
-                h4
-                    opacity: 0
-            &.category_theme_tab
-                display: inline-block
-                +my_horizontal_align
-                    position: absolute
-                path, polygon
-                    fill: #a78c30 !important
-            &.category_kid_tab
-                display: inline-block
-                position: absolute
-                top: 0
-                right: 0
-                h4
-                    opacity: 0
-            &.category_brand_tab
-                display: none
-    .products_tab
-        display: none
-    .theme_tab
         display: block
 
 
@@ -320,39 +214,6 @@ input.theme_tab_input_status[type=radio]:checked ~ .sf_container
         display: block
 
 
-input.kid_tab_input_status[type=radio]:checked ~ .sf_container
-    ul.all_products_carousel
-        li
-            &.category_holiday_tab
-                display: none
-            &.category_ethnic_tab
-                display: none
-            &.category_theme_tab
-                display: inline-block
-                position: absolute
-                top: 0
-                left: 0
-                h4
-                    opacity: 0
-            &.category_kid_tab
-                display: inline-block
-                +my_horizontal_align
-                    position: absolute
-                path, polygon
-                    fill: #a78c30 !important
-            &.category_brand_tab
-                display: inline-block
-                position: absolute
-                top: 0
-                right: 0
-                h4
-                    opacity: 0
-    .products_tab
-        display: none
-    .kid_tab
-        display: block
-
-
 #kids:target ~ .products_tabs_wrap
     ul.all_products_carousel
         li
@@ -383,39 +244,6 @@ input.kid_tab_input_status[type=radio]:checked ~ .sf_container
     .products_tab
         display: none
     .kid_tab
-        display: block
-
-
-input.brand_tab_input_status[type=radio]:checked ~ .sf_container
-    ul.all_products_carousel
-        li
-            &.category_holiday_tab
-                display: inline-block
-                position: absolute
-                top: 0
-                right: 0
-                h4
-                    opacity: 0
-            &.category_ethnic_tab
-                display: none
-            &.category_theme_tab
-                display: none
-            &.category_kid_tab
-                display: inline-block
-                position: absolute
-                top: 0
-                left: 0
-                h4
-                    opacity: 0
-            &.category_brand_tab
-                display: inline-block
-                +my_horizontal_align
-                    position: absolute
-                path, polygon
-                    fill: #a78c30 !important
-    .products_tab
-        display: none
-    .brand_tab
         display: block
 
 
