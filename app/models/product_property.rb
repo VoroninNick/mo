@@ -1,5 +1,7 @@
 class ProductProperty < ActiveRecord::Base
-  attr_accessible :pp_key, :pp_value, :is_active_property
+  attr_accessible :pp_key, :pp_value, :is_active_property, :characteristic_id, :characteristic_type
+
+  belongs_to :characteristic, polymorphic: true
 
   translates :pp_key, :pp_value, :fallbacks_for_empty_translations => true
   attr_accessible :translations
@@ -27,10 +29,9 @@ class ProductProperty < ActiveRecord::Base
     end
   end
   rails_admin do
-    navigation_label 'Каталог'
     label 'Властивість'
     label_plural 'Властивості'
-    weight 6
+    visible false
 
     list do
       field :pp_key do
@@ -39,7 +40,7 @@ class ProductProperty < ActiveRecord::Base
       field :pp_value do
         label 'Значення'
       end
-      field :is_active_set do
+      field :is_active_property do
         label 'Активний?'
       end
     end
@@ -49,7 +50,7 @@ class ProductProperty < ActiveRecord::Base
         label 'Локалізації'
         help 'Переклад'
       end
-      field :is_active_set do
+      field :is_active_property do
         label 'Чи активний'
         help 'Не активний комплект  відображатись не буде.'
       end

@@ -56,10 +56,11 @@
                                 =embedded_svg('MO-picture switchers.svg')
                       .columns.large-6
                         .detail_info_wrap
-                          /a href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale)
                           .detail_info_inner
-                            h2
-                              =i.name
+                            /-sql = "select c.* from #{Category.table_name} c, #{Product.table_name} p where c.category_url = '#{category}' and p.category_id = c.id"
+                            a href=product_detail_path(c.category_url, i.t_name, locale: I18n.locale)
+                              h2
+                                =i.name
                             h3
                               =i.price
                               |&nbsp;грн

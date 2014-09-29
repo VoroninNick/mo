@@ -9,7 +9,10 @@ $(document).ready ->
         mainImage = $(this).attr("href") #Find Image Name
         $(".product_detail_wrap .link_to_prev .bi").css('background',"url("+mainImage+")no-repeat center center")
         $(".product_detail_wrap .link_to_prev .bi").parent().attr href: mainImage
-
+    $('.fancybox').fancybox
+        helpers:
+            overlay:
+                locked: true
     $("a.fancy_gallery").fancybox
         padding: 0
         width: '100%'
@@ -32,6 +35,8 @@ $(document).ready ->
     $("a.fncy-custom-close").click (e) ->
         e.preventDefault()
         $.fancybox.close()
+
+
 
     $('.block-inner').click ->
         if $(this).parent().hasClass('expand')
@@ -70,6 +75,8 @@ $(document).ready ->
   closeMenu = ->
     menuIsOpen = false
     $('html').css({'overflow':'visible'})
+
+
 
   owl1 = $("ul#promotion_slider")
   owl1.owlCarousel

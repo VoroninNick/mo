@@ -68,6 +68,8 @@ Rails.application.routes.draw do
   get '/product/:category' => 'product#one_item', as: 'one_product'
   get '/:category/:name' => 'product#product_detail', as: 'product_detail'
 
+  get '/:category/:name' => 'product#drink_set_detail', as: 'sets_detail'
+
   get '/sets' => 'product#all_sets', as: 'all_sets'
 
   get '/decors' => 'product#all_decors', as: 'all_decors'

@@ -42,10 +42,11 @@
                 h2 = c.name
                 = image_tag ("#{c.icon.url}"), class: 'header_right_icon'
               .ci_page
-                a
+                a.fancybox href="#contact_form" data-fancybox-group="contact_form" rel="contact_form"
                   .ci_page_inner
                     label.build_order
                       |Сформувати замовлення
+      =render partial: 'partials/forms/contact_form'
     - if index == 1 && @promotion
       -p =@promotion
       .promotion_wrap.dn.medium-db

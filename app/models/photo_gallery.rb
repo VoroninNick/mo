@@ -26,8 +26,6 @@ class PhotoGallery < ActiveRecord::Base
           help ''
         end
       end
-
-
     end
   end
 
@@ -42,6 +40,8 @@ class PhotoGallery < ActiveRecord::Base
   validates_presence_of :image, :message => "Виберіть фотографію, відповідно до зазначених розмірів! Поле не може бути пустим."
 
   rails_admin do
+    label 'Фотогалерея'
+    label_plural 'Фотогалереї'
     visible false
     edit do
 

@@ -407,6 +407,76 @@ input.all_special_offers_tab_input_status[type=radio]:checked ~ .sf_container
                 background: #a78c30
                 +my_horizontal_align
                     position: absolute
+.products_pack_items_wrap
+    margin-bottom: 20px
+.symbol_equal_wrap
+    width: 100%
+    .symbol_equal_inner
+        width: 40px
+        height: 40px
+        position: relative
+        margin: 0 auto
+        .symbol_equal
+            width: 100%
+            height: 100%
+            &:before
+                display: block
+                content: ''
+                width: 100%
+                height: 5px
+                background: #a78c30
+                +my_vertical_align
+                    top: 33.3%
+                    position: absolute
+            &:after
+                display: block
+                content: ''
+                width: 100%
+                height: 5px
+                background: #a78c30
+                +my_vertical_align
+                    top: 66.6%
+                    position: absolute
+
+
+.old_prices_result_wrap
+    width: 100%
+    .old_price_result
+        color: #a7a9ac
+        font:
+            size: 2.25rem
+            family: 'Playfair Display', serif
+            style: italic
+        line-height: 3rem
+        text:
+            decoration: line-through
+            align: center
+.new_prices_result_wrap
+    width: 100%
+    .new_price_result
+        color: #a78c30
+        font:
+            size: 3rem
+            family: 'Playfair Display', serif
+            style: italic
+            weight: 700
+        line-height: 3rem
+        text:
+            align: center
+
+.buy_products_pack_wrap
+    width: 100%
+    height: 40px
+    position: relative
+    margin:
+        top: 40px
+        bottom: 50px
+    .input_send
+        +my_horizontal_align
+            position: absolute
+
+
+
 
 
 

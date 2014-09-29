@@ -9,7 +9,7 @@
         -if @product
           a class="unavailable" href=""
             =@product.name
-.product_detail_wrap
+.product_detail_wrap.one_item_product_detail_wrap
   .row
     .columns.large-12
       - if @product
@@ -35,12 +35,12 @@
                       a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
               .columns.large-6
                 .detail_info_wrap
-                  a href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale)
-                    h2
-                      =i.name
+                  h2.passive_title
+                    =i.name
                   h3
                     =i.price
-                    |&nbsp;грн
+                    span
+                      |&nbsp;грн
                   form#form_add_to_cart
                     .input
                       a.add_one_point
@@ -53,6 +53,14 @@
                         |Добавити в корзину
                     .clearfix
                   p = i.short_description
+                  -if i.product_properties && i.product_properties.count >0
+                    ul.product_properties
+                      -i.product_properties.each do |pp|
+                        li
+                          .pp_wrap.key_wrap
+                            =pp.pp_key
+                          .pp_wrap.value_wrap
+                            =pp.pp_value
 
       .clearfix
 
@@ -66,6 +74,7 @@
       .row
         ul.pd_drink_sets_carousel.products_pack_item_wrap
           -@product_set.drink_sets.each do |ds|
+          -sql =
             li
               .columns.large-3
                 .bi style="background: url('#{ds.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
@@ -98,7 +107,7 @@
                 .row
                   .columns.large-12
                     .p_read_more.right
-                      a
+                      a href=sets_detail_path(, ds.t_name, locale: I18n.locale)
                         |Більш детально >>>
   -if @product_set.decors
     .pd_decors_wrap.pd_products_pack_wrap
@@ -155,13 +164,51 @@
           |% на комплект
         h2 =@product_set.name
     .row
-      .columns.large-3
-        .bi style="background: url('#{@product_set.products[0].image.url(:thumb)}')no-repeat center center;"
-      .columns.large-3
-        .bi style="background: url('#{@product_set.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
-      .columns.large-3
-        .bi style="background: url('#{@product_set.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+      .products_pack_items_wrap data-sale="#{@product_set.percent}"
+        .columns.large-3
+          -prod = @product_set.products[0]
+          .bi style="background: url('#{prod.image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{prod.price}"
+        .symbol_plus_wrap
+          .symbol_plus_inner
+            .symbol_plus
+        .columns.large-3
+          .bi style="background: url('#{@product_set.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{@product_set.drink_sets[0].price}"
+        .symbol_plus_wrap
+          .symbol_plus_inner
+            .symbol_plus
+        .columns.large-3
+          .bi style="background: url('#{@product_set.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{@product_set.decors[0].price}"
+        .clearfix
     .row
       .columns.large-12
+        .row
+          .columns.large-12
+            .symbol_equal_wrap
+              .symbol_equal_inner
+                .symbol_equal
+        .row
+          .columns.large-12
+            -tablecloth_one_item = @product_set.products[0].price
+            -drink_set_one_item = @product_set.drink_sets[0].price
+            -decor_one_item = @product_set.decors[0].price
+
+            -percent = @product_set.percent
+            -result = tablecloth_one_item + drink_set_one_item + decor_one_item
+            -sale_result = result/percent
+            .old_prices_result_wrap
+              .old_price_result
+                =result.round
+                |&nbsp;грн
+            .new_prices_result_wrap
+              .new_price_result
+                =sale_result.round
+                |&nbsp;грн
+        .row
+          .columns.large-12
+            .buy_products_pack_wrap
+              .input_send
+                button.cust_button
+                  |Купити комплект
+              .clearfix
 
 

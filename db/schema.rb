@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922151550) do
+ActiveRecord::Schema.define(version: 20140929150707) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -252,6 +252,8 @@ ActiveRecord::Schema.define(version: 20140922151550) do
     t.boolean  "is_active_property"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "characteristic_id"
+    t.string   "characteristic_type"
   end
 
   create_table "product_property_translations", force: true do |t|
