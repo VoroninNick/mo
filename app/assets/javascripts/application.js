@@ -15,5 +15,3 @@
 //= require fancybox
 //= require owl.carousel
 //= require_tree .
-
-$(function(){ });
