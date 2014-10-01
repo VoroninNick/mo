@@ -60,7 +60,7 @@
                 -p.products.each do |prod|
                   -sql = "select c.* from #{Category.table_name} c, #{Product.table_name} p where p.t_name = '#{prod.t_name}' and p.category_id = c.id"
                   -@parent = Category.find_by_sql(sql).first
-                  li
+                  li.bsh_right_bottom
                     .bi style="background: url('#{prod.image.url(:large)}')no-repeat center center;"
                     .product_info_wrapper
                       .pi_inner
@@ -75,7 +75,6 @@
 
     - if index == 2 && @promotion
       -p =@promotion
-      /.clearfix
       .promotion_wrap.medium-dn
         .promo_bi style="background: url('#{p.image.url(:large)}')no-repeat center center;"
           .row
@@ -87,7 +86,7 @@
                 -p.products.each do |prod|
                   -sql = "select c.* from #{Category.table_name} c, #{Product.table_name} p where p.t_name = '#{prod.t_name}' and p.category_id = c.id"
                   -@parent = Category.find_by_sql(sql).first
-                  li
+                  li.bsh_right_bottom
                     .bi style="background: url('#{prod.image.url(:large)}')no-repeat center center;"
                     .product_info_wrapper
                       .pi_inner

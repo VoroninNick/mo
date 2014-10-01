@@ -59,6 +59,7 @@ class DsCategory < ActiveRecord::Base
 
     list do
       field :name
+      field :parent_id
       field :parent
       field :icon
       field :t_name

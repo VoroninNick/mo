@@ -46,9 +46,13 @@
                               =embedded_svg('MO-picture switchers.svg')
                     .columns.large-6
                       .detail_info_wrap
-                        /a href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale)
-                        h2
-                          =i.name
+                        -sql= "select dsc.* from #{DrinkSet.table_name} dsc where dsc.t_name = '#{i.t_name}' "
+                        -parent_category_ds = DsCategory.find_by_sql(sql)
+                        -ds_parent = parent_category_ds.first
+                        -ds_children = i.ds_category
+                        a href=sets_detail_path(ds_parent.t_name, ds_children.t_name, i.t_name, locale: I18n.locale)
+                          h2
+                            =i.name
                         h3
                           =i.price
                           |&nbsp;грн

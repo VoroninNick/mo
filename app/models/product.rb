@@ -60,7 +60,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :product_properties
   attr_accessible :product_properties_attributes
 
-  belongs_to :product_pack#, inverse_of: :products
+  belongs_to :product_pack, inverse_of: :product
 
   before_validation :generate_t_name
   def generate_t_name

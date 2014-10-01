@@ -56,6 +56,11 @@ class DrinkSet < ActiveRecord::Base
   accepts_nested_attributes_for :photo_galleries
   attr_accessible :photo_galleries_attributes
 
+  has_many :product_properties, as: :characteristic
+  attr_accessible :product_properties
+  accepts_nested_attributes_for :product_properties
+  attr_accessible :product_properties_attributes
+
   belongs_to :product_pack#, inverse_of: :drink_sets
 
   before_validation :generate_t_name
@@ -115,6 +120,9 @@ class DrinkSet < ActiveRecord::Base
       end
       field :photo_galleries do
         label 'Фотогалерея'
+      end
+      field :product_properties do
+        label 'Властивості'
       end
       field :ds_category do
         label 'Категорія'

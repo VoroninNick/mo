@@ -15,7 +15,6 @@ class MainController < ApplicationController
   end
 
   def special_offers
-    # @sets = ProductPack.where('published is not null').order('created_at ASC')
     @sets = ProductPack.order('created_at ASC')
     @products = Product.where('promotion_price is not null').order('created_at ASC')
   end

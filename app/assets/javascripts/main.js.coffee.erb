@@ -9,6 +9,14 @@ $(document).ready ->
         mainImage = $(this).attr("href") #Find Image Name
         $(".product_detail_wrap .link_to_prev .bi").css('background',"url("+mainImage+")no-repeat center center")
         $(".product_detail_wrap .link_to_prev .bi").parent().attr href: mainImage
+
+# products list image preview
+    $("ul.product_gallery_images li div").click ->
+        mainImage = $(this).attr("data-image") #Find Image Name
+        parent = $(this).closest('.product-detail')
+        parent.find(".bi").css('background',"url("+mainImage+")no-repeat center center")
+        parent.find(".bi").parent().attr href: mainImage
+
     $('.fancybox').fancybox
         helpers:
             overlay:
@@ -32,6 +40,11 @@ $(document).ready ->
             <polygon fill=\"#D1D3D4\" points=\"14.85,0.707 14.143,0 7.425,6.718 0.707,0 0,0.707 6.718,7.425 0,14.142 0.707,14.849 7.425,8.132
                 14.143,14.849 14.85,14.142 8.132,7.425 \"/>
             </svg></a></div></div></div>"
+#        afterLoad: ->
+#            $(this).removeAttr "rel"
+#            $(this).removeAttr "data-fancybox-group"
+
+
     $("a.fncy-custom-close").click (e) ->
         e.preventDefault()
         $.fancybox.close()

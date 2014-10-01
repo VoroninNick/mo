@@ -33,10 +33,10 @@
   .special_offers_tab_wrap.sale_tab_wrap
     -if @products && @products.respond_to?(:count) && @products.count > 0
       -@products.each_with_index do |p, index|
-        .sale_product_wrap.products_pack_item_wrap class=(index%2==0 ? "light_gray_back_wrap" : "")
+        .sale_product_wrap.products_pack_item_wrap class=(index%2==0 ? "" : "light_gray_back_wrap")
           .row
             .columns.large-3
-              .bi style="background: url('#{p.image.url(:thumb)}')no-repeat center center;"
+              .bi.bsh_right_bottom style="background: url('#{p.image.url(:thumb)}')no-repeat center center;"
             .columns.large-9
               a
                 h2 =p.name
@@ -114,7 +114,7 @@
               /  =p.name
                 /.bi style="background: url('#{p.image.url(:thumb)}')no-repeat center center;"
               /-if s.products && s.products.count >0 && s.products[0].image.exists?
-              .bi style="background: url('#{s.products[0].image.url(:thumb)}')no-repeat center center;"
+              .bi style="background: url('#{s.product.image.url(:thumb)}')no-repeat center center;"
             .symbol_plus_wrap
               .symbol_plus_inner
                 .symbol_plus

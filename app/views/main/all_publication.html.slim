@@ -21,7 +21,7 @@
       .one_publication_wrap
         .columns.large-4.medium-4.small-12 class=(index%2==0 ? "left" : "right")
           a href=one_article_path(item.url, locale: I18n.locale)
-            .p_bi style="background: url('#{item.image.url(:large)}')no-repeat center center;"
+            .p_bi.bsh_right_bottom style="background: url('#{item.image.url(:large)}')no-repeat center center;"
             /img src=item.image.url(:large)
         .columns.large-8.medium-8.small-12
           h4

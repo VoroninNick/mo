@@ -18,7 +18,7 @@
           .container
             .row
               .columns.large-6
-                a.link_to_prev.fancy_gallery data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}" href=i.photo_galleries[0].image.url(:large)
+                a.bsh_right_bottom.link_to_prev.fancy_gallery data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}" href=i.photo_galleries[0].image.url(:large)
                   .bi style="background: url('#{i.image.url(:large)}')no-repeat center center;"
                   .preview_ico
                     .preview_ico_inner
@@ -29,7 +29,7 @@
                       =embedded_svg('MO-Sale lable.svg')
                 ul#product_gallery_images
                   -i.photo_galleries.each do |photo|
-                    li
+                    li.bsh_right_bottom
                       a href=photo.image.url(:large)
                         = image_tag (photo.image.url(:thumb))
                       a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
@@ -74,12 +74,15 @@
       .row
         ul.pd_drink_sets_carousel.products_pack_item_wrap
           -@product_set.drink_sets.each do |ds|
-          -sql =
             li
               .columns.large-3
-                .bi style="background: url('#{ds.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+                .bi.bsh_right_bottom style="background: url('#{ds.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
               .columns.large-9
-                a
+                -sql= "select dsc.* from #{DrinkSet.table_name} dsc where dsc.t_name = '#{ds.t_name}' "
+                -parent_category_ds = DsCategory.find_by_sql(sql)
+                -ds_parent = parent_category_ds.first
+                -ds_children = ds.ds_category
+                a  href=sets_detail_path(ds_parent.t_name, ds_children.t_name, ds.t_name, locale: I18n.locale)
                   h2 =ds.name
                 .pd_parent_category
                   |18 предметів
@@ -107,8 +110,13 @@
                 .row
                   .columns.large-12
                     .p_read_more.right
-                      a href=sets_detail_path(, ds.t_name, locale: I18n.locale)
+                      -sql= "select dsc.* from #{DrinkSet.table_name} dsc where dsc.t_name = '#{ds.t_name}' "
+                      -parent_category_ds = DsCategory.find_by_sql(sql)
+                      -ds_parent = parent_category_ds.first
+                      -ds_children = ds.ds_category
+                      a href=sets_detail_path(ds_parent.t_name, ds_children.t_name, ds.t_name, locale: I18n.locale)
                         |Більш детально >>>
+              .clearfix
   -if @product_set.decors
     .pd_decors_wrap.pd_products_pack_wrap
       .row
@@ -122,9 +130,12 @@
           -@product_set.decors.each do |d|
             li
               .columns.large-3
-                .bi style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
+                .bi.bsh_right_bottom style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
               .columns.large-9
-                a
+                -sql= "select d.* from #{Decor.table_name} d where d.t_name = '#{d.t_name}' "
+                -parent_category_d = DCategory.find_by_sql(sql)
+                -d_parent = d.d_category
+                a href=decors_detail_path(d_parent.t_name, d.t_name, locale: I18n.locale)
                   h2 =d.name
                 .row
                   .pd_info_block
@@ -150,7 +161,10 @@
                 .row
                   .columns.large-12
                     .p_read_more.right
-                      a
+                      -sql= "select d.* from #{Decor.table_name} d where d.t_name = '#{d.t_name}' "
+                      -parent_category_d = DCategory.find_by_sql(sql)
+                      -d_parent = d.d_category
+                      a href=decors_detail_path(d_parent.t_name, d.t_name, locale: I18n.locale)
                         |Більш детально >>>
 
   .pd_product_pack_wrap.logo_background_wrap
@@ -159,25 +173,25 @@
         h4
           |Разом дешевше!
         h3
-          |знижка -
+          'знижка
           =@product_set.percent
           |% на комплект
         h2 =@product_set.name
     .row
       .products_pack_items_wrap data-sale="#{@product_set.percent}"
         .columns.large-3
-          -prod = @product_set.products[0]
-          .bi style="background: url('#{prod.image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{prod.price}"
+          -prod = @product_set.product
+          .bi.bsh_right_bottom style="background: url('#{prod.image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{prod.price}"
         .symbol_plus_wrap
           .symbol_plus_inner
             .symbol_plus
         .columns.large-3
-          .bi style="background: url('#{@product_set.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{@product_set.drink_sets[0].price}"
+          .bi.bsh_right_bottom style="background: url('#{@product_set.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{@product_set.drink_sets[0].price}"
         .symbol_plus_wrap
           .symbol_plus_inner
             .symbol_plus
         .columns.large-3
-          .bi style="background: url('#{@product_set.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{@product_set.decors[0].price}"
+          .bi.bsh_right_bottom style="background: url('#{@product_set.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{@product_set.decors[0].price}"
         .clearfix
     .row
       .columns.large-12
@@ -188,13 +202,13 @@
                 .symbol_equal
         .row
           .columns.large-12
-            -tablecloth_one_item = @product_set.products[0].price
+            -tablecloth_one_item = @product_set.product.price
             -drink_set_one_item = @product_set.drink_sets[0].price
             -decor_one_item = @product_set.decors[0].price
 
-            -percent = @product_set.percent
+            -percent = @product_set.percent/100.to_f
             -result = tablecloth_one_item + drink_set_one_item + decor_one_item
-            -sale_result = result/percent
+            -sale_result = result*percent
             .old_prices_result_wrap
               .old_price_result
                 =result.round

@@ -25,8 +25,15 @@ class ProductPack < ActiveRecord::Base
 
   validates_presence_of :name, :message => "Заповніть це поле! Поле не може бути пустим."
 
-  has_many :products#, inverse_of: :product_pack
-  attr_accessible :products, :product_ids
+  has_one :product, dependent: :destroy, inverse_of: :product_pack
+  attr_accessible :product_id
+
+  def product_id
+    self.product.try :id
+  end
+  def product_id=(id)
+    self.product = Product.find_by_id(id)
+  end
 
   has_many :decors#, inverse_of: :product_pack
   attr_accessible :decors, :decor_ids
@@ -58,7 +65,7 @@ class ProductPack < ActiveRecord::Base
       field :published do
         label 'Активний?'
       end
-      field :products do
+      field :product do
         label 'Скатертина'
         help ''
       end
@@ -77,7 +84,7 @@ class ProductPack < ActiveRecord::Base
         label 'Чи активний'
         help 'Не активний комплект  відображатись не буде.'
       end
-      field :products do
+      field :product do
         label 'Скатертина'
         help ''
       end

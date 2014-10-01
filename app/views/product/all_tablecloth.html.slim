@@ -48,16 +48,20 @@
                   .container
                     .row
                       .columns.large-6
-                        .bi style="background: url('#{i.image.url(:large)}')no-repeat center center;"
+                        -i.photo_galleries.each_with_index do |p, index|
+                          -if index==0
+                            a.fancy_gallery href="#{p.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
+                              .bi style="background: url('#{i.image.url(:large)}')no-repeat center center;"
+                          -elsif index >0
+                            a.fancy_gallery href="#{p.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
                         ul.product_gallery_images
                           -i.photo_galleries.each do |photo|
                             li
-                              a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
+                              div data-image="#{photo.image.url(:large)}"
                                 =embedded_svg('MO-picture switchers.svg')
                       .columns.large-6
                         .detail_info_wrap
                           .detail_info_inner
-                            /-sql = "select c.* from #{Category.table_name} c, #{Product.table_name} p where c.category_url = '#{category}' and p.category_id = c.id"
                             a href=product_detail_path(c.category_url, i.t_name, locale: I18n.locale)
                               h2
                                 =i.name
@@ -78,5 +82,10 @@
                             p = i.short_description
                           a.close-detail
                             =embedded_svg('MO-close button.svg')
+                        .row
+                          .columns.large-12
+                            .p_read_more.right
+                              a href=product_detail_path(c.category_url, i.t_name, locale: I18n.locale)
+                                |Більш детально >>>
 
             .clearfix
