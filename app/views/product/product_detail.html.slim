@@ -52,7 +52,8 @@
                       button.cust_button data-product-id=i.id
                         |Добавити в корзину
                     .clearfix
-                  = raw i.description
+                  .description_wrap
+                    = raw i.description
                   -if i.product_properties && i.product_properties.count >0
                     ul.product_properties
                       -i.product_properties.each do |pp|
