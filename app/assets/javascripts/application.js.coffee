@@ -12,11 +12,9 @@
 #//
 #= require jquery
 #= require jquery_ujs
-#= require wiselinks
 #= require fancybox
 #= require owl.carousel
 
 #= require_tree .
 
-$(document).ready ->
-  window.wiselinks = new Wiselinks()
+$(document).ready ()
