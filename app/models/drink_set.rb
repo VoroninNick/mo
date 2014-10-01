@@ -20,7 +20,7 @@ class DrinkSet < ActiveRecord::Base
       nested do
         field :locale , :hidden
         field :name do
-          label 'Заголовок'
+          label 'Назва'
           help ''
         end
         field :short_description do
@@ -28,7 +28,7 @@ class DrinkSet < ActiveRecord::Base
           help ''
         end
         field :description, :ck_editor do
-          label 'Текст публікації'
+          label 'Повний опис'
           help ''
         end
       end

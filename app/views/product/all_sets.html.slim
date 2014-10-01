@@ -20,7 +20,7 @@
       .products_tab class=(if index==0 then; 'ceramics_tab' elsif index==1 then; 'glass_tab' elsif index==2 then; 'porcelain_tab'  end;)
         -cat.child_categories.each do |c|
           -c.drink_sets.each_with_index do |i, index|
-            .columns.large-3.product-block
+            .columns.large-3.product-block.left
               .block-inner
                 .image-cont style="opacity: 1;"
                   .bi style="background: url('#{i.photo_galleries[0].image.url(:thumb)}')no-repeat center center;"
@@ -38,7 +38,7 @@
                 .container
                   .row
                     .columns.large-6
-                      .bi style="background: url('#{i.image.url(:large)}')no-repeat center center;"
+                      .bi style="background: url('#{i.photo_galleries[0].image.url(:large)}')no-repeat center center;"
                       ul.product_gallery_images
                         -i.photo_galleries.each do |photo|
                           li
@@ -70,5 +70,3 @@
                         p = i.short_description
                         a.close-detail href="#"
                           =embedded_svg('MO-close button.svg')
-
-          /.clearfix
