@@ -38,7 +38,7 @@ class DrinkSet < ActiveRecord::Base
   end
 
   validates_presence_of :name, :message => "Заповніть це поле! Поле не може бути пустим."
-  # validates_presence_of :image, :message => "Виберіть фотографію, відповідно до зазначених розмірів! Поле не може бути пустим."
+  validates_presence_of :image, :message => "Виберіть фотографію, відповідно до зазначених розмірів! Поле не може бути пустим."
   validates_presence_of :short_description, :message => "Заповніть це поле! Поле не може бути пустим."
   validates_presence_of :description, :message => "Заповніть це поле! Поле не може бути пустим."
 
@@ -78,9 +78,9 @@ class DrinkSet < ActiveRecord::Base
       field :ds_category_id do
         label 'Категорія'
       end
-      # field :image do
-      #   label 'Зображення'
-      # end
+      field :image do
+        label 'Зображення'
+      end
       field :name do
         label 'Назва'
       end
@@ -99,10 +99,10 @@ class DrinkSet < ActiveRecord::Base
     end
 
     edit do
-      # field :image, :paperclip do
-      #   label 'Зображення'
-      #   help 'Зображення для альбому повинне бути 600. / 600px.'
-      # end
+      field :image, :paperclip do
+        label 'Зображення'
+        help 'Зображення для альбому повинне бути 600. / 600px.'
+      end
       field :price do
         label 'Ціна'
         help ''
