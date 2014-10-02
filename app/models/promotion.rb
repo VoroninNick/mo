@@ -39,7 +39,8 @@ class Promotion < ActiveRecord::Base
     self.t_title = title.parameterize
   end
 
-  has_many :products#, inverse_of: :promotion
+  has_many :products, inverse_of: :promotion
+  attr_accessible :products, :product_ids
 
   rails_admin do
     navigation_label 'Каталог'

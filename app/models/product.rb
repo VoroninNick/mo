@@ -48,7 +48,7 @@ class Product < ActiveRecord::Base
                     path:':rails_root/public:url'
 
   belongs_to :category, inverse_of: :products
-  belongs_to :promotion#, inverse_of: :products
+  belongs_to :promotion, inverse_of: :products
 
   has_many :photo_galleries, as: :imageable
   attr_accessible :photo_galleries

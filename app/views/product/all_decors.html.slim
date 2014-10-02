@@ -39,11 +39,16 @@
               .container
                 .row
                   .columns.large-6
-                    .bi style="background: url('#{i.image.url(:large)}')no-repeat center center;"
+                    -i.photo_galleries.each_with_index do |p, index|
+                      -if index==0
+                        a.fancy_gallery href="#{p.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
+                          .bi style="background: url('#{i.image.url(:large)}')no-repeat center center;"
+                      -elsif index >0
+                        a.fancy_gallery href="#{p.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
                     ul.product_gallery_images
                       -i.photo_galleries.each do |photo|
                         li
-                          a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
+                          div data-image="#{photo.image.url(:large)}"
                             =embedded_svg('MO-picture switchers.svg')
                   .columns.large-6
                     .detail_info_wrap
