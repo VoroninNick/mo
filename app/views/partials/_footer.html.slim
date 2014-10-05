@@ -35,21 +35,39 @@ footer.sf_footer
       .f_links_wrap
         .row
           .columns.large-4
-            .row
+            .row.dn.mdb
+              .columns.small-12
+                ul.social_networks_wrap
+                  li
+                    a href="tell:+380504170728"
+                      = embedded_svg ("MO-Phone.svg"), class: "f_ico"
+                  li
+                    a href="mailto:voronin.nick@gmail.com"
+                      = embedded_svg ("MO-Mail.svg"), class: "f_ico"
+                  li
+                    a href="https://www.facebook.com/" rel="nofollow"
+                      = embedded_svg ('MO-Social-Facebook.svg'), class: "f_ico"
+                  li
+                    a href="http://instagram.com/" rel="nofollow"
+                      = embedded_svg ('MO-Social-Instagram.svg'), class: "f_ico"
+                  li
+                    a href="https://twitter.com/" rel="nofollow"
+                      = embedded_svg ('MO-Social-Twitter.svg'), class: "f_ico"
+            .row.mdn
               .columns.large-12
                 a href="tell:+380504170728"
                   .link_inner.link_phone_inner
                     = embedded_svg ("MO-Phone.svg"), class: "f_ico"
                     span
                       |+38 (050) 417 07 28
-            .row
+            .row.mdn
               .columns.large-12
                 a href="mailto:voronin.nick@gmail.com"
                   .link_inner.link_mail_inner
                     = embedded_svg ("MO-Mail.svg"), class: "f_ico"
                     span
                       |voronin.nick@gmail.com
-          .columns.large-5
+          .columns.large-5.small-12
             form
               .input
                 input placeholder="Електронна пошта"
@@ -59,7 +77,7 @@ footer.sf_footer
                 button
                   |підписатись
 
-          .columns.large-3
+          .columns.large-3.mdn
             ul.social_networks_wrap
               li
                 a href="https://www.facebook.com/" rel="nofollow"

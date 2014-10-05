@@ -76,7 +76,8 @@
                                 a.remove_one_point
                                   =embedded_svg('MO-arrow.svg')
                               .input_send
-                                button.cust_button data-product-id=i.id
+                                /  = button_to 'Добавити в корзину', add_product_cart_line_items_path(session[:cart], :product_id => i.id), :method => :put, :class => 'cust_button'
+                                button.cust_button data-product-id=i.id data-cart="#{session[:cart]}"
                                   |Добавити в корзину
                               .clearfix
                             p = i.short_description

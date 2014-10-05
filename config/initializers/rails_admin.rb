@@ -35,7 +35,7 @@ RailsAdmin.config do |config|
     history_index
     history_show
   end
-  config.included_models = [ User]
+  config.included_models = [ User, Cart, LineItem]
 
   [Publication, Product, PhotoGallery, Category, Promotion, DsCategory, DCategory, DrinkSet, Decor, ProductProperty, ProductPack, PashaFolder].each do |model|
     config.included_models += [model, model::Translation]

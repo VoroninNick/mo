@@ -102,19 +102,21 @@ input.call_order_input_status[type=checkbox]:checked ~ .sf_container
         top: -100%
         z-index: 111
 
-input.cart_input_status[type=checkbox]:checked ~ .sf_container .modal_cart_wrap
-    width: 535px
-    @media (min-width : 0em) and (max-width : 40em)
-        width: 100%
-    &:before
+input.cart_input_status[type=checkbox]:checked ~ .sf_container
+    .modal_cart_wrap
+        width: 535px
+        @media (min-width : 0em) and (max-width : 40em)
+            width: 100%
+    &:after
         display: block
         content: ''
-        width: 100%
-        height: 100%
+        height: 400%
         position: fixed
         top: 0
         left: 0
+        right: 0
         background: rgba(0,0,0,0.2)
+        z-index: 111
 
 
 #holiday:target ~ .products_tabs_wrap
