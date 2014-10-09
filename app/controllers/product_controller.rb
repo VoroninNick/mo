@@ -40,7 +40,6 @@ class ProductController < ApplicationController
     end
 
     @product_set = @product_pack_one_item.first
-
   end
 
   def drink_set_detail

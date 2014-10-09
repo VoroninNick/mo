@@ -41,9 +41,9 @@ RailsAdmin.config do |config|
     config.included_models += [model, model::Translation]
   end
 
-  [PashaFile].each do |model|
-    config.included_models += [model]
-  end
+  # [PashaFile].each do |model|
+  #   config.included_models += [model]
+  # end
 
   # config.model Category do
   #   treeview true

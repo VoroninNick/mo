@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141002124651) do
+ActiveRecord::Schema.define(version: 20141009114951) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -85,6 +85,11 @@ ActiveRecord::Schema.define(version: 20141002124651) do
 
   add_index "d_category_translations", ["d_category_id"], name: "index_d_category_translations_on_d_category_id"
   add_index "d_category_translations", ["locale"], name: "index_d_category_translations_on_locale"
+
+  create_table "decor_packs", force: true do |t|
+    t.integer "product_pack_id"
+    t.integer "decor_id"
+  end
 
   create_table "decor_translations", force: true do |t|
     t.integer  "decor_id",          null: false
@@ -179,13 +184,16 @@ ActiveRecord::Schema.define(version: 20141002124651) do
   add_index "ds_category_translations", ["locale"], name: "index_ds_category_translations_on_locale"
 
   create_table "line_items", force: true do |t|
-    t.integer  "cart_id"
     t.integer  "product_id"
-    t.integer  "kit_id"
-    t.integer  "quantity"
+    t.integer  "product_pack_id"
+    t.integer  "cart_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
+  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
+  add_index "line_items", ["product_pack_id"], name: "index_line_items_on_product_pack_id"
 
   create_table "pasha_files", force: true do |t|
     t.text     "content"
@@ -385,6 +393,11 @@ ActiveRecord::Schema.define(version: 20141002124651) do
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "set_packs", force: true do |t|
+    t.integer "product_pack_id"
+    t.integer "drink_set_id"
   end
 
   create_table "users", force: true do |t|

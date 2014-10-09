@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Product:
+  = @line_item.product
+p
+  strong Product pack:
+  = @line_item.product_pack
+p
+  strong Cart:
+  = @line_item.cart
+
+= link_to 'Edit', edit_line_item_path(@line_item)
+'|
+= link_to 'Back', line_items_path

@@ -59,7 +59,7 @@ class Decor < ActiveRecord::Base
   accepts_nested_attributes_for :product_properties
   attr_accessible :product_properties_attributes
 
-  belongs_to :product_pack#, inverse_of: :decors
+  has_and_belongs_to_many :product_pack, join_table: 'decor_packs'
 
   before_validation :generate_t_name
   def generate_t_name

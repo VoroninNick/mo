@@ -76,12 +76,10 @@
             .columns.large-3
               .bi style="background: url('#{p.image.url(:thumb)}')no-repeat center center;"
             .columns.large-9
-              /-sql= "select dsc.* from #{Product.table_name} dsc where dsc.t_name = '#{ds.t_name}' "
-              /-parent_category_ds = DsCategory.find_by_sql(sql)
-              /-ds_parent = parent_category_ds.first
-              /-ds_children = ds.ds_category
-              /a href=sets_detail_path(ds_parent.t_name, ds_children.t_name, ds.t_name, locale: I18n.locale)
-              h2 =p.name
+              -sql = "select c.* from #{Category.table_name} c, #{Product.table_name} p where p.id= '#{p.id}' and p.category_id = c.id"
+              -category = Category.find_by_sql(sql).first
+              a href=product_detail_path(category.category_url, p.t_name, locale: I18n.locale)
+                h2 =p.name
               .row
                 .pd_info_block
                   .columns.large-4
@@ -106,13 +104,7 @@
               .row
                 .columns.large-12
                   .p_read_more.right
-                    /-sql= "select dsc.* from #{DrinkSet.table_name} dsc where dsc.t_name = '#{ds.t_name}' "
-                    /-parent_category_ds = DsCategory.find_by_sql(sql)
-                    /-ds_parent = parent_category_ds.first
-                    /-ds_children = ds.ds_category
-                    /a href=sets_detail_path(ds_parent.t_name, ds_children.t_name, ds.t_name, locale: I18n.locale)
-                    /  |Більш детально >>>
-                    a
+                    a href=product_detail_path(category.category_url, p.t_name, locale: I18n.locale)
                       |Більш детально >>>
 
   .pd_product_pack_wrap

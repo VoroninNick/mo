@@ -17,14 +17,17 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :carts  do
-    resources :line_items do
-      collection do
-        put :add_product
-        delete :destroy_product
-      end
-    end
-  end
+  # resources :carts  do
+  #   resources :line_items do
+  #     collection do
+  #       put :add_product
+  #       delete :destroy_product
+  #     end
+  #   end
+  # end
+  resources :line_items
+
+  resources :carts
 
   # Example resource route with options:
   #   resources :products do
@@ -72,17 +75,14 @@ Rails.application.routes.draw do
   get '/publication' => 'main#all_publication', as: 'all_publication'
   get '/publication/:url' => 'main#one_article', as: "one_article"
 
-  get '/tablecloth' => 'product#all_tablecloth', as: 'all_tablecloth'
-
   get '/product/:category' => 'product#one_item', as: 'one_product'
+
   get '/tablecloth/:category/:name' => 'product#product_detail', as: 'product_detail'
-
   get '/sets/:category/:subcategory/:name' => 'product#drink_set_detail', as: 'sets_detail'
-
   get '/decors/:category/:name' => 'product#decor_detail', as: 'decors_detail'
 
+  get '/tablecloth' => 'product#all_tablecloth', as: 'all_tablecloth'
   get '/sets' => 'product#all_sets', as: 'all_sets'
-
   get '/decors' => 'product#all_decors', as: 'all_decors'
 
   get '/special_offers' => 'main#special_offers', as: 'special_offers'

@@ -35,6 +35,8 @@ html lang="en"
     .sf_container
       = render partial: "partials/header"
       = yield
+      a.scrollToTop href=""
+        =embedded_svg('mo_scroll_top.svg')
       = render partial: "partials/footer"
       = javascript_include_tag "application"
     .cover

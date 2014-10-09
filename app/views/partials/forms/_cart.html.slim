@@ -1,8 +1,10 @@
 .mc_inner
+  -count = 0
+  -rez = 0
   .mc_header
     .mch_inner
       .cart_count_product
-        .count_product data-count="5"
+        .count_product data-count=''
           = embedded_svg ("MO-Basket.svg")
         span
           |Ваша корзина
@@ -10,6 +12,35 @@
         =embedded_svg('MO-close button.svg')
   .cart-content-page
     .cart-content-page-inner
+
+      -cart = Cart.find(session[:cart_id])
+      ul.cart_items_list
+        -cart.line_items.each do |item|
+          li
+            .cart_item_image_wrap.left
+              .bi style="background: url('#{item.product.image.url(:large)}')no-repeat center center;"
+            .cart_item_info_wrap.left
+              .cart_item_title
+                h3
+                  = truncate item.product.name, length: 30
+            .cart_item_price_wrap.left
+              h3
+                - if item.product.promotion_price
+                  = item.product.promotion_price
+                - else
+                  = item.product.price
+                span
+                  |&nbsp;грн
+            .clearfix
+          -count+=1
+          - if item.product.promotion_price
+            - rez+=item.product.promotion_price.round
+          -else
+            - rez+=item.product.price.round
+    .cart_count_items data-count=count
+
+
+
   .cart-count-prices
     .cart-count-prices-inner
       .ccp_inner.ccp_left

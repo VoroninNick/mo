@@ -25,7 +25,7 @@ class ProductPack < ActiveRecord::Base
 
   validates_presence_of :name, :message => "Заповніть це поле! Поле не може бути пустим."
 
-  has_one :product, dependent: :destroy, inverse_of: :product_pack
+  has_one :product, inverse_of: :product_pack
   attr_accessible :product_id
 
   def product_id
@@ -35,16 +35,38 @@ class ProductPack < ActiveRecord::Base
     self.product = Product.find_by_id(id)
   end
 
-  has_many :decors#, inverse_of: :product_pack
-  attr_accessible :decors, :decor_ids
+  has_and_belongs_to_many :decors, join_table: 'decor_packs'
+  attr_accessible :decors
+  attr_accessible :decor_ids
 
-  has_many :drink_sets#, inverse_of: :product_pack
-  attr_accessible :drink_sets, :drink_set_ids
+  has_and_belongs_to_many :drink_sets, join_table: 'set_packs'
+  attr_accessible :drink_sets
+  attr_accessible :drink_set_ids
 
   before_validation :generate_slug
   def generate_slug
     self.slug = name.parameterize
   end
+
+  # line item block begin
+
+  has_many :line_items
+
+  before_destroy :ensure_not_referenced_by_any_line_item
+
+  private
+
+  # ensure that there are no line items referencing this product
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'Line Items present')
+      return false
+    end
+  end
+
+  # line item block end
 
   rails_admin do
     navigation_label 'Каталог'

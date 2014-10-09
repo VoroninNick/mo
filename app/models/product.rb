@@ -67,6 +67,26 @@ class Product < ActiveRecord::Base
     self.t_name = name.parameterize
   end
 
+  # line item block begin
+
+  has_many :line_items
+
+  before_destroy :ensure_not_referenced_by_any_line_item
+
+  private
+
+  # ensure that there are no line items referencing this product
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'Line Items present')
+      return false
+    end
+  end
+
+  # line item block end
+
   rails_admin do
     parent Category
     label 'Одиниця'

@@ -23,7 +23,7 @@ gem 'turbolinks'
 
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder', '~> 2.2.2'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
@@ -77,6 +77,8 @@ gem 'capistrano-rails'
 gem 'seed_dump'
 
 gem 'yaml_db', github: 'jetthoughts/yaml_db', ref: 'fb4b6bd7e12de3cffa93e0a298a1e5253d7e92ba' # fixing bug = []
+
+# gem 'columnize', '~> 0.8.9'
 
 
 
