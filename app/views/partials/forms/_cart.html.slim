@@ -12,7 +12,7 @@
         =embedded_svg('MO-close button.svg')
   .cart-content-page
     .cart-content-page-inner
-      -if cart = Cart.find(session[:cart_id])
+      -if @carts
         -cart = Cart.find(session[:cart_id])
         ul.cart_items_list
           -cart.line_items.each do |item|
