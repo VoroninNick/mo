@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
   # def store_location
   #   session[:previous_url] = request.fullpath
   # end
+  before_action :create_cart
+
+  def create_cart
+    session[:cart_id]=Cart.create if session[:cart_id].blank?
+  end
 end

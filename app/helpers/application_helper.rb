@@ -27,22 +27,17 @@ module ApplicationHelper
     doc.to_html.html_safe
   end
 
-  include CurrentCart
   def get_count_products
     quantity = 0
     cart = Cart.find(session[:cart_id])
-  rescue ActiveRecord::RecordNotFound
-    @cart = Cart.create
-    session[:cart_id] = @cart.id
-    if cart
+    if cart.line_items.count > 0
       cart.line_items.each do |l|
         quantity +=l.quantity
       end
+      return quantity
+    else
+      return 0
     end
-
-    return quantity
-
-
   end
 
 end
