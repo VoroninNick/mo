@@ -68,6 +68,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  delete '/line_items/:id' => 'line_items#destroy'
   scope "(:locale)", :locale => /uk|pl/ do
   get '/test' => 'main#testing', as: 'testing'
   get '/contacts' => 'main#contacts', as: 'contacts'

@@ -14,5 +14,4 @@ class ApplicationController < ActionController::Base
   # def store_location
   #   session[:previous_url] = request.fullpath
   # end
-
 end

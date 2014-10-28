@@ -9,20 +9,44 @@ setCountItems = ->
 
 $(document).ready ->
 
-  setCountItems()
+#  setCountItems()
 
   $('#form_add_to_cart button').click (e) ->
     e.preventDefault()
 
+    parent = $(this).closest('form')
+    count = parent.find("input.count_product").val()
+
     attrRenderID = $(this).attr('data-product-id')
 #    t = "<div class=\"loading\" id=\"\"><img src=\"//firststop.s3.amazonaws.com/assets/loading-8eb13df64a37c56b9774c5160a0f0a9e.gif\"></div>"
 
-    valuesToSubmit = {product_id: attrRenderID}
+    valuesToSubmit = {product_id: attrRenderID, quantity: count}
     $.ajax
       url: '/line_items'
       dataType: 'html'
       type: "POST"
       data: valuesToSubmit
+      beforeSend: ->
+        return
+      success: (data) ->
+        alert 'success'
+        setCountItems()
+
+        return
+
+      complete: ->
+        return
+
+  $('.cart_items_list .delete-item').click (e) ->
+    e.preventDefault()
+    attrRenderID = $(this).attr('data-line-item-id')
+
+#    valuesToSubmit = {line_item_id: attrRenderID}
+    $.ajax
+      url: '/line_items/'+attrRenderID
+      dataType: 'html'
+      type: "DELETE"
+#      data: valuesToSubmit
       beforeSend: ->
         return
       success: (data) ->

@@ -49,6 +49,7 @@ color:
 
    box-shadow для меню і картинок 0.5 x-2 y-2 blur 2 black
 
+red button on hover #E05858
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

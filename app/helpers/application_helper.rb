@@ -26,4 +26,16 @@ module ApplicationHelper
     end
     doc.to_html.html_safe
   end
+
+  def get_count_products
+    quantity = 0
+    cart = Cart.find(session[:cart_id])
+    cart.line_items.each do |l|
+      quantity +=l.quantity
+    end
+    return quantity
+
+
+  end
+
 end
