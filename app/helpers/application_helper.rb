@@ -31,6 +31,9 @@ module ApplicationHelper
   def get_count_products
     quantity = 0
     cart = Cart.find(session[:cart_id])
+  rescue ActiveRecord::RecordNotFound
+    @cart = Cart.create
+    session[:cart_id] = @cart.id
     if cart
       cart.line_items.each do |l|
         quantity +=l.quantity
