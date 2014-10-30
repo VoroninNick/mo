@@ -29,14 +29,27 @@ module ApplicationHelper
 
   def get_count_products
     quantity = 0
-    cart = Cart.find(session[:cart_id])
-    if cart.line_items.count > 0
-      cart.line_items.each do |l|
-        quantity +=l.quantity
+
+    current_cart.line_items.each do |l|
+      quantity +=l.quantity
+    end
+    return quantity
+  end
+
+  def get_total_price(current_cart)
+    if current_cart && current_cart.line_items.count > 0
+      sum = 0
+      current_cart.line_items.each do |item|
+        if item.product.promotion_price && item.product.promotion_price > 0
+          sum = sum + item.product.promotion_price * item.quantity
+
+        else
+          sum = sum + item.product.price * item.quantity
+        end
       end
-      return quantity
+      return sum
     else
-      return 0
+      "0"
     end
   end
 

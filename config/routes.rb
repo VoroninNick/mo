@@ -70,7 +70,7 @@ Rails.application.routes.draw do
   #   end
   delete '/line_items/:id' => 'line_items#destroy'
   scope "(:locale)", :locale => /uk|pl/ do
-  get '/test' => 'main#testing', as: 'testing'
+  # get '/test' => 'main#testing', as: 'testing'
   get '/contacts' => 'main#contacts', as: 'contacts'
 
   get '/publication' => 'main#all_publication', as: 'all_publication'
