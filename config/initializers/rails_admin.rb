@@ -35,15 +35,25 @@ RailsAdmin.config do |config|
     history_index
     history_show
   end
-  config.included_models = [ User, Cart, LineItem]
+  included_models = [ User, Cart, LineItem, Publication, Product, PhotoGallery, Category, Promotion, DsCategory, DCategory, DrinkSet, Decor, ProductProperty, ProductPack, PashaFolder]
 
-  [Publication, Product, PhotoGallery, Category, Promotion, DsCategory, DCategory, DrinkSet, Decor, ProductProperty, ProductPack, PashaFolder].each do |model|
-    config.included_models += [model, model::Translation]
+  included_models.each do |model|
+
+
+    model_class = model
+    if model_class.is_a?(String)# && Object.const_defined?(model_class)
+      model_class = Object.const_get(model_class)
+    end
+
+    if ActiveRecord::Base.connection.tables.include?(model_class.table_name)
+
+      config.included_models += [model_class]
+      if model_class.respond_to?(:translates) && model_class.translates? && ActiveRecord::Base.connection.tables.include?(model_class.translation_class.table_name)
+        config.included_models += [model_class.translation_class]
+      end
+    end
   end
 
-  # [PashaFile].each do |model|
-  #   config.included_models += [model]
-  # end
 
   # config.model Category do
   #   treeview true

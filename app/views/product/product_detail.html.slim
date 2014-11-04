@@ -1,7 +1,3 @@
--if notice
-  p id="notice"
-    = notice
-
 -if @parent
   .row
     .columns.large-12
@@ -188,17 +184,92 @@
       .products_pack_items_wrap data-sale="#{@product_set.percent}"
         .columns.large-3
           -prod = @product_set.product
-          .bi.bsh_right_bottom style="background: url('#{prod.image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{prod.price}"
+          .ppi_item_wrap.pp-tablecloth-buy data-product-id="#{prod.id}"
+            .bi.bsh_right_bottom style="background: url('#{prod.image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{prod.price}"
+              .product_info_wrapper
+                .pi_inner
+                  a.more-info
+                    .pi_top
+                      h5 =truncate prod.name, lenght: '80'
+                    .pi_bottom
+                      h4
+                        =prod.price
+                        span
+                          |&nbsp;грн
         .symbol_plus_wrap
           .symbol_plus_inner
             .symbol_plus
         .columns.large-3
-          .bi.bsh_right_bottom style="background: url('#{@product_set.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{@product_set.drink_sets[0].price}"
+          - if @product_set.drink_sets.count > 1
+            ul.product-carousel.drink-sets-carousel
+              -@product_set.drink_sets.each_with_index do |d, index|
+                li.product-carousel-item class=(if index==0 && @product_set.drink_sets.count > 1 then; 'active' end;)
+                  .ppi_item_wrap.pp-drink-set-buy data-product-id="#{d.id}"
+                    .bi.bsh_right_bottom style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{d.price}"
+                    .product_info_wrapper
+                      .pi_inner
+                        a.more-info
+                          .pi_top
+                            h5 =truncate d.name, lenght: '80'
+                          .pi_bottom
+                            h4
+                              =d.price
+                              span
+                                |&nbsp;грн
+              .pcb.pc-button-up
+                .pcb-inner
+              .pcb.pc-button-down
+                .pcb-inner
+          - else
+            .ppi_item_wrap.pp-drink-set-buy.one-item data-product-id="#{@product_set.drink_sets[0].id}"
+              .bi.bsh_right_bottom style="background: url('#{@product_set.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{@product_set.drink_sets[0].price}"
+              .product_info_wrapper
+                .pi_inner
+                  a.more-info
+                    .pi_top
+                      h5 =truncate @product_set.drink_sets[0].name, lenght: '80'
+                    .pi_bottom
+                      h4
+                        =@product_set.drink_sets[0].price
+                        span
+                          |&nbsp;грн
         .symbol_plus_wrap
           .symbol_plus_inner
             .symbol_plus
         .columns.large-3
-          .bi.bsh_right_bottom style="background: url('#{@product_set.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{@product_set.decors[0].price}"
+          - if @product_set.decors.count > 1
+            ul.product-carousel.decors-carousel
+              -@product_set.decors.each_with_index do |d, index|
+                li.product-carousel-item class=(if index==0 && @product_set.decors.count > 1 then; 'active' end;)
+                  .ppi_item_wrap.pp-decor-buy data-product-id="#{d.id}"
+                    .bi.bsh_right_bottom style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{d.price}"
+                    .product_info_wrapper
+                      .pi_inner
+                        a.more-info
+                          .pi_top
+                            h5 =truncate d.name, lenght: '80'
+                          .pi_bottom
+                            h4
+                              =d.price
+                              span
+                                |&nbsp;грн
+              .pcb.pc-button-up
+                .pcb-inner
+              .pcb.pc-button-down
+                .pcb-inner
+          - else
+            .ppi_item_wrap.pp-decor-buy.one-item data-product-id="#{@product_set.decors[0].id}"
+              .bi.bsh_right_bottom style="background: url('#{@product_set.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{@product_set.decors[0].price}"
+              .product_info_wrapper
+                .pi_inner
+                  a.more-info
+                    .pi_top
+                      h5 =truncate @product_set.decors[0].name, lenght: '80'
+                    .pi_bottom
+                      h4
+                        =@product_set.decors[0].price
+                        span
+                          |&nbsp;грн
         .clearfix
     .row
       .columns.large-12

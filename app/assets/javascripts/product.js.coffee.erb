@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.coffee.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+SlideToItem =(index)->
+#  $('ul.product-carousel li').remove
+  alert "index "+index
+
 $(document).ready ->
   #  ===================================================================== product one item, drink sets carousel
   owl_ds = $("ul.pd_drink_sets_carousel")
@@ -53,3 +57,30 @@ $(document).ready ->
     ]
     itemsMobile: false # itemsMobile disabled - inherit from itemsTablet option
     autoPlay : false
+
+  # vertical carousel products
+  $('.product-carousel').on('click','.pcb', () ->
+    $parent = $(this).closest('ul.product-carousel')
+    $lis = $parent.find('li')
+
+    $button = $(this)
+    $active_li = $lis.filter('.active')
+    active_li_index = $active_li.index()
+    max_index = $lis.length - 1
+    next_index = false
+
+    if $button.hasClass('pc-button-up')
+      next_index = active_li_index+1
+      if next_index > max_index
+        next_index = 0
+    else
+      next_index = active_li_index - 1
+      if next_index < 0
+        next_index = max_index
+
+    $active_li.removeClass('active')
+    $lis.eq(next_index).addClass('active')
+  )
+
+
+

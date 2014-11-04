@@ -18,6 +18,7 @@ class LineItemsController < ApplicationController
   # GET /line_items/new
   def new
     @line_item = LineItem.new
+    # flash[:notice] = "Line item created"
   end
 
   # GET /line_items/1/edit
@@ -41,7 +42,7 @@ class LineItemsController < ApplicationController
     else
       @line_item = @cart.line_items.build(product: product, quantity: params[:quantity])
     end
-
+    flash[:notice] = "Thank you for add this product"
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to @line_item.cart,

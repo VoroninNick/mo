@@ -34,5 +34,6 @@ class ApplicationController < ActionController::Base
 
     session[:cart_id] = cart.id
     cart
+    # flash[:notice] = "Cart created"
   end
 end
