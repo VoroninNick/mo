@@ -1,0 +1,82 @@
+.mc_inner
+  -count = 0
+  -rez = 0
+  .mc_header
+    .mch_inner
+      .cart_count_product
+        .count_product data-count=''
+          = embedded_svg ("MO-Basket.svg")
+        span
+          |Ваша корзина
+      label.close_cart for="modal_cart"
+        =embedded_svg('MO-close button.svg')
+  .cart-content-page
+    .cart-content-page-inner
+      -set_cart
+      -cart = Cart.find(session[:cart_id])
+      ul.cart_items_list
+        -cart.line_items.each do |item|
+          li
+            -sql = "select c.* from #{Category.table_name} c, #{Product.table_name} p where p.id= '#{item.product.id}' and p.category_id = c.id"
+            -category = Category.find_by_sql(sql).first
+            .cart_item_image_wrap.left
+              a href=product_detail_path(category.category_url, item.product.t_name, locale: I18n.locale)
+                .bi style="background: url('#{item.product.image.url(:large)}')no-repeat center center;"
+            .cart_item_info_wrap.left
+              .row
+                .columns
+                  .cart_item_title
+                    a href=product_detail_path(category.category_url, item.product.t_name, locale: I18n.locale)
+                      h3
+                        = truncate item.product.name, length: 30
+              .row
+                .columns.no-padding-left
+                  .quantity_wrap
+                    .quantity_control.quantity_minus
+                      = embedded_svg('button-minus.svg')
+                    input.quantity value="#{item.quantity}"
+                    .quantity_control.quantity_plus
+                      = embedded_svg('button-plus.svg')
+                  - if item.product.product_properties[0]
+                    .product_option_wrap
+                      h4.product_option = item.product.product_properties[0].pp_value
+            .cart_item_price_wrap.right
+              .row
+                .columns.no-padding-right
+                  .delete-item.right data-line-item-id="#{item.id}" data-product-count=""
+              .row
+                .columns.no-padding-right
+                  h3
+                    - if item.product.promotion_price
+                      = item.quantity * item.product.promotion_price
+                    - else
+                      = item.quantity * item.product.price
+                    span
+                      |&nbsp;грн
+            .clearfix
+          -count+=1
+          - if item.product.promotion_price
+            - rez+=item.product.promotion_price.round
+          -else
+            - rez+=item.product.price.round
+    .cart_count_items data-count=count
+
+
+.cart-count-prices
+    .cart-count-prices-inner
+      .ccp_inner.ccp_left
+        |Загальна ціна
+      .ccp_inner.ccp_right
+        =get_total_price(current_cart)
+        |&nbsp;грн
+  .cart-order-product-wrap
+    .cop_inner.cop-left
+      .arrow
+        =embedded_svg('MO-arrow.svg')
+      .title
+        |Продовжити покупки
+    .cop_inner.cop-right.ci_next_step
+      .title
+        |Продовжити покупки
+      .arrow
+        =embedded_svg('MO-arrow.svg')

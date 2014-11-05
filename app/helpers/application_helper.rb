@@ -40,11 +40,13 @@ module ApplicationHelper
     if current_cart && current_cart.line_items.count > 0
       sum = 0
       current_cart.line_items.each do |item|
-        if item.product.promotion_price && item.product.promotion_price > 0
-          sum = sum + item.product.promotion_price * item.quantity
+        if item.product_id
+          if item.product.promotion_price && item.product.promotion_price > 0
+            sum = sum + item.product.promotion_price * item.quantity
 
-        else
-          sum = sum + item.product.price * item.quantity
+          else
+            sum = sum + item.product.price * item.quantity
+          end
         end
       end
       return sum

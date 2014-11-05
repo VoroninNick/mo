@@ -28,20 +28,23 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    product = Product.find(params[:product_id])
+    if params[:product_pack_id] == nil
+      product = Product.find(params[:product_id])
 
-
-    @existed_item = @cart.line_items.where(product_id: product.id)
-    if @existed_item.count > 0
-      @line_item = @existed_item.first
-      if @line_item && !@line_item.quantity
-        @line_item.quantity = 0
+      @existed_item = @cart.line_items.where(product_id: product.id)
+      if @existed_item.count > 0
+        @line_item = @existed_item.first
+        if @line_item && !@line_item.quantity
+          @line_item.quantity = 0
+        end
+        @line_item.increase_quantity(params[:quantity])
+      else
+        @line_item = @cart.line_items.build(product: product, quantity: params[:quantity])
       end
-      #@line_item.quantity = @line_item.quantity + params[:quantity]
-      @line_item.increase_quantity(params[:quantity])
     else
-      @line_item = @cart.line_items.build(product: product, quantity: params[:quantity])
+      @line_item = @cart.line_items.build( p_drink_set_id: params[:p_drink_set_id], product_pack_id: params[:product_pack_id], p_product_id: params[:p_tablecloth_id], p_decor_id: params[:p_decor_id])
     end
+
     flash[:notice] = "Thank you for add this product"
     respond_to do |format|
       if @line_item.save
@@ -92,6 +95,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:product_id, :product_pack_id, :cart_id)
+      params.require(:line_item).permit(:product_id, :product_pack_id, :cart_id, :p_drink_set_id, :p_product_id, :p_decor_id, :decor_id, :drink_set_id )
     end
 end

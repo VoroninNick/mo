@@ -298,9 +298,10 @@
         .row
           .columns.large-12
             .buy_products_pack_wrap
-              .input_send
-                button.cust_button
-                  |Купити комплект
+              form#form_add_to_cart
+                .input_send
+                  button.cust_button data-product-pack-id=@product_set.id
+                    |Добавити в корзину
               .clearfix
 
 

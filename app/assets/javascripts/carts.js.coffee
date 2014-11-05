@@ -61,8 +61,13 @@ $(document).ready ->
         return
 
   $('.pd_product_pack_wrap button.cust_button').click ->
+    $product_id = ""
+    $product_quantity = ""
     $parent = $(this).closest('.pd_product_pack_wrap')
     $lis = $parent.find('.ppi_item_wrap')
+
+    $produck_pack_id = $(this).attr 'data-product-pack-id'
+
     $tablecloth = $lis.filter('.pp-tablecloth-buy')
     $tableclothData = $tablecloth.attr 'data-product-id'
     $dirnkSet = $lis.filter('.pp-drink-set-buy')
@@ -77,8 +82,50 @@ $(document).ready ->
     if $decors.hasClass('one-item')
       $decorsData = $decors.attr 'data-product-id'
 
-    alert 'id скатертини - '+$tableclothData+'\n'+'id чайного сервізу - '+$drinkSetData+'\n'+'id декору - '+$decorsData
+    alert 'id комплекту - '+$produck_pack_id+'\n'+'id скатертини - '+$tableclothData+'\n'+'id чайного сервізу - '+$drinkSetData+'\n'+'id декору - '+$decorsData
 
+    valuesToSubmit = {product_id: $product_id, quantity: $product_quantity, product_pack_id: $produck_pack_id, p_drink_set_id: $drinkSetData, p_tablecloth_id:$tableclothData, p_decor_id: $decorsData}
+
+    $.ajax
+      url: '/line_items'
+      dataType: 'html'
+      type: "POST"
+      data: valuesToSubmit
+      beforeSend: ->
+        return
+      success: (data) ->
+        alert 'success'
+        setCountItems()
+
+        return
+
+      complete: ->
+        return
+
+#    valuesToSubmit = {tablecloth_id:$tableclothData, drink_set_id:$drinkSetData, decor_id:$decorsData}
+#
+#    $.ajax
+#      url: '/add_products_pack'
+#      type: "POST"
+#      data: valuesToSubmit
+#      beforeSend: ->
+#        alert 'start send'
+##        $('.status').removeClass('dn')
+##        $(".status_inner").html "<img src=\"/assets/loader.gif\">"
+#        return
+#      success: (data) ->
+#        alert 'added to cart'
+##        $('form#order_game_form').css({'visibility':'hidden'})
+##        $(".status_inner").html "Дякуюємо! Ми отримали ваші дані, найближчим часом з вами звяжеться наш менеджер."
+#        return
+#      complete: ->
+#        alert 'complete'
+##        $("form#c_feedback").each ->
+##          @reset() #Here form fields will be cleared.
+##          return
+##        $('.status').addClass('dn')
+#
+#        return
 
 
 #$(document).ready ->

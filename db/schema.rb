@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141027144254) do
+ActiveRecord::Schema.define(version: 20141104153656) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -190,9 +190,18 @@ ActiveRecord::Schema.define(version: 20141027144254) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "quantity"
+    t.integer  "decor_id"
+    t.integer  "drink_set_id"
+    t.integer  "decor_quantity"
+    t.integer  "drink_set_quantity"
+    t.integer  "p_drink_set_id"
+    t.integer  "p_product_id"
+    t.integer  "p_decor_id"
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
+  add_index "line_items", ["decor_id"], name: "index_line_items_on_decor_id"
+  add_index "line_items", ["drink_set_id"], name: "index_line_items_on_drink_set_id"
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id"
   add_index "line_items", ["product_pack_id"], name: "index_line_items_on_product_pack_id"
 

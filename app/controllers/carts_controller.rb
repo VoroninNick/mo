@@ -6,7 +6,9 @@ class CartsController < ApplicationController
   def index
     @carts = Cart.all
   end
+  def show_info
 
+  end
   # GET /carts/1
   # GET /carts/1.json
   def show
