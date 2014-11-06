@@ -654,3 +654,25 @@ ul.product-carousel
                 -o-transform: rotate(-22deg) translateY(-50%)
                 transform: rotate(-22deg) translateY(-50%)
 
+ul.tablecloth-head-controls
+    li
+        display: inline-block
+        position: absolute
+        svg
+            width: 80px
+            height: 60px
+            display: block
+            cursor: pointer
+            margin: 0 auto
+        &.prev
+            top: 0
+            left: 0
+        &.active
+            left: 50%
+            +my_horizontal_align
+            polygon, path
+                fill: #a78c30 !important
+        &.next
+            top: 0
+            right: 0
+

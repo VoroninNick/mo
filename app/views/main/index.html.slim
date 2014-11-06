@@ -21,7 +21,7 @@
                 h2 = c.name
                 = image_tag ("#{c.icon.url}"), class: 'header_right_icon'
               .ci_page
-                =link_to all_tablecloth_path(anchor: (if index==0 then; 'holiday' elsif index==1 then; 'ethnic' elsif index==2 then; 'theme' elsif index==3 then; 'kids' elsif index==4 then; 'brand' end;)) do
+                =link_to one_product_path(c.category_url, locale: I18n.locale) do
                   .ci_page_inner
                     .ci_count_items_wrap
                       .ci_count
@@ -50,7 +50,7 @@
     - if index == 1 && @promotion
       -p =@promotion
       .promotion_wrap.dn.medium-db
-        .promo_bi style="background: url('#{p.image.url(:large)}')no-repeat center center;"
+        .promo_bi
           .row
             .columns.large-12
               h2 =p.title
@@ -76,7 +76,7 @@
     - if index == 2 && @promotion
       -p =@promotion
       .promotion_wrap.medium-dn
-        .promo_bi style="background: url('#{p.image.url(:large)}')no-repeat center center;"
+        .promo_bi
           .row
             .columns.large-12
               h2 =p.title
@@ -98,7 +98,7 @@
                               =prod.promotion_price
                               span
                                 |&nbsp;грн
-      /.clearfix
+
 .clearfix
 .ip_about_us
   .row

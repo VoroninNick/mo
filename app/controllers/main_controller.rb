@@ -20,8 +20,8 @@ class MainController < ApplicationController
   end
 
   def contacts
-
   end
+
 
   def testing
 

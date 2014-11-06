@@ -1,3 +1,120 @@
+.row
+  .columns.large-12
+    nav class="breadcrumbs"
+      a href=root_path
+        = embedded_svg ('MO-Home.svg')
+      a class="unavailable" href=""
+        |Скатертини
+
+.products_tabs_wrap
+  .row
+    .columns.large-12
+      ul.all_products_carousel.tablecloth-head-controls
+        -if @categories && @categories.count > 0
+          -c1 = @categories[0]
+          -c2 = @categories[1]
+          -c3 = @categories[2]
+          -c4 = @categories[3]
+          -c5 = @categories[4]
+
+          -if @parent.category_url == c1.category_url
+            li.prev
+              a href=one_product_path(c5.category_url, locale: I18n.locale)
+                -if c5.icon.exists?
+                  =embedded_svg_from_root_directory "#{c5.icon.path}", :class => 'svg_ico'
+
+            li.active
+              a
+                -if c1.icon.exists?
+                  =embedded_svg_from_root_directory "#{c1.icon.path}", :class => 'svg_ico'
+                h4 =c1.name
+
+            li.next
+              a href=one_product_path(c2.category_url, locale: I18n.locale)
+                -if c2.icon.exists?
+                  =embedded_svg_from_root_directory "#{c2.icon.path}", :class => 'svg_ico'
+
+          -if @parent.category_url == c2.category_url
+            li.prev
+              a href=one_product_path(c1.category_url, locale: I18n.locale)
+                -if c1.icon.exists?
+                  =embedded_svg_from_root_directory "#{c1.icon.path}", :class => 'svg_ico'
+
+            li.active
+              a
+                -if c2.icon.exists?
+                  =embedded_svg_from_root_directory "#{c2.icon.path}", :class => 'svg_ico'
+                h4 =c2.name
+
+            li.next
+              a href=one_product_path(c3.category_url, locale: I18n.locale)
+                -if c3.icon.exists?
+                  =embedded_svg_from_root_directory "#{c3.icon.path}", :class => 'svg_ico'
+          -if @parent.category_url == c3.category_url
+            li.prev
+              a href=one_product_path(c2.category_url, locale: I18n.locale)
+                -if c2.icon.exists?
+                  =embedded_svg_from_root_directory "#{c2.icon.path}", :class => 'svg_ico'
+
+            li.active
+              a
+                -if c3.icon.exists?
+                  =embedded_svg_from_root_directory "#{c3.icon.path}", :class => 'svg_ico'
+                h4 =c3.name
+
+            li.next
+              a href=one_product_path(c4.category_url, locale: I18n.locale)
+                -if c4.icon.exists?
+                  =embedded_svg_from_root_directory "#{c4.icon.path}", :class => 'svg_ico'
+          -if @parent.category_url == c4.category_url
+            li.prev
+              a href=one_product_path(c3.category_url, locale: I18n.locale)
+                -if c3.icon.exists?
+                  =embedded_svg_from_root_directory "#{c3.icon.path}", :class => 'svg_ico'
+
+            li.active
+              a
+                -if c4.icon.exists?
+                  =embedded_svg_from_root_directory "#{c4.icon.path}", :class => 'svg_ico'
+                h4 =c4.name
+
+            li.next
+              a href=one_product_path(c5.category_url, locale: I18n.locale)
+                -if c5.icon.exists?
+                  =embedded_svg_from_root_directory "#{c5.icon.path}", :class => 'svg_ico'
+          -if @parent.category_url == c5.category_url
+            li.prev
+              a href=one_product_path(c4.category_url, locale: I18n.locale)
+                -if c4.icon.exists?
+                  =embedded_svg_from_root_directory "#{c4.icon.path}", :class => 'svg_ico'
+
+            li.active
+              a
+                -if c5.icon.exists?
+                  =embedded_svg_from_root_directory "#{c5.icon.path}", :class => 'svg_ico'
+                h4 =c5.name
+
+            li.next
+              a href=one_product_path(c1.category_url, locale: I18n.locale)
+                -if c1.icon.exists?
+                  =embedded_svg_from_root_directory "#{c1.icon.path}", :class => 'svg_ico'
+
+
+
+
+
+
+
+          /
+          /- @categories.each_with_index do |c, index|
+          /  -if index<=4
+          /    -if c.category_url == @parent.category_url
+          /      li class="active"
+          /        a
+          /          -if c.icon.exists?
+          /            =embedded_svg_from_root_directory "#{c.icon.path}", :class => 'svg_ico'
+          /          h4 =c.name
+
 .product-list-wrap
   .row
     .columns.large-12

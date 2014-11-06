@@ -73,7 +73,9 @@ class LineItemsController < ApplicationController
       end
     end
   end
-
+  def temp_view
+    @var = "test"
+  end
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy

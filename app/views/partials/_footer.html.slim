@@ -5,7 +5,8 @@ footer.sf_footer
         .columns.large-12
           ul.f_menu
             li
-              =link_to all_tablecloth_path(anchor: 'holiday') do
+              - subcategory = Category.where(:parent_id => true).first
+              =link_to one_product_path(subcategory.category_url, locale: I18n.locale) do
                 |Скатертини
             li
               a href=all_sets_path

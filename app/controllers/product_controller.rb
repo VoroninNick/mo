@@ -2,6 +2,9 @@ class ProductController < ApplicationController
   def all_tablecloth
     @tablecloth = Category.where(:parent_id => true)
   end
+
+
+
   def all_sets
     @sets = DsCategory.where(:parent_id => nil)
   end
@@ -13,6 +16,8 @@ class ProductController < ApplicationController
     category = params[:category]
     sql = "select p.* from #{Category.table_name} c, #{Product.table_name} p where c.category_url = '#{category}' and p.category_id = c.id"
 
+    sql_cat = 'SELECT  "categories".* FROM "categories"  WHERE "categories"."parent_id" = 1 '
+    @categories = Category.find_by_sql(sql_cat)
     @parent = Category.find_by_category_url(params[:category])
     @products = Product.find_by_sql(sql)
   end

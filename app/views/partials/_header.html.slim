@@ -40,30 +40,36 @@ header
       .columns.large-12
         .first_menu
           ul
+            - subcategory = Category.where(:parent_id => true)
             li
               a.title
                 span
                   |Скатертини
             li
-              =link_to all_tablecloth_path(anchor: 'holiday') do
-                span
-                  |Святкові
+              -if subcategory && subcategory[0]
+                =link_to one_product_path(subcategory[0].category_url, locale: I18n.locale) do
+                  span
+                    |Святкові
             li
-              =link_to all_tablecloth_path(anchor: 'ethnic') do
-                span
-                  |Етно
+              -if subcategory && subcategory[1]
+                =link_to one_product_path(subcategory[1].category_url, locale: I18n.locale) do
+                  span
+                    |Етно
             li
-              =link_to all_tablecloth_path(anchor: 'theme') do
-                span
-                  |тематичні
+              -if subcategory && subcategory[2]
+                =link_to one_product_path(subcategory[2].category_url, locale: I18n.locale) do
+                  span
+                    |тематичні
             li
-              =link_to all_tablecloth_path(anchor: 'kids') do
-                span
-                  |дитячі
+              -if subcategory && subcategory[3]
+                =link_to one_product_path(subcategory[3].category_url, locale: I18n.locale) do
+                  span
+                    |дитячі
             li
-              =link_to all_tablecloth_path(anchor: 'brand') do
-                span
-                  |фірмові
+              -if subcategory && subcategory[4]
+                =link_to one_product_path(subcategory[4].category_url, locale: I18n.locale) do
+                  span
+                    |фірмові
             li
               a
                 span
@@ -108,4 +114,3 @@ header
         .clearfix
 .modal_cart_wrap
   =render partial: "partials/forms/cart"
-  /=render partial: "carts/show_info"
