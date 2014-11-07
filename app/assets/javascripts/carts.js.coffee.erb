@@ -2,6 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+<%
+ require Rails.root.join('app/helpers/application_helper')
+%>
+
 UpdateCart = ->
 
 
@@ -32,7 +36,7 @@ $(document).ready ->
         return
       success: (data) ->
         alert 'success'
-        setCountItems()
+        loadPartials()
 
         return
 
@@ -50,15 +54,12 @@ $(document).ready ->
       type: "DELETE"
 #      data: valuesToSubmit
       beforeSend: ->
-        return
+
       success: (data) ->
         alert 'success'
-        setCountItems()
-
-        return
-
       complete: ->
-        return
+        alert "complete"
+
 
   $('.pd_product_pack_wrap button.cust_button').click ->
     $product_id = ""
