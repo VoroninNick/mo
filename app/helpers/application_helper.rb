@@ -82,7 +82,7 @@ module ApplicationHelper
       end
       return sum
     else
-      "0"
+      0
     end
   end
 
