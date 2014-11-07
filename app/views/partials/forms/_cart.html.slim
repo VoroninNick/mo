@@ -135,8 +135,9 @@
       .ccp_inner.ccp_left
         |Загальна ціна
       .ccp_inner.ccp_right
-        =get_total_price(current_cart).round()
-        |&nbsp;грн
+        -if get_total_price(current_cart)
+          =get_total_price(current_cart).round()
+          |&nbsp;грн
   .cart-order-product-wrap
     .cop_inner.cop-left
       .arrow
