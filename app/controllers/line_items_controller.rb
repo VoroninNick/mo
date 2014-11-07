@@ -18,7 +18,6 @@ class LineItemsController < ApplicationController
   # GET /line_items/new
   def new
     @line_item = LineItem.new
-    # flash[:notice] = "Line item created"
   end
 
   # GET /line_items/1/edit
@@ -73,14 +72,10 @@ class LineItemsController < ApplicationController
       end
     end
   end
-  def temp_view
-    @var = "test"
-  end
+
   # DELETE /line_items/1
   # DELETE /line_items/1.json
   def destroy
-    # item = params[:line_item_id]
-    # @item_for_delete = @cart.line_items.destroy(item)
 
     @line_item.destroy
     respond_to do |format|

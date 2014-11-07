@@ -1,5 +1,3 @@
-.dsad
-  |test
 -if @parent
   .row
     .columns.large-12
@@ -53,8 +51,6 @@
                     .input_send
                       button.cust_button data-product-id=i.id
                         |Добавити в корзину
-                        /= button_to line_items_path(product_id: i) do
-                        /  |add
                     .clearfix
                   .description_wrap
                     = raw i.description

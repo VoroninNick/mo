@@ -4,7 +4,7 @@
   .mc_header
     .mch_inner
       .cart_count_product
-        .count_product data-count=''
+        .count_product data-count="#{get_count_products}"
           = embedded_svg ("MO-Basket.svg")
         span
           |Ваша корзина
@@ -49,22 +49,23 @@
                   .columns.no-padding-right
                     h3
                       - if item.product.promotion_price
-                        = item.quantity * item.product.promotion_price
+                        = item.quantity * item.product.promotion_price.round()
                       - else
-                        = item.quantity * item.product.price
+                        = item.quantity * item.product.price.round()
                       span
                         |&nbsp;грн
               .clearfix
             -count+=1
             - if item.product.promotion_price
-              - rez+=item.product.promotion_price.round
+              - rez+=item.product.promotion_price
             -else
-              - rez+=item.product.price.round
+              - rez+=item.product.price
       .light_gray_back_wrap
         ul.cart-product-packs
           -cart.line_items.each do |item|
             -if item.product == nil
               li
+                -pp = Product.where(id: item.product_pack_id).first
                 -sql = "select pp.* from #{ProductPack.table_name} pp where pp.id= '#{item.product_pack_id}'"
                 -pp = ProductPack.find_by_sql(sql).first
 
@@ -115,10 +116,12 @@
                     = embedded_svg ("pp-sum.svg")
                   .cpp-sum-wrap.left
                     h3
-                      -if tablecloth.promotion_price.nil? && tablecloth.price == nil
-                        =tablecloth.promotion_price + decor.price + drink_set.price
-                      -else
-                        =tablecloth.price + decor.price + drink_set.price
+                      -if tablecloth && tablecloth.promotion_price
+                        - pp_sum = (tablecloth.promotion_price + decor.price + drink_set.price)*pp.percent/100.to_f
+                        = pp_sum.round()
+                      -elsif tablecloth && tablecloth.price
+                        - pp_sum = (tablecloth.price + decor.price + drink_set.price)*pp.percent/100.to_f
+                        = pp_sum.round()
                       span
                         |&nbsp;грн
                 .clearfix
@@ -132,7 +135,7 @@
       .ccp_inner.ccp_left
         |Загальна ціна
       .ccp_inner.ccp_right
-        =get_total_price(current_cart)
+        =get_total_price(current_cart).round()
         |&nbsp;грн
   .cart-order-product-wrap
     .cop_inner.cop-left

@@ -82,7 +82,7 @@ class ProductPack < ActiveRecord::Base
         label 'Назва'
       end
       field :percent do
-        label 'Ціна'
+        label 'Знижка'
       end
       field :published do
         label 'Активний?'

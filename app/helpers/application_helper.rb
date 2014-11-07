@@ -31,7 +31,11 @@ module ApplicationHelper
     quantity = 0
 
     current_cart.line_items.each do |l|
-      quantity +=l.quantity
+      if l.quantity
+        quantity +=l.quantity
+      elsif l.product_pack_id
+        quantity +=1
+      end
     end
     return quantity
   end
@@ -39,15 +43,42 @@ module ApplicationHelper
   def get_total_price(current_cart)
     if current_cart && current_cart.line_items.count > 0
       sum = 0
+      product_pack_sum = 0
       current_cart.line_items.each do |item|
-        if item.product_id
+        if item && item.product_pack_id
+          product_pack = ProductPack.where(id: item.product_pack_id).first
+          product_pack_percent = product_pack.percent/100.to_f
+          tablecloth = Product.where(id: item.p_product_id).first
+          if tablecloth && tablecloth.promotion_price
+            tablecloth_price = tablecloth.promotion_price
+          elsif tablecloth
+            tablecloth_price = tablecloth.price
+          end
+          decor = Decor.where(id: item.p_decor_id).first
+          if decor && decor.new_price
+            decor_price = decor.new_price
+          elsif decor
+            decor_price = decor.price
+          end
+          drink_set = DrinkSet.where(id: item.p_drink_set_id).first
+          if drink_set && drink_set.new_price
+            drink_set_price = drink_set.new_price
+          elsif drink_set
+            drink_set_price = drink_set.price
+          end
+
+          if tablecloth && decor && drink_set
+            product_pack_sum = (tablecloth_price + decor_price + drink_set_price)*product_pack_percent
+          end
+          sum = product_pack_sum + sum
+        elsif item && item.product_id
           if item.product.promotion_price && item.product.promotion_price > 0
             sum = sum + item.product.promotion_price * item.quantity
-
           else
             sum = sum + item.product.price * item.quantity
           end
         end
+
       end
       return sum
     else

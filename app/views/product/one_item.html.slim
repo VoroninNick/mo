@@ -99,22 +99,6 @@
                 -if c1.icon.exists?
                   =embedded_svg_from_root_directory "#{c1.icon.path}", :class => 'svg_ico'
 
-
-
-
-
-
-
-          /
-          /- @categories.each_with_index do |c, index|
-          /  -if index<=4
-          /    -if c.category_url == @parent.category_url
-          /      li class="active"
-          /        a
-          /          -if c.icon.exists?
-          /            =embedded_svg_from_root_directory "#{c.icon.path}", :class => 'svg_ico'
-          /          h4 =c.name
-
 .product-list-wrap
   .row
     .columns.large-12
