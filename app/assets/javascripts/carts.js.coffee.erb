@@ -43,7 +43,7 @@ $(document).ready ->
           itemToAdd.children().remove()
           itemToAdd.append('<div class="status-adding">ТОВАР ВЖЕ В КОРЗИНІ!</div>')
           $('<label class="one-product-anchor-to-cart" for="modal_cart" id="basket">Переглянути</label>').insertAfter(itemToAdd)
-        setCountItems(count)
+          setCountItems(count)
         loadPartials()
 
         return
@@ -102,8 +102,7 @@ $(document).ready ->
         return
       success: (data) ->
         alert 'success'
-        setCountItems()
-
+        setCountItems(3)
         return
 
       complete: ->

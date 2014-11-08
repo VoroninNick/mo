@@ -34,7 +34,7 @@ module ApplicationHelper
       if l.quantity
         quantity +=l.quantity
       elsif l.product_pack_id
-        quantity +=1
+        quantity +=3
       end
     end
     return quantity
