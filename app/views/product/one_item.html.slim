@@ -124,23 +124,24 @@
                   .container
                     .row
                       .columns.large-6
-                        .bi style="background: url('#{i.image.url(:large)}')no-repeat center center;"
+                        .bi style="background: url('#{i.photo_galleries[0].image.url(:large)}')no-repeat center center;"
                         ul.product_gallery_images
-                          -i.photo_galleries.each do |photo|
+                          -i.photo_galleries.each_with_index do |photo, index|
                             li
-                              a href="#{photo.image.url(:large)}"
+                              a.button-for-prev href="#{photo.image.url(:large)}" class=(if index==0 then; 'active' end;)
                                 =embedded_svg('MO-picture switchers.svg')
                               a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
                       .columns.large-6
                         .detail_info_wrap
-                          a href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale)
-                            h2
-                              =i.name
+                          .diw-title-wrap
+                            a href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale)
+                              h2
+                                =i.name
                           h3
                             =i.price
                             |&nbsp;грн
                           form#form_add_to_cart
-                            .input
+                            .input.quantity-items-wrap
                               a.add_one_point
                                 =embedded_svg('MO-arrow.svg')
                               input.count_product value="1"
@@ -153,5 +154,9 @@
                           p = i.short_description
                           a.close-detail href="#"
                             =embedded_svg('MO-close button.svg')
+                        .read-more-wrap
+                          .p_read_more.read-more-items
+                            a.right href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale)
+                              |Більш детально >>>
 
           .clearfix

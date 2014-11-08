@@ -26,7 +26,7 @@ $(document).ready ->
         , 800
         false
 
-    #louver doors prev image and set attr
+    # prev image and set attr
     $(".product_detail_wrap ul#product_gallery_images li a").click (event)->
         event.preventDefault()
         mainImage = $(this).attr("href") #Find Image Name
@@ -34,11 +34,27 @@ $(document).ready ->
         $(".product_detail_wrap .link_to_prev .bi").parent().attr href: mainImage
 
     #products list image preview
-    $("ul.product_gallery_images li div").click ->
+    $("ul.product_gallery_images li div").click (e) ->
+        e.preventDefault()
+        alert "test"
         mainImage = $(this).attr("data-image") #Find Image Name
         parent = $(this).closest('.product-detail')
         parent.find(".bi").css('background',"url("+mainImage+")no-repeat center center")
         parent.find(".bi").parent().attr href: mainImage
+
+    #products list image preview
+    $("ul.product_gallery_images li a").click (e) ->
+        e.preventDefault()
+        mainImage = $(this).attr("href") #Find Image Name
+        parent = $(this).closest('.columns')
+
+        $lis = parent.find('.button-for-prev')
+        $lis.removeClass('active')
+        $(this).addClass('active')
+
+        parent.find(".bi").css('background',"url("+mainImage+")no-repeat center center")
+        parent.find(".bi").parent().attr href: mainImage
+
 
     $('.fancybox').fancybox
         helpers:

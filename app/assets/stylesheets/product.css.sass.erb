@@ -138,7 +138,7 @@
                 -o-transform: translateX(-50%) rotate(180deg)
                 transform: translateX(-50%) rotate(180deg)
         .product-detail
-            height: 500px
+            height: 520px
 .product-detail
     position: absolute
     top: auto
@@ -159,6 +159,9 @@
     padding-top: 50px
     .detail_info_wrap
         position: relative
+        z-index: 1
+        .diw-title-wrap
+            padding-bottom: 30px
         .detail_info_inner
             margin-right: 30px
     h2
@@ -299,7 +302,7 @@ ul.product_gallery_images
         display: inline-block
         width: 25px
         height: 25px
-        padding: 0 4px
+        margin: 0 5px
         div
             cursor: pointer
         svg
@@ -307,7 +310,26 @@ ul.product_gallery_images
             height: 100%
             path, rect
                 fill: #ffffff
-
+        a
+            &:hover
+                path, rect
+                    fill: #c8ae4b
+            &.active
+                svg
+                    path, rect
+                        fill: #dd7272 !important
+.read-more-wrap
+    position: absolute
+    width: 100%
+    height: 0
+    padding-top: 100%
+    top: 0
+    left: 0
+    .read-more-items
+        position: relative
+        bottom: 21px
+        a
+            z-index: 1
 .product_detail_wrap
     .product-detail
         height: auto !important
