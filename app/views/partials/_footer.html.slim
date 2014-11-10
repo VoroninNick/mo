@@ -9,10 +9,12 @@ footer.sf_footer
               =link_to one_product_path(subcategory.category_url, locale: I18n.locale) do
                 |Скатертини
             li
-              a href=all_sets_path
+              - ds_category = DsCategory.where(:parent_id => nil).first
+              =link_to sets_category_path(ds_category.t_name, locale: I18n.locale) do
                 |Сервізи
             li
-              a href=all_decors_path
+              - d_category = DCategory.order('created_at DESC').first
+              =link_to decor_category_path(d_category.t_name, locale: I18n.locale) do
                 | Декори
             li
               a href=special_offers_path

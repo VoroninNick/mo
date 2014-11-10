@@ -11,10 +11,16 @@ header
         .mcb_one_item
           .mcb_phone
             a href="tell:+380504170728"
-              .link_inner.link_phone_inner
+              .link_inner.link_phone_inner.phone-link-with-brackets
                 = embedded_svg ("MO-Phone.svg"), class: "f_ico"
                 span
-                  |+38 (050) 417 07 28
+                  |+38&nbsp;
+                  .bracket
+                    |(
+                  |050
+                  .bracket
+                    |)
+                  |&nbsp;417 07 28
         .mcb_one_item
           .mcb_phone
             a href="mailto:voronin.nick@gmail.com"

@@ -75,6 +75,7 @@ class ProductPack < ActiveRecord::Base
     weight 4
 
     list do
+      field :id
       field :name do
         label 'Назва'
       end

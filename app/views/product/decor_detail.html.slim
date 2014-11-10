@@ -4,7 +4,7 @@
       nav class="breadcrumbs"
         a href=root_path
           = embedded_svg ('MO-Home.svg')
-        a href=one_product_path(@parent.t_name, locale: I18n.locale)
+        a href=decor_category_path(@parent.t_name, locale: I18n.locale)
           =@parent.name
         -if @product
           a class="unavailable" href=""

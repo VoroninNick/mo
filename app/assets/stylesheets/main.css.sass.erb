@@ -15,6 +15,10 @@ h4
     color: #a78c30
 .dn
     display: none
+nav.breadcrumbs
+    & a.unavailable
+        text-transform: capitalize !important
+        color: #d1d3d4 !important
 label.one-product-anchor-to-cart
     display: inline-block
     color: #dd7272
@@ -181,6 +185,10 @@ header
                     vertical-align: middle
                     padding:
                         left: 40px
+                    font:
+                        style: italic
+                        size: 1rem
+                    letter-spacing: 0.1rem
                     @media (min-width : 0em) and (max-width : 1180px)
                         display: none
 .one_category
@@ -1248,6 +1256,17 @@ ul.social_networks_wrap
 .test-wrap
     padding-left: 40px
     height: 45px
+
+.phone-link-with-brackets
+    svg
+        left: 0
+    span
+        float: left
+        font:
+            size: 1.3125rem !important
+        .bracket
+            display: inline-block
+            color: #e8d69b
 
 
 

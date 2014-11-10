@@ -1,14 +1,13 @@
--if @parent
-  .row
-    .columns.large-12
-      nav class="breadcrumbs"
-        a href=root_path
-          = embedded_svg ('MO-Home.svg')
-        a href=one_product_path(@parent.t_name, locale: I18n.locale)
-          =@parent.name
-        -if @product
-          a class="unavailable" href=""
-            =@product.name
+.row
+  .columns.large-12
+    nav class="breadcrumbs"
+      a href=root_path
+        = embedded_svg ('MO-Home.svg')
+      a href=all_sets_path(locale: I18n.locale)
+        |Сервізи
+      -if @product
+        a class="unavailable" href=""
+          = truncate @product.name, length: 65
 
 .product_detail_wrap.one_item_product_detail_wrap
   .row
@@ -61,7 +60,7 @@
                             =pp.pp_value
 
       .clearfix
-
+=@product_set.inspect
 -if @product_set
   .light_gray_back_wrap.pd_products_pack_wrap
     .row

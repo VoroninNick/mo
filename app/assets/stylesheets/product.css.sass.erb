@@ -313,11 +313,11 @@ ul.product_gallery_images
         a
             &:hover
                 path, rect
-                    fill: #c8ae4b
+                    fill: #dd7272
             &.active
                 svg
                     path, rect
-                        fill: #dd7272 !important
+                        fill: #c8ae4b !important
 .read-more-wrap
     position: absolute
     width: 100%
@@ -525,7 +525,8 @@ ul.all_products_carousel
         h4
             text:
                 align: center
-            padding-top: 20px
+            padding-top: 10px
+            text-transform: capitalize
         &.category_prev
             position: absolute
             left: 0
@@ -680,6 +681,14 @@ ul.tablecloth-head-controls
     li
         display: inline-block
         position: absolute
+        a
+            position: relative
+            height: 60px
+            svg
+                display: inline-block
+                &.svg_ico_arrow
+                    width: 36px
+                    height: 60px
         svg
             width: 80px
             height: 60px
@@ -689,12 +698,44 @@ ul.tablecloth-head-controls
         &.prev
             top: 0
             left: 0
+
         &.active
             left: 50%
             +my_horizontal_align
-            polygon, path
+            polygon, path, circle
                 fill: #a78c30 !important
+            svg
+                +my_horizontal_align
         &.next
             top: 0
             right: 0
+
+.sets-tabs-wrap
+    border-bottom: 2px dashed #d1d3d4
+ul#drink-sets-tags
+    margin-left: 0
+    padding: 20px 0
+    li
+        list-style: none
+        display: inline-block
+        font-weight: 400
+        font-size: 1.125rem
+        font-family: "Playfair Display", serif
+        color: #d1d3d4
+        font-style: italic
+        height: 23px
+        border-right: 1px solid #d1d3d4
+        line-height: 23px
+        padding: 0 12px
+        cursor: pointer
+        &:last-of-type
+            border-right: none
+        &.active
+            color: #6d6e71 !important
+        &:hover
+            color: #dd7272
+ul#drink-sets-pages
+    margin-left: 0
+    li
+        list-style: none
 

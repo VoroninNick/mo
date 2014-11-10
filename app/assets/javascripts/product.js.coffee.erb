@@ -3,6 +3,20 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready ->
+
+  $('ul#drink-sets-tags li').click ->
+    current_position = $(this).index()
+    $head_tabs = $(this).closest('.drink-sets-tabs-wrap')
+    $head_tabs_li = $head_tabs.find('li.dst')
+    $head_tabs_li.removeClass('active')
+    $(this).addClass('active')
+
+    $body_tabs_li = $head_tabs.find('li.dsb')
+
+    $body_tabs_li.removeClass('active').addClass('hide')
+    $body_tabs_li.eq(current_position).addClass('active').removeClass('hide')
+
+
   #  ===================================================================== product one item, drink sets carousel
   owl_ds = $("ul.pd_drink_sets_carousel")
   owl_ds.owlCarousel

@@ -3,8 +3,10 @@
     nav class="breadcrumbs"
       a href=root_path
         = embedded_svg ('MO-Home.svg')
-      a class="unavailable" href=""
+      a href=all_tablecloth_path
         |Скатертини
+      a class="unavailable" href=""
+        =@parent.name
 
 .products_tabs_wrap
   .row

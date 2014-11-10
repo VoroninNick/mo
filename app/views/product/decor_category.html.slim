@@ -1,0 +1,148 @@
+.row
+  .columns.large-12
+    nav class="breadcrumbs"
+      a href=root_path
+        = embedded_svg ('MO-Home.svg')
+      a href=all_decors_path
+        |Декори
+      a class="unavailable" href=""
+        =@current_category.name
+
+-if @all_category && @all_category.count > 0
+  .products_tabs_wrap
+    .row
+      .columns
+        ul.all_products_carousel.tablecloth-head-controls
+          -c_leather = @all_category[0]
+          -c_wooden = @all_category[1]
+          -c_porcelain = @all_category[2]
+          -c_textile = @all_category[3]
+          -if @current_category.t_name == c_leather.t_name
+            li.prev
+              a href=decor_category_path(c_textile.t_name, locale: I18n.locale)
+                -if c_textile.icon.exists?
+                  =embedded_svg_from_root_directory "#{c_textile.icon.path}", :class => 'svg_ico'
+
+            li.active
+              a
+                -if c_leather.icon.exists?
+                  =embedded_svg_from_root_directory "#{c_leather.icon.path}", :class => 'svg_ico'
+                h4 =c_leather.name
+
+            li.next
+              a href=decor_category_path(c_wooden.t_name, locale: I18n.locale)
+                -if c_wooden.icon.exists?
+                  =embedded_svg_from_root_directory "#{c_wooden.icon.path}", :class => 'svg_ico'
+
+          -if @current_category.t_name == c_wooden.t_name
+            li.prev
+              a href=decor_category_path(c_leather.t_name, locale: I18n.locale)
+                -if c_leather.icon.exists?
+                  =embedded_svg_from_root_directory "#{c_leather.icon.path}", :class => 'svg_ico'
+
+            li.active
+              a
+                -if c_wooden.icon.exists?
+                  =embedded_svg_from_root_directory "#{c_wooden.icon.path}", :class => 'svg_ico'
+                h4 =c_wooden.name
+
+            li.next
+              a href=decor_category_path(c_porcelain.t_name, locale: I18n.locale)
+                -if c_porcelain.icon.exists?
+                  =embedded_svg_from_root_directory "#{c_porcelain.icon.path}", :class => 'svg_ico'
+
+          -if @current_category.t_name == c_porcelain.t_name
+            li.prev
+              a href=decor_category_path(c_wooden.t_name, locale: I18n.locale)
+                -if c_wooden.icon.exists?
+                  =embedded_svg_from_root_directory "#{c_wooden.icon.path}", :class => 'svg_ico'
+
+            li.active
+              a
+                -if c_porcelain.icon.exists?
+                  =embedded_svg_from_root_directory "#{c_porcelain.icon.path}", :class => 'svg_ico'
+                h4 =c_porcelain.name
+
+            li.next
+              a href=decor_category_path(c_textile.t_name, locale: I18n.locale)
+                -if c_textile.icon.exists?
+                  =embedded_svg_from_root_directory "#{c_textile.icon.path}", :class => 'svg_ico'
+
+          -if @current_category.t_name == c_textile.t_name
+            li.prev
+              a href=decor_category_path(c_porcelain.t_name, locale: I18n.locale)
+                -if c_porcelain.icon.exists?
+                  =embedded_svg_from_root_directory "#{c_porcelain.icon.path}", :class => 'svg_ico'
+
+            li.active
+              a
+                -if c_textile.icon.exists?
+                  =embedded_svg_from_root_directory "#{c_textile.icon.path}", :class => 'svg_ico'
+                h4 =c_textile.name
+
+            li.next
+              a href=decor_category_path(c_leather.t_name, locale: I18n.locale)
+                -if c_leather.icon.exists?
+                  =embedded_svg_from_root_directory "#{c_leather.icon.path}", :class => 'svg_ico'
+
+  .product-list-wrap
+    .row
+      .columns.large-12
+        .product-list
+          .row
+            - if @products
+              - @products.each do |i|
+                .columns.large-3.product-block
+                  .block-inner
+                    .image-cont style="opacity: 1;"
+                      .bi style="background: url('#{i.image.url(:thumb)}')no-repeat center center;"
+                      .product_info_wrapper
+                        .pi_inner
+                          a.more-info
+                            .pi_top
+                              h5 =truncate i.name, lenght: '80'
+                            .pi_bottom
+                              h4
+                                =i.price
+                                span
+                                  |&nbsp;грн
+                  .product-detail
+                    .container
+                      .row
+                        .columns.large-6
+                          .bi style="background: url('#{i.photo_galleries[0].image.url(:large)}')no-repeat center center;"
+                          ul.product_gallery_images
+                            -i.photo_galleries.each_with_index do |photo, index|
+                              li
+                                a.button-for-prev href="#{photo.image.url(:large)}" class=(if index==0 then; 'active' end;)
+                                  =embedded_svg('MO-picture switchers.svg')
+                                a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
+                        .columns.large-6
+                          .detail_info_wrap
+                            .diw-title-wrap
+                              a href=decors_detail_path(@current_category.t_name, i.t_name, locale: I18n.locale)
+                                h2
+                                  =i.name
+                            h3
+                              =i.price
+                              |&nbsp;грн
+                            form#form_add_to_cart
+                              .input.quantity-items-wrap
+                                a.add_one_point
+                                  =embedded_svg('MO-arrow.svg')
+                                input.count_product value="1"
+                                a.remove_one_point
+                                  =embedded_svg('MO-arrow.svg')
+                              .input_send.not-product-pack
+                                button.cust_button data-product-id=i.id
+                                  |Добавити в корзину
+                              .clearfix
+                            p = i.short_description
+                            a.close-detail href="#"
+                              =embedded_svg('MO-close button.svg')
+                          .read-more-wrap
+                            .p_read_more.read-more-items
+                              a.right href=decors_detail_path(@current_category.t_name, i.t_name, locale: I18n.locale)
+                                |Більш детально >>>
+
+            .clearfix

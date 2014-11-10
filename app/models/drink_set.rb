@@ -84,6 +84,7 @@ class DrinkSet < ActiveRecord::Base
       field :name do
         label 'Назва'
       end
+      field :product_pack_id
       field :t_name do
         label 'Транслітерація'
       end

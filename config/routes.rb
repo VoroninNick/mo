@@ -80,13 +80,14 @@ Rails.application.routes.draw do
   get '/tablecloth/:category' => 'product#one_item', as: 'one_product'
   get '/tablecloth/:category/:name' => 'product#product_detail', as: 'product_detail'
 
+  get '/sets' => 'product#all_sets', as: 'all_sets'
+  get '/sets/:category' => 'product#sets_category', as: 'sets_category'
+  get '/sets/:category/:name' => 'product#drink_set_detail', as: 'sets_detail'
 
-  get '/sets/:category/:subcategory/:name' => 'product#drink_set_detail', as: 'sets_detail'
+  get '/decors' => 'product#all_decors', as: 'all_decors'
+  get '/decors/:category' => 'product#decor_category', as: 'decor_category'
   get '/decors/:category/:name' => 'product#decor_detail', as: 'decors_detail'
 
-
-  get '/sets' => 'product#all_sets', as: 'all_sets'
-  get '/decors' => 'product#all_decors', as: 'all_decors'
 
   get '/special_offers' => 'main#special_offers', as: 'special_offers'
 
