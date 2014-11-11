@@ -1,0 +1,46 @@
+.ordering_wrap
+  .row
+    .columns
+      h2.text-center Оформлення замовлення
+  .row
+    .columns
+      ul#status-ico-wrap
+        li.active
+          =embedded_svg ('MO-order-step 1.svg'), class: 'ordering-status-ico'
+        li.middle-li.middle-li-second
+          =embedded_svg ('MO-order-step 2.svg'), class: 'ordering-status-ico'
+        li.middle-li.middle-li-third
+          =embedded_svg ('MO-order-step 3.svg'), class: 'ordering-status-ico'
+        li
+          =embedded_svg ('MO-order-step 4.svg'), class: 'ordering-status-ico'
+  .row
+    .columns
+      ul#status-tabs-wrap
+        li.active
+          .row
+            .columns.large-4.large-centered
+              select name="select"
+                option value="" disabled="disabled" selected="selected" style="display:none;"
+                  |Місце доставки
+                option value="По Україні"
+                  |По Україні
+        li.hide
+          .row
+            .columns.large-4.large-centered
+              select name="select"
+                option value="" disabled="disabled" selected="selected" style="display:none;"
+                  |По Україні
+              select name="select"
+                option value="" disabled="disabled" selected="selected" style="display:none;"
+                  |Нова пошта
+          .row
+            .columns.large-6
+              .input
+                input name="city" placeholder="Місто доставки"
+            .columns.large-6
+              .input
+                input name="department" placeholder="№ відділення"
+        li.hide
+          |3
+        li.hide
+          |4

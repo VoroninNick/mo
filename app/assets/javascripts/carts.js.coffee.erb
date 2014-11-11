@@ -15,9 +15,11 @@ setCountItems = (quantity)->
 
 $(document).ready ->
 
+ # add tablecloth to cart
   $('#form_add_to_cart button').click (e) ->
     e.preventDefault()
 
+    $currentElement = $(this)
     parent = $(this).closest('form')
     count = parent.find("input.count_product").val()
 
@@ -25,7 +27,13 @@ $(document).ready ->
     itemToRemove = parent.find('.quantity-items-wrap')
     itemToAdd = $(this).parent()
 
-    valuesToSubmit = {product_id: attrRenderID, quantity: count}
+    if $currentElement.hasClass("is-drink-set")
+      valuesToSubmit = {drink_set_id: attrRenderID, ds_quantity: count}
+    else if $currentElement.hasClass("is-decor")
+      valuesToSubmit = {decor_id: attrRenderID, d_quantity: count}
+    else if $currentElement.hasClass("is-tablecloth")
+      valuesToSubmit = {product_id: attrRenderID, quantity: count}
+
 
     $.ajax
       url: '/line_items'
@@ -107,3 +115,16 @@ $(document).ready ->
 
       complete: ->
         return
+
+# ordering products
+  $('ul#status-ico-wrap li').click ->
+    current_position = $(this).index()
+    $head_tabs = $(this).closest('ul#status-ico-wrap')
+    $head_tabs_li = $head_tabs.find('li')
+    $head_tabs_li.removeClass('active')
+    $(this).addClass('active')
+
+    $body_tabs_li = $('ul#status-tabs-wrap').find('li')
+
+    $body_tabs_li.removeClass('active').addClass('hide')
+    $body_tabs_li.eq(current_position).addClass('active').removeClass('hide')

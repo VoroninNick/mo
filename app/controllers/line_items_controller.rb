@@ -27,19 +27,53 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    if params[:product_pack_id] == nil
-      product = Product.find(params[:product_id])
+    product_id = params[:product_id]
+    drink_set_id = params[:drink_set_id]
+    decor_id = params[:decor_id]
 
-      @existed_item = @cart.line_items.where(product_id: product.id)
-      if @existed_item.count > 0
-        @line_item = @existed_item.first
-        if @line_item && !@line_item.quantity
-          @line_item.quantity = 0
+    if params[:product_pack_id] == nil
+      if product_id
+        product = Product.find(product_id)
+        @existed_item = @cart.line_items.where(product_id: product.id)
+        if @existed_item.count > 0
+          @line_item = @existed_item.first
+          if @line_item && !@line_item.quantity
+            @line_item.quantity = 0
+          end
+          @line_item.increase_quantity(params[:quantity])
+        else
+          @line_item = @cart.line_items.build(product: product, quantity: params[:quantity])
         end
-        @line_item.increase_quantity(params[:quantity])
-      else
-        @line_item = @cart.line_items.build(product: product, quantity: params[:quantity])
+
+      elsif drink_set_id
+        drink_set = DrinkSet.find(drink_set_id)
+        @existed_item = @cart.line_items.where(drink_set_id: drink_set.id)
+        if @existed_item.count > 0
+          @line_item = @existed_item.first
+          if @line_item && !@line_item.drink_set_quantity
+            @line_item.drink_set_quantity = 0
+          end
+          @line_item.increase_ds_quantity(params[:ds_quantity])
+        else
+          @line_item = @cart.line_items.build(drink_set: drink_set, drink_set_quantity: params[:ds_quantity])
+        end
+
+      elsif decor_id
+        decor = Decor.find(decor_id)
+        @existed_item = @cart.line_items.where(decor_id: decor.id)
+        if @existed_item.count > 0
+          @line_item = @existed_item.first
+          if @line_item && !@line_item.decor_quantity
+            @line_item.decor_quantity = 0
+          end
+          @line_item.increase_d_quantity(params[:quantity])
+        else
+          @line_item = @cart.line_items.build(decor: decor, decor_quantity: params[:d_quantity])
+        end
+
       end
+
+
     else
       @line_item = @cart.line_items.build( p_drink_set_id: params[:p_drink_set_id], product_pack_id: params[:product_pack_id], p_product_id: params[:p_tablecloth_id], p_decor_id: params[:p_decor_id])
     end

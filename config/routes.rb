@@ -96,6 +96,8 @@ Rails.application.routes.draw do
   get '/warranty' => 'info#warranty', as: 'warranty'
   get '/payment' => 'info#payment', as: 'payment'
 
+  get '/ordering' => 'main#ordering', as: 'ordering'
+
   post '/add_products_pack' => 'line_items#add_product_pack_item_to_line_item', as: 'add_product_pack_item_to_line_item'
 
   root "main#index"

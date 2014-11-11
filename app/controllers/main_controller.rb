@@ -19,6 +19,10 @@ class MainController < ApplicationController
     @products = Product.where('promotion_price is not null').order('created_at ASC')
   end
 
+  def ordering
+
+  end
+  
   def contacts
   end
 

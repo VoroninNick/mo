@@ -60,10 +60,107 @@
               - rez+=item.product.promotion_price
             -else
               - rez+=item.product.price
+          -decor =item.decor
+          -if decor
+            li
+              /-sql = "select c.* from #{DsCategory.table_name} c, #{DrinkSet.table_name} p where p.id= '#{item.drink_set.id}' and p.ds_category_id = c.id"
+              /-category = DsCategory.find_by_sql(sql).first
+              /=category.inspect
+              .cart_item_image_wrap.left
+                a
+                  .bi style="background: url('#{decor.image.url(:large)}')no-repeat center center;"
+              .cart_item_info_wrap.left
+                .row
+                  .columns
+                    .cart_item_title
+                      a
+                        h3
+                          = truncate decor.name, length: 30
+                .row
+                  .columns.no-padding-left
+                    .quantity_wrap
+                      .quantity_control.quantity_minus
+                        = embedded_svg('button-minus.svg')
+                      input.quantity value="#{item.decor_quantity}"
+                      .quantity_control.quantity_plus
+                        = embedded_svg('button-plus.svg')
+                    - if decor.product_properties[0]
+                      .product_option_wrap
+                        h4.product_option = decor.product_properties[0].pp_value
+              .cart_item_price_wrap.right
+                .row
+                  .columns.no-padding-right
+                    .delete-item.right data-line-item-id="#{item.id}" data-product-count=""
+                .row
+                  .columns.no-padding-right
+                    h3
+                      - if decor.new_price
+                        = item.decor_quantity * decor.new_price.round()
+                      - else
+                        = item.decor_quantity * decor.price.round()
+                      span
+                        |&nbsp;грн
+              .clearfix
+            -count+=1
+            - if decor.new_price
+              - rez+=decor.new_price
+            -else
+              - rez+=decor.price
+
+
+
+          -if item.drink_set
+            li
+              /-sql = "select c.* from #{DsCategory.table_name} c, #{DrinkSet.table_name} p where p.id= '#{item.drink_set.id}' and p.ds_category_id = c.id"
+              /-category = DsCategory.find_by_sql(sql).first
+              /=category.inspect
+              .cart_item_image_wrap.left
+                a
+                  .bi style="background: url('#{item.drink_set.image.url(:large)}')no-repeat center center;"
+              .cart_item_info_wrap.left
+                .row
+                  .columns
+                    .cart_item_title
+                      a
+                        h3
+                          = truncate item.drink_set.name, length: 30
+                .row
+                  .columns.no-padding-left
+                    .quantity_wrap
+                      .quantity_control.quantity_minus
+                        = embedded_svg('button-minus.svg')
+                      input.quantity value="#{item.drink_set_quantity}"
+                      .quantity_control.quantity_plus
+                        = embedded_svg('button-plus.svg')
+                    - if item.drink_set.product_properties[0]
+                      .product_option_wrap
+                        h4.product_option = item.drink_set.product_properties[0].pp_value
+              .cart_item_price_wrap.right
+                .row
+                  .columns.no-padding-right
+                    .delete-item.right data-line-item-id="#{item.id}" data-product-count=""
+                .row
+                  .columns.no-padding-right
+                    h3
+                      - if item.drink_set.new_price
+                        = item.drink_set_quantity * item.drink_set.new_price.round()
+                      - else
+                        = item.drink_set_quantity * item.drink_set.price.round()
+                      span
+                        |&nbsp;грн
+              .clearfix
+            -count+=1
+            - if item.drink_set.new_price
+              - rez+=item.drink_set.new_price
+            -else
+              - rez+=item.drink_set.price
+
+
+
       .light_gray_back_wrap
         ul.cart-product-packs
           -cart.line_items.each do |item|
-            -if item.product == nil
+            -if item.product_pack_id
               li
                 -pp = Product.where(id: item.product_pack_id).first
                 -sql = "select pp.* from #{ProductPack.table_name} pp where pp.id= '#{item.product_pack_id}'"
@@ -125,6 +222,7 @@
                       span
                         |&nbsp;грн
                 .clearfix
+
     .cart_count_items data-count=count
 
 
@@ -141,13 +239,15 @@
           |&nbsp;грн
   .cart-order-product-wrap
     .cop_inner.cop-left
-      .arrow
-        =embedded_svg('MO-arrow.svg')
-      .title
-        |Продовжити покупки
+      label.close_cart for="modal_cart"
+        .arrow
+          =embedded_svg('MO-arrow.svg')
+        .title
+          |Продовжити покупки
     .cop_inner.cop-right.ci_next_step
-      .title
-        |Продовжити покупки
-      .arrow
-        =embedded_svg('MO-arrow.svg')
+      a href=ordering_path(locale: I18n.locale)
+        .title
+          |Оформити замовлення
+        .arrow
+          =embedded_svg('MO-arrow.svg')
 

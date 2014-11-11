@@ -15,6 +15,12 @@ class LineItem < ActiveRecord::Base
   def increase_quantity count
     self.quantity = self.quantity + count.to_i
   end
+  def increase_ds_quantity count
+    self.drink_set_quantity = self.drink_set_quantity + count.to_i
+  end
+  def increase_d_quantity count
+    self.decor_quantity = self.decor_quantity + count.to_i
+  end
 
 
 end

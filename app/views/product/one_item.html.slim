@@ -22,6 +22,7 @@
           -if @parent.category_url == c1.category_url
             li.prev
               a href=one_product_path(c5.category_url, locale: I18n.locale)
+                =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
                 -if c5.icon.exists?
                   =embedded_svg_from_root_directory "#{c5.icon.path}", :class => 'svg_ico'
 
@@ -35,10 +36,12 @@
               a href=one_product_path(c2.category_url, locale: I18n.locale)
                 -if c2.icon.exists?
                   =embedded_svg_from_root_directory "#{c2.icon.path}", :class => 'svg_ico'
+                =embedded_svg ("MO-arrow-right.svg"), :class => 'svg_ico svg_ico_arrow'
 
           -if @parent.category_url == c2.category_url
             li.prev
               a href=one_product_path(c1.category_url, locale: I18n.locale)
+                =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
                 -if c1.icon.exists?
                   =embedded_svg_from_root_directory "#{c1.icon.path}", :class => 'svg_ico'
 
@@ -52,9 +55,11 @@
               a href=one_product_path(c3.category_url, locale: I18n.locale)
                 -if c3.icon.exists?
                   =embedded_svg_from_root_directory "#{c3.icon.path}", :class => 'svg_ico'
+                =embedded_svg ("MO-arrow-right.svg"), :class => 'svg_ico svg_ico_arrow'
           -if @parent.category_url == c3.category_url
             li.prev
               a href=one_product_path(c2.category_url, locale: I18n.locale)
+                =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
                 -if c2.icon.exists?
                   =embedded_svg_from_root_directory "#{c2.icon.path}", :class => 'svg_ico'
 
@@ -68,9 +73,11 @@
               a href=one_product_path(c4.category_url, locale: I18n.locale)
                 -if c4.icon.exists?
                   =embedded_svg_from_root_directory "#{c4.icon.path}", :class => 'svg_ico'
+                =embedded_svg ("MO-arrow-right.svg"), :class => 'svg_ico svg_ico_arrow'
           -if @parent.category_url == c4.category_url
             li.prev
               a href=one_product_path(c3.category_url, locale: I18n.locale)
+                =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
                 -if c3.icon.exists?
                   =embedded_svg_from_root_directory "#{c3.icon.path}", :class => 'svg_ico'
 
@@ -84,9 +91,11 @@
               a href=one_product_path(c5.category_url, locale: I18n.locale)
                 -if c5.icon.exists?
                   =embedded_svg_from_root_directory "#{c5.icon.path}", :class => 'svg_ico'
+                =embedded_svg ("MO-arrow-right.svg"), :class => 'svg_ico svg_ico_arrow'
           -if @parent.category_url == c5.category_url
             li.prev
               a href=one_product_path(c4.category_url, locale: I18n.locale)
+                =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
                 -if c4.icon.exists?
                   =embedded_svg_from_root_directory "#{c4.icon.path}", :class => 'svg_ico'
 
@@ -100,6 +109,7 @@
               a href=one_product_path(c1.category_url, locale: I18n.locale)
                 -if c1.icon.exists?
                   =embedded_svg_from_root_directory "#{c1.icon.path}", :class => 'svg_ico'
+                =embedded_svg ("MO-arrow-right.svg"), :class => 'svg_ico svg_ico_arrow'
 
 .product-list-wrap
   .row
@@ -150,7 +160,7 @@
                               a.remove_one_point
                                 =embedded_svg('MO-arrow.svg')
                             .input_send.not-product-pack
-                              button.cust_button data-product-id=i.id
+                              button.cust_button.is-tablecloth data-product-id=i.id
                                 |Добавити в корзину
                             .clearfix
                           p = i.short_description

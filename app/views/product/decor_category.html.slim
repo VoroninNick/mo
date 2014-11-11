@@ -20,6 +20,7 @@
           -if @current_category.t_name == c_leather.t_name
             li.prev
               a href=decor_category_path(c_textile.t_name, locale: I18n.locale)
+                =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
                 -if c_textile.icon.exists?
                   =embedded_svg_from_root_directory "#{c_textile.icon.path}", :class => 'svg_ico'
 
@@ -33,10 +34,12 @@
               a href=decor_category_path(c_wooden.t_name, locale: I18n.locale)
                 -if c_wooden.icon.exists?
                   =embedded_svg_from_root_directory "#{c_wooden.icon.path}", :class => 'svg_ico'
+                =embedded_svg ("MO-arrow-right.svg"), :class => 'svg_ico svg_ico_arrow'
 
           -if @current_category.t_name == c_wooden.t_name
             li.prev
               a href=decor_category_path(c_leather.t_name, locale: I18n.locale)
+                =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
                 -if c_leather.icon.exists?
                   =embedded_svg_from_root_directory "#{c_leather.icon.path}", :class => 'svg_ico'
 
@@ -50,10 +53,12 @@
               a href=decor_category_path(c_porcelain.t_name, locale: I18n.locale)
                 -if c_porcelain.icon.exists?
                   =embedded_svg_from_root_directory "#{c_porcelain.icon.path}", :class => 'svg_ico'
+                =embedded_svg ("MO-arrow-right.svg"), :class => 'svg_ico svg_ico_arrow'
 
           -if @current_category.t_name == c_porcelain.t_name
             li.prev
               a href=decor_category_path(c_wooden.t_name, locale: I18n.locale)
+                =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
                 -if c_wooden.icon.exists?
                   =embedded_svg_from_root_directory "#{c_wooden.icon.path}", :class => 'svg_ico'
 
@@ -67,10 +72,12 @@
               a href=decor_category_path(c_textile.t_name, locale: I18n.locale)
                 -if c_textile.icon.exists?
                   =embedded_svg_from_root_directory "#{c_textile.icon.path}", :class => 'svg_ico'
+                =embedded_svg ("MO-arrow-right.svg"), :class => 'svg_ico svg_ico_arrow'
 
           -if @current_category.t_name == c_textile.t_name
             li.prev
               a href=decor_category_path(c_porcelain.t_name, locale: I18n.locale)
+                =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
                 -if c_porcelain.icon.exists?
                   =embedded_svg_from_root_directory "#{c_porcelain.icon.path}", :class => 'svg_ico'
 
@@ -84,6 +91,7 @@
               a href=decor_category_path(c_leather.t_name, locale: I18n.locale)
                 -if c_leather.icon.exists?
                   =embedded_svg_from_root_directory "#{c_leather.icon.path}", :class => 'svg_ico'
+                =embedded_svg ("MO-arrow-right.svg"), :class => 'svg_ico svg_ico_arrow'
 
   .product-list-wrap
     .row
@@ -134,7 +142,7 @@
                                 a.remove_one_point
                                   =embedded_svg('MO-arrow.svg')
                               .input_send.not-product-pack
-                                button.cust_button data-product-id=i.id
+                                button.cust_button.is-decor data-product-id=i.id
                                   |Добавити в корзину
                               .clearfix
                             p = i.short_description

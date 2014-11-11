@@ -483,6 +483,49 @@ input.all_special_offers_tab_input_status[type=radio]:checked ~ .sf_container
     form
         padding: 0 !important
 
+.ordering_wrap
+    padding-top: 65px
+    h2
+        font:
+            size: 1.3125rem
+            family: "Playfair Display", serif
+            weight: 700
+        color: #c8ae4b
+        text-transform: uppercase
+        letter-spacing: 0.1rem
+    ul#status-ico-wrap
+        padding-top: 25px
+        margin-left: 0
+        li
+            list-style: none
+            display: inline-block
+            cursor: pointer
+            width: 53px
+            height: 53px
+            &.middle-li
+            &.middle-li-second
+                margin: 0 13% 0 25%
+                &:before
+                    display: block
+                    content: ''
+                    width: 20px
+                    height: 1px
+                    border-bottom: 2px dashed #f1f2f2
+            &.middle-li-third
+                margin: 0 25% 0 13%
+
+            &.active
+                path
+                    fill: #c8ae4b
+
+        .ordering-status-ico
+            width: 100%
+            height: 100%
+    ul#status-tabs-wrap
+        margin-left: 0
+        li
+            list-style: none
+
 
 
 
