@@ -85,7 +85,7 @@
                 -parent_category_ds = DsCategory.find_by_sql(sql)
                 -ds_parent = parent_category_ds.first
                 -ds_children = ds.ds_category
-                a  href=sets_detail_path(ds_parent.t_name, ds_children.t_name, ds.t_name, locale: I18n.locale)
+                a  href=sets_detail_path(ds_parent.t_name, ds.t_name, locale: I18n.locale)
                   h2 =ds.name
                 .pd_parent_category
                   |18 предметів
@@ -117,7 +117,7 @@
                       -parent_category_ds = DsCategory.find_by_sql(sql)
                       -ds_parent = parent_category_ds.first
                       -ds_children = ds.ds_category
-                      a href=sets_detail_path(ds_parent.t_name, ds_children.t_name, ds.t_name, locale: I18n.locale)
+                      a href=sets_detail_path(ds_parent.t_name, ds.t_name, locale: I18n.locale)
                         |Більш детально >>>
               .clearfix
   -if @product_set.decors

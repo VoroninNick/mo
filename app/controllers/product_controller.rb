@@ -68,7 +68,6 @@ class ProductController < ApplicationController
     @product = @product_one_item.first
 
     query2 = "select pp.* from #{ProductPack.table_name} pp, #{DrinkSet.table_name} ds, set_packs sp where sp.drink_set_id = ds.id and sp.product_pack_id = pp.id and ds.id = #{@product.id}"
-    # q = "select c.* from products p, collections c, products_collections_bind cp where cp.product_id = p.id and cp.collection_id = c.id and p.id = #{req_product}"
     result = ActiveRecord::Base.connection.execute( query2 )
     @product_pack_one_item = []
     result.each do |row|
@@ -106,7 +105,7 @@ class ProductController < ApplicationController
     @product = @product_one_item.first
 
 
-    query2 = "select pc.* from #{ProductPack.table_name} pc, #{Decor.table_name} p where p.product_pack_id = pc.id and p.id = #{@product.id}"
+    query2 = "select pp.* from #{ProductPack.table_name} pp, #{Decor.table_name} d, decor_packs dp where dp.decor_id = d.id and dp.product_pack_id = pp.id and d.id = #{@product.id}"
     result = ActiveRecord::Base.connection.execute( query2 )
     @product_pack_one_item = []
     result.each do |row|
