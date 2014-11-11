@@ -3,7 +3,7 @@
     nav class="breadcrumbs"
       a href=root_path
         = embedded_svg ('MO-Home.svg')
-      a href=all_tablecloth_path
+      a href=all_tablecloth_path(locale: I18n.locale)
         |Скатертини
       a class="unavailable" href=""
         =@parent.name

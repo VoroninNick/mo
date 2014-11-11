@@ -5,6 +5,8 @@
         = embedded_svg ('MO-Home.svg')
       a href=all_sets_path(locale: I18n.locale)
         |Сервізи
+      a href=sets_category_path(@parent.t_name, locale: I18n.locale)
+        =@parent.name
       -if @product
         a class="unavailable" href=""
           = truncate @product.name, length: 65
@@ -60,7 +62,7 @@
                             =pp.pp_value
 
       .clearfix
-=@product_set.inspect
+/=@product_set.inspect
 -if @product_set
   .light_gray_back_wrap.pd_products_pack_wrap
     .row

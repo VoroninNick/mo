@@ -4,7 +4,7 @@
 @import "mixins"
 
 .product-list-wrap
-
+    padding-bottom: 60px
 .product_info_wrapper
     position: absolute
     left: 0
@@ -738,4 +738,17 @@ ul#drink-sets-pages
     margin-left: 0
     li
         list-style: none
-
+.decors-category-wrap
+    padding: 40px 0 60px 0
+    .one-category-wrap
+        min-height: 150px
+        svg
+            width: 100%
+            height: 80px
+            margin: 0 auto
+            display: block
+        a
+            &:hover
+                h4, path, circle, polygon
+                    color: #dd7272
+                    fill: #dd7272

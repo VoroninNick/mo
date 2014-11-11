@@ -55,7 +55,6 @@ class ProductController < ApplicationController
 
   def drink_set_detail
     parent_category = params[:category]
-    # children_category = params[:subcategory]
     product = params[:name]
 
     @parent = DsCategory.where(t_name: params[:category]).first
@@ -78,13 +77,6 @@ class ProductController < ApplicationController
 
     @product_set = @product_pack_one_item.first
 
-  #
-    # req_collection = 5
-    # req_product = 5
-    # q = "select c.* from products p, collections c, products_collections_bind cp where cp.product_id = p.id and cp.collection_id = c.id and p.id = #{req_product}"
-    #
-
-  #
   end
 
   def all_decors

@@ -121,10 +121,11 @@
     .row
       .columns.large-5.no-padding-right-large.small-6
         .more_categories_wrap
+          - ds_category = DsCategory.where(:parent_id => nil).first
           h2
-            a
+            a href=sets_category_path(ds_category.t_name, locale: I18n.locale)
               |Чайний сервіс
-          a
+          a href=sets_category_path(ds_category.t_name, locale: I18n.locale)
             .more_categories_image.tea_service_image
       .columns.large-2.mdn
         .mc_and
@@ -133,10 +134,11 @@
               |або
       .columns.large-5.no-padding-left-large.small-6
         .more_categories_wrap
+          - d_category = DCategory.order('created_at DESC').first
           h2
-            a
+            a href=decor_category_path(d_category.t_name, locale: I18n.locale)
               |Домашній декор
-          a
+          a href=decor_category_path(d_category.t_name, locale: I18n.locale)
             .more_categories_image.home_decor_image
 .ip_publication_wrap
   .row

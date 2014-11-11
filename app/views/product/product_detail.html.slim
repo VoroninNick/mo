@@ -4,6 +4,8 @@
       nav class="breadcrumbs"
         a href=root_path
           = embedded_svg ('MO-Home.svg')
+        a href=all_tablecloth_path(locale: I18n.locale)
+          |Скатертини
         a href=one_product_path(@parent.category_url, locale: I18n.locale)
           =@parent.name
         -if @product

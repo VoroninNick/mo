@@ -5,88 +5,101 @@
         = embedded_svg ('MO-Home.svg')
       a class="unavailable" href=""
         |Скатертини
+
 -if @tablecloth
-  #holiday
-  #ethnic
-  #theme
-  #kids
-  #brand
-  .products_tabs_wrap
-    .row
-      .columns.large-12
-        ul.all_products_carousel
-          -@tablecloth.each_with_index do |c, index|
-            -if c.parent !=0 && index<=4
-              li class=(if index==0 then; 'category_holiday_tab' elsif index==1 then; 'category_ethnic_tab' elsif index==2 then; 'category_theme_tab' elsif index==3 then; 'category_kid_tab' elsif index==4 then; 'category_brand_tab'  end;)
-                a href=(if index==0 then; '#holiday' elsif index==1 then; '#ethnic' elsif index==2 then; '#theme' elsif index==3 then; '#kids' elsif index==4 then; '#brand'  end;)
-                  label
-                    -if c.icon.exists?
-                      =embedded_svg_from_root_directory "#{c.icon.path}", :class => 'svg_ico'
-                    h4 =c.name
-
-
+  .decors-category-wrap
     .row
       -@tablecloth.each_with_index do |c, index|
-        -if index<=4
-          .products_tab class=(if index==0 then; 'holiday_tab' elsif index==1 then; 'ethnic_tab' elsif index==2 then; 'theme_tab active_products_tab' elsif index==3 then; 'kid_tab' elsif index==4 then; 'brand_tab'  end;)
-            -c.products.each_with_index do |i, index|
-              .columns.large-3.product-block
-                .block-inner
-                  .image-cont style="opacity: 1;"
-                    .bi style="background: url('#{i.image.url(:thumb)}')no-repeat center center;"
-                    .product_info_wrapper
-                      .pi_inner
-                        a.more-info
-                          .pi_top
-                            h5 =truncate i.name, lenght: '80'
-                          .pi_bottom
-                            h4
-                              =i.price
-                              span
-                                |&nbsp;грн
-                .product-detail
-                  .container
-                    .row
-                      .columns.large-6
-                        -i.photo_galleries.each_with_index do |p, index|
-                          -if index==0
-                            a.fancy_gallery href="#{p.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
-                              .bi style="background: url('#{i.image.url(:large)}')no-repeat center center;"
-                          -elsif index >0
-                            a.fancy_gallery href="#{p.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
-                        ul.product_gallery_images
-                          -i.photo_galleries.each do |photo|
-                            li
-                              div data-image="#{photo.image.url(:large)}"
-                                =embedded_svg('MO-picture switchers.svg')
-                      .columns.large-6
-                        .detail_info_wrap
-                          .detail_info_inner
-                            a href=product_detail_path(c.category_url, i.t_name, locale: I18n.locale)
-                              h2
-                                =i.name
-                            h3
-                              =i.price
-                              |&nbsp;грн
-                            form#form_add_to_cart
-                              .input
-                                a.add_one_point
-                                  =embedded_svg('MO-arrow.svg')
-                                input.count_product value="1"
-                                a.remove_one_point
-                                  =embedded_svg('MO-arrow.svg')
-                              .input_send
-                                /  = button_to 'Добавити в корзину', add_product_cart_line_items_path(session[:cart], :product_id => i.id), :method => :put, :class => 'cust_button'
-                                button.cust_button data-product-id=i.id data-cart="#{session[:cart]}"
-                                  |Добавити в корзину
-                              .clearfix
-                            p = i.short_description
-                          a.close-detail
-                            =embedded_svg('MO-close button.svg')
-                        .row
-                          .columns.large-12
-                            .p_read_more.right
-                              a href=product_detail_path(c.category_url, i.t_name, locale: I18n.locale)
-                                |Більш детально >>>
+        .columns.large-4 class=(if @tablecloth.last then; 'end' end;)
+          .one-category-wrap
+            a href=one_product_path(c.category_url, locale: I18n.locale)
+              -if c.icon.exists?
+                =embedded_svg_from_root_directory "#{c.icon.path}", :class => 'svg_ico'
+              h4.text-center =c.name
+              .clearfix
 
-            .clearfix
+/-if @tablecloth
+/  #holiday
+/  #ethnic
+/  #theme
+/  #kids
+/  #brand
+/  .products_tabs_wrap
+/    .row
+/      .columns.large-12
+/        ul.all_products_carousel
+/          -@tablecloth.each_with_index do |c, index|
+/            -if c.parent !=0 && index<=4
+/              li class=(if index==0 then; 'category_holiday_tab' elsif index==1 then; 'category_ethnic_tab' elsif index==2 then; 'category_theme_tab' elsif index==3 then; 'category_kid_tab' elsif index==4 then; 'category_brand_tab'  end;)
+/                a href=(if index==0 then; '#holiday' elsif index==1 then; '#ethnic' elsif index==2 then; '#theme' elsif index==3 then; '#kids' elsif index==4 then; '#brand'  end;)
+/                  label
+/                    -if c.icon.exists?
+/                      =embedded_svg_from_root_directory "#{c.icon.path}", :class => 'svg_ico'
+/                    h4 =c.name
+/
+/
+/    .row
+/      -@tablecloth.each_with_index do |c, index|
+/        -if index<=4
+/          .products_tab class=(if index==0 then; 'holiday_tab' elsif index==1 then; 'ethnic_tab' elsif index==2 then; 'theme_tab active_products_tab' elsif index==3 then; 'kid_tab' elsif index==4 then; 'brand_tab'  end;)
+/            -c.products.each_with_index do |i, index|
+/              .columns.large-3.product-block
+/                .block-inner
+/                  .image-cont style="opacity: 1;"
+/                    .bi style="background: url('#{i.image.url(:thumb)}')no-repeat center center;"
+/                    .product_info_wrapper
+/                      .pi_inner
+/                        a.more-info
+/                          .pi_top
+/                            h5 =truncate i.name, lenght: '80'
+/                          .pi_bottom
+/                            h4
+/                              =i.price
+/                              span
+/                                |&nbsp;грн
+/                .product-detail
+/                  .container
+/                    .row
+/                      .columns.large-6
+/                        -i.photo_galleries.each_with_index do |p, index|
+/                          -if index==0
+/                            a.fancy_gallery href="#{p.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
+/                              .bi style="background: url('#{i.image.url(:large)}')no-repeat center center;"
+/                          -elsif index >0
+/                            a.fancy_gallery href="#{p.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
+/                        ul.product_gallery_images
+/                          -i.photo_galleries.each do |photo|
+/                            li
+/                              div data-image="#{photo.image.url(:large)}"
+/                                =embedded_svg('MO-picture switchers.svg')
+/                      .columns.large-6
+/                        .detail_info_wrap
+/                          .detail_info_inner
+/                            a href=product_detail_path(c.category_url, i.t_name, locale: I18n.locale)
+/                              h2
+/                                =i.name
+/                            h3
+/                              =i.price
+/                              |&nbsp;грн
+/                            form#form_add_to_cart
+/                              .input
+/                                a.add_one_point
+/                                  =embedded_svg('MO-arrow.svg')
+/                                input.count_product value="1"
+/                                a.remove_one_point
+/                                  =embedded_svg('MO-arrow.svg')
+/                              .input_send
+/                                /  = button_to 'Добавити в корзину', add_product_cart_line_items_path(session[:cart], :product_id => i.id), :method => :put, :class => 'cust_button'
+/                                button.cust_button data-product-id=i.id data-cart="#{session[:cart]}"
+/                                  |Добавити в корзину
+/                              .clearfix
+/                            p = i.short_description
+/                          a.close-detail
+/                            =embedded_svg('MO-close button.svg')
+/                        .row
+/                          .columns.large-12
+/                            .p_read_more.right
+/                              a href=product_detail_path(c.category_url, i.t_name, locale: I18n.locale)
+/                                |Більш детально >>>
+/
+/            .clearfix

@@ -3,7 +3,7 @@
     nav class="breadcrumbs"
       a href=root_path
         = embedded_svg ('MO-Home.svg')
-      a href=all_sets_path
+      a href=all_sets_path(locale: I18n.locale)
         |Сервізи
       a class="unavailable" href=""
         =@current_category.name
