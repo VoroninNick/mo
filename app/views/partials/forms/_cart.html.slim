@@ -63,17 +63,15 @@
           -decor =item.decor
           -if decor
             li
-              /-sql = "select c.* from #{DsCategory.table_name} c, #{DrinkSet.table_name} p where p.id= '#{item.drink_set.id}' and p.ds_category_id = c.id"
-              /-category = DsCategory.find_by_sql(sql).first
-              /=category.inspect
+              -category = decor.d_category
               .cart_item_image_wrap.left
-                a
+                a href=decors_detail_path(category.t_name, decor.t_name, locale: I18n.locale)
                   .bi style="background: url('#{decor.image.url(:large)}')no-repeat center center;"
               .cart_item_info_wrap.left
                 .row
                   .columns
                     .cart_item_title
-                      a
+                      a href=decors_detail_path(category.t_name, decor.t_name, locale: I18n.locale)
                         h3
                           = truncate decor.name, length: 30
                 .row
@@ -108,22 +106,20 @@
               - rez+=decor.price
 
 
-
-          -if item.drink_set
+          -drink_set = item.drink_set
+          -if drink_set
             li
-              /-sql = "select c.* from #{DsCategory.table_name} c, #{DrinkSet.table_name} p where p.id= '#{item.drink_set.id}' and p.ds_category_id = c.id"
-              /-category = DsCategory.find_by_sql(sql).first
-              /=category.inspect
+              -category = drink_set.ds_category.parent
               .cart_item_image_wrap.left
-                a
-                  .bi style="background: url('#{item.drink_set.image.url(:large)}')no-repeat center center;"
+                a href=sets_detail_path(category.t_name, drink_set.t_name, locale: I18n.locale)
+                  .bi style="background: url('#{drink_set.image.url(:large)}')no-repeat center center;"
               .cart_item_info_wrap.left
                 .row
                   .columns
                     .cart_item_title
-                      a
+                      a href=sets_detail_path(category.t_name, drink_set.t_name, locale: I18n.locale)
                         h3
-                          = truncate item.drink_set.name, length: 30
+                          = truncate drink_set.name, length: 30
                 .row
                   .columns.no-padding-left
                     .quantity_wrap
@@ -132,9 +128,9 @@
                       input.quantity value="#{item.drink_set_quantity}"
                       .quantity_control.quantity_plus
                         = embedded_svg('button-plus.svg')
-                    - if item.drink_set.product_properties[0]
+                    - if drink_set.product_properties[0]
                       .product_option_wrap
-                        h4.product_option = item.drink_set.product_properties[0].pp_value
+                        h4.product_option = drink_set.product_properties[0].pp_value
               .cart_item_price_wrap.right
                 .row
                   .columns.no-padding-right
@@ -142,18 +138,18 @@
                 .row
                   .columns.no-padding-right
                     h3
-                      - if item.drink_set.new_price
-                        = item.drink_set_quantity * item.drink_set.new_price.round()
+                      - if drink_set.new_price
+                        = item.drink_set_quantity * drink_set.new_price.round()
                       - else
-                        = item.drink_set_quantity * item.drink_set.price.round()
+                        = item.drink_set_quantity * drink_set.price.round()
                       span
                         |&nbsp;грн
               .clearfix
             -count+=1
-            - if item.drink_set.new_price
-              - rez+=item.drink_set.new_price
+            - if drink_set.new_price
+              - rez+=drink_set.new_price
             -else
-              - rez+=item.drink_set.price
+              - rez+=drink_set.price
 
 
 

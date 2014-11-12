@@ -1,46 +1,154 @@
 .ordering_wrap
   .row
     .columns
-      h2.text-center Оформлення замовлення
-  .row
-    .columns
-      ul#status-ico-wrap
-        li.active
-          =embedded_svg ('MO-order-step 1.svg'), class: 'ordering-status-ico'
-        li.middle-li.middle-li-second
-          =embedded_svg ('MO-order-step 2.svg'), class: 'ordering-status-ico'
-        li.middle-li.middle-li-third
-          =embedded_svg ('MO-order-step 3.svg'), class: 'ordering-status-ico'
-        li
-          =embedded_svg ('MO-order-step 4.svg'), class: 'ordering-status-ico'
+      .page-header-wrap
+        h2.text-center Оформлення замовлення
   .row
     .columns
       ul#status-tabs-wrap
-        li.active
+        li#ordering-prev-step.active
           .row
             .columns.large-4.large-centered
               select name="select"
                 option value="" disabled="disabled" selected="selected" style="display:none;"
-                  |Місце доставки
-                option value="По Україні"
+                  |Куди доставити
+                option value="Lviv"
+                  |Львів
+                option value="Ukraine"
                   |По Україні
-        li.hide
+          .new-post-wrap.hide
+            .row
+              .columns.large-4.large-centered
+                select name="select"
+                  option value="" disabled="disabled" selected="selected" style="display:none;"
+                    |Нова пошта
+            .row
+              .columns.large-8.large-centered
+                .row
+                  .columns.large-6
+                    .input
+                      input name="city" placeholder="Місто доставки"
+                  .columns.large-6
+                    .input
+                      input name="department" placeholder="№ відділення"
+            .row
+              .columns
+                .link-to-post-office-wrap
+                  a href="http://novaposhta.ua/office" rel="nofollow"
+                    h6.text-center
+                      |Переглянути список відділень "Нової пошти"
           .row
             .columns.large-4.large-centered
               select name="select"
                 option value="" disabled="disabled" selected="selected" style="display:none;"
-                  |По Україні
-              select name="select"
-                option value="" disabled="disabled" selected="selected" style="display:none;"
-                  |Нова пошта
+                  |Виберіть спосіб оплати
+                option value="at_reception"
+                  |Оплата при одержанні
+                option value="private"
+                  |Приват банк
+                option value="in_terms_of"
+                  |По перерахунку
+          .requisites-wrap.hide
+            .row
+              .columns.large-8.large-centered
+                h5
+                  |Наші реквізити
+            .row
+              .columns.large-8.large-centered
+                .row
+                  .columns.large-6.medium-6.small-6
+                    span.r-key
+                      |Отримувач:
+                    span.r-key
+                      |Код отримувача (ОКПО, ЄДРПОУ):
+                    span.r-key
+                      |Код банку отримувача:
+                    span.r-key
+                      |Рахунок отримувача:
+                    span.r-key
+                      |Призначення платежу:
+                  .columns.large-6.medium-6.small-6
+                    span.r-value
+                      |ПАО КБ ПРИВАТБАНК
+                    span.r-value
+                      |14360570
+                    span.r-value
+                      |305299
+                    span.r-value
+                      |2924425509100
+                    span.r-value
+                      |Поповнення картки №(номер картки), піб та іпн одержувача
           .row
-            .columns.large-6
+            .columns.large-8.large-centered
+              h5
+                |Контактна інформація
+          .row
+            .columns.large-8.large-centered
+              .row
+                .columns.large-6
+                  .input
+                    input name="name" placeholder="Ім'я"
+                .columns.large-6
+                  .input
+                    input name="name" placeholder="Прізвище"
+          .row
+            .columns.large-8.large-centered
               .input
-                input name="city" placeholder="Місто доставки"
-            .columns.large-6
+                input name="" placeholder="Номер телефону"
+          .row
+            .columns.large-8.large-centered
               .input
-                input name="department" placeholder="№ відділення"
-        li.hide
-          |3
-        li.hide
-          |4
+                input name="" placeholder="Електронна скринька"
+          .row
+            .columns.large-8.large-centered
+              .input
+                input name="" placeholder="Адреса доставки"
+          .row
+            .columns.large-8.large-centered
+              h5
+                |Додаткова інформація і побажання
+          .row
+            .columns.large-8.large-centered
+              .input
+                textarea maxlength="256" name="" placeholder="Наприклад: № відділення Нової пошти (перелік відділень) ..."
+          .row
+            .columns.large-8.large-centered
+              .input_send_data.right
+                button#next-step-ordering
+                  |Підтвердити дані
+          .row
+            .columns.large-8.large-centered
+              span.note
+                |* Послуги перевізника оплачує Одержувач.
+            .columns.large-8.large-centered
+              span.note
+                |** Вартість пересилання визначається фірмою-перевізником.
+        li#ordering-next-step.hide
+          .row
+            .columns.large-5.large-centered
+              .info-about-sum-products-wrap
+                h3.text-center
+                  |Всього
+                  label class="one-product-anchor-to-cart" for="modal_cart" id="basket"
+                    |Товарів
+                  |на суму:
+                h2.text-center
+                  |9145
+                  span
+                    |грн
+
+          .details-info-about-ordering-wrap
+            .row
+              .columns
+                h1 test block
+          .row
+            .columns
+
+
+  /.row
+  /  .columns
+  /    ul#status-ico-wrap
+  /      li.active.left
+  /        =embedded_svg ('MO-order-step 3.svg'), class: 'ordering-status-ico'
+  /      li.right
+  /        =embedded_svg ('MO-order-step 4.svg'), class: 'ordering-status-ico'

@@ -128,3 +128,37 @@ $(document).ready ->
 
     $body_tabs_li.removeClass('active').addClass('hide')
     $body_tabs_li.eq(current_position).addClass('active').removeClass('hide')
+
+# changed for select
+  $('.ordering_wrap select').change ->
+    changeValue = $(this).val()
+#    alert 'change: '+ changeValue
+    if changeValue == "Ukraine"
+      if $('.new-post-wrap').hasClass('hide')
+        $('.new-post-wrap').removeClass('hide')
+    if changeValue == "Lviv"
+      if $('.new-post-wrap').hasClass('hide')
+      else
+        $('.new-post-wrap').addClass('hide')
+
+    if changeValue == "private" || changeValue == "in_terms_of"
+      if $('.requisites-wrap').hasClass('hide')
+        $('.requisites-wrap').removeClass('hide')
+    if changeValue == "at_reception"
+      if $('.requisites-wrap').hasClass('hide')
+      else
+        $('.requisites-wrap').addClass('hide')
+
+#        next step ordering
+  $('button#next-step-ordering').click ->
+    currentHeaderTitle = $('.ordering_wrap .page-header-wrap h2').text()
+    insertHeaderTitle = "Підтвердження замовлення"
+    headerTitle = $('.ordering_wrap .page-header-wrap h2')
+    prevStatusPage = $('li#ordering-prev-step')
+    nextStatusPage = $('li#ordering-next-step')
+#    alert 'we are!'
+    if nextStatusPage.hasClass('hide')
+      prevStatusPage.addClass('hide')
+      nextStatusPage.removeClass('hide')
+      headerTitle.text(insertHeaderTitle)
+
