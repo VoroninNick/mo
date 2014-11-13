@@ -116,7 +116,7 @@ $(document).ready ->
       complete: ->
         return
 
-# ordering products
+#   ordering products
   $('ul#status-ico-wrap li').click ->
     current_position = $(this).index()
     $head_tabs = $(this).closest('ul#status-ico-wrap')
@@ -129,10 +129,9 @@ $(document).ready ->
     $body_tabs_li.removeClass('active').addClass('hide')
     $body_tabs_li.eq(current_position).addClass('active').removeClass('hide')
 
-# changed for select
+#   changed for select
   $('.ordering_wrap select').change ->
     changeValue = $(this).val()
-#    alert 'change: '+ changeValue
     if changeValue == "Ukraine"
       if $('.new-post-wrap').hasClass('hide')
         $('.new-post-wrap').removeClass('hide')
@@ -141,7 +140,7 @@ $(document).ready ->
       else
         $('.new-post-wrap').addClass('hide')
 
-    if changeValue == "private" || changeValue == "in_terms_of"
+    if changeValue == "Приват банк" || changeValue == "По перерахунку"
       if $('.requisites-wrap').hasClass('hide')
         $('.requisites-wrap').removeClass('hide')
     if changeValue == "at_reception"
@@ -149,16 +148,91 @@ $(document).ready ->
       else
         $('.requisites-wrap').addClass('hide')
 
-#        next step ordering
-  $('button#next-step-ordering').click ->
-    currentHeaderTitle = $('.ordering_wrap .page-header-wrap h2').text()
+
+  $("cart_count_product span").click ->
+    $("a#link-to-ordering-product").attr "disabled", "disabled"
+    $("a#link-to-ordering-product").css "background-color", "silver"
+    return
+
+  $("#b2").click ->
+    $("a#link-to-ordering-product").removeAttr "disabled"
+    $("a#link-to-ordering-product").css "background-color", "white"
+    return
+
+  $("a#link-to-ordering-product").click (e) ->
+    e.preventDefault()  if $("a#link-to-ordering-product").attr("disabled") is "disabled"
+    return
+
+
+
+#   steps by ordering
+  currentHeaderTitle = $('.ordering_wrap .page-header-wrap h2').text()
+  $('.steps-buttons').click ->
     insertHeaderTitle = "Підтвердження замовлення"
     headerTitle = $('.ordering_wrap .page-header-wrap h2')
     prevStatusPage = $('li#ordering-prev-step')
     nextStatusPage = $('li#ordering-next-step')
-#    alert 'we are!'
-    if nextStatusPage.hasClass('hide')
-      prevStatusPage.addClass('hide')
-      nextStatusPage.removeClass('hide')
-      headerTitle.text(insertHeaderTitle)
+
+#    input fields
+    ofName = $('input#of-name').val()
+    ofSurName = $('input#of-surname').val()
+    ofPhone = $('input#of-phone-number').val()
+    ofEmail = $('input#of-email').val()
+    ofAddress = $('input#of-address').val()
+    ofComment = $('textarea#of-comment').val()
+
+#    new post address
+    ofMethodOfDelivery = $('select#method-delivery option:selected').val()
+    ofCity = $('input#of-city').val()
+    ofDepartment = $('input#of-department').val()
+
+    ofMethodOfPayment = $('select#method-of-payment option:selected').val()
+
+#    initials fields
+    ofNameI = $('#of-name-initial')
+    ofSurNameI = $('#of-surname-initial')
+    ofPhoneI = $('#of-phone-initial')
+    ofEmailI = $('#of-email-initial')
+    ofAddressI = $('#of-address-initial')
+    ofCommentI = $('#of-comment-initial')
+
+    ofMethodOfDeliveryI = $('#method-delivery-initial')
+    ofCityI = $('#of-city')
+    ofDepartmentI = $('#of-department')
+
+    ofMethodOfPaymentI = $('#of-method-payment-initial')
+
+    if $(this).hasClass('next-step-ordering')
+      ofNameI.text(ofName)
+      ofSurNameI.text(ofSurName)
+      ofPhoneI.text(ofPhone)
+      ofEmailI.text(ofEmail)
+      ofAddressI.text(ofAddress)
+      ofCommentI.text(ofComment)
+
+      ofMethodOfDeliveryI.text(ofMethodOfDelivery)
+      ofCityI.text(ofCity)
+      ofDepartmentI.text(ofDepartment)
+
+      ofMethodOfPaymentI.text(ofMethodOfPayment)
+      if nextStatusPage.hasClass('hide')
+        prevStatusPage.addClass('hide')
+        nextStatusPage.removeClass('hide')
+        headerTitle.text(insertHeaderTitle)
+    else if $(this).hasClass('prev-step-ordering')
+      if prevStatusPage.hasClass('hide')
+        nextStatusPage.addClass('hide')
+        prevStatusPage.removeClass('hide')
+        headerTitle.text(currentHeaderTitle)
+
+
+
+#   active link if count products after 0
+$(document).on "click", 'a#link-to-ordering-product', ->
+  countproductsInBasket = $('ul.cart_items_list li').length
+  countproductsInProductPack = $('ul.cart-product-packs').length
+  if countproductsInBasket == 0 && countproductsInProductPack == 0
+    return false
+  else
+    return true
 

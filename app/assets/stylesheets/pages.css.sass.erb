@@ -499,7 +499,7 @@ input.all_special_offers_tab_input_status[type=radio]:checked ~ .sf_container
         margin-bottom: 45px
     h2
         font:
-            size: 1.125rem
+            size: 1.5rem
             family: "Playfair Display", serif
             weight: 700
         color: #c8ae4b
@@ -599,15 +599,92 @@ input.all_special_offers_tab_input_status[type=radio]:checked ~ .sf_container
             -moz-box-shadow: 2px 2px 14px 0px rgba(0,0,0,0.5)
             box-shadow: 2px 2px 14px 0px rgba(0,0,0,0.5)
             h2
-
+                font:
+                    style: italic
+                    size: 2.35rem
+                span
+                    font:
+                        size: 1.5rem
+                        weight: 100
+                    text-transform: lowercase
             h3
-
+                color: #6D6E71
+                font:
+                    size: 1.125rem
+                    style: italic
+                    family: "Playfair Display", serif
+                label
+                    font-size: inherit
+                    text-transform: lowercase
+                    margin: 0 0.5rem
+                    line-height: 1rem
             label
                 margin: 0
         .details-info-about-ordering-wrap
             border-bottom: 2px dashed #e8d69b
-            padding-top: 65px
+            padding: 65px 0 55px 0
 
+            .di-key
+                font:
+                    size: 1rem
+                    family: "Fira Sans", sans-serif
+                color: #C8AE4B
+                text-transform: uppercase
+            .di-value
+                color: #6D6E71
+                text-transform: uppercase
+                font:
+                    size: 1rem
+                    family: "Playfair Display", serif
+                    weight: 700
+            .di-textarea
+                border: 1px solid #D1D3D4
+                min-height: 320px
+                padding: 25px
+
+        .ordering-finish-navigation-wrap
+            padding: 30px 0 50px 0
+        div#prev-step-ordering
+            font:
+                size: 1.125rem
+                family: "Playfair Display", serif
+                style: italic
+            color: #DD7272
+            cursor: pointer
+            &:hover
+                div
+                    color: #e05858
+                polygon
+                    fill: #e05858
+            div
+                border-bottom: 2px dashed
+                display: inline-block
+                line-height: 1.2rem
+                transition: color 300ms ease-out
+            svg.svg_ico_arrow
+                height: 28px
+                width: 8px
+                position: relative
+                top: 8px
+                margin-right: 15px
+                polygon
+                    fill: #DD7272
+                    transition: fill 300ms ease-out
+        div#ordering-finish-step
+            font:
+                size: 1.125rem
+                family: "Fira Sans", sans-serif
+            text-transform: uppercase
+            color: #fff
+            background: #DD7272
+            width: 165px
+            height: 40px
+            text-align: center
+            line-height: 40px
+            transition: background-color 300ms ease-out
+            cursor: pointer
+            &:hover
+                background: #e05858
 
 
 

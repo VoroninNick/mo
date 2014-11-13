@@ -19,18 +19,18 @@
           .new-post-wrap.hide
             .row
               .columns.large-4.large-centered
-                select name="select"
-                  option value="" disabled="disabled" selected="selected" style="display:none;"
+                select#method-delivery name="select"
+                  option value="Нова пошта" selected="selected" style="display:none;"
                     |Нова пошта
             .row
               .columns.large-8.large-centered
                 .row
                   .columns.large-6
                     .input
-                      input name="city" placeholder="Місто доставки"
+                      input#of-city name="city" placeholder="Місто доставки"
                   .columns.large-6
                     .input
-                      input name="department" placeholder="№ відділення"
+                      input#of-department name="department" placeholder="№ відділення"
             .row
               .columns
                 .link-to-post-office-wrap
@@ -39,14 +39,14 @@
                       |Переглянути список відділень "Нової пошти"
           .row
             .columns.large-4.large-centered
-              select name="select"
+              select#method-of-payment name="select"
                 option value="" disabled="disabled" selected="selected" style="display:none;"
                   |Виберіть спосіб оплати
                 option value="at_reception"
                   |Оплата при одержанні
-                option value="private"
+                option value="Приват банк"
                   |Приват банк
-                option value="in_terms_of"
+                option value="По перерахунку"
                   |По перерахунку
           .requisites-wrap.hide
             .row
@@ -87,22 +87,22 @@
               .row
                 .columns.large-6
                   .input
-                    input name="name" placeholder="Ім'я"
+                    input#of-name name="name" placeholder="Ім'я"
                 .columns.large-6
                   .input
-                    input name="name" placeholder="Прізвище"
+                    input#of-surname name="name" placeholder="Прізвище"
           .row
             .columns.large-8.large-centered
               .input
-                input name="" placeholder="Номер телефону"
+                input#of-phone-number name="" placeholder="Номер телефону"
           .row
             .columns.large-8.large-centered
               .input
-                input name="" placeholder="Електронна скринька"
+                input#of-email name="" placeholder="Електронна скринька"
           .row
             .columns.large-8.large-centered
               .input
-                input name="" placeholder="Адреса доставки"
+                input#of-address name="" placeholder="Адреса доставки"
           .row
             .columns.large-8.large-centered
               h5
@@ -110,11 +110,11 @@
           .row
             .columns.large-8.large-centered
               .input
-                textarea maxlength="256" name="" placeholder="Наприклад: № відділення Нової пошти (перелік відділень) ..."
+                textarea#of-comment maxlength="256" name="" placeholder="Наприклад: № відділення Нової пошти (перелік відділень) ..."
           .row
             .columns.large-8.large-centered
               .input_send_data.right
-                button#next-step-ordering
+                button.steps-buttons.next-step-ordering#next-step-ordering
                   |Підтвердити дані
           .row
             .columns.large-8.large-centered
@@ -132,23 +132,112 @@
                   label class="one-product-anchor-to-cart" for="modal_cart" id="basket"
                     |Товарів
                   |на суму:
+                -total_price = get_total_price(current_cart)
                 h2.text-center
-                  |9145
+                  -if total_price
+                    =total_price.round()
                   span
-                    |грн
+                    |&nbsp;грн
 
           .details-info-about-ordering-wrap
             .row
-              .columns
-                h1 test block
-          .row
-            .columns
+              .columns.large-5
+                .row
+                  .columns
+                    h5
+                      |КОНТАКТНІ ДАНІ ОТРИМУВАЧА
+                .row
+                  .columns.large-4
+                    .di-key
+                      |Ім’я:
+                  .columns.large-8
+                    .di-value#of-name-initial
+                      |Максиміліян
+                .row
+                  .columns.large-4
+                    .di-key
+                      |Прізвище:
+                  .columns.large-8
+                    .di-value#of-surname-initial
+                      |перекотиполе
+                .row
+                  .columns.large-4
+                    .di-key
+                      |тел.:
+                  .columns.large-8
+                    .di-value#of-phone-initial
+                      |+38 (050) 417 07 28
+                .row
+                  .columns.large-4
+                    .di-key
+                      |ел.пошта:
+                  .columns.large-8
+                    .di-value#of-email-initial
+                      |voronin.nick@gmail.com
+                .row
+                  .columns.large-4
+                    .di-key
+                      |адреса:
+                  .columns.large-8
+                    .di-value#of-address-initial
+                      |м. Львів, вул.Сонячна 11 буд.1
+                .row
+                  .columns
+                    h5
+                      |Доставка
+                .row
+                  .columns.large-4
+                    .di-key
+                      |Служба:
+                  .columns.large-8
+                    .di-value#method-delivery-initial
+                      |НОВА ПОШТА
+                .row
+                  .columns.large-4
+                    .di-key
+                      |Місто:
+                  .columns.large-8
+                    .di-value#of-city
+                      |Житомир
+                .row
+                  .columns.large-4
+                    .di-key
+                      |Відділення:
+                  .columns.large-8
+                    .di-value#of-department
+                      |№12
+                .row
+                  .columns
+                    h5
+                      |Оплата
+                .row
+                  .columns.large-4
+                    .di-key
+                      |Спосіб:
+                  .columns.large-8
+                    .di-value#of-method-payment-initial
+                      |Приватбанк
+              .columns.large-7
+                .row
+                  .columns
+                    h5
+                      |додаткова інформація і побажання
+                .row
+                  .columns
+                    .di-value.di-textarea#of-comment-initial
+                      |Під’їзд №6. Код замка 0245
 
 
-  /.row
-  /  .columns
-  /    ul#status-ico-wrap
-  /      li.active.left
-  /        =embedded_svg ('MO-order-step 3.svg'), class: 'ordering-status-ico'
-  /      li.right
-  /        =embedded_svg ('MO-order-step 4.svg'), class: 'ordering-status-ico'
+
+          .ordering-finish-navigation-wrap
+            .row
+              .columns.large-6.medium-6.small-6
+                .steps-buttons.prev-step-ordering#prev-step-ordering.left
+                  =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
+                  div
+                    |Назад
+              .columns.large-6.medium-6.small-6
+                #ordering-finish-step.right
+                  |Замовити!
+
+

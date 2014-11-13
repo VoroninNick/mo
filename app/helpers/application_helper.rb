@@ -71,11 +71,26 @@ module ApplicationHelper
             product_pack_sum = (tablecloth_price + decor_price + drink_set_price)*product_pack_percent
           end
           sum = product_pack_sum + sum
+        #  sum tablecloth
         elsif item && item.product_id
           if item.product.promotion_price && item.product.promotion_price > 0
             sum = sum + item.product.promotion_price * item.quantity
           else
             sum = sum + item.product.price * item.quantity
+          end
+        #   sum decors
+        elsif item && item.decor_id
+          if item.decor.new_price && item.decor.new_price > 0
+            sum = sum + item.decor.new_price * item.decor_quantity
+          else
+            sum = sum + item.decor.price * item.decor_quantity
+          end
+        #   sum drink sets
+        elsif item && item.drink_set_id
+          if item.drink_set.new_price && item.drink_set.new_price > 0
+            sum = sum + item.drink_set.new_price * item.drink_set_quantity
+          else
+            sum = sum + item.drink_set.price * item.drink_set_quantity
           end
         end
 
