@@ -480,6 +480,12 @@ input.all_special_offers_tab_input_status[type=radio]:checked ~ .sf_container
     .input_send
         +my_horizontal_align
             position: absolute
+        &.change-width
+            width: 260px !important
+            -webkit-transition: width 500ms ease-out
+            -moz-transition: width 500ms ease-out
+            -o-transition: width 500ms ease-out
+            transition: width 500ms ease-out
     form
         padding: 0 !important
 

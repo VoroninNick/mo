@@ -209,11 +209,15 @@
                     = embedded_svg ("pp-sum.svg")
                   .cpp-sum-wrap.left
                     h3
+                      - percent = pp.percent/100.to_f
                       -if tablecloth && tablecloth.promotion_price
-                        - pp_sum = (tablecloth.promotion_price + decor.price + drink_set.price)*pp.percent/100.to_f
+
+                        - pp_sum = tablecloth.promotion_price + decor.price + drink_set.price
+                        - pp_sum = pp_sum -(tablecloth.promotion_price + decor.price + drink_set.price)*percent
                         = pp_sum.round()
                       -elsif tablecloth && tablecloth.price
-                        - pp_sum = (tablecloth.price + decor.price + drink_set.price)*pp.percent/100.to_f
+                        - pp_sum = tablecloth.price + decor.price + drink_set.price
+                        - pp_sum = pp_sum -(tablecloth.price + decor.price + drink_set.price)*percent
                         = pp_sum.round()
                       span
                         |&nbsp;грн

@@ -76,6 +76,7 @@ $(document).ready ->
 
 # add product pack items to cart
   $('.pd_product_pack_wrap button.cust_button').click ->
+    statuButton = $(this).parent()
     $product_id = ""
     $product_quantity = ""
     $parent = $(this).closest('.pd_product_pack_wrap')
@@ -107,9 +108,12 @@ $(document).ready ->
       type: "POST"
       data: valuesToSubmit
       beforeSend: ->
-        return
+        statuButton.children().remove()
+        statuButton.addClass('change-width')
+        statuButton.append('<div class="status-adding">Добавляння...</div>')
       success: (data) ->
-        alert 'success'
+        statuButton.children().remove()
+        statuButton.append('<div class="status-adding">КОМПЛЕКТ ВЖЕ В КОРЗИНІ!</div>')
         setCountItems(3)
         return
 

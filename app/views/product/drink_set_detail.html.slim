@@ -40,13 +40,13 @@
                     span
                       |&nbsp;грн
                   form#form_add_to_cart
-                    .input
+                    .input.quantity-items-wrap
                       a.add_one_point
                         =embedded_svg('MO-arrow.svg')
                       input.count_product value="1"
                       a.remove_one_point
                         =embedded_svg('MO-arrow.svg')
-                    .input_send
+                    .input_send.not-product-pack
                       button.cust_button.is-drink-set data-product-id=i.id
                         |Добавити в корзину
                     .clearfix
@@ -90,13 +90,13 @@
                         |&nbsp;грн
                   .columns.large-8
                     form#form_add_to_cart
-                      .input
+                      .input.quantity-items-wrap
                         a.add_one_point
                           =embedded_svg('MO-arrow.svg')
                         input.count_product value="1"
                         a.remove_one_point
                           =embedded_svg('MO-arrow.svg')
-                      .input_send
+                      .input_send.not-product-pack
                         button.cust_button.is-tablecloth data-product-id=p.id
                           |Добавити в корзину
                       .clearfix
@@ -149,7 +149,7 @@
 
             -percent = @product_set.percent/100.to_f
             -result = tablecloth_one_item + drink_set_one_item + decor_one_item
-            -sale_result = result*percent
+            -sale_result = result - result*percent
             .old_prices_result_wrap
               .old_price_result
                 =result.round

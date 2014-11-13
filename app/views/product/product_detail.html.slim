@@ -98,13 +98,13 @@
                           |&nbsp;грн
                     .columns.large-8
                       form#form_add_to_cart
-                        .input
+                        .input.quantity-items-wrap
                           a.add_one_point
                             =embedded_svg('MO-arrow.svg')
                           input.count_product value="1"
                           a.remove_one_point
                             =embedded_svg('MO-arrow.svg')
-                        .input_send
+                        .input_send.not-product-pack
                           button.cust_button.is-drink-set data-product-id=ds.id
                             |Добавити в корзину
                         .clearfix
@@ -149,13 +149,13 @@
                           |&nbsp;грн
                     .columns.large-8
                       form#form_add_to_cart
-                        .input
+                        .input.quantity-items-wrap
                           a.add_one_point
                             =embedded_svg('MO-arrow.svg')
                           input.count_product value="1"
                           a.remove_one_point
                             =embedded_svg('MO-arrow.svg')
-                        .input_send
+                        .input_send.not-product-pack
                           button.cust_button.is-drink-set data-product-id=d.id
                             |Добавити в корзину
                         .clearfix
@@ -280,13 +280,14 @@
                 .symbol_equal
         .row
           .columns.large-12
+            -sale_result = 0
             -tablecloth_one_item = @product_set.product.price
             -drink_set_one_item = @product_set.drink_sets[0].price
             -decor_one_item = @product_set.decors[0].price
 
             -percent = @product_set.percent/100.to_f
             -result = tablecloth_one_item + drink_set_one_item + decor_one_item
-            -sale_result = result*percent
+            -sale_result = result - result*percent
             .old_prices_result_wrap
               .old_price_result
                 =result.round

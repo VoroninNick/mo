@@ -68,7 +68,8 @@ module ApplicationHelper
           end
 
           if tablecloth && decor && drink_set
-            product_pack_sum = (tablecloth_price + decor_price + drink_set_price)*product_pack_percent
+            product_pack_sum = tablecloth_price + decor_price + drink_set_price
+            product_pack_sum = product_pack_sum - (tablecloth_price + decor_price + drink_set_price)*product_pack_percent
           end
           sum = product_pack_sum + sum
         #  sum tablecloth
