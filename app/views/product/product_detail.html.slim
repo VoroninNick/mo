@@ -188,7 +188,7 @@
             .bi.bsh_right_bottom style="background: url('#{prod.image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{prod.price}"
               .product_info_wrapper
                 .pi_inner
-                  a.more-info
+                  a.more-info href=product_detail_path(prod.category.category_url, prod.t_name, locale: I18n.locale)
                     .pi_top
                       h5 =truncate prod.name, lenght: '80'
                     .pi_bottom
@@ -208,7 +208,11 @@
                     .bi.bsh_right_bottom style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{d.price}"
                     .product_info_wrapper
                       .pi_inner
-                        a.more-info
+                        /-sql= "select dsc.* from #{DrinkSet.table_name} dsc where dsc.t_name = '#{d.t_name}' "
+                        /-parent_category_ds = DsCategory.find_by_sql(sql)
+                        /-ds_parent = parent_category_ds.first
+                        /-ds_children = d.ds_category
+                        a.more-info href=sets_detail_path(d.ds_category.parent.t_name, d.t_name, locale: I18n.locale)
                           .pi_top
                             h5 =truncate d.name, lenght: '80'
                           .pi_bottom
@@ -225,7 +229,7 @@
               .bi.bsh_right_bottom style="background: url('#{@product_set.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{@product_set.drink_sets[0].price}"
               .product_info_wrapper
                 .pi_inner
-                  a.more-info
+                  a.more-info  href=sets_detail_path(@product_set.drink_sets[0].ds_category.parent.t_name, @product_set.drink_sets[0].t_name, locale: I18n.locale)
                     .pi_top
                       h5 =truncate @product_set.drink_sets[0].name, lenght: '80'
                     .pi_bottom
@@ -245,7 +249,7 @@
                     .bi.bsh_right_bottom style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{d.price}"
                     .product_info_wrapper
                       .pi_inner
-                        a.more-info
+                        a.more-info href=decors_detail_path(d.d_category.t_name, d.t_name, locale: I18n.locale)
                           .pi_top
                             h5 =truncate d.name, lenght: '80'
                           .pi_bottom
@@ -262,7 +266,7 @@
               .bi.bsh_right_bottom style="background: url('#{@product_set.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{@product_set.decors[0].price}"
               .product_info_wrapper
                 .pi_inner
-                  a.more-info
+                  a.more-info href=decors_detail_path(@product_set.decors[0].d_category.t_name, @product_set.decors[0].t_name, locale: I18n.locale)
                     .pi_top
                       h5 =truncate @product_set.decors[0].name, lenght: '80'
                     .pi_bottom

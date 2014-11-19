@@ -78,6 +78,9 @@ class DrinkSet < ActiveRecord::Base
       field :ds_category_id do
         label 'Категорія'
       end
+      field :id do
+        label 'id item'
+      end
       field :image do
         label 'Зображення'
       end

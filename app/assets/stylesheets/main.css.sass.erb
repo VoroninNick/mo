@@ -13,6 +13,8 @@ h4
         family: 'Playfair Display', serif
         style: italic
     color: #a78c30
+.dn-add-product-options
+    display: none !important
 .dn
     display: none
 nav.breadcrumbs
@@ -21,6 +23,8 @@ nav.breadcrumbs
     & a.unavailable
         text-transform: capitalize !important
         color: #d1d3d4 !important
+.light-grey-border
+    border-top: 1px solid #d1d3d4
 label.one-product-anchor-to-cart
     display: inline-block
     color: #dd7272
@@ -844,6 +848,37 @@ ul#mp_wrap
     display: none
     z-index: 15
 
+.delete-item
+    width: 20px
+    height: 15px
+    position: relative
+    cursor: pointer
+    &:before, &:after
+        display: block
+        content: ''
+        width: 10px
+        height: 1px
+        background: #6D6E71
+        position: absolute
+        top: 50%
+        left: 50%
+    &:before
+        -webkit-transform: translate(-50%, -50%) rotate(45deg)
+        -moz-transform: translate(-50%, -50%) rotate(45deg)
+        -ms-transform: translate(-50%, -50%) rotate(45deg)
+        -o-transform: translate(-50%, -50%) rotate(45deg)
+        transform: translate(-50%, -50%) rotate(45deg)
+    &:after
+        -webkit-transform: translate(-50%, -50%) rotate(-45deg)
+        -moz-transform: translate(-50%, -50%) rotate(-45deg)
+        -ms-transform: translate(-50%, -50%) rotate(-45deg)
+        -o-transform: translate(-50%, -50%) rotate(-45deg)
+        transform: translate(-50%, -50%) rotate(-45deg)
+    &:hover
+        &:before
+            background: #E05858
+        &:after
+            background: #E05858
 .modal_cart_wrap
     position: fixed
     top: 0
@@ -935,6 +970,7 @@ ul#mp_wrap
                         padding-right: 16px
                         border-bottom: 1px solid #ffffff
                         .cpp-header-wrap
+                            position: relative
                             .cpp-title
                                 color: #A78C30
                                 font:
@@ -943,6 +979,9 @@ ul#mp_wrap
                                     weight: 700
                                 text-transform: uppercase
                             .cpp-delete-item
+                                position: absolute
+                                top: 0
+                                right: 0
                         .cpp-one-pack-wrap
                             .cpp-items-wrap
                                 width: 330px
@@ -1066,37 +1105,6 @@ ul#mp_wrap
                                         size: 1.125rem
                                         style: italic
                                         weight: normal
-                            .delete-item
-                                width: 20px
-                                height: 15px
-                                position: relative
-                                cursor: pointer
-                                &:before, &:after
-                                    display: block
-                                    content: ''
-                                    width: 10px
-                                    height: 1px
-                                    background: #6D6E71
-                                    position: absolute
-                                    top: 50%
-                                    left: 50%
-                                &:before
-                                    -webkit-transform: translate(-50%, -50%) rotate(45deg)
-                                    -moz-transform: translate(-50%, -50%) rotate(45deg)
-                                    -ms-transform: translate(-50%, -50%) rotate(45deg)
-                                    -o-transform: translate(-50%, -50%) rotate(45deg)
-                                    transform: translate(-50%, -50%) rotate(45deg)
-                                &:after
-                                    -webkit-transform: translate(-50%, -50%) rotate(-45deg)
-                                    -moz-transform: translate(-50%, -50%) rotate(-45deg)
-                                    -ms-transform: translate(-50%, -50%) rotate(-45deg)
-                                    -o-transform: translate(-50%, -50%) rotate(-45deg)
-                                    transform: translate(-50%, -50%) rotate(-45deg)
-                                &:hover
-                                    &:before
-                                        background: #E05858
-                                    &:after
-                                        background: #E05858
 
 
         .cart-count-prices

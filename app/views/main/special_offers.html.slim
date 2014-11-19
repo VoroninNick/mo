@@ -30,6 +30,7 @@
           label for="all_special_offers_tab"
             |всі акції
 
+  /only peoducts
   .special_offers_tab_wrap.sale_tab_wrap
     -if @products && @products.respond_to?(:count) && @products.count > 0
       -@products.each_with_index do |p, index|
@@ -38,7 +39,7 @@
             .columns.large-3
               .bi.bsh_right_bottom style="background: url('#{p.image.url(:thumb)}')no-repeat center center;"
             .columns.large-9
-              a
+              a href=product_detail_path(p.category.category_url, p.t_name, locale: I18n.locale)
                 h2 =p.name
               .row
                 .pd_info_block
@@ -58,14 +59,14 @@
                             |&nbsp;грн
                   .columns.large-8
                     form#form_add_to_cart
-                      .input
+                      .input.quantity-items-wrap
                         a.add_one_point
                           =embedded_svg('MO-arrow.svg')
                         input.count_product value="1"
                         a.remove_one_point
                           =embedded_svg('MO-arrow.svg')
-                      .input_send
-                        button.cust_button data-product-id=p.id
+                      .input_send.not-product-pack
+                        button.cust_button.is-tablecloth data-product-id=p.id
                           |Добавити в корзину
                       .clearfix
                   .clearfix
@@ -73,40 +74,113 @@
               .row
                 .columns.large-12
                   .p_read_more.right
-                    a
+                    a href=product_detail_path(p.category.category_url, p.t_name, locale: I18n.locale)
                       |Більш детально >>>
 
+  /tab only products pack
   .special_offers_tab_wrap.sets_tab_wrap
     -if @sets
       -@sets.each_with_index do |s, index|
-        .pd_product_pack_wrap class=(index%2==0 ? "logo_background_wrap" : "")
+        .pd_product_pack_wrap class=(index%2==0 ? "" : "logo_background_wrap")
           .row
             .columns.large-12
-              h2 =s.name
+              h4
+                |Разом дешевше!
               h3
                 'знижка
                 =s.percent
                 |% на комплект
+              h2 =s.name
           .row
             .products_pack_items_wrap data-sale="#{s.percent}"
               .columns.large-3
-                -if s.product
-                  -prod = s.product
+                -prod = s.product
+                .ppi_item_wrap.pp-tablecloth-buy data-product-id="#{prod.id}"
                   .bi.bsh_right_bottom style="background: url('#{prod.image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{prod.price}"
+                    .product_info_wrapper
+                      .pi_inner
+                        a.more-info href=product_detail_path(prod.category.category_url, prod.t_name, locale: I18n.locale)
+                          .pi_top
+                            h5 =truncate prod.name, lenght: '80'
+                          .pi_bottom
+                            h4
+                              =prod.price
+                              span
+                                |&nbsp;грн
               .symbol_plus_wrap
                 .symbol_plus_inner
                   .symbol_plus
               .columns.large-3
-                -drink_set = s.drink_sets[0]
-                -if drink_set
-                  .bi.bsh_right_bottom style="background: url('#{drink_set.image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{drink_set.price}"
+                - if s.drink_sets.count > 1
+                  ul.product-carousel.drink-sets-carousel
+                    -s.drink_sets.each_with_index do |d, index|
+                      li.product-carousel-item class=(if index==0 && s.drink_sets.count > 1 then; 'active' end;)
+                        .ppi_item_wrap.pp-drink-set-buy data-product-id="#{d.id}"
+                          .bi.bsh_right_bottom style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{d.price}"
+                          .product_info_wrapper
+                            .pi_inner
+                              a.more-info href=sets_detail_path(d.ds_category.parent.t_name, d.t_name, locale: I18n.locale)
+                                .pi_top
+                                  h5 =truncate d.name, lenght: '80'
+                                .pi_bottom
+                                  h4
+                                    =d.price
+                                    span
+                                      |&nbsp;грн
+                    .pcb.pc-button-up
+                      .pcb-inner
+                    .pcb.pc-button-down
+                      .pcb-inner
+                - else
+                  .ppi_item_wrap.pp-drink-set-buy.one-item data-product-id="#{s.drink_sets[0].id}"
+                    .bi.bsh_right_bottom style="background: url('#{s.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{s.drink_sets[0].price}"
+                    .product_info_wrapper
+                      .pi_inner
+                        a.more-info href=sets_detail_path(s.drink_sets[0].ds_category.parent.t_name, s.drink_sets[0].t_name, locale: I18n.locale)
+                          .pi_top
+                            h5 =truncate s.drink_sets[0].name, lenght: '80'
+                          .pi_bottom
+                            h4
+                              =s.drink_sets[0].price
+                              span
+                                |&nbsp;грн
               .symbol_plus_wrap
                 .symbol_plus_inner
                   .symbol_plus
               .columns.large-3
-                -decor = s.decors[0]
-                -if decor
-                  .bi.bsh_right_bottom style="background: url('#{decor.image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{decor.price}"
+                - if s.decors.count > 1
+                  ul.product-carousel.decors-carousel
+                    -s.decors.each_with_index do |d, index|
+                      li.product-carousel-item class=(if index==0 && s.decors.count > 1 then; 'active' end;)
+                        .ppi_item_wrap.pp-decor-buy data-product-id="#{d.id}"
+                          .bi.bsh_right_bottom style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{d.price}"
+                          .product_info_wrapper
+                            .pi_inner
+                              a.more-info href=decors_detail_path(d.d_category.t_name, d.t_name, locale: I18n.locale)
+                                .pi_top
+                                  h5 =truncate d.name, lenght: '80'
+                                .pi_bottom
+                                  h4
+                                    =d.price
+                                    span
+                                      |&nbsp;грн
+                    .pcb.pc-button-up
+                      .pcb-inner
+                    .pcb.pc-button-down
+                      .pcb-inner
+                - else
+                  .ppi_item_wrap.pp-decor-buy.one-item data-product-id="#{s.decors[0].id}"
+                    .bi.bsh_right_bottom style="background: url('#{s.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{s.decors[0].price}"
+                    .product_info_wrapper
+                      .pi_inner
+                        a.more-info href=decors_detail_path(s.decors[0].d_category.t_name, s.decors[0].t_name, locale: I18n.locale)
+                          .pi_top
+                            h5 =truncate s.decors[0].name, lenght: '80'
+                          .pi_bottom
+                            h4
+                              =s.decors[0].price
+                              span
+                                |&nbsp;грн
               .clearfix
           .row
             .columns.large-12
@@ -117,13 +191,14 @@
                       .symbol_equal
               .row
                 .columns.large-12
+                  -sale_result = 0
                   -tablecloth_one_item = s.product.price
                   -drink_set_one_item = s.drink_sets[0].price
                   -decor_one_item = s.decors[0].price
 
                   -percent = s.percent/100.to_f
                   -result = tablecloth_one_item + drink_set_one_item + decor_one_item
-                  -sale_result = result*percent
+                  -sale_result = result - result*percent
                   .old_prices_result_wrap
                     .old_price_result
                       =result.round
@@ -135,43 +210,116 @@
               .row
                 .columns.large-12
                   .buy_products_pack_wrap
-                    .input_send
-                      button.cust_button
-                        |Купити комплект
+                    form#form_add_to_cart
+                      .input_send
+                        button.cust_button data-product-pack-id=s.id
+                          |Добавити в корзину
                     .clearfix
 
-
+  /tab for all products pack and products
   .special_offers_tab_wrap.all_special_offers_tab_wrap
     -if @sets
       -@sets.each_with_index do |s, index|
-        .pd_product_pack_wrap class=(index%2==0 ? "logo_background_wrap" : "")
+        .pd_product_pack_wrap class=(index%2==0 ? "" : "logo_background_wrap")
           .row
             .columns.large-12
-              h2 =s.name
+              h4
+                |Разом дешевше!
               h3
                 'знижка
                 =s.percent
                 |% на комплект
+              h2 =s.name
           .row
             .products_pack_items_wrap data-sale="#{s.percent}"
               .columns.large-3
-                -if s.product
-                  -prod = s.product
+                -prod = s.product
+                .ppi_item_wrap.pp-tablecloth-buy data-product-id="#{prod.id}"
                   .bi.bsh_right_bottom style="background: url('#{prod.image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{prod.price}"
+                    .product_info_wrapper
+                      .pi_inner
+                        a.more-info href=product_detail_path(prod.category.category_url, prod.t_name, locale: I18n.locale)
+                          .pi_top
+                            h5 =truncate prod.name, lenght: '80'
+                          .pi_bottom
+                            h4
+                              =prod.price
+                              span
+                                |&nbsp;грн
               .symbol_plus_wrap
                 .symbol_plus_inner
                   .symbol_plus
               .columns.large-3
-                -drink_set = s.drink_sets[0]
-                -if drink_set
-                  .bi.bsh_right_bottom style="background: url('#{drink_set.image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{drink_set.price}"
+                - if s.drink_sets.count > 1
+                  ul.product-carousel.drink-sets-carousel
+                    -s.drink_sets.each_with_index do |d, index|
+                      li.product-carousel-item class=(if index==0 && s.drink_sets.count > 1 then; 'active' end;)
+                        .ppi_item_wrap.pp-drink-set-buy data-product-id="#{d.id}"
+                          .bi.bsh_right_bottom style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{d.price}"
+                          .product_info_wrapper
+                            .pi_inner
+                              a.more-info href=sets_detail_path(d.ds_category.parent.t_name, d.t_name, locale: I18n.locale)
+                                .pi_top
+                                  h5 =truncate d.name, lenght: '80'
+                                .pi_bottom
+                                  h4
+                                    =d.price
+                                    span
+                                      |&nbsp;грн
+                    .pcb.pc-button-up
+                      .pcb-inner
+                    .pcb.pc-button-down
+                      .pcb-inner
+                - else
+                  .ppi_item_wrap.pp-drink-set-buy.one-item data-product-id="#{s.drink_sets[0].id}"
+                    .bi.bsh_right_bottom style="background: url('#{s.drink_sets[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{s.drink_sets[0].price}"
+                    .product_info_wrapper
+                      .pi_inner
+                        a.more-info  href=sets_detail_path(s.drink_sets[0].ds_category.parent.t_name, s.drink_sets[0].t_name, locale: I18n.locale)
+                          .pi_top
+                            h5 =truncate s.drink_sets[0].name, lenght: '80'
+                          .pi_bottom
+                            h4
+                              =s.drink_sets[0].price
+                              span
+                                |&nbsp;грн
               .symbol_plus_wrap
                 .symbol_plus_inner
                   .symbol_plus
               .columns.large-3
-                -decor = s.decors[0]
-                -if decor
-                  .bi.bsh_right_bottom style="background: url('#{decor.image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{decor.price}"
+                - if s.decors.count > 1
+                  ul.product-carousel.decors-carousel
+                    -s.decors.each_with_index do |d, index|
+                      li.product-carousel-item class=(if index==0 && s.decors.count > 1 then; 'active' end;)
+                        .ppi_item_wrap.pp-decor-buy data-product-id="#{d.id}"
+                          .bi.bsh_right_bottom style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{d.price}"
+                          .product_info_wrapper
+                            .pi_inner
+                              a.more-info href=decors_detail_path(d.d_category.t_name, d.t_name, locale: I18n.locale)
+                                .pi_top
+                                  h5 =truncate d.name, lenght: '80'
+                                .pi_bottom
+                                  h4
+                                    =d.price
+                                    span
+                                      |&nbsp;грн
+                    .pcb.pc-button-up
+                      .pcb-inner
+                    .pcb.pc-button-down
+                      .pcb-inner
+                - else
+                  .ppi_item_wrap.pp-decor-buy.one-item data-product-id="#{s.decors[0].id}"
+                    .bi.bsh_right_bottom style="background: url('#{s.decors[0].photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{s.decors[0].price}"
+                    .product_info_wrapper
+                      .pi_inner
+                        a.more-info href=decors_detail_path(s.decors[0].d_category.t_name, s.decors[0].t_name, locale: I18n.locale)
+                          .pi_top
+                            h5 =truncate s.decors[0].name, lenght: '80'
+                          .pi_bottom
+                            h4
+                              =s.decors[0].price
+                              span
+                                |&nbsp;грн
               .clearfix
           .row
             .columns.large-12
@@ -182,13 +330,14 @@
                       .symbol_equal
               .row
                 .columns.large-12
+                  -sale_result = 0
                   -tablecloth_one_item = s.product.price
                   -drink_set_one_item = s.drink_sets[0].price
                   -decor_one_item = s.decors[0].price
 
                   -percent = s.percent/100.to_f
                   -result = tablecloth_one_item + drink_set_one_item + decor_one_item
-                  -sale_result = result*percent
+                  -sale_result = result - result*percent
                   .old_prices_result_wrap
                     .old_price_result
                       =result.round
@@ -200,19 +349,21 @@
               .row
                 .columns.large-12
                   .buy_products_pack_wrap
-                    .input_send
-                      button.cust_button
-                        |Купити комплект
+                    form#form_add_to_cart
+                      .input_send
+                        button.cust_button data-product-pack-id=s.id
+                          |Добавити в корзину
                     .clearfix
 
     -if @products && @products.respond_to?(:count) && @products.count > 0
+      .light-grey-border
       -@products.each_with_index do |p, index|
-        .sale_product_wrap.products_pack_item_wrap class=(index%2==0 ? "light_gray_back_wrap" : "")
+        .sale_product_wrap.products_pack_item_wrap class=(index%2==0 ? "" : "light_gray_back_wrap")
           .row
             .columns.large-3
               .bi style="background: url('#{p.image.url(:thumb)}')no-repeat center center;"
             .columns.large-9
-              a
+              a href=product_detail_path(p.category.category_url, p.t_name, locale: I18n.locale)
                 h2 =p.name
               .row
                 .pd_info_block
@@ -232,14 +383,14 @@
                             |&nbsp;грн
                   .columns.large-8
                     form#form_add_to_cart
-                      .input
+                      .input.quantity-items-wrap
                         a.add_one_point
                           =embedded_svg('MO-arrow.svg')
                         input.count_product value="1"
                         a.remove_one_point
                           =embedded_svg('MO-arrow.svg')
-                      .input_send
-                        button.cust_button data-product-id=p.id
+                      .input_send.not-product-pack
+                        button.cust_button.is-tablecloth data-product-id=p.id
                           |Добавити в корзину
                       .clearfix
                   .clearfix
@@ -247,6 +398,6 @@
               .row
                 .columns.large-12
                   .p_read_more.right
-                    a
+                    a href=product_detail_path(p.category.category_url, p.t_name, locale: I18n.locale)
                       |Більш детально >>>
 

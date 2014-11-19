@@ -15,111 +15,6 @@ setCountItems = (quantity)->
 
 $(document).ready ->
 
- # add tablecloth to cart
-  $('#form_add_to_cart button').click (e) ->
-    e.preventDefault()
-
-    $currentElement = $(this)
-    parent = $(this).closest('form')
-    count = parent.find("input.count_product").val()
-
-    attrRenderID = $(this).attr('data-product-id')
-    itemToRemove = parent.find('.quantity-items-wrap')
-    itemToAdd = $(this).parent()
-
-    if $currentElement.hasClass("is-drink-set")
-      valuesToSubmit = {drink_set_id: attrRenderID, ds_quantity: count}
-    else if $currentElement.hasClass("is-decor")
-      valuesToSubmit = {decor_id: attrRenderID, d_quantity: count}
-    else if $currentElement.hasClass("is-tablecloth")
-      valuesToSubmit = {product_id: attrRenderID, quantity: count}
-
-
-    $.ajax
-      url: '/line_items'
-      dataType: 'html'
-      type: "POST"
-      data: valuesToSubmit
-      beforeSend: ->
-        if itemToAdd.hasClass('not-product-pack')
-          itemToAdd.children().remove()
-          itemToAdd.append('<div class="status-adding">Добавляння...</div>')
-      success: (data) ->
-        if itemToRemove.hasClass('quantity-items-wrap')
-          itemToRemove.remove()
-        if itemToAdd.hasClass('not-product-pack')
-          itemToAdd.children().remove()
-          itemToAdd.append('<div class="status-adding">ТОВАР ВЖЕ В КОРЗИНІ!</div>')
-          $('<label class="one-product-anchor-to-cart" for="modal_cart" id="basket">Переглянути</label>').insertAfter(itemToAdd)
-          setCountItems(count)
-        loadPartials()
-
-        return
-
-      complete: ->
-        return
-
-#  add product to cart
-  $('.cart_items_list .delete-item').click (e) ->
-    e.preventDefault()
-    attrRenderID = $(this).attr('data-line-item-id')
-
-    $.ajax
-      url: '/line_items/'+attrRenderID
-      dataType: 'html'
-      type: "DELETE"
-      beforeSend: ->
-      success: (data) ->
-        alert 'success'
-      complete: ->
-        alert "complete"
-
-# add product pack items to cart
-  $('.pd_product_pack_wrap button.cust_button').click ->
-    statuButton = $(this).parent()
-    $product_id = ""
-    $product_quantity = ""
-    $parent = $(this).closest('.pd_product_pack_wrap')
-    $lis = $parent.find('.ppi_item_wrap')
-
-    $produck_pack_id = $(this).attr 'data-product-pack-id'
-
-    $tablecloth = $lis.filter('.pp-tablecloth-buy')
-    $tableclothData = $tablecloth.attr 'data-product-id'
-    $dirnkSet = $lis.filter('.pp-drink-set-buy')
-    $drinkSetParent = $dirnkSet.parent().filter('.active')
-    $drinkSetData = $drinkSetParent.children().attr 'data-product-id'
-    if $dirnkSet.hasClass('one-item')
-      $drinkSetData = $dirnkSet.attr 'data-product-id'
-
-    $decors = $lis.filter('.pp-decor-buy')
-    $decorsParent = $decors.parent().filter('.active')
-    $decorsData = $decorsParent.children().attr 'data-product-id'
-    if $decors.hasClass('one-item')
-      $decorsData = $decors.attr 'data-product-id'
-
-#    alert 'id комплекту - '+$produck_pack_id+'\n'+'id скатертини - '+$tableclothData+'\n'+'id чайного сервізу - '+$drinkSetData+'\n'+'id декору - '+$decorsData
-
-    valuesToSubmit = {product_id: $product_id, quantity: $product_quantity, product_pack_id: $produck_pack_id, p_drink_set_id: $drinkSetData, p_tablecloth_id:$tableclothData, p_decor_id: $decorsData}
-
-    $.ajax
-      url: '/line_items'
-      dataType: 'html'
-      type: "POST"
-      data: valuesToSubmit
-      beforeSend: ->
-        statuButton.children().remove()
-        statuButton.addClass('change-width')
-        statuButton.append('<div class="status-adding">Добавляння...</div>')
-      success: (data) ->
-        statuButton.children().remove()
-        statuButton.append('<div class="status-adding">КОМПЛЕКТ ВЖЕ В КОРЗИНІ!</div>')
-        setCountItems(3)
-        return
-
-      complete: ->
-        return
-
 #   ordering products
   $('ul#status-ico-wrap li').click ->
     current_position = $(this).index()
@@ -228,7 +123,17 @@ $(document).ready ->
         nextStatusPage.addClass('hide')
         prevStatusPage.removeClass('hide')
         headerTitle.text(currentHeaderTitle)
+countProductsCart = 0
+$(document).on "click", '.quantity_control', ->
+  parentElement = $(this).closest('.quantity_wrap')
+  findedElement = parentElement.find('input.quantity').val()
+  if $(this).hasClass('quantity_plus')
+    findedElement = +findedElement + 1
+    parentElement.find('input.quantity').val(findedElement)
 
+  else if $(this).hasClass('quantity_minus') && findedElement >1
+    findedElement = +findedElement - 1
+    parentElement.find('input.quantity').val(findedElement)
 
 
 #   active link if count products after 0
@@ -239,4 +144,105 @@ $(document).on "click", 'a#link-to-ordering-product', ->
     return false
   else
     return true
+
+#  delete line item from cart
+$(document).on "click", '.delete-item', ->
+  attrRenderID = $(this).attr('data-line-item-id')
+  $.ajax
+    url: '/line_items/'+attrRenderID
+    dataType: 'html'
+    type: "DELETE"
+    beforeSend: ->
+    success: (data) ->
+    complete: ->
+      loadPartials()
+
+# add product to cart
+$(document).on "click", '#form_add_to_cart button', ->
+  $currentElement = $(this)
+  parent = $(this).closest('form')
+  count = parent.find("input.count_product").val()
+
+  attrRenderID = $(this).attr('data-product-id')
+  itemToRemove = parent.find('.quantity-items-wrap')
+  removedItems = itemToRemove
+  itemToAdd = $(this).parent()
+  undoElement = $(this).parent().html()
+
+  if $currentElement.hasClass("is-drink-set")
+    valuesToSubmit = {drink_set_id: attrRenderID, ds_quantity: count}
+  else if $currentElement.hasClass("is-decor")
+    valuesToSubmit = {decor_id: attrRenderID, d_quantity: count}
+  else if $currentElement.hasClass("is-tablecloth")
+    valuesToSubmit = {product_id: attrRenderID, quantity: count}
+
+  $.ajax
+    url: '/line_items'
+    dataType: 'html'
+    type: "POST"
+    data: valuesToSubmit
+    beforeSend: ->
+      if itemToRemove.hasClass('quantity-items-wrap')
+        itemToRemove.css('display','none')
+      if itemToAdd.hasClass('not-product-pack')
+        itemToAdd.children().remove()
+        itemToAdd.append('<div class="input_send"><div class="status-adding">Добавляння...</div></div>')
+    success: (data) ->
+      if itemToAdd.hasClass('not-product-pack')
+        itemToAdd.children().remove()
+        itemToAdd.append('<div class="status-adding">ТОВАР ВЖЕ В КОРЗИНІ!</div>')
+        $('<label class="one-product-anchor-to-cart temp-label-for-bascket" for="modal_cart" id="basket">Переглянути</label>').insertAfter(itemToAdd)
+        setCountItems(count)
+        loadPartials()
+
+    complete: ->
+      setTimeout (->
+        itemToRemove.css('display','block')
+        itemToAdd.html(undoElement)
+        $('label.temp-label-for-bascket').remove()
+        # Do something after 5 seconds
+      ), 3000
+
+# add product pack items to cart
+$(document).on "click", '.pd_product_pack_wrap button.cust_button', ->
+  statuButton = $(this).parent()
+  $product_id = ""
+  $product_quantity = ""
+  $parent = $(this).closest('.pd_product_pack_wrap')
+  $lis = $parent.find('.ppi_item_wrap')
+
+  $produck_pack_id = $(this).attr 'data-product-pack-id'
+
+  $tablecloth = $lis.filter('.pp-tablecloth-buy')
+  $tableclothData = $tablecloth.attr 'data-product-id'
+  $dirnkSet = $lis.filter('.pp-drink-set-buy')
+  $drinkSetParent = $dirnkSet.parent().filter('.active')
+  $drinkSetData = $drinkSetParent.children().attr 'data-product-id'
+  if $dirnkSet.hasClass('one-item')
+    $drinkSetData = $dirnkSet.attr 'data-product-id'
+
+  $decors = $lis.filter('.pp-decor-buy')
+  $decorsParent = $decors.parent().filter('.active')
+  $decorsData = $decorsParent.children().attr 'data-product-id'
+  if $decors.hasClass('one-item')
+    $decorsData = $decors.attr 'data-product-id'
+
+  valuesToSubmit = {product_id: $product_id, quantity: $product_quantity, product_pack_id: $produck_pack_id, p_drink_set_id: $drinkSetData, p_tablecloth_id:$tableclothData, p_decor_id: $decorsData}
+
+  $.ajax
+    url: '/line_items'
+    dataType: 'html'
+    type: "POST"
+    data: valuesToSubmit
+    beforeSend: ->
+      statuButton.children().remove()
+      statuButton.addClass('change-width')
+      statuButton.append('<div class="status-adding">Добавляння...</div>')
+    success: (data) ->
+      statuButton.children().remove()
+      statuButton.append('<div class="status-adding">КОМПЛЕКТ ВЖЕ В КОРЗИНІ!</div>')
+      setCountItems(3)
+      loadPartials()
+
+    complete: ->
 
