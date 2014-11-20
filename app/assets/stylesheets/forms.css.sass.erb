@@ -39,8 +39,15 @@
             width: 20%
             position: absolute
             top: 0
-            right: 0
+            right: 14px
             bottom: 0
+            svg
+                path, polygon
+                    +transition(fill, 300ms, ease-out)
+            &:hover
+                path, polygon
+                    fill: #E05858
+
     .form_wrap
         position: absolute
         top: 50px
@@ -66,17 +73,18 @@
                     padding-left: 10px
                     padding-right: 10px
                 button
-                    height: 30px
+                    height: 40px
                     margin: 0
                         top: 15px
                     padding: 0
                     width: 100%
                     background: #c8ae4b
                     font:
-                        size: 0.875rem
+                        size: 1rem
                         family: 'Fira Sans', sans-serif !important
                         style: normal !important
-                        weight: 500
+                        weight: 400
+                    text-transform: uppercase
 
 input.invisible_input
     position: absolute

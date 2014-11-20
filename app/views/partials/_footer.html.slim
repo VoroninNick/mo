@@ -59,10 +59,16 @@ footer.sf_footer
             .row.mdn
               .columns.large-12
                 a href="tell:+380504170728"
-                  .link_inner.link_phone_inner
+                  .link_inner.link_phone_inner.phone-link-with-brackets
                     = embedded_svg ("MO-Phone.svg"), class: "f_ico"
                     span
-                      |+38 (050) 417 07 28
+                      |+38&nbsp;
+                      .bracket
+                        |(
+                      |050
+                      .bracket
+                        |)
+                      |&nbsp;417 07 28
             .row.mdn
               .columns.large-12
                 a href="mailto:voronin.nick@gmail.com"
@@ -94,7 +100,7 @@ footer.sf_footer
       .f_about_wrap
         .row
           .columns.large-5
-            p
+            p.faw_left
               |Проект розроблений за підтримки ЗРЦ «ЗУРЦ» та «Charles Stewart Mott Foundation»
           .columns.large-4
             ul.voronin-block-wrap
@@ -116,5 +122,5 @@ footer.sf_footer
                   a href="http://voroninstudio.eu/" rel="nofollow" =t('pages.footer.projects_info')
               .clearfix
           .columns.large-3
-            p
+            p.faw_right
               |© 2014 «Magia Obrus»

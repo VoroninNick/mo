@@ -80,6 +80,8 @@
             -@current_category.child_categories.each_with_index do |sb, inx|
               li.dst class=(if inx == 0 then; 'active' end;)
                 =sb.name
+            li
+              |всі
       ul#drink-sets-pages
         -@current_category.child_categories.each_with_index do |sb, inx|
           li.dsb class=(if inx == 0 then; 'active' elsif inx != 0 then; 'hide' end;)
@@ -119,7 +121,7 @@
                                     .diw-title-wrap
                                       a href=sets_detail_path(@current_category.t_name, i.t_name, locale: I18n.locale)
                                         h2
-                                          =i.name
+                                          =truncate i.name, length: 80
                                     h3
                                       =i.price
                                       |&nbsp;грн
@@ -143,3 +145,66 @@
                                         |Більш детально >>>
 
                     .clearfix
+        li.dsb.hide
+          .row
+            .columns
+              .product-list
+                .row
+                  -if @current_category
+                    -@current_category.child_categories.each do |sb|
+                      -if sb.drink_sets
+                        -sb.drink_sets.each do |i|
+                          .columns.large-3.product-block
+                            .block-inner
+                              .image-cont style="opacity: 1;"
+                                .bi style="background: url('#{i.image.url(:thumb)}')no-repeat center center;"
+                                .product_info_wrapper
+                                  .pi_inner
+                                    a.more-info
+                                      .pi_top
+                                        h5 =truncate i.name, lenght: '80'
+                                      .pi_bottom
+                                        h4
+                                          =i.price
+                                          span
+                                            |&nbsp;грн
+                            .product-detail
+                              .container
+                                .row
+                                  .columns.large-6
+                                    .bi style="background: url('#{i.photo_galleries[0].image.url(:large)}')no-repeat center center;"
+                                    ul.product_gallery_images
+                                      -i.photo_galleries.each_with_index do |photo, index|
+                                        li
+                                          a.button-for-prev href="#{photo.image.url(:large)}" class=(if index==0 then; 'active' end;)
+                                            =embedded_svg('MO-picture switchers.svg')
+                                          a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
+                                  .columns.large-6
+                                    .detail_info_wrap
+                                      .diw-title-wrap
+                                        a href=sets_detail_path(@current_category.t_name, i.t_name, locale: I18n.locale)
+                                          h2
+                                            =truncate i.name, length: 80
+                                      h3
+                                        =i.price
+                                        |&nbsp;грн
+                                      form#form_add_to_cart
+                                        .input.quantity-items-wrap
+                                          a.add_one_point
+                                            =embedded_svg('MO-arrow.svg')
+                                          input.count_product value="1"
+                                          a.remove_one_point
+                                            =embedded_svg('MO-arrow.svg')
+                                        .input_send.not-product-pack
+                                          button.cust_button.is-drink-set data-product-id=i.id
+                                            |Добавити в корзину
+                                        .clearfix
+                                      p = i.short_description
+                                      a.close-detail href="#"
+                                        =embedded_svg('MO-close button.svg')
+                                    .read-more-wrap
+                                      .p_read_more.read-more-items
+                                        a.right href=sets_detail_path(@current_category.t_name, i.t_name, locale: I18n.locale)
+                                          |Більш детально >>>
+
+                      /.clearfix

@@ -129,7 +129,7 @@
                             h5 =truncate i.name, lenght: '80'
                           .pi_bottom
                             h4
-                              =i.price
+                              =i.price.round
                               span
                                 |&nbsp;грн
                 .product-detail
@@ -150,8 +150,9 @@
                               h2
                                 =i.name
                           h3
-                            =i.price
-                            |&nbsp;грн
+                            =i.price.round
+                            span
+                              |&nbsp;грн
                           form#form_add_to_cart
                             .input.quantity-items-wrap
                               a.add_one_point

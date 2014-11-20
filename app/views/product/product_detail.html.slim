@@ -17,10 +17,10 @@
       - if @product
         - i = @product
         .product-detail
-          .container
+          .container.container-item-detail
             .row
               .columns.large-6
-                a.bsh_right_bottom.link_to_prev.fancy_gallery data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}" href=i.photo_galleries[0].image.url(:large)
+                a.bsh_right_bottom.link_to_prev.fancy_gallery.item-detail-main-image data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}" href=i.photo_galleries[0].image.url(:large)
                   .bi style="background: url('#{i.image.url(:large)}')no-repeat center center;"
                   .preview_ico
                     .preview_ico_inner
@@ -40,7 +40,7 @@
                   h2.passive_title
                     =i.name
                   h3
-                    =i.price
+                    =i.price.round
                     span
                       |&nbsp;грн
                   form#form_add_to_cart
@@ -93,7 +93,7 @@
                   .pd_info_block
                     .columns.large-4
                       h3
-                        =ds.price
+                        =ds.price.round
                         span
                           |&nbsp;грн
                     .columns.large-8
@@ -144,7 +144,7 @@
                   .pd_info_block
                     .columns.large-4
                       h3
-                        =d.price
+                        =d.price.round
                         span
                           |&nbsp;грн
                     .columns.large-8
@@ -193,7 +193,7 @@
                       h5 =truncate prod.name, lenght: '80'
                     .pi_bottom
                       h4
-                        =prod.price
+                        =prod.price.round
                         span
                           |&nbsp;грн
         .symbol_plus_wrap
@@ -208,16 +208,12 @@
                     .bi.bsh_right_bottom style="background: url('#{d.photo_galleries[0].image.url(:thumb)}')no-repeat center center;" data-tablecloth-price="#{d.price}"
                     .product_info_wrapper
                       .pi_inner
-                        /-sql= "select dsc.* from #{DrinkSet.table_name} dsc where dsc.t_name = '#{d.t_name}' "
-                        /-parent_category_ds = DsCategory.find_by_sql(sql)
-                        /-ds_parent = parent_category_ds.first
-                        /-ds_children = d.ds_category
                         a.more-info href=sets_detail_path(d.ds_category.parent.t_name, d.t_name, locale: I18n.locale)
                           .pi_top
                             h5 =truncate d.name, lenght: '80'
                           .pi_bottom
                             h4
-                              =d.price
+                              =d.price.round
                               span
                                 |&nbsp;грн
               .pcb.pc-button-up
@@ -234,7 +230,7 @@
                       h5 =truncate @product_set.drink_sets[0].name, lenght: '80'
                     .pi_bottom
                       h4
-                        =@product_set.drink_sets[0].price
+                        =@product_set.drink_sets[0].price.round
                         span
                           |&nbsp;грн
         .symbol_plus_wrap
@@ -254,7 +250,7 @@
                             h5 =truncate d.name, lenght: '80'
                           .pi_bottom
                             h4
-                              =d.price
+                              =d.price.round
                               span
                                 |&nbsp;грн
               .pcb.pc-button-up
@@ -271,7 +267,7 @@
                       h5 =truncate @product_set.decors[0].name, lenght: '80'
                     .pi_bottom
                       h4
-                        =@product_set.decors[0].price
+                        =@product_set.decors[0].price.round
                         span
                           |&nbsp;грн
         .clearfix
@@ -295,11 +291,13 @@
             .old_prices_result_wrap
               .old_price_result
                 =result.round
-                |&nbsp;грн
+                span
+                  |&nbsp;грн
             .new_prices_result_wrap
               .new_price_result
                 =sale_result.round
-                |&nbsp;грн
+                span
+                  |&nbsp;грн
         .row
           .columns.large-12
             .buy_products_pack_wrap

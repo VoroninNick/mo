@@ -19,9 +19,9 @@ h4
     display: none
 nav.breadcrumbs
     a
-        text-transform: capitalize !important
+        /*text-transform: capitalize !important*/
     & a.unavailable
-        text-transform: capitalize !important
+        /*text-transform: capitalize !important*/
         color: #d1d3d4 !important
 .light-grey-border
     border-top: 1px solid #d1d3d4
@@ -307,21 +307,32 @@ header
                     padding-top: 40%
                 .ci_count_items_wrap
                     +my_center_align
+                        top: 48%
                         position: absolute
                     .ci_count
                         font:
-                            size: 4.5rem
+                            size: 5.5rem
                             family: 'Fira Sans', sans-serif
+                            weight: 500
                         color: #ffffff
                         text:
                             align: center
                             transform: uppercase
                         line-height: 5rem
+                        margin-bottom: 10px
                     .ci_label
                         font:
                             size: 1.5rem
                             family: 'Playfair Display', serif
+                            style: italic
+                            weight: 300
+                        letter-spacing: .1rem
                         color: #ffffff
+                        white-space: nowrap
+                        line-height: 1.8rem
+                        @media (min-width : 0em) and (max-width : 1150px)
+                            white-space: normal
+
                         text:
                             align: center
 .main_menu_wrap
@@ -504,7 +515,8 @@ header
             size: 1.3125rem
             family: 'Playfair Display', serif
             weight: 700
-        color: #a78c30
+        color: #c8ae4b
+        margin-bottom: 1rem
         text:
             transform: uppercase
         letter-spacing: 0.1rem
@@ -513,12 +525,14 @@ header
             size: 1.125rem
             family: 'Playfair Display', serif
             style: italic
-        color: #a78c30
+            weight: 300
+        color: #c8ae4b
     p
         font:
             size: 1.125rem
             family: 'Fira Sans', sans-serif
-            weight: 500
+            weight: 200
+        line-height: 1.5rem
 
 .light_gray_back_wrap
     background: #f1f2f2
@@ -529,6 +543,7 @@ header
     h4
         font:
             size: 1.125rem
+        color: #c8ae4b
     .more_categories_wrap
         padding-top: 14px
         h2
@@ -538,6 +553,7 @@ header
                 family: 'Playfair Display', serif
                 weight: 700
             text-transform: uppercase
+            letter-spacing: .1rem
             a
                 color: inherit
         .more_categories_image
@@ -570,9 +586,10 @@ header
             +my_vertical_align
             color: #a78c30
             font:
-                size: 1.35011rem
+                size: 1.5rem
                 family: 'Playfair Display', serif
                 style: italic
+            color: #c8ae4b
 
 .ip_publication_wrap
     padding:
@@ -585,9 +602,10 @@ header
             family: 'Playfair Display', serif
             weight: 700
         text-transform: uppercase
+        letter-spacing: .1rem
     .publication_one_item
-        padding: 27.5px 0
-        min-height: 240px
+        padding: 10px 0 0 0
+        min-height: 190px
         a.back_image
             background: #e8d69b
             display: block
@@ -609,6 +627,7 @@ header
             backface-visibility: hidden
             opacity: 0.7
         h5
+            margin-bottom: .7rem
             a
                 color: #c8ae4b
                 font:
@@ -618,6 +637,7 @@ header
         p
             font-size: 1rem
             line-height: 1.3rem
+            font-weight: 200
 
 footer
     .footer_wrap
@@ -653,10 +673,13 @@ footer
                         height: 32px
                         display: table
                         margin-bottom: 15px
+                        position: relative
                         span
                             display: table-cell
                             vertical-align: middle
-                            padding-left: 13px
+                            padding-left: 50px
+                        svg.f_ico
+                            position: absolute
                         &.link_phone_inner
                             font:
                                 size: 1.3125rem
@@ -696,7 +719,8 @@ footer
                                 family: 'Playfair Display', serif
                                 style: italic
                             color: #e8d69b
-                            padding-top: 15px
+                            padding-top: 11px
+                            letter-spacing: .061rem
                     .input_send_data
                         width: 32%
                         display: inline-block
@@ -710,7 +734,7 @@ footer
                             font:
                                 size: 1rem
                                 family: 'Fira Sans', sans-serif
-                                weight: 500
+                                weight: 400
                             text-transform: uppercase
                             &:focus
                                 outline: none
@@ -728,6 +752,12 @@ footer
                         family: 'Playfair Display', serif
                         style: italic
                     color: #e8d69b
+                    letter-spacing: .061rem
+                    &.faw_left
+                        line-height: 1.2rem
+                        margin-top: .6rem
+                    &.faw_right
+                        margin-top: 1rem
 
 
 
@@ -739,7 +769,8 @@ svg.f_ico
 
 
 /* style for .voronin-block-wrap */
-
+button:hover
+    background: #e05858 !important
 ul.voronin-block-wrap
     margin: 0 !important
 
@@ -785,7 +816,11 @@ ul.voronin-block-wrap
     li.vbw-text
         width: 80%
         padding: 3% 0 0 2%
-
+        p
+            letter-spacing: normal !important
+            font:
+                weight: 200
+                size: 0.875rem !important
 /*end*/
 
 
@@ -1238,6 +1273,7 @@ ul#mp_wrap
             family: 'Playfair Display', serif
             weight: 900
         line-height: 2.7rem
+        letter-spacing: .1rem
         text:
             transform: uppercase
             align: center
@@ -1274,6 +1310,7 @@ ul.social_networks_wrap
         float: left
         font:
             size: 1.3125rem !important
+            weight: 600
         .bracket
             display: inline-block
             color: #e8d69b

@@ -58,6 +58,8 @@
                     family: 'Playfair Display', serif
                     weight: 700
                 color: #ffffff
+                font-weight: 300
+                letter-spacing: .061rem
                 +my_vertical_align
             h4
                 text:
@@ -68,6 +70,7 @@
                     weight: 700
                     style: italic
                 color: #ffffff
+                letter-spacing: .1rem
                 +my_vertical_align
                 span
                     font:
@@ -112,7 +115,7 @@
         -webkit-transition: height 0.8s
         -moz-transition: height 0.8s
         transition: height 0.8s
-        margin-top: 20px
+        margin-top: 25px
         overflow: hidden
     &.expand
         padding-bottom: 560px
@@ -123,14 +126,20 @@
             box-shadow: none
         .pi_inner
             display: block
+            -webkit-transform: scale(1)
+            -moz-transform: scale(1)
+            -ms-transform: scale(1)
+            -o-transform: scale(1)
+            transform: scale(1)
         &:after
             display: block
             width: 50px
             height: 20px
             content: ''
-            background: url('<%=asset_path("MO-arrow.svg")%>')no-repeat
+            background: url('<%=asset_path("MO-arrow-one-item.svg")%>')no-repeat
             background-size: 100%
             position: absolute
+            margin-top: 5px
             +my_horizontal_align
                 -webkit-transform: translateX(-50%) rotate(180deg)
                 -moz-transform: translateX(-50%) rotate(180deg)
@@ -157,6 +166,7 @@
     padding-right: 0px
     position: relative
     padding-top: 50px
+    background: #fff
     .detail_info_wrap
         position: relative
         z-index: 1
@@ -175,14 +185,17 @@
         line-height: 1.5rem
         margin: 0
         padding: 0
+        letter-spacing: .1rem
+        padding-right: 40px
         &.passive_title
             color: #6d6e71
+            padding-right: 0
     h3
         color: #a78c30
         text:
             transform: uppercase
         font:
-            size: 2.25rem
+            size: 2.6rem
             family: 'Playfair Display', serif
             weight: 700
             style: italic
@@ -202,6 +215,9 @@
         position: absolute
         top: 0
         right: 0
+        &:hover
+            path, polygon
+                fill: #E05858
         svg
             width: 100%
             height: 100%
@@ -209,6 +225,8 @@
                 fill: #d1d3d4
     p
         padding-top: 40px
+        font-weight: 200
+        line-height: 1.5rem
     .description_wrap
         padding:
             top: 40px
@@ -229,7 +247,7 @@
             float: left
 
 #form_add_to_cart
-    padding-top: 40px
+    padding-top: 45px
     .input
         width: 50px
         height: 40px
@@ -277,7 +295,7 @@
         font:
             size: 1rem
             family: 'Fira Sans', sans-serif
-            weight: 500
+            weight: 400
         color: #ffffff
         text:
             align: center
@@ -347,6 +365,8 @@ ul.product_gallery_images
                     left: 0.9375rem
                     right: 0.9375rem
                     bottom: 4px
+            .owl-controls
+                display: none !important
         a
             h2
                 color: #6d6e71
@@ -382,6 +402,9 @@ ul.pd_drink_sets_carousel, ul.pd_decors_carousel
         list-style: none
         margin:
             bottom: 3px
+        p
+            font-weight: 200
+            line-height: 1.5rem
 
 ul.pd_drink_sets_carousel
     padding: 45px 0 50px 0
@@ -400,6 +423,7 @@ ul.pd_drink_sets_carousel
             weight: 700
         line-height: 1.5rem
         margin: 0
+        letter-spacing: 0.1rem
     .pd_info_block
         padding:
             top: 25px
@@ -433,6 +457,8 @@ ul.pd_drink_sets_carousel
     line-height: 1.5rem
     margin: 0
         top: 0.5rem
+    letter-spacing: .061rem
+    font-size: 1rem
 
 .pd_decors_wrap
     padding-bottom: 60px
@@ -453,7 +479,7 @@ ul.pd_drink_sets_carousel
                 content: ''
                 height: 1px
                 width: 3000px
-                background: #a78c30
+                background: #c8ae4b
                 top: 20px
                 left: -1500px
                 z-index: -1
@@ -461,6 +487,8 @@ ul.pd_drink_sets_carousel
                 padding-top: 0
                 text:
                     align: center
+                color: #c8ae4b
+                letter-spacing: .061rem
 
 .pd_product_pack_wrap
     padding:
@@ -469,6 +497,7 @@ ul.pd_drink_sets_carousel
     h4
         text:
             align: center
+        color: #c8ae4b
     h3
         text:
             align: center
@@ -478,23 +507,28 @@ ul.pd_drink_sets_carousel
             family: 'Playfair Display', serif
             style: italic
         line-height: 1.5rem
+        letter-spacing: 0.061rem
+        font-size: 1rem
     h2
         text:
             align: center
             transform: uppercase
-        color: #a78c30
         font:
             size: 1.3125rem
             family: 'Playfair Display', serif
             weight: 700
         line-height: 1.5rem
-
+        color: #c8ae4b
+        padding-top: 2rem
+        padding-bottom: 5px
 
 .logo_background_wrap
 
 .pd_products_pack_wrap
     h4
         padding-top: 25px
+        color: #c8ae4b
+        letter-spacing: .061rem
     .owl-buttons
         polygon
             fill: black
@@ -526,7 +560,7 @@ ul.all_products_carousel
             text:
                 align: center
             padding-top: 10px
-            text-transform: capitalize
+            letter-spacing: .061rem
         &.category_prev
             position: absolute
             left: 0
@@ -565,14 +599,15 @@ ul.all_products_carousel
 
 ul.product_properties
     margin: 0
-    border-top: 1px solid #a78c30
+    border-top: 1px solid #c8ae4b
     li
         list-style: none
-        border-bottom: 1px solid #a78c30
+        border-bottom: 1px solid #c8ae4b
         min-height: 40px
         line-height: 40px
         .pp_wrap
             display: inline-block
+            letter-spacing: .061rem
         .key_wrap
             width: 30%
             font:
@@ -584,7 +619,7 @@ ul.product_properties
                 transform: uppercase
             line-height: 1.5rem
         .value_wrap
-            color: #a78c30
+            color: #c8ae4b
             font:
                 size: 1rem
                 family: 'Playfair Display', serif
@@ -752,3 +787,13 @@ ul#drink-sets-pages
                 h4, path, circle, polygon
                     color: #dd7272
                     fill: #dd7272
+
+.container-item-detail
+    padding-top: 40px
+    .detail_info_wrap
+        h2
+            padding-bottom: 30px
+.item-detail-main-image
+    width: 94%
+    margin: 0 auto
+
