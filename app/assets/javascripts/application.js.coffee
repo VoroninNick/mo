@@ -15,3 +15,6 @@
 #= require fancybox
 #= require owl.carousel
 #= require_tree .
+
+#= require jquery.validate
+#= require jquery.validate.additional-methods

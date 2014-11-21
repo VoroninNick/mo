@@ -48,7 +48,7 @@
                       a.remove_one_point
                         =embedded_svg('MO-arrow.svg')
                     .input_send.not-product-pack
-                      button.cust_button.is-decor data-product-id=i.id
+                      button.cust_button.order-product-link-wrap.is-decor data-product-id=i.id
                         |Добавити в корзину
                     .clearfix
                   .description_wrap
@@ -98,7 +98,7 @@
                         a.remove_one_point
                           =embedded_svg('MO-arrow.svg')
                       .input_send.not-product-pack
-                        button.cust_button.is-tablecloth data-product-id=p.id
+                        button.cust_button.order-product-link-wrap.is-tablecloth data-product-id=p.id
                           |Добавити в корзину
                       .clearfix
                   .clearfix
@@ -163,6 +163,6 @@
           .columns.large-12
             .buy_products_pack_wrap
               .input_send
-                button.cust_button
+                button.cust_button.order-products-collection-link-wrap
                   |Купити комплект
               .clearfix
