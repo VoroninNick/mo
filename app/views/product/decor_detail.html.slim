@@ -18,10 +18,10 @@
       - if @product
         - i = @product
         .product-detail
-          .container
+          .container.container-item-detail
             .row
               .columns.large-6
-                a.link_to_prev.fancy_gallery data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}" href=i.photo_galleries[0].image.url(:large)
+                a.link_to_prev.fancy_gallery.fancy_gallery.item-detail-main-image data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}" href=i.photo_galleries[0].image.url(:large)
                   .bi style="background: url('#{i.photo_galleries[0].image.url(:large)}')no-repeat center center;"
                   .preview_ico
                     .preview_ico_inner

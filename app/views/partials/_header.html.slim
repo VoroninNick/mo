@@ -33,8 +33,9 @@ header
             label for="call_order"
               .link_phone_inner
                 = embedded_svg ("MO-Phone-call back.svg")
-                span
-                  |замовити дзвінок
+                .call-order-link-wrap
+                  span
+                    |замовити дзвінок
             #modal_call_order
               =render partial: 'partials/forms/call_order'
     .basket_wrapper.header_menu_squad

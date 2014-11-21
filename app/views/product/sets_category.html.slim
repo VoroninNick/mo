@@ -80,8 +80,9 @@
             -@current_category.child_categories.each_with_index do |sb, inx|
               li.dst class=(if inx == 0 then; 'active' end;)
                 =sb.name
-            li
-              |всі
+            -if @current_category.child_categories.count > 0
+              li
+                |всі
       ul#drink-sets-pages
         -@current_category.child_categories.each_with_index do |sb, inx|
           li.dsb class=(if inx == 0 then; 'active' elsif inx != 0 then; 'hide' end;)

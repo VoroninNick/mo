@@ -186,6 +186,16 @@ header
                 line-height: 50px
                 display: table
                 position: relative
+                .call-order-link-wrap
+                    display: table-cell
+                    vertical-align: middle
+                    padding:
+                        left: 40px
+                    span
+                        display: inline
+                        padding-left: 0
+                        border-bottom: 2px dashed
+                        vertical-align: super
                 span
                     display: table-cell
                     vertical-align: middle
@@ -915,11 +925,14 @@ ul#mp_wrap
         &:after
             background: #E05858
 .modal_cart_wrap
+    //    +transition(right, 500ms, ease-out)
+    transition: transform .5s
+    transform: translateX(535px)
     position: fixed
     top: 0
     right: 0
     bottom: 0
-    width: 0
+    width: 535px
     z-index: 112
     overflow: hidden
     .async-partial-loader

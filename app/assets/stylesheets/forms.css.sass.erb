@@ -112,10 +112,10 @@ input.call_order_input_status[type=checkbox]:checked ~ .sf_container
 
 input.cart_input_status[type=checkbox]:checked ~ .sf_container
     .modal_cart_wrap
-        width: 535px
-        -webkit-box-shadow: -2px 0px 2px 0px rgba(0,0,0,0.5)
-        -moz-box-shadow: -2px 0px 2px 0px rgba(0,0,0,0.5)
-        box-shadow: -2px 0px 2px 0px rgba(0,0,0,0.5)
+        transform: translateX(0px)
+        -webkit-box-shadow: -2px 0px 2px 0px rgba(0,0,0,0.2)
+        -moz-box-shadow: -2px 0px 2px 0px rgba(0,0,0,0.2)
+        box-shadow: -2px 0px 2px 0px rgba(0,0,0,0.2)
         @media (min-width : 0em) and (max-width : 40em)
             width: 100%
     &:after
@@ -128,6 +128,9 @@ input.cart_input_status[type=checkbox]:checked ~ .sf_container
         right: 0
         background: rgba(0,0,0,0.2)
         z-index: 111
+        /*animation: my_opacity .5s infinite*/
+        animation: my_opacity .5s ease-out
+        -webkit-animation: my_opacity .5s ease-out
 
 
 #holiday:target ~ .products_tabs_wrap
