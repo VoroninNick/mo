@@ -123,17 +123,58 @@ $(document).ready ->
         nextStatusPage.addClass('hide')
         prevStatusPage.removeClass('hide')
         headerTitle.text(currentHeaderTitle)
+
+
+#  change quantity in basket
 countProductsCart = 0
 $(document).on "click", '.quantity_control', ->
   parentElement = $(this).closest('.quantity_wrap')
+  lineItem = parentElement.attr("data-line-item-id")
+  productId = parentElement.attr("data-id")
   findedElement = parentElement.find('input.quantity').val()
+  MainBasketCount = $("label#basket")
+  MainBasketCountValue = MainBasketCount.attr("data-count")
+  BasketCount = $(".modal_cart_wrap .count_product").attr("data-count")
+  DataType = ""
+
   if $(this).hasClass('quantity_plus')
     findedElement = +findedElement + 1
+    MainBasketCountValue = + MainBasketCountValue + 1
+    MainBasketCount.attr("data-count", MainBasketCountValue)
     parentElement.find('input.quantity').val(findedElement)
 
   else if $(this).hasClass('quantity_minus') && findedElement >1
     findedElement = +findedElement - 1
+    MainBasketCountValue = + MainBasketCountValue - 1
+    MainBasketCount.attr("data-count", MainBasketCountValue)
     parentElement.find('input.quantity').val(findedElement)
+
+  WebServiceUrl = "/line_items/"+lineItem
+  DataToSend = new Object()
+  if parentElement.attr("data-product-type") == "tablecloth"
+    DataToSend =
+      product_id: productId
+      quantity: findedElement
+  else if parentElement.attr("data-product-type") == "decor"
+    DataToSend =
+      decor_id: productId
+      decor_quantity: findedElement
+  else if parentElement.attr("data-product-type") == "drink_set"
+    DataToSend =
+      drink_set_id: productId
+      drink_set_quantity: findedElement
+
+  #Call jQuery ajax
+  $.ajax
+    type: "PUT"
+    contentType: "application/json; charset=utf-8"
+    url: WebServiceUrl
+    data: JSON.stringify(DataToSend)
+    dataType: "json"
+    success: (msg) ->
+        loadPartials()
+    error: (err) ->
+        alert "Error"
 
 
 #   active link if count products after 0
@@ -146,6 +187,10 @@ $(document).on "ready click", 'a#link-to-ordering-product',() ->
 
 #  delete line item from cart
 $(document).on "click", '.delete-item', ->
+  ProductsPack = $("ul.cart-product-packs li").size()
+  Products = $("ul.cart_items_list li").size()
+  SumProducts = ProductsPack + Products
+
   attrRenderID = $(this).attr('data-line-item-id')
   $.ajax
     url: '/line_items/'+attrRenderID
@@ -155,6 +200,8 @@ $(document).on "click", '.delete-item', ->
     success: (data) ->
     complete: ->
       loadPartials()
+      if SumProducts == 1
+        $("label#basket").attr("data-count", 0)
 
 # add product to cart
 $(document).on "click", '#form_add_to_cart button.order-product-link-wrap', ->
@@ -253,7 +300,7 @@ $(document).on "click", '.pd_product_pack_wrap button.order-products-collection-
 $(document).on "click", 'label#basket', ->
   countproductsInBasket = $('ul.cart_items_list li').size()
   if countproductsInBasket == 0
-  else
+  else if countproductsInBasket >= 1
     if $(".ci_next_step").hasClass('passive-link')
       $(".ci_next_step").removeClass('passive-link')
 

@@ -194,7 +194,7 @@ header
                     span
                         display: inline
                         padding-left: 0
-                        border-bottom: 2px dashed
+                        border-bottom: 1px dashed
                         vertical-align: super
                 span
                     display: table-cell
@@ -895,15 +895,16 @@ ul#mp_wrap
 
 .delete-item
     width: 20px
-    height: 15px
+    height: 20px
     position: relative
+    right: -4px
     cursor: pointer
     &:before, &:after
         display: block
         content: ''
-        width: 10px
+        width: 15px
         height: 1px
-        background: #6D6E71
+        background: #a7a9ac
         position: absolute
         top: 50%
         left: 50%
@@ -997,6 +998,7 @@ ul#mp_wrap
                     family: 'Playfair Display', serif
                     weight: 700
                 text-transform: uppercase
+                letter-spacing: .061rem
         .cart-content-page
             background: #ffffff
             position: absolute
@@ -1009,6 +1011,13 @@ ul#mp_wrap
                 width: 100%
                 height: 100%
                 position: relative
+                h4.product_option
+                    font:
+                        size: 1rem
+                    padding-left: 1.5rem
+                    margin-top: 0.6rem
+                    margin-bottom: 0
+                    letter-spacing: .061rem
                 ul.cart-product-packs
                     margin-left: 0
                     margin-bottom: 0
@@ -1019,6 +1028,7 @@ ul#mp_wrap
                         border-bottom: 1px solid #ffffff
                         .cpp-header-wrap
                             position: relative
+                            padding-top: .3rem
                             .cpp-title
                                 color: #A78C30
                                 font:
@@ -1026,16 +1036,22 @@ ul#mp_wrap
                                     family: 'Playfair Display', serif
                                     weight: 700
                                 text-transform: uppercase
+                                letter-spacing: .061rem
+                                margin-bottom: .8rem
                             .cpp-delete-item
                                 position: absolute
                                 top: 0
                                 right: 0
+                                padding-top: .3rem
                         .cpp-one-pack-wrap
                             .cpp-items-wrap
-                                width: 330px
+                                width: 344px
                                 .cpp-one-item-wrap
                                     width: 100%
                                     height: 75px
+                                    .product_option
+                                        padding-left: 0
+                                        padding-top: 6px
                                     .cpp-image-wrap
                                         width: 50px
                                     .cpp-info-wrap
@@ -1049,6 +1065,8 @@ ul#mp_wrap
                                             text-transform: uppercase
                                             line-height: 0.6rem
                                             margin-top: 0
+                                            letter-spacing: .061rem
+
                             .cpp-icon-sum-wrap
                                 width: 20px
                                 svg
@@ -1057,7 +1075,7 @@ ul#mp_wrap
                             .cpp-sum-wrap
                                 height: 75px
                                 margin-top: 75px
-                                width: 124px
+                                width: 110px
                                 h3
                                     color: #a78c30
                                     font-size: 1.5rem
@@ -1070,6 +1088,7 @@ ul#mp_wrap
                                         font-size: 1.125rem
                                         font-style: italic
                                         font-weight: normal
+                                        text-transform: lowercase
 
                 ul.cart_items_list
                     margin-left: 0
@@ -1114,16 +1133,11 @@ ul#mp_wrap
                                 float: left
                         .product_option_wrap
                             float: left
-                            h4.product_option
-                                font:
-                                    size: 1rem
-                                padding-left: 1.5rem
-                                margin-top: 0.5rem
-                                margin-bottom: 0
+
                         .cart_item_image_wrap
                             width: 50px
                         .cart_item_info_wrap
-                            width: 300px
+                            width: 324px
                             padding-left: 10px
                             .cart_item_title
                                 h3
@@ -1135,6 +1149,7 @@ ul#mp_wrap
                                     text-transform: uppercase
                                     line-height: 0.6rem
                                     margin-top: 0
+                                    letter-spacing: .061rem
                                 margin-top: 0
                                 line-height: 0.8rem
                         .cart_item_price_wrap
@@ -1153,6 +1168,7 @@ ul#mp_wrap
                                         size: 1.125rem
                                         style: italic
                                         weight: normal
+                                    text-transform: lowercase
 
 
         .cart-count-prices
@@ -1179,6 +1195,7 @@ ul#mp_wrap
                         family: 'Playfair Display', serif
                         weight: 500
                     line-height: 2.8rem
+                    letter-spacing: .1rem
                 .ccp_right
                     color: #a78c30
                     font:
@@ -1189,6 +1206,10 @@ ul#mp_wrap
                     line-height: 2.8rem
                     text-align: right
                     padding-right: 30px
+                    span
+                        font:
+                            size: 1.5rem
+                            weight: 300
         .cart-order-product-wrap
             position: absolute
             left: 0
@@ -1241,6 +1262,10 @@ ul#mp_wrap
                     background: #E05858
             .passive-link
                 background: #a7a9ac !important
+                .title
+                    color: #6d6e71
+                polygon
+                    fill: #6d6e71 !important
             .cop-left
                 .arrow
                     svg

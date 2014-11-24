@@ -33,6 +33,10 @@ module ApplicationHelper
     current_cart.line_items.each do |l|
       if l.quantity
         quantity +=l.quantity
+      elsif l.decor_quantity
+        quantity +=l.decor_quantity
+      elsif l.drink_set_quantity
+        quantity +=l.drink_set_quantity
       elsif l.product_pack_id
         quantity +=3
       end

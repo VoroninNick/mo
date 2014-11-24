@@ -29,10 +29,10 @@
                     .cart_item_title
                       a href=product_detail_path(category.category_url, item.product.t_name, locale: I18n.locale)
                         h3
-                          = truncate item.product.name, length: 30
+                          = truncate item.product.name, length: 26
                 .row
                   .columns.no-padding-left
-                    .quantity_wrap
+                    .quantity_wrap data-line-item-id="#{item.id}" data-product-type="tablecloth" data-id="#{item.product.id}"
                       .quantity_control.quantity_minus
                         = embedded_svg('button-minus.svg')
                       input.quantity value="#{item.quantity}"
@@ -73,10 +73,10 @@
                     .cart_item_title
                       a href=decors_detail_path(category.t_name, decor.t_name, locale: I18n.locale)
                         h3
-                          = truncate decor.name, length: 30
+                          = truncate decor.name, length: 26
                 .row
                   .columns.no-padding-left
-                    .quantity_wrap
+                    .quantity_wrap data-line-item-id="#{item.id}" data-product-type="decor" data-id="#{decor.id}"
                       .quantity_control.quantity_minus
                         = embedded_svg('button-minus.svg')
                       input.quantity value="#{item.decor_quantity}"
@@ -119,10 +119,10 @@
                     .cart_item_title
                       a href=sets_detail_path(category.t_name, drink_set.t_name, locale: I18n.locale)
                         h3
-                          = truncate drink_set.name, length: 30
+                          = truncate drink_set.name, length: 26
                 .row
                   .columns.no-padding-left
-                    .quantity_wrap
+                    .quantity_wrap data-line-item-id="#{item.id}" data-product-type="drink_set" data-id="#{drink_set.id}"
                       .quantity_control.quantity_minus
                         = embedded_svg('button-minus.svg')
                       input.quantity value="#{item.drink_set_quantity}"
@@ -185,7 +185,7 @@
                           .bi style="background: url('#{tablecloth.image.url(:large)}')no-repeat center center;"
                       .cpp-info-wrap.left
                         h3
-                          =truncate tablecloth.name, length: 26
+                          =truncate tablecloth.name, length: 24
                         -if tablecloth.product_properties.count > 0 && tablecloth.product_properties[0].pp_value
                           h4.product_option = tablecloth.product_properties[0].pp_value
                     .cpp-one-item-wrap
@@ -194,7 +194,7 @@
                           .bi style="background: url('#{decor.image.url(:large)}')no-repeat center center;"
                       .cpp-info-wrap.left
                         h3
-                          =truncate decor.name, length: 26
+                          =truncate decor.name, length: 24
                         -if decor.product_properties.count > 0 && decor.product_properties[0].pp_value
                           h4.product_option = decor.product_properties[0].pp_value
                     .cpp-one-item-wrap
@@ -203,7 +203,7 @@
                           .bi style="background: url('#{drink_set.image.url(:large)}')no-repeat center center;"
                       .cpp-info-wrap.left
                         h3
-                          =truncate drink_set.name, length: 26
+                          =truncate drink_set.name, length: 24
                         -if drink_set.product_properties.count > 0 && drink_set.product_properties[0].pp_value
                           h4.product_option = drink_set.product_properties[0].pp_value
                   .cpp-icon-sum-wrap.left
@@ -237,7 +237,8 @@
         -total_price = get_total_price(current_cart)
         -if total_price
           =total_price.round()
-          |&nbsp;грн
+          span
+            |&nbsp;грн
   .cart-order-product-wrap
     .cop_inner.cop-left
       label.close_cart for="modal_cart"
@@ -245,7 +246,7 @@
           =embedded_svg('MO-arrow.svg')
         .title
           |Продовжити покупки
-    .cop_inner.cop-right.ci_next_step.passive-link
+    .cop_inner.cop-right.ci_next_step class=("passive-link" if get_count_products==0)
       a#link-to-ordering-product href=ordering_path(locale: I18n.locale)
         .title
           |Оформити замовлення

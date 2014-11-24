@@ -96,6 +96,8 @@ class LineItemsController < ApplicationController
   # PATCH/PUT /line_items/1
   # PATCH/PUT /line_items/1.json
   def update
+
+
     respond_to do |format|
       if @line_item.update(line_item_params)
         format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
@@ -126,6 +128,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:product_id, :product_pack_id, :cart_id, :p_drink_set_id, :p_product_id, :p_decor_id, :decor_id, :drink_set_id )
+      params.require(:line_item).permit(:product_id, :quantity, :product_pack_id, :cart_id, :p_drink_set_id,  :p_product_id, :p_decor_id, :decor_id, :decor_quantity, :drink_set_id, :drink_set_quantity )
     end
 end

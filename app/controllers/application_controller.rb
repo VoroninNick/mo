@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include CurrentCart
 
+  require "prawn"
+
+  Prawn::Document.generate("hello.pdf") do
+    text "Hello World!"
+  end
+
   helper_method :current_cart
   def current_cart
     @current_cart ||= find_cart
