@@ -23,15 +23,15 @@
         li.sale_tab
           label for="sale_tab"
             |розпродаж
-        li.sets_tab
+        li.sets_tab.dni
           label for="sets_tab"
             |комплекти
-        li.all_special_offers_tab
+        li.all_special_offers_tab.dni
           label for="all_special_offers_tab"
             |всі акції
 
   /only peoducts
-  .special_offers_tab_wrap.sale_tab_wrap
+  .special_offers_tab_wrap.sale_tab_wrap.dbi
     -if @products && @products.respond_to?(:count) && @products.count > 0
       -@products.each_with_index do |p, index|
         .sale_product_wrap.products_pack_item_wrap class=(index%2==0 ? "" : "light_gray_back_wrap")
@@ -78,7 +78,7 @@
                       |Більш детально >>>
 
   /tab only products pack
-  .special_offers_tab_wrap.sets_tab_wrap
+  .special_offers_tab_wrap.sets_tab_wrap.dni
     -if @sets
       -@sets.each_with_index do |s, index|
         .pd_product_pack_wrap class=(index%2==0 ? "" : "logo_background_wrap")
@@ -217,7 +217,7 @@
                     .clearfix
 
   /tab for all products pack and products
-  .special_offers_tab_wrap.all_special_offers_tab_wrap
+  .special_offers_tab_wrap.all_special_offers_tab_wrap.dni
     -if @sets
       -@sets.each_with_index do |s, index|
         .pd_product_pack_wrap class=(index%2==0 ? "" : "logo_background_wrap")

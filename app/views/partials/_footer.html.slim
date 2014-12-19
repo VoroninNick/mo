@@ -8,10 +8,10 @@ footer.sf_footer
               - subcategory = Category.where(:parent_id => true).first
               =link_to one_product_path(subcategory.category_url, locale: I18n.locale) do
                 |Скатертини
-            li
-              - ds_category = DsCategory.where(:parent_id => nil).first
-              =link_to sets_category_path(ds_category.t_name, locale: I18n.locale) do
-                |Сервізи
+            /li
+            /  - ds_category = DsCategory.where(:parent_id => nil).first
+            /  =link_to sets_category_path(ds_category.t_name, locale: I18n.locale) do
+            /    |Сервізи
             li
               - d_category = DCategory.order('created_at DESC').first
               =link_to decor_category_path(d_category.t_name, locale: I18n.locale) do
