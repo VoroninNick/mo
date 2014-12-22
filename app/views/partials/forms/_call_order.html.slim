@@ -8,13 +8,14 @@
       label.cancel_popup for="call_order"
         =embedded_svg('MO-close button.svg')
   .form_wrap
-    form.validate-form
+    form.validate-form method="POST" action="/call_order"
+      input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"
       .input
-        input id="co-name" placeholder="ІМ'Я" minlength="2" type="text" required=""
+        input id="co-name" placeholder="ІМ'Я" minlength="2" type="text" name="firstname" required=""
       .input
-        input id="co-last-name" placeholder="ПРІЗВИЩЕ" minlength="2" type="text" required=""
+        input id="co-last-name" placeholder="ПРІЗВИЩЕ" minlength="2" type="text" name="lastname" required=""
       .input
-        input.phone-input id="co-phone" placeholder="НОМЕР ТЕЛЕФОНУ"
+        input.phone-input id="co-phone" placeholder="НОМЕР ТЕЛЕФОНУ" type="text" name="phone" required=""
       .input
-        button
+        button type="submit"
           |ЧЕКАЮ ДЗВІНКА

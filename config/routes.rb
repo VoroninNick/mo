@@ -26,7 +26,6 @@ Rails.application.routes.draw do
   #   end
   # end
   resources :line_items
-
   resources :carts
 
   # Example resource route with options:
@@ -68,7 +67,13 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
   delete '/line_items/:id' => 'line_items#destroy'
+  post '/customized_form' => 'main#customized_form'
+  post '/call_order' => 'main#call_order'
+  post '/contact_form' => 'main#contact_form'
+  post '/order_product' => 'main#order_product'
+
   scope "(:locale)", :locale => /uk|pl/ do
   get '/contacts' => 'main#contacts', as: 'contacts'
 

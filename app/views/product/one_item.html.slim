@@ -18,13 +18,14 @@
           -c3 = @categories[2]
           -c4 = @categories[3]
           -c5 = @categories[4]
+          -c6 = @categories[5]
 
           -if @parent.category_url == c1.category_url
             li.prev
-              a href=one_product_path(c5.category_url, locale: I18n.locale)
+              a href=one_product_path(c6.category_url, locale: I18n.locale)
                 =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
-                -if c5.icon.exists?
-                  =embedded_svg_from_root_directory "#{c5.icon.path}", :class => 'svg_ico'
+                -if c6.icon.exists?
+                  =embedded_svg_from_root_directory "#{c6.icon.path}", :class => 'svg_ico'
 
             li.active
               a
@@ -106,6 +107,25 @@
                 h4 =c5.name
 
             li.next
+              a href=one_product_path(c6.category_url, locale: I18n.locale)
+                -if c6.icon.exists?
+                  =embedded_svg_from_root_directory "#{c6.icon.path}", :class => 'svg_ico'
+                =embedded_svg ("MO-arrow-right.svg"), :class => 'svg_ico svg_ico_arrow'
+
+          -if @parent.category_url == c6.category_url
+            li.prev
+              a href=one_product_path(c5.category_url, locale: I18n.locale)
+                =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
+                -if c5.icon.exists?
+                  =embedded_svg_from_root_directory "#{c5.icon.path}", :class => 'svg_ico'
+
+            li.active
+              a
+                -if c6.icon.exists?
+                  =embedded_svg_from_root_directory "#{c6.icon.path}", :class => 'svg_ico'
+                h4 =c6.name
+
+            li.next
               a href=one_product_path(c1.category_url, locale: I18n.locale)
                 -if c1.icon.exists?
                   =embedded_svg_from_root_directory "#{c1.icon.path}", :class => 'svg_ico'
@@ -118,7 +138,7 @@
         .row
           - if @products
             - @products.each do |i|
-              .columns.large-3.product-block
+              .columns.large-3.medium-4.small-6.product-block
                 .block-inner
                   .image-cont style="opacity: 1;"
                     .bi style="background: url('#{i.image.url(:thumb)}')no-repeat center center;"
@@ -135,7 +155,7 @@
                 .product-detail
                   .container
                     .row
-                      .columns.large-6
+                      .columns.large-6.medium-6
                         .bi style="background: url('#{i.photo_galleries[0].image.url(:large)}')no-repeat center center;"
                         ul.product_gallery_images
                           -i.photo_galleries.each_with_index do |photo, index|
@@ -143,7 +163,7 @@
                               a.button-for-prev href="#{photo.image.url(:large)}" class=(if index==0 then; 'active' end;)
                                 =embedded_svg('MO-picture switchers.svg')
                               a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
-                      .columns.large-6
+                      .columns.large-6.medium-6
                         .detail_info_wrap
                           .diw-title-wrap
                             a href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale)
@@ -164,7 +184,7 @@
                               button.cust_button.order-product-link-wrap.is-tablecloth data-product-id=i.id
                                 |Добавити в корзину
                             .clearfix
-                          p = i.short_description
+                          p = truncate_html i.short_description, length: 240
                           a.close-detail href="#"
                             =embedded_svg('MO-close button.svg')
                         .read-more-wrap
@@ -173,3 +193,7 @@
                               |Більш детально >>>
 
           .clearfix
+-if @categories
+  -@categories.each_with_index do |c, i|
+    -if params[:category] == 'pid-zamovlennia' && c.id == 7
+      =render partial: 'partials/forms/customized'

@@ -1,0 +1,25 @@
+.the-form-of-customized-wrap
+  .row
+    .columns
+      h3
+        |Форма індивідуального замовлення
+  .row
+    form.the-form-of-customized method="POST" action="/customized_form"
+      .columns.large-6.medium-6
+        input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"
+        .input
+          input placeholder="ім’я" type="text" name="firstname" required=""
+        .input
+          input placeholder="Прізвище" type="text" name="lastname" required=""
+        .input
+          input placeholder="Номер телефону" type="text" name="phone" required=""
+        .input
+          input placeholder="Електронна скринька" type="email" name="email" required=""
+      .columns.large-6.medium-6
+        .input
+          textarea placeholder="Залиште деталі вашого замовлення тут..." name="message" required=""
+        .row
+          .columns.large-6.medium-6.right
+            .input.input_send_data
+              button type="submit"
+                |Надіслати

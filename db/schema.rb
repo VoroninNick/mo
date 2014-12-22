@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104153656) do
+ActiveRecord::Schema.define(version: 20141219153055) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -182,6 +182,15 @@ ActiveRecord::Schema.define(version: 20141104153656) do
 
   add_index "ds_category_translations", ["ds_category_id"], name: "index_ds_category_translations_on_ds_category_id"
   add_index "ds_category_translations", ["locale"], name: "index_ds_category_translations_on_locale"
+
+  create_table "email_tos", force: true do |t|
+    t.string   "customized_form"
+    t.string   "order_product_from"
+    t.string   "feedback_form"
+    t.string   "call_order_form"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "line_items", force: true do |t|
     t.integer  "product_id"

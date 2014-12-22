@@ -1,14 +1,17 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+
+  skip_before_filter  :verify_authenticity_token
+
   protect_from_forgery with: :exception
   include CurrentCart
 
-  require "prawn"
+  # require "prawn"
 
-  Prawn::Document.generate("hello.pdf") do
-    text "Hello World!"
-  end
+  # Prawn::Document.generate("hello.pdf") do
+  #   text "Hello World!"
+  # end
 
   helper_method :current_cart
   def current_cart

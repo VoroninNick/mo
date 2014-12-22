@@ -87,22 +87,22 @@
               .row
                 .columns.large-6
                   .input
-                    input#of-name name="name" placeholder="Ім'я"
+                    input#of-name placeholder="Ім'я" type="text" name="first_name" required=""
                 .columns.large-6
                   .input
-                    input#of-surname name="name" placeholder="Прізвище"
+                    input#of-surname placeholder="Прізвище" type="text" name="last_name" required=""
           .row
             .columns.large-8.large-centered
               .input
-                input#of-phone-number name="" placeholder="Номер телефону"
+                input#of-phone-number placeholder="Номер телефону" type="text" name="phone" required=""
           .row
             .columns.large-8.large-centered
               .input
-                input#of-email name="" placeholder="Електронна скринька"
+                input#of-email placeholder="Електронна скринька" type="email" name="email" required=""
           .row
             .columns.large-8.large-centered
               .input
-                input#of-address name="" placeholder="Адреса доставки"
+                input#of-address placeholder="Адреса доставки" type="text" name="address" required=""
           .row
             .columns.large-8.large-centered
               h5
@@ -110,7 +110,7 @@
           .row
             .columns.large-8.large-centered
               .input
-                textarea#of-comment maxlength="256" name="" placeholder="Наприклад: № відділення Нової пошти (перелік відділень) ..."
+                textarea#of-comment maxlength="256" placeholder="Наприклад: № відділення Нової пошти (перелік відділень) ..." name="message"
           .row
             .columns.large-8.large-centered
               .input_send_data.right

@@ -41,24 +41,4 @@
             a href="https://twitter.com/" rel="nofollow"
               = embedded_svg ('MO-Social-Twitter.svg'), class: "f_ico"
     .contact_form_wrap.bsh_right_bottom
-      .contact_form_inner
-        h3
-          |Форма зворотнього зв’язку
-        .row
-          .columns.large-12.no-padding
-            form
-              .input
-                input placeholder="ім’я"
-              .input
-                input placeholder="Прізвище"
-              .input
-                input placeholder="Номер телефону"
-              .input
-                input placeholder="Електронна скринька"
-              .input
-                label
-                  |Ваше повідомлення
-                textarea placeholder="Залиште ваше повідомлення тут..."
-              .input_send_data.right
-                button
-                  |Надіслати
+      =render partial: 'partials/forms/contact_form'

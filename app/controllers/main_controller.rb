@@ -30,4 +30,33 @@ class MainController < ApplicationController
   def testing
 
   end
+
+  def customized_form
+    first_name = params[:firstname]
+    last_name = params[:lastname]
+    phone = params[:phone]
+    email = params[:email]
+    message = params[:message]
+    CustomizedForm.send_customized_data(first_name, last_name, phone, email, message).deliver
+  end
+
+  def call_order
+    first_name = params[:firstname]
+    last_name = params[:lastname]
+    phone = params[:phone]
+    CustomizedForm.send_call_order_data(first_name, last_name, phone).deliver
+  end
+
+  def contact_form
+    first_name = params[:firstname]
+    last_name = params[:lastname]
+    phone = params[:phone]
+    email = params[:email]
+    message = params[:message]
+    CustomizedForm.send_contact_form_data(first_name, last_name, phone, email, message).deliver
+  end
+
+  def order_product
+
+  end
 end

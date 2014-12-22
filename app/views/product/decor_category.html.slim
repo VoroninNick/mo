@@ -100,7 +100,7 @@
           .row
             - if @products
               - @products.each do |i|
-                .columns.large-3.product-block
+                .columns.large-3.medium-4.small-6.product-block
                   .block-inner
                     .image-cont style="opacity: 1;"
                       .bi style="background: url('#{i.image.url(:thumb)}')no-repeat center center;"
@@ -117,7 +117,7 @@
                   .product-detail
                     .container
                       .row
-                        .columns.large-6
+                        .columns.large-6.medium-6
                           .bi style="background: url('#{i.photo_galleries[0].image.url(:large)}')no-repeat center center;"
                           ul.product_gallery_images
                             -i.photo_galleries.each_with_index do |photo, index|
@@ -125,7 +125,7 @@
                                 a.button-for-prev href="#{photo.image.url(:large)}" class=(if index==0 then; 'active' end;)
                                   =embedded_svg('MO-picture switchers.svg')
                                 a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
-                        .columns.large-6
+                        .columns.large-6.medium-6
                           .detail_info_wrap
                             .diw-title-wrap
                               a href=decors_detail_path(@current_category.t_name, i.t_name, locale: I18n.locale)

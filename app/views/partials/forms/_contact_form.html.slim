@@ -1,4 +1,22 @@
-div style="display: none"
-  div#contact_form data-fancybox-group="contact_form" rel="contact_form"
-    .contact_form_wrap
-      |TEST
+.contact_form_inner
+  h3
+    |Форма зворотнього зв’язку
+  .row
+    .columns.large-12.no-padding
+      form  method="POST" action="/contact_form"
+        input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"
+        .input
+          input placeholder="ім’я" type="text" name="firstname" required=""
+        .input
+          input placeholder="Прізвище" type="text" name="lastname" required=""
+        .input
+          input placeholder="Номер телефону" type="text" name="phone" required=""
+        .input
+          input placeholder="Електронна скринька" type="email" name="email" required=""
+        .input
+          label
+            |Ваше повідомлення
+          textarea placeholder="Залиште ваше повідомлення тут..." name="message" required=""
+        .input_send_data.right
+          button type="submit"
+            |Надіслати
