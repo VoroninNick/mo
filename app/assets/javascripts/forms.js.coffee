@@ -33,6 +33,7 @@ $(document).ready ->
       beforeSend: ->
         alert "Відсилання..."
       success: ->
+        alert "Відіслано..."
         $thisForm.find("input[type=text],input[type=email] textarea").val("")
       error: ->
         alert "Something went wrong!"

@@ -33,4 +33,18 @@ class CustomizedForm < ActionMailer::Base
     mail(:template_path => 'mailer_templates', :template_name => 'contact_from', :subject => "Форма зворотнього зв'язку ...", to: to)
   end
 
+  def order_product_data(first_name, last_name, phone, email, message, cart)
+    @first_name = first_name
+    @last_name = last_name
+    @phone = phone
+    @email = email
+    @message = message
+    @cart = Cart.find(cart)
+
+    to = []
+    to = EmailTo.first.feedback_form.split(',')
+    mail(:template_path => 'mailer_templates', :template_name => 'order_product', :subject => "Замовлення продукта", to: to)
+
+  end
+
 end

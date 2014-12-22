@@ -57,6 +57,12 @@ class MainController < ApplicationController
   end
 
   def order_product
-
+    first_name = params[:firstname]
+    last_name = params[:lastname]
+    phone = params[:phone]
+    email = params[:email]
+    message = params[:message]
+    cart = params[:cart_id]
+    CustomizedForm.order_product_data(first_name, last_name, phone, email, message, cart).deliver
   end
 end
