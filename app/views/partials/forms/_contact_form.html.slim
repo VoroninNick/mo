@@ -3,7 +3,7 @@
     |Форма зворотнього зв’язку
   .row
     .columns.large-12.no-padding
-      form  method="POST" action="/contact_form"
+      form.mo-form  method="POST" action="/contact_form"
         input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"
         .input
           input placeholder="ім’я" type="text" name="firstname" required=""

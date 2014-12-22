@@ -19,7 +19,7 @@ $(document).ready ->
   #        maxlength: " (must be between 5 and 12 characters)"
 
 
-  $('form').submit (event) ->
+  $('form.mo-form').submit (event) ->
   # Stop the browser from submitting the form.
     event.preventDefault()
   # Serialize the form data.
