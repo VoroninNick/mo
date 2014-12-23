@@ -5,16 +5,12 @@
 
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .input
-          = f.email_field :email, autofocus: true
-          = f.label :email
-            |Електронна скринька
+          = f.email_field :email, autofocus: true, placeholder: 'Електронна скринька'
 
         .input
-          = f.password_field :password, autocomplete: "off"
-          = f.label :password
-            |Пароль
+          = f.password_field :password, autocomplete: "off", placeholder: 'Пароль'
 
-        .input
+        .input.check-remember
           - if devise_mapping.rememberable?
             = f.check_box :remember_me
             = f.label :remember_me

@@ -43,7 +43,7 @@
                         |Переглянути список відділень "Нової пошти"
             .row
               .columns.large-4.large-centered
-                select#method-of-payment name="select"
+                select#method-of-payment name="method_payment"
                   option value="" disabled="disabled" selected="selected" style="display:none;"
                     |Виберіть спосіб оплати
                   option value="at_reception"
@@ -203,14 +203,14 @@
                       .di-key
                         |Місто:
                     .columns.large-8
-                      .di-value#of-city
+                      .di-value#of-city-initial
                         |Житомир
                   .row
                     .columns.large-4
                       .di-key
                         |Відділення:
                     .columns.large-8
-                      .di-value#of-department
+                      .di-value#of-department-initial
                         |№12
                   .row
                     .columns
@@ -237,12 +237,12 @@
 
             .ordering-finish-navigation-wrap
               .row
-                .columns.large-6.medium-6.small-6
+                .columns.large-8.medium-8.small-6
                   .steps-buttons.prev-step-ordering#prev-step-ordering.left
                     =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
                     div
                       |Назад
-                .columns.large-6.medium-6.small-6
+                .columns.large-4.medium-4.small-6
                   button.right type="submit"
                     |Замовити!
 

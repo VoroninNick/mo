@@ -33,7 +33,7 @@ class CustomizedForm < ActionMailer::Base
     mail(:template_path => 'mailer_templates', :template_name => 'contact_from', :subject => "Форма зворотнього зв'язку ...", to: to)
   end
 
-  def order_product_data(first_name, last_name, phone, email, message, cart, total_price)
+  def order_product_data(first_name, last_name, phone, email, message, cart, total_price, method_payment, city, department)
     @first_name = first_name
     @last_name = last_name
     @phone = phone
@@ -41,6 +41,9 @@ class CustomizedForm < ActionMailer::Base
     @message = message
     @cart = Cart.find(cart)
     @total_price = total_price
+    @method_payment = method_payment
+    @city = city
+    @department = department
 
     to = []
     to = EmailTo.first.feedback_form.split(',')
