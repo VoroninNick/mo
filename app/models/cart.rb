@@ -6,7 +6,7 @@ class Cart < ActiveRecord::Base
     # @carts = Cart.where("updated_at < #{24.hours.ago}")
     # @carts.delete_all
   end
-  scope :expired, -> { where('created_at <= ?', 1.minute.ago) }
+  scope :expired, -> { where('created_at <= ?', 24.hours.ago) }
 
   after_save do
     Cart.destroy_cart
