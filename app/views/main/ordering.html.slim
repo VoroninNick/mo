@@ -137,6 +137,8 @@
                       |Товарів
                     |на суму:
                   -total_price = get_total_price(current_cart)
+                  -if total_price
+                    input type="hidden" name="total_price" value="#{total_price.round()}"
                   h2.text-center
                     -if total_price
                       =total_price.round()

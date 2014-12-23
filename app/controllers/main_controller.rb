@@ -63,6 +63,7 @@ class MainController < ApplicationController
     email = params[:email]
     message = params[:message]
     cart = params[:cart_id]
-    CustomizedForm.order_product_data(first_name, last_name, phone, email, message, cart).deliver
+    total_price = params[:total_price]
+    CustomizedForm.order_product_data(first_name, last_name, phone, email, message, cart, total_price).deliver
   end
 end

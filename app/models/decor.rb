@@ -51,12 +51,12 @@ class Decor < ActiveRecord::Base
 
   has_many :photo_galleries, as: :imageable
   attr_accessible :photo_galleries
-  accepts_nested_attributes_for :photo_galleries
+  accepts_nested_attributes_for :photo_galleries, allow_destroy: true
   attr_accessible :photo_galleries_attributes
 
   has_many :product_properties, as: :characteristic
   attr_accessible :product_properties
-  accepts_nested_attributes_for :product_properties
+  accepts_nested_attributes_for :product_properties, allow_destroy: true
   attr_accessible :product_properties_attributes
 
   has_and_belongs_to_many :product_pack, join_table: 'decor_packs'
