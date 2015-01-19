@@ -1,3 +1,4 @@
+require 'rake_settings'
 unless RakeSettings.self_skip_initializers?
   require 'i18n'
   I18n.default_locale = :en
