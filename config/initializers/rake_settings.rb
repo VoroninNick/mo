@@ -11,7 +11,7 @@ class RakeSettings
   end
 
   def self.rake_settings
-    @rake_stttings ||= RakeSettings.new
+    @rake_settings ||= RakeSettings.new
   end
 
   def self.self_skip_initializers?
