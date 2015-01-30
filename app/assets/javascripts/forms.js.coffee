@@ -23,6 +23,10 @@ $(document).ready ->
   # Stop the browser from submitting the form.
     event.preventDefault()
   # Serialize the form data.
+    $currentElement = $(this)
+    $buttonWrap = $currentElement.find('.input_send_data')
+    undoElement = $buttonWrap.children()
+
     $thisForm = $(this).closest('form')
     formData = $thisForm.serialize()
   # Submit the form using AJAX.
@@ -31,10 +35,17 @@ $(document).ready ->
       url: $thisForm.attr("action")
       data: formData
       beforeSend: ->
-        alert "Відсилання..."
+        $buttonWrap.children().remove()
+        $buttonWrap.append('<div class="status-adding">Надсилання...</div>')
       success: ->
-        alert "Відіслано..."
-        $thisForm.find("input[type=text],input[type=email] textarea").val("")
+        $buttonWrap.children().remove()
+        $buttonWrap.append('<div class="status-adding">Надіслано!</div>')
+      complete: ->
+        setTimeout (->
+          $buttonWrap.children().remove()
+          $buttonWrap.html(undoElement)
+          $thisForm.find("input[type=text],input[type=email], textarea").val("")
+        ), 3000
       error: ->
         alert "Something went wrong!"
 
@@ -47,7 +58,7 @@ $(document).ready ->
       url: "/order_product"
       data: formData
       beforeSend: ->
-        alert "Відсилання..."
+        alert "Відсилання...ddddddd"
       success: ->
         alert "success"
       error: ->

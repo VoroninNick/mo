@@ -99,6 +99,18 @@
             size: $size
             style: $font_style
         @content
+=placeholder_note()
+    &::-webkit-input-placeholder:after
+        @content
+
+    &:-moz-placeholder:after
+        @content
+
+    &::-moz-placeholder:after
+        @content
+
+    &:-ms-input-placeholder:after
+        @content
 
 = rotate($deg)
     -moz-transform: rotate($deg)

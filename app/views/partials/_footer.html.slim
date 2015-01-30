@@ -77,14 +77,7 @@ footer.sf_footer
                     span
                       |voronin.nick@gmail.com
           .columns.large-5.small-12
-            form.newsletter
-              .input
-                input placeholder="Електронна пошта"
-                label
-                  |Підписатись на розсилку
-              .input_send_data
-                button
-                  |підписатись
+            = render partial: "partials/forms/mail_chimp_subs_form"
 
           .columns.large-3.mdn
             ul.social_networks_wrap

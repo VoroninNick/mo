@@ -27,5 +27,8 @@ module MO
     config.i18n.locale ||= config.i18n.default_locale
 
     Globalize.fallbacks = {:uk => [:uk, :pl], :pl => [:pl, :uk] }
+
+    # precompile
+    config.assets.precompile += %w(rails_admin/aristo/images/*.png rails_admin/aristo/images/*.jpg rails_admin/aristo/images/*.png rails_admin/aristo/images/*.jpeg)
   end
 end

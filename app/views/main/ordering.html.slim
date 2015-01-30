@@ -91,18 +91,18 @@
                 .row
                   .columns.large-6
                     .input
-                      input#of-name placeholder="Ім'я" type="text" name="firstname" required=""
+                      input#of-name.required-input placeholder="Ім'я " type="text" name="firstname" required=""
                   .columns.large-6
                     .input
                       input#of-surname placeholder="Прізвище" type="text" name="lastname" required=""
             .row
               .columns.large-8.large-centered
                 .input
-                  input#of-phone-number placeholder="Номер телефону" type="text" name="phone" required=""
+                  input#of-phone-number.required-input placeholder="Номер телефону " type="text" name="phone" required=""
             .row
               .columns.large-8.large-centered
                 .input
-                  input#of-email placeholder="Електронна скринька" type="email" name="email" required=""
+                  input#of-email.required-input placeholder="Електронна скринька " type="email" name="email" required=""
             .row
               .columns.large-8.large-centered
                 .input
@@ -117,16 +117,21 @@
                   textarea#of-comment maxlength="256" placeholder="Наприклад: № відділення Нової пошти (перелік відділень) ..." name="message"
             .row
               .columns.large-8.large-centered
-                .input_send_data.right
+                .right
                   .steps-buttons.next-step-ordering#next-step-ordering
                     |Підтвердити дані
             .row
               .columns.large-8.large-centered
                 span.note
-                  |* Послуги перевізника оплачує Одержувач.
+                  |*&nbsp;&nbsp;&nbsp;Поля обов'язкові до заповнення
+            .row
               .columns.large-8.large-centered
                 span.note
-                  |** Вартість пересилання визначається фірмою-перевізником.
+                  |**&nbsp;&nbsp;Послуги перевізника оплачує Одержувач.
+            .row
+              .columns.large-8.large-centered
+                span.note
+                  |*** Вартість пересилання визначається фірмою-перевізником.
           li#ordering-next-step.hide
             .row
               .columns.large-5.large-centered
@@ -243,7 +248,8 @@
                     div
                       |Назад
                 .columns.large-4.medium-4.small-6
-                  button.right type="submit"
-                    |Замовити!
+                  .input_send_data
+                    button.right type="submit"
+                      |Замовити!
 
 
