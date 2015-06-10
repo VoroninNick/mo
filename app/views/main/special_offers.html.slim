@@ -67,7 +67,7 @@
                           =embedded_svg('MO-arrow.svg')
                       .input_send.not-product-pack
                         button.cust_button.order-product-link-wrap.is-tablecloth data-product-id=p.id
-                          |Добавити в корзину
+                          |Добавити в кошик
                       .clearfix
                   .clearfix
               p = p.short_description
@@ -79,7 +79,7 @@
 
   /tab only products pack
   .special_offers_tab_wrap.sets_tab_wrap.dni
-    -if @sets
+    -if @sets && @sets.any?
       -@sets.each_with_index do |s, index|
         .pd_product_pack_wrap class=(index%2==0 ? "" : "logo_background_wrap")
           .row
@@ -213,7 +213,7 @@
                     form#form_add_to_cart
                       .input_send
                         button.cust_button.order-products-collection-link-wrap data-product-pack-id=s.id
-                          |Добавити в корзину
+                          |Добавити в кошик
                     .clearfix
 
   /tab for all products pack and products
@@ -352,7 +352,7 @@
                     form#form_add_to_cart
                       .input_send
                         button.cust_button.order-products-collection-link-wrap data-product-pack-id=s.id
-                          |Добавити в корзину
+                          |Добавити в кошик
                     .clearfix
 
     -if @products && @products.respond_to?(:count) && @products.count > 0
@@ -391,7 +391,7 @@
                           =embedded_svg('MO-arrow.svg')
                       .input_send.not-product-pack
                         button.cust_button.order-product-link-wrap.is-tablecloth data-product-id=p.id
-                          |Добавити в корзину
+                          |Добавити в кошик
                       .clearfix
                   .clearfix
               p = p.short_description

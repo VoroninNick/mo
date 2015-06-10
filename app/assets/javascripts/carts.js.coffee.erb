@@ -236,7 +236,7 @@ $(document).on "click", '#form_add_to_cart button.order-product-link-wrap', ->
     success: (data) ->
       if itemToAdd.hasClass('not-product-pack')
         itemToAdd.children().remove()
-        itemToAdd.append('<div class="status-adding">ТОВАР ВЖЕ В КОРЗИНІ!</div>')
+        itemToAdd.append('<div class="status-adding">ТОВАР ВЖЕ В КОШИКУ!</div>')
         $('<label class="one-product-anchor-to-cart temp-label-for-bascket" for="modal_cart" id="basket">Переглянути</label>').insertAfter(itemToAdd)
         setCountItems(count)
         loadPartials()
@@ -248,6 +248,7 @@ $(document).on "click", '#form_add_to_cart button.order-product-link-wrap', ->
         $('label.temp-label-for-bascket').remove()
         # Do something after 5 seconds
       ), 3000
+
 
 # add product pack items to cart
 $(document).on "click", '.pd_product_pack_wrap button.order-products-collection-link-wrap', ->
@@ -287,7 +288,7 @@ $(document).on "click", '.pd_product_pack_wrap button.order-products-collection-
       statuButton.append('<div class="status-adding">Добавляння...</div>')
     success: (data) ->
       statuButton.children().remove()
-      statuButton.append('<div class="status-adding">КОМПЛЕКТ ВЖЕ В КОРЗИНІ!</div>')
+      statuButton.append('<div class="status-adding">КОМПЛЕКТ ВЖЕ В КОШИКУ!</div>')
       setCountItems(3)
       loadPartials()
     complete: ->
