@@ -82,7 +82,7 @@ header
                 right: 50px
             float: left
             .main_logo
-                width: 100px
+                width: 145px
                 height: inherit
                 margin:
                     left: 20px
@@ -175,8 +175,10 @@ header
             width: 32.33%
             height: 50px
             display: inline-block
-            @media (min-width : 0em) and (max-width : 1180px)
+            @media (max-width : 1180px)
                 width: 50px
+            @media (max-width : 485px)
+                width: 30px
             a, label
                 text:
                     align: center
@@ -204,6 +206,11 @@ header
                 line-height: 50px
                 display: table
                 position: relative
+
+                @media (max-width : 1180px)
+                    width: 30px
+                    svg
+                        left: 0
                 .call-order-link-wrap
                     display: table-cell
                     vertical-align: middle
@@ -1365,6 +1372,7 @@ ul.social_networks_wrap
         left: 0
     span
         float: left
+        letter-spacing: 0 !important
         font:
             size: 1.3125rem !important
             weight: 600
