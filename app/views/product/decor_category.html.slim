@@ -8,21 +8,39 @@
       a class="unavailable" href=""
         =@current_category.name
 
--if @all_category && @all_category.count > 0
+-if @all_category.any?
   .products_tabs_wrap
     .row
       .columns
+        -c_leather = @all_category[0]
+        -c_wooden = @all_category[1]
+        -c_porcelain = @all_category[2]
+        -c_textile = @all_category[3]
+        /p
+        /  |1
+        /  br
+        /  =c_leather.inspect
+        /p
+        /  |2
+        /  br
+        /  =c_wooden.inspect
+        /p
+        /  |3
+        /  br
+        /  =c_porcelain.inspect
+        /p
+        /  |4
+        /  br
+        /  =c_textile.inspect
+
         ul.all_products_carousel.tablecloth-head-controls
-          -c_leather = @all_category[0]
-          -c_wooden = @all_category[1]
-          -c_porcelain = @all_category[2]
-          -c_textile = @all_category[3]
           -if @current_category.t_name == c_leather.t_name
             li.prev
-              a href=decor_category_path(c_textile.t_name, locale: I18n.locale)
-                =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
-                -if c_textile.icon.exists?
-                  =embedded_svg_from_root_directory "#{c_textile.icon.path}", :class => 'svg_ico'
+              -if c_textile
+                a href=decor_category_path(c_textile.t_name, locale: I18n.locale)
+                  =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
+                  -if c_textile.icon.exists?
+                    =embedded_svg_from_root_directory "#{c_textile.icon.path}", :class => 'svg_ico'
 
             li.active
               a
@@ -69,12 +87,13 @@
                 h4 =c_porcelain.name
 
             li.next
-              a href=decor_category_path(c_textile.t_name, locale: I18n.locale)
-                -if c_textile.icon.exists?
-                  =embedded_svg_from_root_directory "#{c_textile.icon.path}", :class => 'svg_ico'
-                =embedded_svg ("MO-arrow-right.svg"), :class => 'svg_ico svg_ico_arrow'
+              -if c_textile
+                a href=decor_category_path(c_textile.t_name, locale: I18n.locale)
+                  -if c_textile.icon.exists?
+                    =embedded_svg_from_root_directory "#{c_textile.icon.path}", :class => 'svg_ico'
+                  =embedded_svg ("MO-arrow-right.svg"), :class => 'svg_ico svg_ico_arrow'
 
-          -if @current_category.t_name == c_textile.t_name
+          /-if @current_category.t_name == c_textile.t_name
             li.prev
               a href=decor_category_path(c_porcelain.t_name, locale: I18n.locale)
                 =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
@@ -98,7 +117,7 @@
       .columns.large-12
         .product-list
           .row
-            - if @products
+            - if @products.any?
               - @products.each do |i|
                 .columns.large-3.medium-4.small-6.product-block
                   .block-inner
@@ -152,5 +171,7 @@
                             .p_read_more.read-more-items
                               a.right href=decors_detail_path(@current_category.t_name, i.t_name, locale: I18n.locale)
                                 |Більш детально >>>
-
+            -else
+              .columns
+                p Нема жодної одиниці
             .clearfix

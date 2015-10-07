@@ -157,17 +157,17 @@
       h2
         |Публікації
   .row
-    - if @publication
-    - @publication.each do |item|
-      .columns.large-6.small-12.end
-        .publication_one_item
-          .row
-            .columns.large-4.small-4
-              a.back_image href=one_article_path(item.url, locale: I18n.locale)
-                .bi style="background: url('#{item.image.url(:thumb)}')no-repeat center center;"
-            .columns.large-8.small-8
-              h5
-                a href=one_article_path(item.url, locale: I18n.locale)
-                  = truncate item.title, length: 60
-              p = truncate_html item.short_description, length: 140
+    - if @publication.any?
+      - @publication.each do |item|
+        .columns.large-6.small-12.end
+          .publication_one_item
+            .row
+              .columns.large-4.small-4
+                a.back_image href=one_article_path(item.url, locale: I18n.locale)
+                  .bi style="background: url('#{item.image.url(:thumb)}')no-repeat center center;"
+              .columns.large-8.small-8
+                h5
+                  a href=one_article_path(item.url, locale: I18n.locale)
+                    = truncate item.title, length: 60
+                p = truncate_html item.short_description, length: 140
 

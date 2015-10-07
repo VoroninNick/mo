@@ -136,7 +136,7 @@
     .columns.large-12
       .product-list
         .row
-          - if @products
+          - if @products.any?
             - @products.each do |i|
               .columns.large-3.medium-4.small-6.product-block
                 .block-inner
@@ -191,7 +191,9 @@
                           .p_read_more.read-more-items
                             a.right href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale)
                               |Більш детально >>>
-
+          -else
+            .columns
+              p Нема жодної одиниці
           .clearfix
 -if @categories
   -@categories.each_with_index do |c, i|
