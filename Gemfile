@@ -66,6 +66,7 @@ gem 'paperclip-compression'
 
 gem 'globalize'
 gem 'rails_admin_globalize_field', github: 'VoroninNick/rails_admin_globalize_field', branch: 'allow-current-locale'
+gem 'http_accept_language'
 
 gem 'russian'
 gem 'rails-i18n'
@@ -87,3 +88,4 @@ gem 'jquery-validation-rails'
 
 
 
+# gem 'global_config'
