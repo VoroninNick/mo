@@ -23,10 +23,10 @@ module MO
     config.i18n.default_locale = :uk
     config.i18n.enforce_available_locales = false
     config.i18n.fallbacks = true
-    config.i18n.available_locales = [:uk, :pl, :en]
+    config.i18n.available_locales = [:uk, :en]
     config.i18n.locale ||= config.i18n.default_locale
 
-    Globalize.fallbacks = {:uk => [:uk, :pl], :pl => [:pl, :uk] }
+    Globalize.fallbacks = {:uk => [:uk, :en], :en => [:en, :uk] }
 
     # precompile
     config.assets.precompile += %w(rails_admin/aristo/images/*.png rails_admin/aristo/images/*.jpg rails_admin/aristo/images/*.png rails_admin/aristo/images/*.jpeg)

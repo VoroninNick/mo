@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include CurrentCart
 
+  before_filter :set_locale
   # require "prawn"
 
   # Prawn::Document.generate("hello.pdf") do
@@ -79,4 +80,30 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+  private
+  def set_locale
+
+    #render inline: params[:controller].index('rails_admin').nil?.to_s
+
+    if params[:controller].index('devise').nil? && params[:controller].index('rails_admin').nil?
+      locale = params[:locale]
+      if !locale
+        locale = http_accept_language.compatible_language_from(I18n.available_locales)
+      end
+
+      if !locale
+        locale = I18n.default_locale
+      end
+
+      if params[:locale] != locale
+        redirect_to locale: locale
+      else
+        I18n.locale = locale
+      end
+    end
+
+
+    # Rails.application.routes.default_url_options[:locale]= I18n.locale
+  end
 end

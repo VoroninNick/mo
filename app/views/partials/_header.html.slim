@@ -35,8 +35,7 @@ header
               .link_phone_inner
                 = embedded_svg ("MO-Phone-call back.svg")
                 .call-order-link-wrap
-                  span
-                    |замовити дзвінок
+                  span =t("header.call_order")
             #modal_call_order
               =render partial: 'partials/forms/call_order'
     .basket_wrapper.header_menu_squad
@@ -51,37 +50,30 @@ header
             - subcategory = Category.where(:parent_id => true)
             li
               a.title
-                span
-                  |Скатертини
+                span =t("category.tablecloths.title")
             li
               -if subcategory && subcategory[0]
                 =link_to one_product_path(subcategory[0].category_url, locale: I18n.locale) do
-                  span
-                    |Святкові
+                  span =t("category.tablecloths.holiday")
             li
               -if subcategory && subcategory[1]
                 =link_to one_product_path(subcategory[1].category_url, locale: I18n.locale) do
-                  span
-                    |Етно
+                  span =t("category.tablecloths.ethno")
             li
               -if subcategory && subcategory[2]
                 =link_to one_product_path(subcategory[2].category_url, locale: I18n.locale) do
-                  span
-                    |тематичні
+                  span =t("category.tablecloths.thematic")
             li
               -if subcategory && subcategory[3]
                 =link_to one_product_path(subcategory[3].category_url, locale: I18n.locale) do
-                  span
-                    |дитячі
+                  span =t("category.tablecloths.children")
             li
               -if subcategory && subcategory[4]
                 =link_to one_product_path(subcategory[4].category_url, locale: I18n.locale) do
-                  span
-                    |фірмові
+                  span =t("category.tablecloths.branded")
             li
               a
-                span
-                  |під замовлення
+                span =t("category.tablecloths.by_order")
         .second_menu
 
           ul.sm_links
@@ -89,26 +81,19 @@ header
             /  a href=all_sets_path
             /    |Сервізи
             li
-              a href=all_decors_path
-                | Декори
+              a href=all_decors_path =t("main_menu.decors")
             li
-              a href=special_offers_path
-                |Акції
+              a href=special_offers_path =t("main_menu.promotion")
             li
-              a href=all_publication_path
-                |Публікації
+              a href=all_publication_path =t("main_menu.publications")
             li
-              a href=shipping_path
-                |Доставка
+              a href=shipping_path =t("main_menu.delivery")
             li
-              a href=warranty_path
-                |Гарантія
+              a href=warranty_path  =t("main_menu.guarantee")
             li
-              a href=payment_path
-                |Оплата
+              a href=payment_path =t("main_menu.payment")
             li
-              a href=contacts_path
-                |Контакти
+              a href=contacts_path =t("main_menu.contacts")
           ul.social_networks_wrap
             li
               a href="https://www.facebook.com/" rel="nofollow"

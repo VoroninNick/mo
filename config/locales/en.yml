@@ -20,100 +20,134 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  header:
+    call_order: "call order"
+  category:
+    tablecloths:
+      title: "Tablecloths"
+      holiday: "Holiday"
+      ethno: "Ethno"
+      thematic: "thematic"
+      children: "children"
+      branded: "branded"
+      by_order: "by order"
+  main_menu:
+      tablecloths: "Tablecloths"
+      decors: "Decors"
+      promotion: "Promotion"
+      publications: "Publications"
+      delivery: "Delivery"
+      guarantee: "Guarantee"
+      payment: "Payment"
+      contacts: "Contacts"
   pages:
-    news:
-      header:
-        titles: "PUBLICATIONS"
-        title: "PUBLICATION"
-      title: "RECENT PUBLICATIONS"
-      last_title: "Latest PUBLICATION"
-      read_more: "Read more"
-      banner: "Latest posts from HOTEL Ecotel"
-    service:
-      header:
-        title: "SERVICES"
-      block_ticket:
-        title: "TICKETS ONLINE"
-        buy_ticket: "Buy tickets online"
-    conference_service:
-      icons:
-        projector: "projector, screen, flipchart (100h300 cm)"
-        people: "conference room for 50 persons"
-        wifi: "Internet connection (Wi-Fi)"
-      cs_in_hotel: "CONFERENCE SERVICE IN HOTEL"
-      price:
-        title: "PRICES FOR BASIC SERVICES"
-        reference_one: "*   — Set the minimum price for the service;"
-        reference_two: "**  — Day time period considered in 8 o'clock."
-    about:
-      before_footer_navigation:
-        condition:
-          title: "Conditions"
-        service:
-          title: "Services"
-        localization:
-          title: "Location"
-        conf_service:
-          title: "Conference rooms"
-    rooms_economy:
-      banner_title: "ROOMS «Economy»"
-      about: 'In addition to class "economy" Ecotel Hotel Lviv benefits provided in the shared hallway.'
-
-    header:
-      nav:
-        about_us:
-          parent: "ABOUT US"
-          conditions: "TERMS"
-          localization: "LOCALITY"
-          service: "SERVICES"
-          conference_service: "CONFERENCE ROOMS"
-        rooms_price:
-          parent: "AVAILABILITY AND PRICES"
-          general_info: "GENERAL INFORMATION"
-          price: "Price"
-          room_standart: 'Rooms "Standard"'
-          room_econom: 'Rooms "Economy"'
-        media:
-          parent: "MEDIA"
-          news: "Publications"
-          media: "Photo and Video"
-        contacts: "CONTACTS"
+    index:
+      wellcome:
+        title: "WELCOME TO INTERNET SHOP «MAGIA OBRUS»"
+        subtitle: "Unique handmade tablecloths for all tastes"
+        description: "Ritual - is the embodiment of the most important knowledge.
+                      Such that in any case it is impossible to forget.
+                      The ritual requires tissue - priestly vestments, national flag, banners Boev,  towel and above all - the towel.
+                      Towel zastelyat important table at which principal place of conversation.
+                      The table under the towel becomes even more desk. White table cloth, which has long embroidered, vybilyuvaly the sun,
+                      washed in running water,
+                      a symbol of community and courage, because we have sat together and we are not afraid of ourselves as we are,
+                      we do not Worried about whether red fall drop soup or wine to bilist.
+                      It will take towel, and  we will do so at the next meal so that he was again clean.
+                      As one zastelyav table when the Holy Supper. And veiled throne during each liturgy."
+#    news:
+#      header:
+#        titles: "PUBLICATIONS"
+#        title: "PUBLICATION"
+#      title: "RECENT PUBLICATIONS"
+#      last_title: "Latest PUBLICATION"
+#      read_more: "Read more"
+#      banner: "Latest posts from HOTEL Ecotel"
+#    service:
+#      header:
+#        title: "SERVICES"
+#      block_ticket:
+#        title: "TICKETS ONLINE"
+#        buy_ticket: "Buy tickets online"
+#    conference_service:
+#      icons:
+#        projector: "projector, screen, flipchart (100h300 cm)"
+#        people: "conference room for 50 persons"
+#        wifi: "Internet connection (Wi-Fi)"
+#      cs_in_hotel: "CONFERENCE SERVICE IN HOTEL"
+#      price:
+#        title: "PRICES FOR BASIC SERVICES"
+#        reference_one: "*   — Set the minimum price for the service;"
+#        reference_two: "**  — Day time period considered in 8 o'clock."
+#    about:
+#      before_footer_navigation:
+#        condition:
+#          title: "Conditions"
+#        service:
+#          title: "Services"
+#        localization:
+#          title: "Location"
+#        conf_service:
+#          title: "Conference rooms"
+#    rooms_economy:
+#      banner_title: "ROOMS «Economy»"
+#      about: 'In addition to class "economy" Ecotel Hotel Lviv benefits provided in the shared hallway.'
+#
+#    header:
+#      nav:
+#        about_us:
+#          parent: "ABOUT US"
+#          conditions: "TERMS"
+#          localization: "LOCALITY"
+#          service: "SERVICES"
+#          conference_service: "CONFERENCE ROOMS"
+#        rooms_price:
+#          parent: "AVAILABILITY AND PRICES"
+#          general_info: "GENERAL INFORMATION"
+#          price: "Price"
+#          room_standart: 'Rooms "Standard"'
+#          room_econom: 'Rooms "Economy"'
+#        media:
+#          parent: "MEDIA"
+#          news: "Publications"
+#          media: "Photo and Video"
+#        contacts: "CONTACTS"
     footer:
       handcrafted: "Handcrafted "
       studio: "in Voronin Design studio "
       year: "2014."
       projects_info: "Project information"
       сopyright: "© 2010-2014. Ecotel Hotel & Economy in Lviv. All rights reserved."
-    contacts:
-      title: "CONTACTS"
-      form:
-        title: "CONTACT U.S."
-        description: 'If you are interested in the services economy hotel "Ecotel" contact us in any way convenient for you: by email or phone.'
-        title_social_networks: "We in social networks"
-        label_name: "Your name"
-        name_placeholder: "Nikolay Voronin"
-        label_phone_number: "Telephone number"
-        phone_number_placeholder: ""
-        label_email: "E-mail"
-        email_placeholder: ""
-        label_message: "Inquiry"
-        message_placeholder: "Leave your message here ..."
-        send_button: "Submit!"
-    block:
-      titles:
-        reception: "hotel reception"
-        for_client: "for the client"
-        photogallery: "PHOTO GALLERY"
-        gmap: "WE ON MAP"
-        localization:
-          parent: "Main directions from the hotel"
-          down_town: "City center"
-          plain: "Lviv airport"
-          train: "Main Railway station"
-          bus: "Main Bus station"
-      ticket_online:
-        title: "TICKETS ONLINE"
-        header: "ONLINE SERVICE PURCHASE TICKETS"
-        description: 'Now you can also use the online service purchase air, rail and bus tickets hotel "Ecotel" which you can use on our website.'
-        button: "Buy tickets online"
-
+#    contacts:
+#      title: "CONTACTS"
+#      form:
+#        title: "CONTACT U.S."
+#        description: 'If you are interested in the services economy hotel "Ecotel" contact us in any way convenient for you: by email or phone.'
+#        title_social_networks: "We in social networks"
+#        label_name: "Your name"
+#        name_placeholder: "Nikolay Voronin"
+#        label_phone_number: "Telephone number"
+#        phone_number_placeholder: ""
+#        label_email: "E-mail"
+#        email_placeholder: ""
+#        label_message: "Inquiry"
+#        message_placeholder: "Leave your message here ..."
+#        send_button: "Submit!"
+#    block:
+#      titles:
+#        reception: "hotel reception"
+#        for_client: "for the client"
+#        photogallery: "PHOTO GALLERY"
+#        gmap: "WE ON MAP"
+#        localization:
+#          parent: "Main directions from the hotel"
+#          down_town: "City center"
+#          plain: "Lviv airport"
+#          train: "Main Railway station"
+#          bus: "Main Bus station"
+#      ticket_online:
+#        title: "TICKETS ONLINE"
+#        header: "ONLINE SERVICE PURCHASE TICKETS"
+#        description: 'Now you can also use the online service purchase air, rail and bus tickets hotel "Ecotel" which you can use on our website.'
+#        button: "Buy tickets online"
+#

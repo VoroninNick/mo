@@ -6,34 +6,28 @@ footer.sf_footer
           ul.f_menu
             li
               - subcategory = Category.where(:parent_id => true).first
-              =link_to one_product_path(subcategory.category_url, locale: I18n.locale) do
-                |Скатертини
+              =link_to t("main_menu.tablecloths"), one_product_path(subcategory.category_url, locale: I18n.locale)
+                /=t("main_menu.tablecloths")
             /li
             /  - ds_category = DsCategory.where(:parent_id => nil).first
             /  =link_to sets_category_path(ds_category.t_name, locale: I18n.locale) do
             /    |Сервізи
             li
               - d_category = DCategory.order('created_at DESC').first
-              =link_to decor_category_path(d_category.t_name, locale: I18n.locale) do
-                | Декори
+              =link_to t("main_menu.decors"), decor_category_path(d_category.t_name, locale: I18n.locale)
+                /| Декори
             li
-              a href=special_offers_path
-                |Акції
+              a href=special_offers_path =t("main_menu.promotion")
             li
-              a href=all_publication_path
-                |Публікації
+              a href=all_publication_path =t("main_menu.publications")
             li
-              a href=shipping_path
-                |Доставка
+              a href=shipping_path =t("main_menu.delivery")
             li
-              a href=warranty_path
-                |Гарантія
+              a href=warranty_path =t("main_menu.guarantee")
             li
-              a href=payment_path
-                |Оплата
+              a href=payment_path =t("main_menu.payment")
             li
-              a href=contacts_path
-                |Контакти
+              a href=contacts_path =t("main_menu.contacts")
     .f_navigation_wrap
       .f_links_wrap
         .row

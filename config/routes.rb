@@ -75,7 +75,7 @@ unless RakeSettings.self_skip_initializers?
     post '/contact_form' => 'main#contact_form'
     post '/order_product' => 'main#order_product'
 
-    scope "(:locale)", :locale => /uk|pl/ do
+    scope "(:locale)", :locale => /uk|en/ do
     get '/contacts' => 'main#contacts', as: 'contacts'
 
     get '/publication' => 'main#all_publication', as: 'all_publication'
