@@ -116,8 +116,7 @@
   .we_offer_wrap
     .row
       .columns.large-12
-        h4
-          |Додатково до скатертин пропонуємо вибрати:
+        h4 =t("pages.index.decors.title")
     .row
       .columns.large-5.no-padding-right-large.small-6.hide
         .more_categories_wrap
@@ -136,15 +135,13 @@
         .more_categories_wrap
           - d_category = DCategory.order('created_at DESC').first
           h2
-            a href=decor_category_path(d_category.t_name, locale: I18n.locale)
-              |Домашній декор
+            a href=decor_category_path(d_category.t_name, locale: I18n.locale) =t("pages.index.decors.subtitle")
           a href=decor_category_path(d_category.t_name, locale: I18n.locale)
             .more_categories_image.home_decor_image
 .ip_publication_wrap
   .row
     .columns.large-12
-      h2
-        |Публікації
+      h2 =t("pages.index.publications.title")
   .row
     - if @publication.any?
       - @publication.each do |item|
