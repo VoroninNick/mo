@@ -38,6 +38,13 @@ header
                   span =t("header.call_order")
             #modal_call_order
               =render partial: 'partials/forms/call_order'
+      .language-switcher
+        -if I18n.locale == :uk
+          = link_to "EN", locale: "en"
+          /a href="/en" EN
+        -else I18n.locale == :en
+          = link_to "UKR", locale: "uk"
+          /a href="/uk" UKR
     .basket_wrapper.header_menu_squad
       label#basket for="modal_cart" data-count="#{get_count_products}"
         = embedded_svg ("MO-Basket.svg")
