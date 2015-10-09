@@ -82,6 +82,7 @@ class ProductController < ApplicationController
     # @decors = DCategory.order('created_at DESC')
     @decors = DCategory.order(created_at: :desc)
     @is_any = @decors.map{|d| d.decors.any? }.select{|v| v if v}.any?
+    @is_empty = !@is_any
   end
 
   def decor_category

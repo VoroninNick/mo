@@ -17,9 +17,7 @@
                 =embedded_svg_from_root_directory "#{c.icon.path}", :class => 'svg_ico'
               h4.text-center =c.name
               .clearfix
-  .row
-    .columns
-      =@is_any.inspect
+
   .product-list-wrap
     .row
       .columns.large-12
@@ -82,10 +80,9 @@
                                 .p_read_more.read-more-items
                                   a.right href=decors_detail_path(decor.t_name, locale: I18n.locale)
                                     |Більш детально >>>
-                -else
-                  .columns
-                    =@is_any
-                    p Нема жодної одиниці
+            -if @is_empty
+              .columns
+                p Нема жодної одиниці
             .clearfix
             /-else
               .columns
