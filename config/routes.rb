@@ -91,8 +91,8 @@ unless RakeSettings.self_skip_initializers?
     get '/sets/:category/:name' => 'product#drink_set_detail', as: 'sets_detail'
 
     get '/decors' => 'product#all_decors', as: 'all_decors'
-    get '/decors/:category' => 'product#decor_category', as: 'decor_category'
-    get '/decors/:category/:name' => 'product#decor_detail', as: 'decors_detail'
+    # get '/decors/:category' => 'product#decor_category', as: 'decor_category'
+    get '/decors/:name' => 'product#decor_detail', as: 'decors_detail'
 
 
     get '/special_offers' => 'main#special_offers', as: 'special_offers'

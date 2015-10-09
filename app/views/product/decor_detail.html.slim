@@ -1,16 +1,13 @@
--if @parent
-  .row
-    .columns.large-12
-      nav class="breadcrumbs"
-        a href=root_path
-          = embedded_svg ('MO-Home.svg')
-        a href=all_decors_path(locale: I18n.locale)
-          |Декори
-        a href=decor_category_path(@parent.t_name, locale: I18n.locale)
-          =@parent.name
-        -if @product
-          a class="unavailable" href=""
-            =@product.name
+
+.row
+  .columns.large-12
+    nav class="breadcrumbs"
+      a href=root_path
+        = embedded_svg ('MO-Home.svg')
+      a href=all_decors_path(locale: I18n.locale)
+        |Декори
+      a class="unavailable" href=""
+        =@product.name
 
 .product_detail_wrap.one_item_product_detail_wrap
   .row
@@ -27,11 +24,12 @@
                     .preview_ico_inner
                       =embedded_svg('MO-Eye.svg')
                 ul#product_gallery_images
-                  -i.photo_galleries.each do |photo|
-                    li
-                      a href=photo.image.url(:large)
-                        = image_tag (photo.image.url(:thumb))
-                      a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
+                  -if i.photo_galleries.any?
+                    -i.photo_galleries.each do |photo|
+                      li
+                        a href=photo.image.url(:large)
+                          = image_tag (photo.image.url(:thumb))
+                        a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{i.id}" rel="product_gallery_#{i.id}"
               .columns.large-6
                 .detail_info_wrap
                   h2.passive_title
@@ -61,11 +59,13 @@
                             =pp.pp_key
                           .pp_wrap.value_wrap
                             =pp.pp_value
-
+      -else
+        .columns
+          p Нема жодної одиниці
       .clearfix
 
--if @product_set
--if 1==0
+/-if @product_set
+/-if 1==0
   .light_gray_back_wrap.pd_products_pack_wrap
     .row
       .columns.large-12

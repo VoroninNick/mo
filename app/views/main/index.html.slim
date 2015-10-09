@@ -135,8 +135,8 @@
         .more_categories_wrap
           - d_category = DCategory.order('created_at DESC').first
           h2
-            a href=decor_category_path(d_category.t_name, locale: I18n.locale) =t("pages.index.decors.subtitle")
-          a href=decor_category_path(d_category.t_name, locale: I18n.locale)
+            a href=all_decors_path(locale: I18n.locale) =t("pages.index.decors.subtitle")
+          a href=all_decors_path(locale: I18n.locale)
             .more_categories_image.home_decor_image
 .ip_publication_wrap
   .row

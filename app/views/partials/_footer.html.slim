@@ -12,9 +12,11 @@ footer.sf_footer
             /  - ds_category = DsCategory.where(:parent_id => nil).first
             /  =link_to sets_category_path(ds_category.t_name, locale: I18n.locale) do
             /    |Сервізи
-            li
+            /li
               - d_category = DCategory.order('created_at DESC').first
               =link_to t("main_menu.decors"), decor_category_path(d_category.t_name, locale: I18n.locale)
+            li
+              =link_to t("main_menu.decors"), all_decors_path(locale: I18n.locale)
                 /| Декори
             li
               a href=special_offers_path =t("main_menu.promotion")

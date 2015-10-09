@@ -79,7 +79,8 @@ class ProductController < ApplicationController
   end
 
   def all_decors
-    @decors = DCategory.order('created_at DESC')
+    # @decors = DCategory.order('created_at DESC')
+    @decors = DCategory.order(created_at: :desc)
   end
 
   def decor_category
@@ -92,26 +93,27 @@ class ProductController < ApplicationController
   end
 
   def decor_detail
-    parent_category = params[:category]
+    # parent_category = params[:category]
     product = params[:name]
 
-    @parent = DCategory.find_by_t_name(params[:category])
-    query = "select p.* from #{DCategory.table_name} c, #{Decor.table_name} p where c.t_name = '#{parent_category}' and p.t_name = '#{product}'"
-    result = ActiveRecord::Base.connection.execute( query )
-    @product_one_item = []
-    result.each do |row|
-      @product_one_item.append( Decor.find( row['id'] ) )
-    end
-    @product = @product_one_item.first
+    # @parent = DCategory.find_by_t_name(params[:category])
+    # query = "select p.* from #{DCategory.table_name} c, #{Decor.table_name} p where c.t_name = '#{parent_category}' and p.t_name = '#{product}'"
+    # result = ActiveRecord::Base.connection.execute( query )
+    # @product_one_item = []
+    # result.each do |row|
+    #   @product_one_item.append( Decor.find( row['id'] ) )
+    # end
+    # @product = @product_one_item.first
 
+    @product = Decor.find_by_t_name(product)
 
-    query2 = "select pp.* from #{ProductPack.table_name} pp, #{Decor.table_name} d, decor_packs dp where dp.decor_id = d.id and dp.product_pack_id = pp.id and d.id = #{@product.id}"
-    result = ActiveRecord::Base.connection.execute( query2 )
-    @product_pack_one_item = []
-    result.each do |row|
-      @product_pack_one_item.append( ProductPack.find( row['id'] ) )
-    end
-
-    @product_set = @product_pack_one_item.first
+    # query2 = "select pp.* from #{ProductPack.table_name} pp, #{Decor.table_name} d, decor_packs dp where dp.decor_id = d.id and dp.product_pack_id = pp.id and d.id = #{@product.id}"
+    # result = ActiveRecord::Base.connection.execute( query2 )
+    # @product_pack_one_item = []
+    # result.each do |row|
+    #   @product_pack_one_item.append( ProductPack.find( row['id'] ) )
+    # end
+    #
+    # @product_set = @product_pack_one_item.first
   end
 end

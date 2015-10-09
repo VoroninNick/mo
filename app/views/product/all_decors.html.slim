@@ -7,9 +7,8 @@
         |Декори
 
 -if @decors
-
   .decors-category-wrap
-    .row
+    /.row
       -@decors.each_with_index do |c, index|
         .columns.large-4 class=(if @decors.last then; 'end' end;)
           .one-category-wrap
@@ -18,6 +17,73 @@
                 =embedded_svg_from_root_directory "#{c.icon.path}", :class => 'svg_ico'
               h4.text-center =c.name
               .clearfix
+
+  .product-list-wrap
+    .row
+      .columns.large-12
+        .product-list
+          .row
+            -if @decors.any?
+              -@decors.each do |category|
+                -if category.decors.any?
+                  -category.decors.each do |decor|
+                    .columns.large-3.medium-4.small-6.product-block
+                      .block-inner
+                        .image-cont style="opacity: 1;"
+                          .bi style="background: url('#{decor.image.url(:thumb)}')no-repeat center center;"
+                          .product_info_wrapper
+                            .pi_inner
+                              a.more-info
+                                .pi_top
+                                  h5 =truncate decor.name, lenght: '80'
+                                .pi_bottom
+                                  h4
+                                    =decor.price
+                                    span
+                                      |&nbsp;грн
+
+                      .product-detail
+                        .container
+                          .row
+                            .columns.large-6.medium-6
+                              .bi style="background: url('#{decor.photo_galleries[0].image.url(:large)}')no-repeat center center;"
+                              ul.product_gallery_images
+                                -decor.photo_galleries.each_with_index do |photo, index|
+                                  li
+                                    a.button-for-prev href="#{photo.image.url(:large)}" class=(if index==0 then; 'active' end;)
+                                      =embedded_svg('MO-picture switchers.svg')
+                                    a.fancy_gallery href="#{photo.image.url(:large)}" data-fancybox-group="product_gallery_#{decor.id}" rel="product_gallery_#{decor.id}"
+                            .columns.large-6.medium-6
+                              .detail_info_wrap
+                                .diw-title-wrap
+                                  a href=decors_detail_path(decor.t_name, locale: I18n.locale)
+                                    h2
+                                      =decor.name
+                                h3
+                                  =decor.price
+                                  |&nbsp;грн
+                                form#form_add_to_cart
+                                  .input.quantity-items-wrap
+                                    a.add_one_point
+                                      =embedded_svg('MO-arrow.svg')
+                                    input.count_product value="1"
+                                    a.remove_one_point
+                                      =embedded_svg('MO-arrow.svg')
+                                  .input_send.not-product-pack
+                                    button.cust_button.order-product-link-wrap.is-decor data-product-id=decor.id
+                                      |Добавити в кошик
+                                  .clearfix
+                                p = decor.short_description
+                                a.close-detail href="#"
+                                  =embedded_svg('MO-close button.svg')
+                              .read-more-wrap
+                                .p_read_more.read-more-items
+                                  a.right href=decors_detail_path(decor.t_name, locale: I18n.locale)
+                                    |Більш детально >>>
+            /-else
+              .columns
+                p Нема жодної одиниці
+            /.clearfix
 
       /ul.all_products_carousel
       /  -@decors.each_with_index do |c, index|

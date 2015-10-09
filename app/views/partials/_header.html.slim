@@ -88,7 +88,7 @@ header
             /  a href=all_sets_path
             /    |Сервізи
             li
-              a href=all_decors_path =t("main_menu.decors")
+              = link_to =t("main_menu.decors"), all_decors_path(locale: I18n.locale)
             li
               a href=special_offers_path =t("main_menu.promotion")
             li
