@@ -80,9 +80,9 @@
                                 .p_read_more.read-more-items
                                   a.right href=decors_detail_path(decor.t_name, locale: I18n.locale)
                                     |Більш детально >>>
-            -else
-              .columns
-                p Нема жодної одиниці
+                -else
+                  .columns
+                    p Нема жодної одиниці
             .clearfix
             /-else
               .columns
