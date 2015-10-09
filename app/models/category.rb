@@ -28,7 +28,7 @@ class Category < ActiveRecord::Base
         field :locale , :hidden
         field :name do
           label 'Назва'
-          help 'Введіть унікальнуб не повторювану назву'
+          help 'Введіть унікальну не повторювану назву'
         end
         # field :category_url do
         #   label 'Назва на різних мовах'
@@ -81,7 +81,10 @@ class Category < ActiveRecord::Base
       field :category_url
     end
     edit do
-      field :name
+      field :translations, :globalize_tabs do
+        label 'Локалізації'
+      end
+      # field :name
       field :parent do
         label 'Категорія'
         help ''

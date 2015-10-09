@@ -29,8 +29,7 @@
                         -product.each do |i|
                           -count+=1
                         =count
-                      .ci_label
-                        |Скатертин в наявності
+                      .ci_label =t("pages.index.categories.label_count")
     - elsif index == 5
       .one_category.left
         .bi style="background: url('#{c.image.url(:large)}')no-repeat center center;"
@@ -44,8 +43,7 @@
               .ci_page
                 =link_to one_product_path(c.category_url, locale: I18n.locale) do
                   .ci_page_inner
-                    .build_order
-                      |Сформувати замовлення
+                    .build_order =t("pages.index.categories.label_build")
     - if index == 1 && @promotion
       -p =@promotion
       .promotion_wrap.dn.medium-db

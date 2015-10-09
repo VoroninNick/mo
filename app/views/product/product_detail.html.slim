@@ -4,8 +4,7 @@
       nav class="breadcrumbs"
         a href=root_path
           = embedded_svg ('MO-Home.svg')
-        a href=all_tablecloth_path(locale: I18n.locale)
-          |Скатертини
+        a href=all_tablecloth_path(locale: I18n.locale) =t("main_menu.tablecloths")
         a href=one_product_path(@parent.category_url, locale: I18n.locale)
           =@parent.name
         -if @product
@@ -51,8 +50,7 @@
                       a.remove_one_point
                         =embedded_svg('MO-arrow.svg')
                     .input_send.not-product-pack
-                      button.cust_button.order-product-link-wrap.is-tablecloth data-product-id=i.id
-                        |Добавити в кошик
+                      button.cust_button.order-product-link-wrap.is-tablecloth data-product-id=i.id =t("pages.product.add_to_cart")
                     .clearfix
                   .description_wrap
                     = raw i.description

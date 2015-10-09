@@ -19,17 +19,17 @@ footer.sf_footer
               =link_to t("main_menu.decors"), all_decors_path(locale: I18n.locale)
                 /| Декори
             li
-              a href=special_offers_path =t("main_menu.promotion")
+              =link_to t("main_menu.promotion"), special_offers_path(locale: I18n.locale)
             li
-              a href=all_publication_path =t("main_menu.publications")
+              =link_to t("main_menu.publications"), all_publication_path(locale: I18n.locale)
             li
-              a href=shipping_path =t("main_menu.delivery")
+              =link_to t("main_menu.delivery"), shipping_path(locale: I18n.locale)
             li
-              a href=warranty_path =t("main_menu.guarantee")
+              =link_to t("main_menu.guarantee"), warranty_path(locale: I18n.locale)
             li
-              a href=payment_path =t("main_menu.payment")
+              =link_to t("main_menu.payment"), payment_path(locale: I18n.locale)
             li
-              a href=contacts_path =t("main_menu.contacts")
+              =link_to t("main_menu.contacts"), contacts_path(locale: I18n.locale)
     .f_navigation_wrap
       .f_links_wrap
         .row
@@ -89,8 +89,7 @@ footer.sf_footer
       .f_about_wrap
         .row
           .columns.large-5
-            p.faw_left
-              |Проект розроблений за підтримки ЗРЦ «ЗУРЦ» та «Charles Stewart Mott Foundation»
+            p.faw_left =t("pages.footer.project_sponsor")
           .columns.large-4
             ul.voronin-block-wrap
               li.vbw-image

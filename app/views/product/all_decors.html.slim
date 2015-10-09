@@ -3,8 +3,7 @@
     nav class="breadcrumbs"
       a href=root_path
         = embedded_svg ('MO-Home.svg')
-      a class="unavailable" href=""
-        |Декори
+      a class="unavailable" href="" =t("main_menu.decors")
 
 -if @decors
   .decors-category-wrap
@@ -70,8 +69,7 @@
                                     a.remove_one_point
                                       =embedded_svg('MO-arrow.svg')
                                   .input_send.not-product-pack
-                                    button.cust_button.order-product-link-wrap.is-decor data-product-id=decor.id
-                                      |Добавити в кошик
+                                    button.cust_button.order-product-link-wrap.is-decor data-product-id=decor.id =t("pages.product.add_to_cart")
                                   .clearfix
                                 p = decor.short_description
                                 a.close-detail href="#"

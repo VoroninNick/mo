@@ -1,6 +1,7 @@
 uk:
   header:
     call_order: "замовити дзвінок"
+    menu: МЕНЮ
   category:
     tablecloths:
       title: "СКАТЕРТИНИ"
@@ -21,6 +22,9 @@ uk:
     contacts: "Контакти"
   pages:
     index:
+      categories:
+        label_count: "Скатертин в наявності"
+        label_build: "Сформувати замовлення"
       wellcome:
         title: "ВАС ВІТАЄ ІНТЕРНЕТ-МАГАЗИН «MAGIA OBRUS»"
         subtitle: "Унікальні скатертини ручної роботи на любий смак"
@@ -38,6 +42,26 @@ uk:
         subtitle: "ДОМАШНІЙ ДЕКОР"
       publications:
         title: "ПУБЛІКАЦІЇ"
+    contacts:
+      contacts: Контактні дані
+      socials: Ми в соціальних мережах
+      feedback_form:
+        title: Форма зворотнього зв’язку
+        placeholders:
+          firstname: ім’я
+          lastname: Прізвище
+          phonenumber: Номер телефону
+          email: Електронна скринька
+        message:
+          label: Ваше повідомлення
+          placeholder: Залиште ваше повідомлення тут...
+        button: Надіслати
+    product:
+      add_to_cart: Добавити в кошик
+    promotion:
+      sale: розпродаж
+      sets: комплекти
+      all: всі акції
 #    news:
 #      header:
 #        titles: "ПУБЛІКАЦІЇ"
@@ -101,6 +125,12 @@ uk:
       year: "в 2014р."
       projects_info: "Інформація про сайт"
       сopyright: "© 2010-2014. Екотель Готель-Економ у Львові. Всі права застережено."
+
+      project_sponsor: Проект розроблений за підтримки ЗРЦ «ЗУРЦ» та «Charles Stewart Mott Foundation»
+      newsletter:
+        label: Підписатись на розсилку
+        button: підписатись
+        placeholder: Електронна пошта
 #    contacts:
 #      title: "КОНТАКТИ"
 #      form:

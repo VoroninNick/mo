@@ -1,7 +1,7 @@
 header
   .header_wrapper
     .main_menu_wrapper.header_menu_squad
-      label#main_menu_button for="main_menu" data-title="МЕНЮ"
+      label#main_menu_button for="main_menu" data-title=t("header.menu")
         = embedded_svg ("MO-menu.svg")
     .header_inner
       .main_logo
@@ -40,10 +40,11 @@ header
               =render partial: 'partials/forms/call_order'
       .language-switcher
         -if I18n.locale == :uk
-          = link_to "EN", locale: "en"
+          = link_to "EN", {locale: "en"}, title: "go to english"
+
           /a href="/en" EN
         -else I18n.locale == :en
-          = link_to "UKR", locale: "uk"
+          = link_to "UKR", {locale: "uk"}, title: "перейти на українську"
           /a href="/uk" UKR
     .basket_wrapper.header_menu_squad
       label#basket for="modal_cart" data-count="#{get_count_products}"
@@ -88,7 +89,7 @@ header
             /  a href=all_sets_path
             /    |Сервізи
             li
-              = link_to =t("main_menu.decors"), all_decors_path(locale: I18n.locale)
+              = link_to t("main_menu.decors"), all_decors_path(locale: I18n.locale)
             li
               a href=special_offers_path =t("main_menu.promotion")
             li
@@ -100,7 +101,8 @@ header
             li
               a href=payment_path =t("main_menu.payment")
             li
-              a href=contacts_path =t("main_menu.contacts")
+              =link_to t("main_menu.contacts"), contacts_path(locale: I18n.locale)
+              /a href=contacts_path =t("main_menu.contacts")
           ul.social_networks_wrap
             li
               a href="https://www.facebook.com/" rel="nofollow"

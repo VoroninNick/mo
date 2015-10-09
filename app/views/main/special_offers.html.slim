@@ -3,8 +3,7 @@
     nav class="breadcrumbs"
       a href=root_path
         = embedded_svg ('MO-Home.svg')
-      a class="unavailable" href=""
-        |Акції
+      a class="unavailable" href="" =t("main_menu.promotion")
 .special_offers_wrap
   .special_offers_header_wrap
     .row
@@ -15,20 +14,16 @@
               =embedded_svg ('MO-Special offers.svg')
           .row
             .columns.large-12
-              h2
-                |Акції
+              h2 =t("main_menu.promotion")
   .row
     .columns.large-12
       ul.special_offers_nav_tabs
         li.sale_tab
-          label for="sale_tab"
-            |розпродаж
+          label for="sale_tab" =t("pages.promotion.sale")
         li.sets_tab.dni
-          label for="sets_tab"
-            |комплекти
+          label for="sets_tab" =t("pages.promotion.sets")
         li.all_special_offers_tab.dni
-          label for="all_special_offers_tab"
-            |всі акції
+          label for="all_special_offers_tab" =t("pages.promotion.all")
 
   /only peoducts
   .special_offers_tab_wrap.sale_tab_wrap.dbi

@@ -4,8 +4,7 @@
     nav class="breadcrumbs"
       a href=root_path
         = embedded_svg ('MO-Home.svg')
-      a href=all_decors_path(locale: I18n.locale)
-        |Декори
+      a href=all_decors_path(locale: I18n.locale) =t("main_menu.decors")
       a class="unavailable" href=""
         =@product.name
 
@@ -46,8 +45,7 @@
                       a.remove_one_point
                         =embedded_svg('MO-arrow.svg')
                     .input_send.not-product-pack
-                      button.cust_button.order-product-link-wrap.is-decor data-product-id=i.id
-                        |Добавити в кошик
+                      button.cust_button.order-product-link-wrap.is-decor data-product-id=i.id =t("pages.product.add_to_cart")
                     .clearfix
                   .description_wrap
                     = raw i.description

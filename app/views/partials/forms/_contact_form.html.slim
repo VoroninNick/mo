@@ -1,24 +1,21 @@
 .contact_form_inner
-  h3
-    |Форма зворотнього зв’язку
+  h3 =t("pages.contacts.feedback_form.title")
   .row
     .columns.large-12.no-padding
       form.mo-form  method="POST" action="/contact_form"
         input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"
         .input
-          input placeholder="ім’я" type="text" name="firstname" required=""
+          input placeholder=t("pages.contacts.feedback_form.placeholders.firstname") type="text" name="firstname" required=""
         .input
-          input placeholder="Прізвище" type="text" name="lastname" required=""
+          input placeholder=t("pages.contacts.feedback_form.placeholders.lastname") type="text" name="lastname" required=""
         .input
-          input placeholder="Номер телефону" type="text" name="phone" required=""
+          input placeholder=t("pages.contacts.feedback_form.placeholders.phonenumber") type="text" name="phone" required=""
         .input
-          input placeholder="Електронна скринька" type="email" name="email" required=""
+          input placeholder=t("pages.contacts.feedback_form.placeholders.email") type="email" name="email" required=""
         .input
-          label
-            |Ваше повідомлення
-          textarea placeholder="Залиште ваше повідомлення тут..." name="message" required=""
+          label =t("pages.contacts.feedback_form.message.label")
+          textarea placeholder=t("pages.contacts.feedback_form.message.placeholder") name="message" required=""
         .row
           .columns.large-6.medium-6.right
             .input_send_data
-              button type="submit"
-                |Надіслати
+              button type="submit" =t("pages.contacts.feedback_form.button")

@@ -22,6 +22,7 @@
 en:
   header:
     call_order: "call order"
+    menu: MENU
   category:
     tablecloths:
       title: "Tablecloths"
@@ -42,6 +43,9 @@ en:
       contacts: "Contacts"
   pages:
     index:
+      categories:
+        label_count: "Tablecloths available"
+        label_build: "Order form"
       wellcome:
         title: "WELCOME TO INTERNET SHOP «MAGIA OBRUS»"
         subtitle: "Unique handmade tablecloths for all tastes"
@@ -60,6 +64,26 @@ en:
         subtitle: "HOME DECOR"
       publications:
         title: "PUBLICATIONS"
+    contacts:
+      contacts: Contacts
+      socials: We are in social networks
+      feedback_form:
+        title: Feedback form
+        placeholders:
+          firstname: first name
+          lastname: last name
+          phonenumber: Phone number
+          email: e-mail address
+        message:
+          label: Your message
+          placeholder: Leave your message here ...
+        button: Send
+    product:
+      add_to_cart: Add to cart
+    promotion:
+      sale: sale
+      sets: sets
+      all: all promotion
 #    news:
 #      header:
 #        titles: "PUBLICATIONS"
@@ -123,6 +147,12 @@ en:
       year: "2014."
       projects_info: "Project information"
       сopyright: "© 2010-2014. Ecotel Hotel & Economy in Lviv. All rights reserved."
+
+      project_sponsor: The project was supported by the SCRC "WURC» and «Charles Stewart Mott Foundation»
+      newsletter:
+        label: Subscribe to newsletter
+        button: subscribe
+        placeholder: Email
 #    contacts:
 #      title: "CONTACTS"
 #      form:
