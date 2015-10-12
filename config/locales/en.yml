@@ -52,6 +52,7 @@ en:
       price_key: " UAH"
     continue_shopping: Continue Shopping
     place_order: Place order
+  empty_catalog: There is no unit
   pages:
     index:
       categories:
@@ -91,6 +92,8 @@ en:
         button: Send
     product:
       add_to_cart: Add to cart
+      price_key: " UAH"
+      more: More details >>>
     promotion:
       sale: sale
       sets: sets

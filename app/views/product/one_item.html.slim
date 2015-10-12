@@ -149,8 +149,7 @@
                           .pi_bottom
                             h4
                               =i.price.round
-                              span
-                                |&nbsp;грн
+                              span =t("pages.product.price_key")
                 .product-detail
                   .container
                     .row
@@ -170,8 +169,7 @@
                                 =i.name
                           h3
                             =i.price.round
-                            span
-                              |&nbsp;грн
+                            span =t("pages.product.price_key")
                           form#form_add_to_cart
                             .input.quantity-items-wrap
                               a.add_one_point
@@ -187,11 +185,10 @@
                             =embedded_svg('MO-close button.svg')
                         .read-more-wrap
                           .p_read_more.read-more-items
-                            a.right href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale)
-                              |Більш детально >>>
+                            a.right href=product_detail_path(@parent.category_url, i.t_name, locale: I18n.locale) =t("pages.product.more")
           -else
             .columns
-              p Нема жодної одиниці
+              p =t("empty_catalog")
           .clearfix
 -if @categories
   -@categories.each_with_index do |c, i|

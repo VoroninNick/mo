@@ -31,6 +31,7 @@ uk:
       price_key: " грн"
     continue_shopping: Продовжити покупки
     place_order: Оформити замовлення
+  empty_catalog: Немає жодної одиниці
   pages:
     index:
       categories:
@@ -69,6 +70,8 @@ uk:
         button: Надіслати
     product:
       add_to_cart: Добавити в кошик
+      price_key: " грн"
+      more: Більш детально >>>
     promotion:
       sale: розпродаж
       sets: комплекти
@@ -84,6 +87,8 @@ uk:
       read_more: Читати статтю
       author: Автор
       date_published: Дата написання
+
+
 
 #    news:
 #      header:
