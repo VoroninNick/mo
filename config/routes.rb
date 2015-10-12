@@ -103,10 +103,9 @@ unless RakeSettings.self_skip_initializers?
 
     get '/ordering' => 'main#ordering', as: 'ordering'
 
-    post '/add_products_pack' => 'line_items#add_product_pack_item_to_line_item', as: 'add_product_pack_item_to_line_item'
-
     root "main#index"
 
     end
+    post '/add_products_pack' => 'line_items#add_product_pack_item_to_line_item', as: 'add_product_pack_item_to_line_item'
   end
 end
