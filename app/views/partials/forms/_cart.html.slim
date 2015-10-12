@@ -6,8 +6,7 @@
       .cart_count_product
         .count_product data-count="#{get_count_products}"
           = embedded_svg ("MO-Basket.svg")
-        span
-          |Ваш кошик
+        span =t("cart.title")
       label.close_cart for="modal_cart"
         =embedded_svg('MO-close button.svg')
   .cart-content-page
@@ -231,25 +230,21 @@
 
   .cart-count-prices
     .cart-count-prices-inner
-      .ccp_inner.ccp_left
-        |Загальна ціна
+      .ccp_inner.ccp_left =t("cart.total_price.title")
       .ccp_inner.ccp_right
         -total_price = get_total_price(current_cart)
         -if total_price
           =total_price.round()
-          span
-            |&nbsp;грн
+          span =t("cart.total_price.price_key")
   .cart-order-product-wrap
     .cop_inner.cop-left
       label.close_cart for="modal_cart"
         .arrow
           =embedded_svg('MO-arrow.svg')
-        .title
-          |Продовжити покупки
+        .title =t("cart.continue_shopping")
     .cop_inner.cop-right.ci_next_step class=("passive-link" if get_count_products==0)
       a#link-to-ordering-product href=ordering_path(locale: I18n.locale)
-        .title
-          |Оформити замовлення
+        .title =t("cart.place_order")
         .arrow
           =embedded_svg('MO-arrow.svg')
 

@@ -97,7 +97,7 @@ unless RakeSettings.self_skip_initializers?
 
     get '/special_offers' => 'main#special_offers', as: 'special_offers'
 
-    get '/shipping' => 'info#shipping', as: 'shipping'
+    get '/delivery' => 'info#shipping', as: 'shipping'
     get '/warranty' => 'info#warranty', as: 'warranty'
     get '/payment' => 'info#payment', as: 'payment'
 

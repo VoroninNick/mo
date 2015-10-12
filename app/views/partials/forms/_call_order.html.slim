@@ -3,20 +3,18 @@
     .coh_inner
       .link_phone_inner
         = embedded_svg ("MO-Phone-call back.svg")
-        span
-          |замовити дзвінок
+        span =t("call_order.title")
       label.cancel_popup for="call_order"
         =embedded_svg('MO-close button.svg')
   .form_wrap
     form.mo-form.validate-form method="POST" action="/call_order"
       input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>"
       .input
-        input id="co-name" placeholder="ІМ'Я" minlength="2" type="text" name="firstname" required=""
+        input id="co-name" placeholder=t("pages.contacts.feedback_form.placeholders.firstname") minlength="2" type="text" name="firstname" required=""
       .input
-        input id="co-last-name" placeholder="ПРІЗВИЩЕ" minlength="2" type="text" name="lastname" required=""
+        input id="co-last-name" placeholder=t("pages.contacts.feedback_form.placeholders.lastname") minlength="2" type="text" name="lastname" required=""
       .input
-        input.phone-input id="co-phone" placeholder="НОМЕР ТЕЛЕФОНУ" type="text" name="phone" required=""
+        input.phone-input id="co-phone" placeholder=t("pages.contacts.feedback_form.placeholders.phonenumber") type="text" name="phone" required=""
         .clearfix
       .input.input_send_data
-        button type="submit"
-          |ЧЕКАЮ ДЗВІНКА
+        button type="submit" =t("call_order.form.button")

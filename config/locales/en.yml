@@ -38,9 +38,20 @@ en:
       promotion: "Promotion"
       publications: "Publications"
       delivery: "Delivery"
-      guarantee: "Guarantee"
+      guarantee: "Warranty"
       payment: "Payment"
       contacts: "Contacts"
+  call_order:
+    title: call to order
+    form:
+      button: CALL WAITING
+  cart:
+    title: Your cart
+    total_price:
+      title: Total price
+      price_key: " UAH"
+    continue_shopping: Continue Shopping
+    place_order: Place order
   pages:
     index:
       categories:
@@ -84,6 +95,17 @@ en:
       sale: sale
       sets: sets
       all: all promotion
+    payment:
+      title: Payment
+    delivery:
+      title: Delivery
+    warranty:
+      title: Warranty
+    publication:
+      title: Publications
+      read_more: Read article
+      author: Author
+      date_published: Date of writing
 #    news:
 #      header:
 #        titles: "PUBLICATIONS"

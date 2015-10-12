@@ -5,7 +5,7 @@ header
         = embedded_svg ("MO-menu.svg")
     .header_inner
       .main_logo
-        a href=root_path
+        a href=root_path(locale: I18n.locale)
           = embedded_svg ("MO-Logo-v2.svg")
       .main_central_block_wrap
         .mcb_one_item
@@ -91,15 +91,15 @@ header
             li
               = link_to t("main_menu.decors"), all_decors_path(locale: I18n.locale)
             li
-              a href=special_offers_path =t("main_menu.promotion")
+              a href=special_offers_path(locale: I18n.locale) =t("main_menu.promotion")
             li
-              a href=all_publication_path =t("main_menu.publications")
+              a href=all_publication_path(locale: I18n.locale) =t("main_menu.publications")
             li
-              a href=shipping_path =t("main_menu.delivery")
+              a href=shipping_path(locale: I18n.locale) =t("main_menu.delivery")
             li
-              a href=warranty_path  =t("main_menu.guarantee")
+              a href=warranty_path(locale: I18n.locale)  =t("main_menu.guarantee")
             li
-              a href=payment_path =t("main_menu.payment")
+              a href=payment_path(locale: I18n.locale) =t("main_menu.payment")
             li
               =link_to t("main_menu.contacts"), contacts_path(locale: I18n.locale)
               /a href=contacts_path =t("main_menu.contacts")

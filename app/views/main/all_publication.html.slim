@@ -3,8 +3,7 @@
     nav class="breadcrumbs"
       a href=root_path
         = embedded_svg ('MO-Home.svg')
-      a.unavailable href=''
-        |Публікації
+      a.unavailable href='' =t("pages.publication.title")
 .row
   .columns.large-2.large-centered
     .publication_header_wrap
@@ -13,8 +12,7 @@
           =embedded_svg ('MO-Publications.svg')
       .row
         .columns.large-12
-          h2
-            |Публікації
+          h2 =t("pages.publication.title")
 .row
   - if @publication
     - @publication.each.each_with_index do |item, index|
@@ -33,6 +31,5 @@
             .columns.large-6
               p.author =item.author
             .columns.large-6
-              a.read_more.right href=one_article_path(item.url, locale: I18n.locale)
-                |Читати статтю
+              a.read_more.right href=one_article_path(item.url, locale: I18n.locale) =t("pages.publication.read_more")
         .clearfix

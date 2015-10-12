@@ -3,26 +3,24 @@
     nav class="breadcrumbs"
       a href=root_path
         = embedded_svg ('MO-Home.svg')
-      a class="unavailable" href=""
-        |Гарантія
+      a class="unavailable" href="" =t("pages.warranty.title")
 .row
   .columns.large-12
     ul.header_nav_page
       li.passive.prev
         .arrow_prev
           =embedded_svg('MO-arrow.svg')
-        a href=shipping_path
+        a href=shipping_path(locale: I18n.locale)
           .ico_wrap
             =embedded_svg ('MO-Delivery.svg')
       li.active
         .ico_wrap
           =embedded_svg ('MO-Guaranty.svg')
-        h4
-          |Гарантія
+        h4 =t("pages.warranty.title")
       li.passive.next
         .arrow_next
           =embedded_svg('MO-arrow.svg')
-        a href=payment_path
+        a href=payment_path(locale: I18n.locale)
           .ico_wrap
             =embedded_svg ('MO-Payment.svg')
 - if @page

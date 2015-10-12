@@ -3,26 +3,24 @@
     nav class="breadcrumbs"
       a href=root_path
         = embedded_svg ('MO-Home.svg')
-      a class="unavailable" href=""
-        |Доставка
+      a class="unavailable" href="" =t("pages.delivery.title")
 .row
   .columns.large-12
     ul.header_nav_page
       li.passive.prev
         .arrow_prev
           =embedded_svg('MO-arrow.svg')
-        a href=payment_path
+        a href=payment_path(locale: I18n.locale)
           .ico_wrap
             =embedded_svg ('MO-Payment.svg')
       li.active
         .ico_wrap
           =embedded_svg ('MO-Delivery.svg')
-        h4
-          |Доставка
+        h4 =t("pages.delivery.title")
       li.passive.next
         .arrow_next
           =embedded_svg('MO-arrow.svg')
-        a href=warranty_path
+        a href=warranty_path(locale: I18n.locale)
           .ico_wrap
             =embedded_svg ('MO-Guaranty.svg')
 - if @page

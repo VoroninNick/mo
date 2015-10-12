@@ -20,6 +20,17 @@ uk:
     guarantee: "Гарантія"
     payment: "Оплата"
     contacts: "Контакти"
+  call_order:
+    title: замовити дзвінок
+    form:
+      button: ЧЕКАЮ ДЗВІНКА
+  cart:
+    title: Ваш кошик
+    total_price:
+      title: Загальна ціна
+      price_key: " грн"
+    continue_shopping: Продовжити покупки
+    place_order: Оформити замовлення
   pages:
     index:
       categories:
@@ -62,6 +73,18 @@ uk:
       sale: розпродаж
       sets: комплекти
       all: всі акції
+    payment:
+      title: Оплата
+    delivery:
+      title: Доставка
+    warranty:
+      title: Гарантія
+    publication:
+      title: Публікації
+      read_more: Читати статтю
+      author: Автор
+      date_published: Дата написання
+
 #    news:
 #      header:
 #        titles: "ПУБЛІКАЦІЇ"

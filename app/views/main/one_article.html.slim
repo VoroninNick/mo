@@ -4,8 +4,7 @@
     nav class="breadcrumbs"
       a href=root_path
         = embedded_svg ('MO-Home.svg')
-      a href=all_publication_path
-        |Публікації
+      a href=all_publication_path =t("pages.publication.title")
       a class="unavailable" href=""
         =i.title
 .row
@@ -16,8 +15,7 @@
           =embedded_svg ('MO-Publications.svg')
       .row
         .columns.large-12
-          h2
-            |Публікації
+          h2 =t("pages.publication.title")
 .publication_one_item_wrap
   .light_gray_back_wrap
     .poi_header_wrap
@@ -33,14 +31,14 @@
             .poi_details_about_wrap
               .row
                 .columns.large-12
-                  h5 Автор
+                  h5 =t("pages.publication.author")
               .row
                 .columns.large-12
                   h4 = i.author
             .poi_details_about_wrap
               .row
                 .columns.large-12
-                  h5 Дата написання
+                  h5 =t("pages.publication.date_published")
               .row
                 .columns.large-12
                   h4 = i.created_at.strftime("%d.%m.%Y")
