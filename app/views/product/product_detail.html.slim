@@ -15,7 +15,7 @@
     .columns.large-12
       - if @product
         - i = @product
-        .product-detail
+        .product-detail data-adding=t("pages.product.adding") data-product-is=t("pages.product.product_is") data-view=t("pages.product.view")
           .container.container-item-detail
             .row
               .columns.large-6

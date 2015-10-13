@@ -31,6 +31,7 @@ uk:
       price_key: " грн"
     continue_shopping: Продовжити покупки
     place_order: Оформити замовлення
+    price_key: грн
   empty_catalog: Немає жодної одиниці
   pages:
     index:
@@ -73,6 +74,13 @@ uk:
       add_to_cart: Добавити в кошик
       price_key: " грн"
       more: Більш детально >>>
+      customized_form:
+        title: Форма індивідуального замовлення
+        message:
+          placeholder: Залиште деталі вашого замовлення тут...
+      adding: Добавляння...
+      product_is: ТОВАР ВЖЕ В КОШИКУ!
+      view: Переглянути
     promotion:
       sale: розпродаж
       sets: комплекти
@@ -88,9 +96,68 @@ uk:
       read_more: Читати статтю
       author: Автор
       date_published: Дата написання
-
-
-
+    ordering:
+      title: Оформлення замовлення
+      selects_city:
+        label: Куди доставити
+        lviv: Львів
+        country: По Україні
+      select_delivery:
+        nova_poshta:
+          label: Нова пошта
+          title: Переглянути список відділень "Нової пошти"
+          city: Місто доставки
+          number_department: № відділення
+      select_payment:
+        select_method: Виберіть спосіб оплати
+        at_reception: Оплата при одержанні
+        private: Приват банк
+        for_terms: По перерахунку
+      bank:
+        title: Наші реквізити
+        receiver:
+          key: 'Отримувач:'
+          value: ПАО КБ ПРИВАТБАНК
+        code_recipient:
+          key: 'Код отримувача (ОКПО, ЄДРПОУ):'
+          value: 14360570
+        routing_recipient:
+          key: 'Код банку отримувача:'
+          value: 305299
+        bill_recipient:
+          key: 'Рахунок отримувача:'
+          value: 2924425509100
+        purpose_of_payment:
+          key: 'Призначення платежу:'
+          value: Поповнення картки №(номер картки), піб та іпн одержувача
+      contact_info:
+        title: Контактна інформація
+        form:
+          address: Адреса доставки
+          additional_information:
+            label: Додаткова інформація і побажання
+            placeholder: 'Наприклад: № відділення Нової пошти (перелік відділень) ...'
+          button: Підтвердити дані
+      notes:
+        first: Поля обов'язкові до заповнення
+        second: Послуги перевізника оплачує Одержувач.
+        third: Вартість пересилання визначається фірмою-перевізником.
+      finish_step:
+        total_title:
+          first: Всього
+          second: Товарів
+          third: 'на суму:'
+          title: КОНТАКТНІ ДАНІ ОТРИМУВАЧА
+        delivery: Доставка
+        payment: Оплата
+        service: 'Служба:'
+        method: 'Спосіб:'
+        city: 'Місто:'
+        department: 'Відділення:'
+        add_info: додаткова інформація і побажання
+        buttons:
+          back: Назад
+          success: Замовити!
 #    news:
 #      header:
 #        titles: "ПУБЛІКАЦІЇ"

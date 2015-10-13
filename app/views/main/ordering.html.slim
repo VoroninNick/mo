@@ -6,7 +6,7 @@
     .row
       .columns
         .page-header-wrap
-          h2.text-center Оформлення замовлення
+          h2.text-center =t("pages.ordering.title")
     .row
       .columns
         ul#status-tabs-wrap
@@ -14,174 +14,148 @@
             .row
               .columns.large-4.large-centered
                 select name="select"
-                  option value="" disabled="disabled" selected="selected" style="display:none;"
-                    |Куди доставити
-                  option value="Lviv"
-                    |Львів
-                  option value="Ukraine"
-                    |По Україні
+                  option value="" disabled="disabled" selected="selected" style="display:none;" =t("pages.ordering.selects_city.label")
+                  option value="Lviv" =t("pages.ordering.selects_city.lviv")
+                  option value="Ukraine" =t("pages.ordering.selects_city.country")
             .new-post-wrap.hide
               .row
                 .columns.large-4.large-centered
                   select#method-delivery name="select"
-                    option value="Нова пошта" selected="selected" style="display:none;"
-                      |Нова пошта
+                    option value="Нова пошта" selected="selected" style="display:none;" =t("pages.ordering.select_delivery.nova_poshta.label")
               .row
                 .columns.large-8.large-centered
                   .row
                     .columns.large-6
                       .input
-                        input#of-city placeholder="Місто доставки" type="text" name="city"
+                        input#of-city placeholder=t("pages.ordering.select_delivery.nova_poshta.city") type="text" name="city"
                     .columns.large-6
                       .input
-                        input#of-department placeholder="№ відділення" type="text" name="department"
+                        input#of-department placeholder=t("pages.ordering.select_delivery.nova_poshta.number_department") type="text" name="department"
               .row
                 .columns
                   .link-to-post-office-wrap
                     a href="http://novaposhta.ua/office" rel="nofollow"
-                      h6.text-center
-                        |Переглянути список відділень "Нової пошти"
+                      h6.text-center =t("pages.ordering.select_delivery.nova_poshta.title")
             .row
               .columns.large-4.large-centered
                 select#method-of-payment name="method_payment"
-                  option value="" disabled="disabled" selected="selected" style="display:none;"
-                    |Виберіть спосіб оплати
-                  option value="at_reception"
-                    |Оплата при одержанні
-                  option value="Приват банк"
-                    |Приват банк
-                  option value="По перерахунку"
-                    |По перерахунку
+                  option value="" disabled="disabled" selected="selected" style="display:none;" =t("pages.ordering.select_payment.select_method")
+                  option value="at_reception" =t("pages.ordering.select_payment.at_reception")
+                  option value="Приват банк" =t("pages.ordering.select_payment.private")
+                  option value="По перерахунку" =t("pages.ordering.select_payment.for_terms")
             .requisites-wrap.hide
               .row
                 .columns.large-8.large-centered
-                  h5
-                    |Наші реквізити
+                  h5 =t("pages.ordering.bank.title")
               .row
                 .columns.large-8.large-centered
                   .row
                     .columns.large-6.medium-6.small-6
-                      span.r-key
-                        |Отримувач:
-                      span.r-key
-                        |Код отримувача (ОКПО, ЄДРПОУ):
-                      span.r-key
-                        |Код банку отримувача:
-                      span.r-key
-                        |Рахунок отримувача:
-                      span.r-key
-                        |Призначення платежу:
+                      span.r-key =t("pages.ordering.bank.receiver.key")
+                      span.r-key =t("pages.ordering.bank.code_recipient.key")
+                      span.r-key =t("pages.ordering.bank.routing_recipient.key")
+                      span.r-key =t("pages.ordering.bank.bill_recipient.key")
+                      span.r-key =t("pages.ordering.bank.purpose_of_payment.key")
                     .columns.large-6.medium-6.small-6
-                      span.r-value
-                        |ПАО КБ ПРИВАТБАНК
-                      span.r-value
-                        |14360570
-                      span.r-value
-                        |305299
-                      span.r-value
-                        |2924425509100
-                      span.r-value
-                        |Поповнення картки №(номер картки), піб та іпн одержувача
+                      span.r-value =t("pages.ordering.bank.receiver.value")
+                      span.r-value =t("pages.ordering.bank.code_recipient.value")
+                      span.r-value =t("pages.ordering.bank.routing_recipient.value")
+                      span.r-value =t("pages.ordering.bank.bill_recipient.value")
+                      span.r-value =t("pages.ordering.bank.purpose_of_payment.value")
             .row
               .columns.large-8.large-centered
-                h5
-                  |Контактна інформація
+                h5 =t("pages.ordering.contact_info.title")
             .row
               .columns.large-8.large-centered
                 .row
                   .columns.large-6
                     .input
-                      input#of-name.required-input placeholder="Ім'я " type="text" name="firstname" required=""
+                      input#of-name.required-input placeholder=t("pages.contacts.feedback_form.placeholders.firstname") type="text" name="firstname" required=""
                   .columns.large-6
                     .input
-                      input#of-surname placeholder="Прізвище" type="text" name="lastname" required=""
+                      input#of-surname placeholder=t("pages.contacts.feedback_form.placeholders.lastname") type="text" name="lastname" required=""
             .row
               .columns.large-8.large-centered
                 .input
-                  input#of-phone-number.required-input placeholder="Номер телефону " type="text" name="phone" required=""
+                  input#of-phone-number.required-input placeholder=t("pages.contacts.feedback_form.placeholders.phonenumber") type="text" name="phone" required=""
             .row
               .columns.large-8.large-centered
                 .input
-                  input#of-email.required-input placeholder="Електронна скринька " type="email" name="email" required=""
+                  input#of-email.required-input placeholder=t("pages.contacts.feedback_form.placeholders.email") type="email" name="email" required=""
             .row
               .columns.large-8.large-centered
                 .input
-                  input#of-address placeholder="Адреса доставки" type="text" name="address" required=""
+                  input#of-address placeholder=t("pages.ordering.contact_info.form.address") type="text" name="address" required=""
             .row
               .columns.large-8.large-centered
-                h5
-                  |Додаткова інформація і побажання
+                h5 =t("pages.ordering.contact_info.form.additional_information.label")
             .row
               .columns.large-8.large-centered
                 .input
-                  textarea#of-comment maxlength="256" placeholder="Наприклад: № відділення Нової пошти (перелік відділень) ..." name="message"
+                  textarea#of-comment maxlength="256" placeholder=t("pages.ordering.contact_info.form.additional_information.placeholder") name="message"
             .row
               .columns.large-8.large-centered
                 .right
-                  .steps-buttons.next-step-ordering#next-step-ordering
-                    |Підтвердити дані
+                  .steps-buttons.next-step-ordering#next-step-ordering =t("pages.ordering.contact_info.form.button")
             .row
               .columns.large-8.large-centered
                 span.note
-                  |*&nbsp;&nbsp;&nbsp;Поля обов'язкові до заповнення
+                  |*&nbsp;&nbsp;&nbsp;
+                  =t("pages.ordering.notes.first")
             .row
               .columns.large-8.large-centered
                 span.note
-                  |**&nbsp;&nbsp;Послуги перевізника оплачує Одержувач.
+                  |**&nbsp;&nbsp;
+                  =t("pages.ordering.notes.second")
             .row
               .columns.large-8.large-centered
                 span.note
-                  |*** Вартість пересилання визначається фірмою-перевізником.
+                  |***
+                  =t("pages.ordering.notes.third")
           li#ordering-next-step.hide
             .row
               .columns.large-5.large-centered
                 .info-about-sum-products-wrap
                   h3.text-center
-                    |Всього
+                    =t("pages.ordering.finish_step.total_title.first")
                     label class="one-product-anchor-to-cart" for="modal_cart" id="basket"
-                      |Товарів
-                    |на суму:
+                      =t("pages.ordering.finish_step.total_title.second")
+                    =t("pages.ordering.finish_step.total_title.third")
                   -total_price = get_total_price(current_cart)
                   -if total_price
                     input type="hidden" name="total_price" value="#{total_price.round()}"
                   h2.text-center
                     -if total_price
                       =total_price.round()
-                    span
-                      |&nbsp;грн
+                    span =t("pages.product.price_key")
 
             .details-info-about-ordering-wrap
               .row
                 .columns.large-5
                   .row
                     .columns
-                      h5
-                        |КОНТАКТНІ ДАНІ ОТРИМУВАЧА
+                      h5 =t("pages.ordering.finish_step.total_title.title")
                   .row
                     .columns.large-4
-                      .di-key
-                        |Ім’я:
+                      .di-key =t("pages.contacts.feedback_form.placeholders.firstname")
                     .columns.large-8
                       .di-value#of-name-initial
                         |Максиміліян
                   .row
                     .columns.large-4
-                      .di-key
-                        |Прізвище:
+                      .di-key =t("pages.contacts.feedback_form.placeholders.lastname")
                     .columns.large-8
                       .di-value#of-surname-initial
                         |перекотиполе
                   .row
                     .columns.large-4
-                      .di-key
-                        |тел.:
+                      .di-key =t("pages.contacts.feedback_form.placeholders.phonenumber")
                     .columns.large-8
                       .di-value#of-phone-initial
                         |+38 (050) 417 07 28
                   .row
                     .columns.large-4
-                      .di-key
-                        |ел.пошта:
+                      .di-key =t("pages.contacts.feedback_form.placeholders.email")
                     .columns.large-8
                       .di-value#of-email-initial
                         |voronin.nick@gmail.com
@@ -194,45 +168,37 @@
                         |м. Львів, вул.Сонячна 11 буд.1
                   .row
                     .columns
-                      h5
-                        |Доставка
+                      h5 =t("pages.ordering.finish_step.delivery")
                   .row
                     .columns.large-4
-                      .di-key
-                        |Служба:
+                      .di-key =t("pages.ordering.finish_step.service")
                     .columns.large-8
-                      .di-value#method-delivery-initial
-                        |НОВА ПОШТА
+                      .di-value#method-delivery-initial =t("pages.ordering.select_delivery.nova_poshta.label")
                   .row
                     .columns.large-4
-                      .di-key
-                        |Місто:
+                      .di-key =t("pages.ordering.finish_step.city")
                     .columns.large-8
                       .di-value#of-city-initial
                         |Житомир
                   .row
                     .columns.large-4
-                      .di-key
-                        |Відділення:
+                      .di-key =t("pages.ordering.finish_step.department")
                     .columns.large-8
                       .di-value#of-department-initial
                         |№12
                   .row
                     .columns
-                      h5
-                        |Оплата
+                      h5 =t("pages.ordering.finish_step.payment")
                   .row
                     .columns.large-4
-                      .di-key
-                        |Спосіб:
+                      .di-key =t("pages.ordering.finish_step.method")
                     .columns.large-8
                       .di-value#of-method-payment-initial
                         |Приватбанк
                 .columns.large-7
                   .row
                     .columns
-                      h5
-                        |додаткова інформація і побажання
+                      h5 =t("pages.ordering.finish_step.add_info")
                   .row
                     .columns
                       .di-value.di-textarea#of-comment-initial
@@ -245,11 +211,9 @@
                 .columns.large-8.medium-8.small-6
                   .steps-buttons.prev-step-ordering#prev-step-ordering.left
                     =embedded_svg ("MO-arrow-left.svg"), :class => 'svg_ico svg_ico_arrow'
-                    div
-                      |Назад
+                    div =t("pages.ordering.finish_step.buttons.back")
                 .columns.large-4.medium-4.small-6
                   .input_send_data
-                    button.right type="submit"
-                      |Замовити!
+                    button.right type="submit" =t("pages.ordering.finish_step.buttons.success")
 
 

@@ -52,6 +52,7 @@ en:
       price_key: " UAH"
     continue_shopping: Continue Shopping
     place_order: Place order
+    price_key: UAH
   empty_catalog: There is no unit
   pages:
     index:
@@ -95,6 +96,13 @@ en:
       add_to_cart: Add to cart
       price_key: " UAH"
       more: More details >>>
+      customized_form:
+        title: The form of individual orders
+        message:
+          placeholder: Leave details of your order here ...
+      adding: By adding ...
+      product_is: Product already in the cart!
+      view: Review
     promotion:
       sale: sale
       sets: sets
@@ -110,6 +118,68 @@ en:
       read_more: Read article
       author: Author
       date_published: Date of writing
+    ordering:
+      title: Checkout
+      selects_city:
+        label: To deliver
+        lviv: Lviv
+        country: For Ukraine
+      select_delivery:
+        nova_poshta:
+          label: Nova poshta
+          title: View a list of offices of "Nova Poshta"
+          city: City delivery
+          number_department: № department
+      select_payment:
+        select_method: Select a payment method
+        at_reception: Payment at reception
+        private: Privatbank
+        for_terms: For terms
+      bank:
+        title: Our contact details
+        receiver:
+          key: 'Receiver:'
+          value: PAO KB PrivatBank
+        code_recipient:
+          key: 'Recipient code (OKPO, USREOU):'
+          value: 14360570
+        routing_recipient:
+          key: 'Routing Recipient:'
+          value: 305299
+        bill_recipient:
+          key: 'Bill recipient:'
+          value: 2924425509100
+        purpose_of_payment:
+          key: 'Purpose of payment:'
+          value: Recharge cards № (card number), name and TIN recipient
+      contact_info:
+        title: Contact Information
+        form:
+          address: Delivery address
+          additional_information:
+            label: Additional information and wishes
+            placeholder: 'For example: № Branch New email (list of outlets) ...'
+          button: Verify data
+      notes:
+        first: Fields required
+        second: Services pays the recipient carrier.
+        third: The cost of shipping is determined by carrier.
+      finish_step:
+        total_title:
+          first: Total
+          second: Products
+          third: 'in the amount of:'
+          title: CONTACT INFORMATION RECIPIENT
+        delivery: Delivery
+        payment: Payment
+        service: 'Service:'
+        method: 'Method:'
+        city: 'City:'
+        department: 'Department:'
+        add_info: additional information and wishes
+        buttons:
+          back: Back
+          success: Order!
 #    news:
 #      header:
 #        titles: "PUBLICATIONS"

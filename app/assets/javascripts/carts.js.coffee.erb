@@ -205,6 +205,12 @@ $(document).on "click", '.delete-item', ->
 
 # add product to cart
 $(document).on "click", '#form_add_to_cart button.order-product-link-wrap', ->
+
+  products_wrap = $(@).closest('.product-detail')
+  str_adding = products_wrap.attr "data-adding"
+  str_product_is = products_wrap.attr "data-product-is"
+  str_view = products_wrap.attr "data-view"
+
   $currentElement = $(this)
   parent = $(this).closest('form')
   count = parent.find("input.count_product").val()
@@ -232,12 +238,12 @@ $(document).on "click", '#form_add_to_cart button.order-product-link-wrap', ->
         itemToRemove.css('display','none')
       if itemToAdd.hasClass('not-product-pack')
         itemToAdd.children().remove()
-        itemToAdd.append('<div class="input_send"><div class="status-adding">Добавляння...</div></div>')
+        itemToAdd.append('<div class="input_send"><div class="status-adding">'+str_adding+'</div></div>')
     success: (data) ->
       if itemToAdd.hasClass('not-product-pack')
         itemToAdd.children().remove()
-        itemToAdd.append('<div class="status-adding">ТОВАР ВЖЕ В КОШИКУ!</div>')
-        $('<label class="one-product-anchor-to-cart temp-label-for-bascket" for="modal_cart" id="basket">Переглянути</label>').insertAfter(itemToAdd)
+        itemToAdd.append('<div class="status-adding">'+str_product_is+'</div>')
+        $('<label class="one-product-anchor-to-cart temp-label-for-bascket" for="modal_cart" id="basket">'+str_view+'</label>').insertAfter(itemToAdd)
         setCountItems(count)
         loadPartials()
 

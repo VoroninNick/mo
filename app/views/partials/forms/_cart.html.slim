@@ -52,7 +52,8 @@
                       - else
                         = item.quantity * item.product.price.round()
                       span
-                        |&nbsp;грн
+                        |&nbsp;
+                        =t("cart.price_key")
               .clearfix
             -count+=1
             - if item.product.promotion_price
@@ -96,7 +97,8 @@
                       - else
                         = item.decor_quantity * decor.price.round()
                       span
-                        |&nbsp;грн
+                        |&nbsp;
+                        =t("cart.price_key")
               .clearfix
             -count+=1
             - if decor.new_price
@@ -142,7 +144,8 @@
                       - else
                         = item.drink_set_quantity * drink_set.price.round()
                       span
-                        |&nbsp;грн
+                        |&nbsp;
+                        =t("cart.price_key")
               .clearfix
             -count+=1
             - if drink_set.new_price
@@ -220,7 +223,8 @@
                         - pp_sum = pp_sum -(tablecloth.price + decor.price + drink_set.price)*percent
                         = pp_sum.round()
                       span
-                        |&nbsp;грн
+                        |&nbsp;
+                        =t("cart.price_key")
                 .clearfix
 
     .cart_count_items data-count=count
