@@ -76,34 +76,34 @@ unless RakeSettings.self_skip_initializers?
     post '/order_product' => 'main#order_product'
 
     scope "(:locale)", :locale => /uk|en/ do
-    get '/contacts' => 'main#contacts', as: 'contacts'
+      get '/contacts' => 'main#contacts', as: 'contacts'
 
-    get '/publication' => 'main#all_publication', as: 'all_publication'
-    get '/publication/:url' => 'main#one_article', as: "one_article"
-
-
-    get '/tablecloth' => 'product#all_tablecloth', as: 'all_tablecloth'
-    get '/tablecloth/:category' => 'product#one_item', as: 'one_product'
-    get '/tablecloth/:category/:name' => 'product#product_detail', as: 'product_detail'
-
-    get '/sets' => 'product#all_sets', as: 'all_sets'
-    get '/sets/:category' => 'product#sets_category', as: 'sets_category'
-    get '/sets/:category/:name' => 'product#drink_set_detail', as: 'sets_detail'
-
-    get '/decors' => 'product#all_decors', as: 'all_decors'
-    # get '/decors/:category' => 'product#decor_category', as: 'decor_category'
-    get '/decors/:name' => 'product#decor_detail', as: 'decors_detail'
+      get '/publication' => 'main#all_publication', as: 'all_publication'
+      get '/publication/:url' => 'main#one_article', as: "one_article"
 
 
-    get '/special_offers' => 'main#special_offers', as: 'special_offers'
+      get '/tablecloth' => 'product#all_tablecloth', as: 'all_tablecloth'
+      get '/tablecloth/:category' => 'product#one_item', as: 'one_product'
+      get '/tablecloth/:category/:name' => 'product#product_detail', as: 'product_detail'
 
-    get '/delivery' => 'info#shipping', as: 'shipping'
-    get '/warranty' => 'info#warranty', as: 'warranty'
-    get '/payment' => 'info#payment', as: 'payment'
+      get '/sets' => 'product#all_sets', as: 'all_sets'
+      get '/sets/:category' => 'product#sets_category', as: 'sets_category'
+      get '/sets/:category/:name' => 'product#drink_set_detail', as: 'sets_detail'
 
-    get '/ordering' => 'main#ordering', as: 'ordering'
+      get '/decors' => 'product#all_decors', as: 'all_decors'
+      # get '/decors/:category' => 'product#decor_category', as: 'decor_category'
+      get '/decors/:name' => 'product#decor_detail', as: 'decors_detail'
 
-    root "main#index"
+
+      get '/special_offers' => 'main#special_offers', as: 'special_offers'
+
+      get '/delivery' => 'info#shipping', as: 'shipping'
+      get '/warranty' => 'info#warranty', as: 'warranty'
+      get '/payment' => 'info#payment', as: 'payment'
+
+      get '/ordering' => 'main#ordering', as: 'ordering'
+
+      root "main#index"
 
     end
     post '/add_products_pack' => 'line_items#add_product_pack_item_to_line_item', as: 'add_product_pack_item_to_line_item'

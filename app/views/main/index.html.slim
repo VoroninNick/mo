@@ -1,12 +1,12 @@
-- if @category
-  - @category.each_with_index do |c, index|
-    - sql = "select p.* from #{Category.table_name} c, #{Product.table_name} p where c.id = p.category_id and c.name = '#{c.name}'"
-    - product = Product.find_by_sql(sql)
+- if @categories.any?
+  - @categories.each_with_index do |c, index|
+    /- sql = "select p.* from #{Category.table_name} c, #{Product.table_name} p where c.id = p.category_id and c.name = '#{c.name}'"
+    /- product = Product.find_by_sql(sql)
     - if index < 5
       .one_category.left
         .bi style="background: url('#{c.image.url(:large)}')no-repeat center center;"
         -promotion = 0
-        -product.each do |promo|
+        -c.products.each do |promo|
           -if !promo.promotion_price.nil?
             -promotion = 1
         -if promotion == 1
@@ -26,7 +26,7 @@
                     .ci_count_items_wrap
                       .ci_count
                         -count = 0
-                        -product.each do |i|
+                        -c.products.each do |i|
                           -count+=1
                         =count
                       .ci_label =t("pages.index.categories.label_count")
