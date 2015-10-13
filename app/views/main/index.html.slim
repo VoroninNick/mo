@@ -25,10 +25,11 @@
                   .ci_page_inner
                     .ci_count_items_wrap
                       .ci_count
-                        -count = 0
-                        -c.products.each do |i|
-                          -count+=1
-                        =count
+                        =c.products_count
+                        /-count = 0
+                        /-c.products.each do |i|
+                        /  -count+=1
+                        /=count
                       .ci_label =t("pages.index.categories.label_count")
     - elsif index == 5
       .one_category.left

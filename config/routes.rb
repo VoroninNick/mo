@@ -107,5 +107,8 @@ unless RakeSettings.self_skip_initializers?
 
     end
     post '/add_products_pack' => 'line_items#add_product_pack_item_to_line_item', as: 'add_product_pack_item_to_line_item'
+    match "*path" => redirect("/"), via: [:get, :post]
+    # map.connect '*path', :controller => 'some_controller', :action => 'some_action'
   end
+
 end

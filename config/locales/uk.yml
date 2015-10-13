@@ -57,6 +57,7 @@ uk:
     contacts:
       contacts: Контактні дані
       socials: Ми в соціальних мережах
+      address: Тернопільська обл, Козівський р-н, с. Золочівка
       feedback_form:
         title: Форма зворотнього зв’язку
         placeholders:

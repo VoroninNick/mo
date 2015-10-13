@@ -2,7 +2,7 @@ class MainController < ApplicationController
   def index
     # sql = 'SELECT  "categories".* FROM "categories"  WHERE "categories"."parent_id" = 1 '
     # @category = Category.find_by_sql(sql)
-    @categories = Category.where(parent_id: '1')
+    @categories = Category.where(parent_id: '1').includes(:products)
     @publication = Publication.where(selected_article: true).order("created_at DESC").limit(4)
     @promotion = Promotion.where(selected_promotion: true).order('created_at ASC').first
   end

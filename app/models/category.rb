@@ -40,6 +40,10 @@ class Category < ActiveRecord::Base
     end
   end
 
+  def products_count
+    products.count
+  end
+
   has_many :products, inverse_of: :category
 
   has_attached_file :icon,

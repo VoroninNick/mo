@@ -10,7 +10,7 @@
               .link_inner.link_phone_inner
                 = embedded_svg ("MO-Phone.svg"), class: "f_ico"
                 span
-                  |+38 (067) 107 07 27
+                  |+38 (067) 107 07 17
           li
             a href="mailto:magia-obrus@ukr.net"
               .link_inner.link_mail_inner
@@ -22,11 +22,8 @@
               .link_inner.link_mail_inner
                 = embedded_svg ("MO-location.svg"), class: "f_ico"
                 p
-                  span
-                    |вул. Чорновола, 18
-                p
-                  span
-                    |м. Львів, Україна
+                  span =t("pages.contacts.address")
+                    |Тернопільська обл, Козівський р-н, с. Золочівка
         h3 =t("pages.contacts.socials")
         ul.social_networks_wrap
           li

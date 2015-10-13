@@ -50,7 +50,7 @@ class Publication < ActiveRecord::Base
 
   before_validation :generate_url
   def generate_url
-    self.url = title.parameterize
+    self.url = title.parameterize if self.url.blank?
   end
 
   rails_admin do
