@@ -1,7 +1,7 @@
 # =======================================================================================================  Initialize GOOGLE MAP
 initializeGMaps = ->
-  lat = 49.847205
-  lng = 24.025483
+  lat = 49.562839
+  lng = 25.205983
   latlng = new google.maps.LatLng(lat, lng)
 
   # Create an array of styles.
