@@ -101,12 +101,15 @@ header
                 z-index: 1
                 display: block
                 float: left
+                @media #{$small-only}
+                    width: 42px
+                    overflow: hidden
                 a
                     display: block
                     width: inherit
                     height: inherit
                     svg
-                        width: inherit
+                        width: 145px
                         height: inherit
                         path
                             fill: #ffffff
@@ -394,6 +397,8 @@ header
         padding:
             top: 100px
         margin-bottom: 30px
+        @media #{$small-only}
+            padding-top: 30px
         ul
             li
                 list-style: none
